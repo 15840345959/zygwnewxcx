@@ -1,0 +1,71 @@
+<import src="../templates/house/houseTpl.wxml" />
+<view class="index">
+  <!--页头-->
+  <view class="page__hd">
+    <view class="index-search-botton white-bg">
+      <view class="index-search-input" catchtap='clickSearch'>
+        <view class="index-search-bar__box weui-flex">
+          <view class="bar-img weui-flex__item">
+            <text class="index-search-font">输入楼盘名</text>
+          </view>
+          <view class="bar-img weui-flex__item text-right padding-top-5">
+            <image src="/images/search_icon.png" class="opt-icon-sma"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--主体-->
+  <view class="page__bd page__bd_spacing">
+    <!--轮播广告图-->
+    <swiper indicator-dots="true" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#FFFFFF" autoplay="true" interval="4000" duration="600" style="height:{{systemInfo.windowWidth/2}}px">
+      <block wx:for="{{ads}}">
+        <swiper-item class="banner">
+          <image src="{{item.image}}?imageView2/1/w/600/h/300/interlace/1/q/75" bindtap='jumpZixun' data-adid="{{item.id}}" class="slide-image" width="750rpx" />
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <!-- </button> -->
+    <view class="page__bd">
+      <view class="weui-flex margin-top-25">
+        <view class="weui-flex__item">
+          <view class="placeholder" style='text-align: center;'>
+            <picker bindchange="setAreaOption" mode='selector' range="{{area_option}}" range-key="name">
+              <button size="mini" style='font-size:12px;'>{{area_text}}</button>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder" style='text-align: center;'>
+            <picker bindchange="setTypeOption" mode='selector' range="{{type_option}}" range-key="name">
+              <button size="mini" style='font-size:12px'>{{type_text}}</button>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder" style='text-align: center;'>
+            <picker bindchange="setLabelOption" mode='selector' range="{{label_option}}" range-key="name">
+              <button size="mini" style='font-size:12px'>{{label_text}}</button>
+            </picker>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 房源信息列表 -->
+  <block wx:for="{{houses}}">
+    <template is="houseList" data="{{...item}}" />
+  </block>
+  <view class='{{no_view_hidden}}'>
+    <view class="no-img-view">
+      <image src="../../images/no.png" class="no-image"></image>
+    </view>
+    <view class="grey-font center-style margin-top-10">
+      未找到房源
+    </view>
+  </view>
+  <view style='position:fixed;right:10px;bottom:30px;'>
+    <image src='../../images/baobei_button.png' style='width:45px;height:45px;'></image>
+  </view>
+</view>
