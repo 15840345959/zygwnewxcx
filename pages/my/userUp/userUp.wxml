@@ -1,0 +1,53 @@
+<!--pages/my/userUp/userUp.wxml-->
+
+<view class="page {{hidden}}">
+  <!--页头-->
+  <view class="page__hd"></view>
+  <!--主体-->
+  <view class="page__bd page__bd_spacing">
+
+    <view style='padding-top:20px;'>
+      <view class="weui-cells__title">申请升级为案场负责人</view>
+      <view class="weui-cells weui-cells_after-title">
+        <picker bindchange="setHouseOption" mode='selector' range="{{houses}}" range-key='title'>
+          <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__bd">
+              <view class="weui-select font-size-14">指定楼盘
+                <text class='float-right grey-font text-oneline'>{{house ?house.title:"请选择"}}</text>
+              </view>
+            </view>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 申请记录 -->
+    <block wx:for="{{userUps}}">
+      <view class="weui-panel">
+        <view class="weui-panel__hd">申请记录</view>
+        <view class="weui-panel__bd">
+          <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__desc">申请成为
+              <text class='aui-text-primary'>{{item.house.title}}</text> 的案场负责人</view>
+            <view class="weui-media-box__info">
+              <view class="weui-media-box__info__meta">{{item.created_at}}</view>
+              <view class="weui-media-box__info__meta">管理员</view>
+              <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+                <text wx:if="{{item.status == '0'}}">申请中</text>
+                <text wx:elif="{{item.status == '1'}}"> 审核通过 </text>
+                <text wx:else> 审核驳回 </text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <view style='height:120px;'></view>
+    <!-- 提交按钮 -->
+    <view style="position:fixed;bottom:40px;" class='full-width text-center'>
+      <button class='main-bg white-font font-size-14' style='width:80%;' catchtap='baobeiClient'>提交申请信息</button>
+    </view>
+
+  </view>
+</view>

@@ -1,36 +1,61 @@
 <!--该模板用于首页楼盘列表展示-->
 <template name="houseList">
-<view class="house margin-top-5 margin-left-30" style='margin-bottom:0rpx;padding:10rpx 0' bindtap="clickHouse" data-houseid="{{id}}">
+  <view class="house margin-top-5 margin-left-30" style='margin-bottom:0rpx;padding:10rpx 0' bindtap="clickHouse" data-houseid="{{id}}">
     <view class="house-img">
       <image src="{{image}}?imageView2/1/w/480/h/4400/interlace/1/q/75" class="house-img-sml" mode="aspectFill"></image>
     </view>
 
     <view class="house-info">
-      <view style='display:flex;flex-direction:row;align-items:center;margin-top:0rpx;'>
+      <view style='display:flex;flex-direction:row;align-items:center;' class='margin-top-10'>
 
         <view class="text-oneline font-weight house-title-font" style='margin-left:10rpx;float:left; width:300rpx;'>{{title}}</view>
-        <view style='text-align:right;float:right; width:200rpx;text-align:right;color:#ffcc00;font-size:30rpx;margin-top:0rpx;'>{{price}}元/㎡</view>
+        <view style='text-align:right;float:right; color:#ffcc00;font-size:30rpx;margin-top:0rpx;'>{{price}}元/㎡</view>
       </view>
       <view class="text-oneline margin-bottom-5 house-font margin-top-10" style='margin-left:10rpx;'>面积:{{size_min}}㎡至{{size_max}}㎡</view>
 
-      <view class="text-oneline margin-bottom-5 house-font" style='margin-left:10rpx;'>      
-      <block wx:for="{{labels}}" style="">
-      {{item.name}}
-      </block>
+      <view class="text-oneline margin-bottom-5 house-font" style='margin-left:10rpx;'>
+        <block wx:for="{{labels}}" style="">
+          {{item.name}}
+        </block>
       </view>
 
-      <view style='display:flex;flex-direction:row;align-items:center;margin-top:0rpx;'>
+      <view style='display:flex;flex-direction:row;align-items:center;' class='margin-top-10'>
         <image src='../../images/address.png' style='width:25rpx;height:25rpx;margin-left:10rpx;'></image>
-        <view class="text-oneline house-font" style='margin-left:10rpx;'>{{address}}</view>
+        <view class="text-oneline house-font margin-top-10" style='margin-left:10rpx;'>{{address}}</view>
       </view>
-      <view class="text-oneline margin-bottom-5 house-font" style='margin-left:10rpx;'></view>
+      <view class="text-oneline  house-font margin-top-10 house-font" style='margin-left:10rpx;'></view>
     </view>
 
-
-    <!-- <view class='house-price'>
-      <view class="text-oneline text-right margin-top-30 margin-bottom-10 house-font-price">{{show_price}}</view>
-    </view> -->
-
   </view>
-  <view class='product-down-line'></view>
+  <view style='height:1px;background:#f1f1f1;' class='margin-left-30 margin-right-30'></view>
+</template>
+
+
+<!--该模板用于报备客户的楼盘列表展示-->
+<template name="baobeiHouseList">
+  <view class="margin-top-30 margin-bottom-30 margin-left-40 full-width" data-houseId="{{id}}">
+    <view class="">
+      <view class="text-oneline font-weight house-title-font margin-top-5">{{title}}
+        <image src='../../../images/tianjia.png' bindtap="selHouse" data-houseId="{{id}}" data-houseName='{{title}}' class='float-right margin-right-50 opt-icon-18'></image>
+      </view>
+      <view style='height:10px;'></view>
+      <block wx:for="{{huxings}}">
+        <view class="text-oneline grey-font font-size-12" style='line-height:60rpx;'>
+          <view class="weui-flex">
+            <view class="weui-flex__item">
+              <view class="placeholder">{{item.type.name}}</view>
+            </view>
+            <view class="weui-flex__item">
+              <view class="placeholder">{{item.yongjin_type == "0"?"按固定金额":"按千分比"}}</view>
+            </view>
+            <view class="weui-flex__item">
+              <view class="placeholder">{{item.yongjin_value}}{{item.yongjin_type == "0"?"元":"‰"}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+
+    </view>
+  </view>
+  <view style='height:1px;background:#f1f1f1;' class='margin-left-30 margin-right-30'></view>
 </template>

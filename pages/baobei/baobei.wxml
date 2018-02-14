@@ -1,0 +1,76 @@
+<!--pages/baobei/baobei.wxml-->
+
+<view class="page">
+  <!--页头-->
+  <view class="page__hd"></view>
+  <!--主体-->
+  <view class="page__bd page__bd_spacing">
+    <!-- 客户姓名 -->
+    <view style='padding-top:20px;'>
+      <view class="weui-cells__title">客户姓名</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input class="weui-input font-size-14" bindinput='inputName' placeholder="请输入客户姓名" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 客户电话 -->
+    <view style=''>
+      <view class="weui-cells__title">客户电话</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input class="weui-input font-size-14" bindinput='inputPhonenum' placeholder="请输入客户电话" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 报备信息 -->
+    <view class="weui-cells__title">报备信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__bd" catchtap='setHouse'>
+          <view class="weui-select font-size-14">意向楼盘
+            <text class='float-right grey-font text-oneline'>{{house?house.title:"请选择"}}</text>
+          </view>
+        </view>
+      </view>
+      <picker mode="date" value="{{plan_visit_date}}" start="2018-01-01" end="2046-03-01" bindchange="setPlanVisitDate">
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__bd">
+            <view class="weui-select font-size-14">预约日期
+              <text class='float-right grey-font text-oneline'>{{plan_visit_date}}</text>
+            </view>
+          </view>
+        </view>
+      </picker>
+      <picker mode="time" value="{{plan_visit_time}}" start="07:00" end="21:00" bindchange="setPlanVisitTime">
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__bd">
+            <view class="weui-select font-size-14">到访时间
+              <text class='float-right grey-font text-oneline'>{{plan_visit_time}}</text>
+            </view>
+          </view>
+        </view>
+      </picker>
+      <picker bindchange="setVisitWayOption" mode='selector' range="{{visit_way_option}}" range-key='name'>
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__bd">
+            <view class="weui-select font-size-14">到访方式
+              <text class='float-right grey-font text-oneline'> {{visit_way.name}}</text>
+            </view>
+          </view>
+
+        </view>
+      </picker>
+    </view>
+
+    <!-- 提交按钮 -->
+    <view style="position:fixed;bottom:40px;" class='full-width text-center'>
+      <button class='main-bg white-font font-size-14' style='width:80%;' catchtap='baobeiClient'>提交报备信息</button>
+    </view>
+
+  </view>
+</view>

@@ -1,5 +1,5 @@
-<import src="../templates/house/houseTpl.wxml" />
-<view class="index {{hidden}}">
+<import src="../../templates/house/houseTpl.wxml" />
+<view class="index">
   <!--页头-->
   <view class="page__hd">
     <view class="index-search-botton white-bg">
@@ -17,14 +17,6 @@
   </view>
   <!--主体-->
   <view class="page__bd page__bd_spacing">
-    <!--轮播广告图-->
-    <swiper indicator-dots="true" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#FFFFFF" autoplay="true" interval="4000" duration="600" style="height:{{systemInfo.windowWidth/2}}px">
-      <block wx:for="{{ads}}">
-        <swiper-item class="banner">
-          <image src="{{item.image}}?imageView2/1/w/600/h/300/interlace/1/q/75" bindtap='jumpZixun' data-adid="{{item.id}}" class="slide-image" width="750rpx" />
-        </swiper-item>
-      </block>
-    </swiper>
     <!-- 快速选择 -->
     <view class="page__bd">
       <view class="weui-flex margin-top-30">
@@ -32,7 +24,7 @@
           <view class="placeholder" style='text-align: center;'>
             <picker bindchange="setAreaOption" mode='selector' range="{{area_option}}" range-key="name">
               <text class='font-size-12'>{{area_text}}</text>
-              <image src='../../images/down_arrow.png' class='margin-left-10 opt-icon-12'></image>
+              <image src='../../../images/down_arrow.png' class='margin-left-10 opt-icon-12'></image>
             </picker>
           </view>
         </view>
@@ -40,7 +32,7 @@
           <view class="placeholder" style='text-align: center;'>
             <picker bindchange="setTypeOption" mode='selector' range="{{type_option}}" range-key="name">
               <text class='font-size-12'>{{type_text}}</text>
-              <image src='../../images/down_arrow.png' class='margin-left-10 opt-icon-12'></image>
+              <image src='../../../images/down_arrow.png' class='margin-left-10 opt-icon-12'></image>
             </picker>
           </view>
         </view>
@@ -48,7 +40,7 @@
           <view class="placeholder" style='text-align: center;'>
             <picker bindchange="setLabelOption" mode='selector' range="{{label_option}}" range-key="name">
               <text class='font-size-12'>{{label_text}}</text>
-              <image src='../../images/down_arrow.png' class='margin-left-10 opt-icon-12'></image>
+              <image src='../../../images/down_arrow.png' class='margin-left-10 opt-icon-12'></image>
             </picker>
           </view>
         </view>
@@ -58,17 +50,16 @@
   <view style='height:15px;'></view>
   <!-- 房源信息列表 -->
   <block wx:for="{{houses}}">
-    <template is="houseList" data="{{...item}}" />
+    <template is="baobeiHouseList" data="{{...item}}" />
   </block>
+  <!-- 未找到楼盘信息 -->
   <view class='{{no_view_hidden}}'>
     <view class="no-img-view">
-      <image src="../../images/no.png" class="no-image"></image>
+      <image src="../../../images/no.png" class="no-image"></image>
     </view>
     <view class="grey-font center-style margin-top-10">
       未找到房源
     </view>
   </view>
-  <view style='position:fixed;right:10px;bottom:30px;'>
-    <image src='../../images/baobei_button.png' style='width:45px;height:45px;' catchtap='clickBaobeiBtn'></image>
-  </view>
+  <view style='height:40px;'></view>
 </view>

@@ -1,15 +1,14 @@
 /* pages/templates/house/houseTpl.wxss */
 
-.house-font{
+.house-font {
   font-size: 28rpx;
-  color: #AAA;
-  line-height: 60rpx;
+  color: #aaa;
+  line-height: 50rpx;
 }
 
 .house-info {
   padding-left: 15rpx;
   float: left;
-  width: 450rpx;
   position: relative;
 }
 
@@ -28,8 +27,7 @@
 .house {
   display: flex;
   flex-direction: row;
-  /* padding: 10rpx 0rpx; */
-  /* border-bottom: 1px rgba(255, 255, 255, 0.2) solid;   */
+  /* padding: 10rpx 0rpx; *//* border-bottom: 1px rgba(255, 255, 255, 0.2) solid;   */
 }
 
 .house-title-font {
@@ -37,26 +35,10 @@
   color: #333;
 }
 
-.house-font-blue {
-  /*font-family: .PingFang-SC-Regular;*/
-  font-size: 22rpx;
-  color: #6c0;
-  font-weight: bold;
-  width: 120rpx;
-  text-align: center;
-  background-color: #cfc;
-}
-
 .house-font-price {
   font-weight: bold;
   color: #e75110;
   /* letter-spacing: -0.68rpx; */
-}
-
-.house-font-red {
-  font-size: 30rpx;
-  color: red;
-  letter-spacing: -0.68rpx;
 }
 
 .absolute {

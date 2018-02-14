@@ -35,14 +35,14 @@ App({
               console.log('getUserInfo res is : ' + JSON.stringify(res))
               var encryptedData = res.encryptedData.replace('+', '&=plus=&')
               var iv = res.iv.replace('+', '&=plus=&')
-              var getUnionIdParam = {
+              var param = {
                 code: code,
                 encryptedData: encryptedData,
                 iv: iv
               }
-              console.log('getUnionIdParam is : ' + JSON.stringify(getUnionIdParam))
+              console.log('param is : ' + JSON.stringify(param))
               //获取用户uniond_id
-              util.getUnionId(getUnionIdParam, function (ret) {
+              util.getUnionId(param, function (ret) {
                 console.log('getUnionId ret is : ' + JSON.stringify(ret))
                 var msgObj = ret.data.ret;
                 var param = {

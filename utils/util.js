@@ -10,6 +10,7 @@ var SERVER_URL = (TESTMODE) ? DEBUG_URL : SERVER_URL;
 function wxRequest(url, param, method, successCallback, errorCallback) {
   showLoading()
   console.log("wxRequest url:" + JSON.stringify(url) + " medhot:" + method + " param:" + JSON.stringify(param))
+  console.log("wxRequest userInfo:" + JSON.stringify(getApp().globalData.userInfo))
   if (!judgeIsAnyNullStr(getApp().globalData.userInfo)) {
     //user_id未设置
     if (judgeIsAnyNullStr(param.user_id)) {
@@ -49,35 +50,71 @@ function loginServer(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/user/login', param, "POST", successCallback, errorCallback)
 }
 
+//获取用户信息
+function getUserInfoByIdWithToken(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/user/getByIdWithToken', param, "GET", successCallback, errorCallback)
+}
+
+//获取用户页面信息
+function getMyInfo(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/user/getMyInfo', param, "GET", successCallback, errorCallback)
+}
+
+
 //获取广告图
 function getADs(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/ad/getADs', param, "GET", successCallback, errorCallback);
 }
 
-//查找所有的楼盘局域 2月6日
+//获取楼盘选项
 function getHouseOptions(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/house/getOptions', param, "GET", successCallback, errorCallback);
 }
 
-//  根据区域搜索楼盘 2月6日
+//根据条件搜索楼盘
 function searchHouseByCon(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/house/searchByCon', param, "POST", successCallback, errorCallback);
 }
 
-//  根据楼盘名搜索楼盘 2月7日
+//根据名称搜索楼盘
 function searchHouseByName(param, successCallback, errorCallback) {
-  wxRequest(SERVER_URL + '/api/house/searchByName', param, "GET", successCallback, errorCallback);
+  wxRequest(SERVER_URL + '/api/house/searchByName', param, "POST", successCallback, errorCallback);
+}
+
+//更新用户信息
+function updateUserInfo(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/user/updateById', param, "POST", successCallback, errorCallback);
+}
+
+//中介报备客户  2月6日
+function baobeiClient(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/baobei/baobeiClient', param, "POST", successCallback, errorCallback);
+}
+
+//用户签到
+function userQDToday(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/user/userQDToday', param, "POST", successCallback, errorCallback);
 }
 
 
+//获取用户申请为案场负责人记录表
+function getUserUpListByUserId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/userUp/getListByUserId', param, "GET", successCallback, errorCallback);
+}
+
+//用户申请升级为案场负责人
+function userApplyUp(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/user/applyUp', param, "POST", successCallback, errorCallback);
+}
 
 /////////页面跳转///////////////////////////////
 //判断是否需要跳转到设置信息页面
-function isNeedNavigateToSetMyInfoPage(userInfo) {
+function isNeedNavigateToSetMyInfoPage() {
+  var userInfo = getApp().globalData.userInfo;
   if (judgeIsAnyNullStr(userInfo.phonenum, userInfo.real_name)) {
-    wx.navigateTo({
-      url: '/pages/setMyInfo/setMyInfo?jsonStr=' + JSON.stringify(userInfo)
-    })
+    return true;
+  } else {
+    return false;
   }
 }
 
@@ -441,18 +478,28 @@ function StringToDate(DateStr) {
 
 // 获取今天日期
 function getToday() {
-  var now = new Date()
-  var today = ""
-  var year = now.getFullYear()       //年
-  today += year + "-"
-  var month = now.getMonth() + 1     //月
-  if (month < 10)
-    today += "0"
-  today += month + "-"
-  var day = now.getDate()            //日
-  if (day < 10)
-    today += "0"
-  return year + "-" + month + "-" + day
+  var date = new Date();
+  var seperator = "-";
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var strDate = date.getDate();
+  if (month >= 1 && month <= 9) {
+    month = "0" + month;
+  }
+  if (strDate >= 0 && strDate <= 9) {
+    strDate = "0" + strDate;
+  }
+  var currentdate = year + seperator + month + seperator + strDate;
+  return currentdate;
+}
+
+//获取当前时间
+function getCurrentTime() {
+  var date = new Date();
+  var seperator = ":";
+
+  var currenttime = date.getHours() + seperator + date.getMinutes();
+  return currenttime;
 }
 
 /**
@@ -556,10 +603,17 @@ module.exports = {
   //http request function
   getUnionId: getUnionId,
   loginServer: loginServer,
-  getADs: getADs ,
+  getUserInfoByIdWithToken: getUserInfoByIdWithToken,
+  getADs: getADs,
   getHouseOptions, getHouseOptions,
   searchHouseByCon, searchHouseByCon,
   searchHouseByName, searchHouseByName,
+  updateUserInfo: updateUserInfo,
+  baobeiClient: baobeiClient,
+  getMyInfo: getMyInfo,
+  userQDToday: userQDToday,
+  getUserUpListByUserId: getUserUpListByUserId,
+  userApplyUp: userApplyUp,
 
   //normal function
   getImgRealUrl: getImgRealUrl,
@@ -570,11 +624,12 @@ module.exports = {
   showModal: showModal,
   judgeIsAnyNullStr: judgeIsAnyNullStr,
   getToday: getToday,
+  getCurrentTime: getCurrentTime,
   isPoneAvailable: isPoneAvailable,
   //navigation function
   navigateBack: navigateBack,   //进行页面跳回
   isNeedNavigateToSetMyInfoPage: isNeedNavigateToSetMyInfoPage,  //跳转到注册页面
   //other function
   getDiffentTime: getDiffentTime,
-  gcj02towgs84: gcj02towgs84
+  gcj02towgs84: gcj02towgs84,
 } 

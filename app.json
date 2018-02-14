@@ -1,9 +1,12 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/my/userUp/userUp",
+    "pages/baobei/baobei",
+    "pages/baobei/selHouse/selHouse",
     "pages/client/client",
     "pages/my/my",
-    "pages/setMyInfo/setMyInfo",
+    "pages/my/setMyInfo/setMyInfo",
     "pages/templates/house/houseTpl",
     "pages/houseInfo/houseInfo"
   ],
@@ -11,14 +14,14 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "white",
     "navigationBarTitleText": "置业顾问",
-    "enablePullDownRefresh": false,
+    "enablePullDownRefresh": true,
     "navigationBarTextStyle": "black",
     "backgroundColor": "#f8f8f8"
   },
   "tabBar": {
     "color": "#8A8A8A",
     "borderStyle": "white",
-    "selectedColor": "#ffcc00",
+    "selectedColor": "#5E7DFE",
     "backgroundColor": "#ffffff",
     "list": [
       {
@@ -36,8 +39,8 @@
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "images/geren_n.png",
-        "selectedIconPath": "images/geren_r.png"
+        "iconPath": "images/my_n.png",
+        "selectedIconPath": "images/my_r.png"
       }
     ]
   },

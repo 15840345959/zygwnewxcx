@@ -1,0 +1,48 @@
+<!--pages/setMyInfo/setMyInfo.wxml-->
+<view class="page">
+  <view class="page__hd">
+
+  </view>
+  <view class="page__bd">
+    <!-- 真实姓名 -->
+    <view style='width:80%;margin:auto;'>
+      <view class="weui-flex" style="padding-top:80px;">
+        <view class="weui-flex__item">
+          <view class="placeholder center-style white-bg register-input-style">
+            <input class="weui-input full-width" value='{{real_name}}' placeholder="真实姓名" style='text-align: center;' bindinput='inputRealName' />
+          </view>
+        </view>
+      </view>
+      <!-- 手机号输入 -->
+      <view class="weui-flex" style="padding-top:20px;">
+        <view class="weui-flex__item">
+          <view class="placeholder center-style white-bg register-input-style">
+            <input class="weui-input full-width" value='{{phonenum}}' placeholder="绑定手机号" style='text-align: center;' bindinput='inputPhonenum' />
+          </view>
+        </view>
+      </view>
+      <!-- 身份证号输入 -->
+      <view class="weui-flex" style="padding-top:20px;">
+        <view class="weui-flex__item">
+          <view class="placeholder center-style white-bg register-input-style">
+            <input class="weui-input full-width" value='{{cardID}}' placeholder="输入身份证" style='text-align: center;' bindinput='inputCardId' />
+          </view>
+        </view>
+      </view>
+      <!-- 确认绑定-->
+      <view class="weui-flex" style="padding-top:20px;">
+        <view class="weui-flex__item">
+          <button class='register-input-style main-bg center-style white-font font-size-14' catchtap="clickBangDing">绑定信息</button>
+        </view>
+      </view>
+      <!-- 服务协议部分 -->
+      <view class=" weui-flex " style="padding-top:20px; ">
+        <view class="weui-flex__item ">
+          <view class='grey-font text-center'>点击绑定同意
+            <text class='aui-text-info' bindtap="">《置业顾问服务协议》</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
