@@ -1,0 +1,72 @@
+<!--pages/client/setGuwenOpt/setGuwenOpt.wxml-->
+<view class="page {{hidden}}">
+  <view class="page__hd">
+  </view>
+  <view class="page__bd">
+    <!-- 基本信息 -->
+    <view class="weui-panel" style='margin-top:10px;'>
+      <view class="weui-panel__hd">基本资料</view>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>报备流水</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.trade_no}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>客户姓名</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.client.name}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>手机号码</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.client.phonenum}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>意向楼盘</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.house.title}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 设置到访信息 -->
+    <view class="weui-cells__title aui-text-primary">接待顾问</view>
+    <view class="weui-cells weui-cells_after-title">
+       <picker bindchange="setGuwenOption" mode='selector' range="{{guwens}}" range-key="name">
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view class='font-size-14'>置业顾问</view>
+          </view>
+          <view class="weui-cell__ft font-size-14">
+            {{guwens[guwen_index].name}}
+          </view>
+        </view>
+      </picker>
+    </view>
+
+    <!-- 安排置业顾问 -->
+    <view style="position:fixed;bottom:20px;" class='full-width text-center'>
+      <button class='main-bg white-font font-size-14' style='width:80%;' catchtap='saveOpt'>安排置业顾问</button>
+    </view>
+
+    <!-- 分隔符 -->
+    <view style='height:60px;'></view>
+  </view>
+</view>

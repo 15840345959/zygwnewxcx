@@ -17,7 +17,7 @@
       <view class="weui-flex" style="padding-top:20px;">
         <view class="weui-flex__item">
           <view class="placeholder center-style white-bg register-input-style">
-            <input class="weui-input full-width" value='{{phonenum}}' placeholder="绑定手机号" style='text-align: center;' bindinput='inputPhonenum' />
+            <input class="weui-input full-width" type='number' value='{{phonenum}}' placeholder="绑定手机号" style='text-align: center;' bindinput='inputPhonenum' />
           </view>
         </view>
       </view>
@@ -25,7 +25,7 @@
       <view class="weui-flex" style="padding-top:20px;">
         <view class="weui-flex__item">
           <view class="placeholder center-style white-bg register-input-style">
-            <input class="weui-input full-width" value='{{cardID}}' placeholder="输入身份证" style='text-align: center;' bindinput='inputCardId' />
+            <input class="weui-input full-width" type='number' value='{{cardID}}' placeholder="输入身份证" style='text-align: center;' bindinput='inputCardId' />
           </view>
         </view>
       </view>

@@ -1,0 +1,80 @@
+<!--pages/client/signOpt/signOpt.wxml-->
+<view class="page {{hidden}}">
+  <view class="page__hd">
+  </view>
+  <view class="page__bd">
+    <!-- 基本信息 -->
+    <view class="weui-panel" style='margin-top:10px;'>
+      <view class="weui-panel__hd">基本资料</view>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>报备流水</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.trade_no}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>客户姓名</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.client.name}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>手机号码</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.client.phonenum}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>意向楼盘</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.house.title}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 设置到访信息 -->
+    <view class="weui-cells__title aui-text-primary">客户签约</view>
+    <view class="weui-cells weui-cells_after-title">
+      <picker mode="date" value="{{sign_date}}" start="2018-01-01" end="2046-03-01" bindchange="setSignDate">
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__bd">
+            <view class="weui-select font-size-14">设置日期
+              <text class='float-right grey-font text-oneline'>{{sign_date}}</text>
+            </view>
+          </view>
+        </view>
+      </picker>
+      <picker mode="time" value="{{sign_time}}" start="07:00" end="21:00" bindchange="setSignTime">
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__bd">
+            <view class="weui-select font-size-14">设置时间
+              <text class='float-right grey-font text-oneline'>{{sign_time}}</text>
+            </view>
+          </view>
+        </view>
+      </picker>
+    </view>
+
+    <!-- 保存按钮 -->
+    <view style="position:fixed;bottom:20px;" class='full-width text-center'>
+      <button class='main-bg white-font font-size-14' style='width:80%;' catchtap='saveOpt'>确认客户签约</button>
+    </view>
+
+    <!-- 分隔符 -->
+    <view style='height:60px;'></view>
+  </view>
+</view>

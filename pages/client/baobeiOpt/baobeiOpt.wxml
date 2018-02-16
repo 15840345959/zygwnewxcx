@@ -1,0 +1,359 @@
+<!--pages/client/baobeiOpt/baobeiOpt.wxml-->
+<view class="page {{hidden}}">
+  <view class="page__hd">
+  </view>
+  <view class="page__bd">
+    <!-- 基本信息 -->
+    <view class="weui-panel" style='margin-top:10px;'>
+      <view class="weui-panel__hd">基本资料</view>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>报备流水</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.trade_no}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>客户姓名</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.client.name}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>手机号码</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.client.phonenum}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>意向楼盘</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.house.title}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 设置信息 -->
+    <view class="weui-panel">
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view class="weui-cell weui-cell_access" catchtap='setClientInfo'>
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14 grey-font'>编辑客户资料</view>
+              </view>
+              <view class="weui-cell__ft font-size-14 weui-cell__ft_in-access aui-text-primary">
+                设置
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>所在区域</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.area_id==null?"--":baobei.area.name}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>居住地址</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.address==null?"--":baobei.address}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>意向面积</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.size==null?"--":baobei.size}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>认知途径</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.way_id==null?"--":baobei.know_way.name}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>购买目的</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.purpose_id==null?"--":baobei.purpose.name}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>关注信息</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.care_id==null?"--":baobei.care.name}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>备注</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+              </view>
+            </view>
+            <view class="weui-media-box__desc" style="margin:0 15px;padding-bottom:10px;">{{baobei.remark}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- step1报备基本信息 -->
+    <view wx:if="{{baobei.baobei_status_int >= 0}}" class="weui-panel" style='margin-top:10px;'>
+      <view class="weui-panel__hd aui-text-primary">Step1.报备</view>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>报备人</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.user.real_name}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>计划到访时间</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.plan_visit_time}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>计划到访方式</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.visit_way_str}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- step2到访基本信息 -->
+    <view wx:if="{{baobei.baobei_status_int >= 1}}" class="weui-panel" style='margin-top:10px;'>
+      <view class="weui-panel__hd aui-text-primary">Step2.到访</view>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>案场负责人</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.anchang==null?'--':baobei.anchang.real_name}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>到访时间</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.visit_time}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>客户到访单</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                <image class="weui-uploader__img" src="{{baobei.visit_attach}}" data-img='{{baobei.visit_attach}}' mode="aspectFill" bindtap="showImage" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>接待顾问</view>
+              </view>
+              <view class="weui-cell__ft font-size-14 weui-cell__ft_in-access" catchtap='setGuwen'>
+                {{baobei.guwen == null ? "设置":baobei.guwen.name}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- step3成交基本信息 -->
+    <view wx:if="{{baobei.baobei_status_int >= 2}}" class="weui-panel" style='margin-top:10px;'>
+      <view class="weui-panel__hd aui-text-primary">Step3.成交</view>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>成交时间</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.deal_time}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>成交户型</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.deal_huxing.name}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>分佣规则</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.deal_huxing.yongjin_type=="0"?"固定金额":"按比分成"}}-{{baobei.deal_huxing.yongjin_value}}{{baobei.deal_huxing.yongjin_type=="0"?"元":"‰"}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>付款方式</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.pay_way.name}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>成交总额</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.deal_price}}元
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>成交面积</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.deal_size}}㎡
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>成交房号</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.deal_room}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>本单佣金</view>
+              </view>
+              <view class="weui-cell__ft font-size-14 aui-text-primary">
+                {{baobei.yongjin}}元
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>结算设置</view>
+              </view>
+              <view class="weui-cell__ft font-size-14 weui-cell__ft_in-access" catchtap='setCanJiesuanStatus' data-canJiesuanStatus='{{baobei.can_jiesuan_status}}'>
+                {{baobei.can_jiesuan_status=="0"?"不可结算":"可以结算"}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- step4签约基本信息 -->
+    <view wx:if="{{baobei.baobei_status_int >= 3}}" class="weui-panel" style='margin-top:10px;'>
+      <view class="weui-panel__hd aui-text-primary">Step4.签约</view>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>签约时间</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.sign_time}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- step5全款到账基本信息 -->
+    <view wx:if="{{baobei.baobei_status_int >= 4}}" class="weui-panel" style='margin-top:10px;'>
+      <view class="weui-panel__hd aui-text-primary">Step5.全款到账</view>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>到账时间</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.qkdz_time}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 是否已经向中介结算 -->
+    <view wx:if="{{baobei.can_jiesuan_status == '1'}}" class="weui-panel" style='margin-top:10px;'>
+      <view class="weui-panel__hd aui-text-primary">佣金结算</view>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>付款状态</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.pay_zhongjie_status == "0"?"未付款":"已付款"}}
+              </view>
+            </view>
+          </view>
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>付款时间</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.pay_zhongjie_time == null?"--":baobei.pay_zhongjie_time}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <view style="position:fixed;bottom:20px;" class='full-width text-center'>
+      <button class='main-bg white-font font-size-14' style='width:80%;' catchtap='setBaobeiOpt' data-baobeiStatus='{{baobei.baobei_status}}'>{{button_text}}</button>
+    </view>
+
+
+    <!-- 分隔符 -->
+    <view style='height:60px;'></view>
+  </view>
+</view>

@@ -1,0 +1,86 @@
+<!--pages/client/setBaseInfo/setBaseInfo.wxml-->
+<view class="page {{hidden}}">
+  <view class="page__hd">
+  </view>
+  <view class="page__bd">
+    <!-- 基本信息 -->
+    <view class="weui-panel" style='margin-top:10px;'>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>居住地址</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                <input class="weui-input" type='text' bindinput='inputAddress' placeholder="请输入居住地址" value='{{address==null?"":address}}' />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>意向面积</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                <input class="weui-input" type='number' bindinput='inputSize' placeholder="请输入居意向面积" value='{{size==null?"":size}}' />
+              </view>
+            </view>
+            <picker bindchange="setAreaOption" mode='selector' range="{{options.areas}}" range-key="name">
+              <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd weui-cell_primary">
+                  <view class='font-size-14'>所在区域</view>
+                </view>
+                <view class="weui-cell__ft font-size-14">
+                  {{options.areas[area_index].name}}
+                </view>
+              </view>
+            </picker>
+            <picker bindchange="setKnowWayOption" mode='selector' range="{{options.know_ways}}" range-key="name">
+              <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd weui-cell_primary">
+                  <view class='font-size-14'>认知途径</view>
+                </view>
+                <view class="weui-cell__ft font-size-14">
+                  {{options.know_ways[know_way_index].name}}
+                </view>
+              </view>
+            </picker>
+            <picker bindchange="setPurposeOption" mode='selector' range="{{options.buy_purposes}}" range-key="name">
+              <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd weui-cell_primary">
+                  <view class='font-size-14'>购买目的</view>
+                </view>
+                <view class="weui-cell__ft font-size-14">
+                  {{options.buy_purposes[purpose_index].name}}
+                </view>
+              </view>
+            </picker>
+            <picker bindchange="setCareOption" mode='selector' range="{{options.client_cares}}" range-key="name">
+              <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd weui-cell_primary">
+                  <view class='font-size-14'>关注信息</view>
+                </view>
+                <view class="weui-cell__ft font-size-14">
+                  {{options.client_cares[care_index].name}}
+                </view>
+              </view>
+            </picker>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>备注</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+              </view>
+            </view>
+            <view class="weui-media-box__desc" style="margin:0 15px;padding-bottom:10px;">
+              <textarea bindinput="inputRemark" value='{{remark == null?"":remark}}' auto-height placeholder="请输入备注" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 提交按钮 -->
+    <view style="position:fixed;bottom:40px;" class='full-width text-center'>
+      <button class='main-bg white-font font-size-14' style='width:80%;' catchtap='saveBaseInfo'>保存信息</button>
+    </view>
+  </view>
+</view>

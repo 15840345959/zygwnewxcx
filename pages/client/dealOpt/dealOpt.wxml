@@ -1,0 +1,134 @@
+<!--pages/client/dealOpt/dealOpt.wxml-->
+<view class="page {{hidden}}">
+  <view class="page__hd">
+  </view>
+  <view class="page__bd">
+    <!-- 基本信息 -->
+    <view class="weui-panel" style='margin-top:10px;'>
+      <view class="weui-panel__hd">基本资料</view>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>报备流水</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.trade_no}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>客户姓名</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.client.name}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>手机号码</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.client.phonenum}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>意向楼盘</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.house.title}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title aui-text-primary">成交信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <radio-group bindchange="selHuxing">
+        <label class="weui-cell weui-check__label" wx:for="{{huxings}}" wx:key="index">
+          <radio class="weui-check" value="{{index}}" checked="{{item.checked}}" />
+          <view class="weui-cell__bd font-size-14">{{item.name}}({{item.yongjin_value}}{{item.yongjin_type=="0"?'元':'‰'}})</view>
+          <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+            <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+
+    <view class="weui-cells weui-cells_after-title" style='margin-top:10px;'>
+      <picker bindchange="setPayWayOption" mode='selector' range="{{options.pay_ways}}" range-key="name">
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view class='font-size-14'>付款方式</view>
+          </view>
+          <view class="weui-cell__ft font-size-14">
+            {{options.pay_ways[pay_way_index].name}}
+          </view>
+        </view>
+      </picker>
+      <picker mode="date" value="{{deal_date}}" start="2018-01-01" end="2046-03-01" bindchange="setDealDate">
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__bd">
+            <view class="weui-select font-size-14">成交日期
+              <text class='float-right grey-font text-oneline'>{{deal_date}}</text>
+            </view>
+          </view>
+        </view>
+      </picker>
+      <picker mode="time" value="{{deal_time}}" start="07:00" end="21:00" bindchange="setDealTime">
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__bd">
+            <view class="weui-select font-size-14">成交时间
+              <text class='float-right grey-font text-oneline'>{{deal_time}}</text>
+            </view>
+          </view>
+        </view>
+      </picker>
+    </view>
+
+    <view class="weui-panel" style='margin-top:10px;'>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>成交金额(元)</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                <input class="weui-input" type='text' bindinput='inputDealPrice' placeholder="请输入成交金额" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>成交面积(㎡)</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                <input class="weui-input" type='number' bindinput='inputDealSize' placeholder="请输入成交面积" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>成交房号</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                <input class="weui-input" type='text' bindinput='inputDealRoom' placeholder="请输入成交房号" />
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 保存按钮 -->
+    <view style="position:fixed;bottom:20px;" class='full-width text-center'>
+      <button class='main-bg white-font font-size-14' style='width:80%;' catchtap='saveOpt'>确认客户成交</button>
+    </view>
+
+    <!-- 分隔符 -->
+    <view style='height:60px;'></view>
+  </view>
+</view>

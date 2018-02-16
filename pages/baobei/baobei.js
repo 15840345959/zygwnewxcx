@@ -170,7 +170,7 @@ Page({
           }
         }, function (ret) { });
       } else {
-        util.showModal("提示信息", ret.data.message, function (ret) { }, function (ret) { });
+        util.showModal("报备失败", ret.data.message, function (ret) { }, function (ret) { });
       }
     })
   },

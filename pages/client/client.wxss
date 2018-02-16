@@ -1,1 +1,31 @@
 /* pages/client/client.wxss */
+
+.client {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.tab-nav {
+  height: 80rpx;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  line-height: 80rpx;
+  font-size: 14px;
+  white-space: nowrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.tab-item {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  text-align: center;
+  display: inline-block;
+}
+
+.tab-item.active {
+  color: #5e7dfe;
+}

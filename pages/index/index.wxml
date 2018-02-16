@@ -26,7 +26,7 @@
       </block>
     </swiper>
     <!-- 快速选择 -->
-    <view class="page__bd">
+    <view class="">
       <view class="weui-flex margin-top-30">
         <view class="weui-flex__item">
           <view class="placeholder" style='text-align: center;'>

@@ -31,12 +31,20 @@ function wxRequest(url, param, method, successCallback, errorCallback) {
     },
     fail: function (err) {
       console.log("wxRequest fail:" + JSON.stringify(err))
+      if (typeof errorCallback == "function") {
+        errorCallback(res)
+      }
 
     },
     complete: function () {
       hideLoading()
     }
   });
+}
+
+//获取七牛上传token
+function getQiniuToken(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/user/getQiniuToken', param, "GET", successCallback, errorCallback);
 }
 
 
@@ -107,6 +115,68 @@ function userApplyUp(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/user/applyUp', param, "POST", successCallback, errorCallback);
 }
 
+//获取中介维度的报备列表
+function getListForZJByStatus(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/baobei/getListForZJByStatus', param, "GET", successCallback, errorCallback);
+}
+
+//根据报备id获取报备详情
+function getBaobeiInfoById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/baobei/getById', param, "GET", successCallback, errorCallback);
+}
+
+//获取报备选项
+function getBaobeiOption(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/baobei/getOptions', param, "GET", successCallback, errorCallback);
+}
+
+//设置报备基本信息
+function setBaobeiNormalInfo(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/baobei/setNormalInfo', param, "POST", successCallback, errorCallback);
+}
+
+//设置用户到访
+function setBaobeiDaofang(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/baobei/daofang', param, "POST", successCallback, errorCallback);
+}
+
+
+//根据楼盘id获取户型列表
+function getHuxingsByHouseId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/house/getHuxings', param, "GET", successCallback, errorCallback);
+}
+
+//设置报备成交
+function setBaobeiDeal(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/baobei/deal', param, "POST", successCallback, errorCallback);
+}
+
+//设置报备可结算
+function setBaobeiCanJiesuan(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/baobei/canjiesuan', param, "POST", successCallback, errorCallback);
+}
+
+//设置客户签约
+function setBaobeiSign(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/baobei/sign', param, "POST", successCallback, errorCallback);
+}
+
+//设置客户全款到账
+function setBaobeiQkdz(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/baobei/qkdz', param, "POST", successCallback, errorCallback);
+}
+
+//获取楼盘下的置业顾问
+function getZYGWsByHouseId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/house/getZYGWs', param, "GET", successCallback, errorCallback);
+}
+
+//设置置业顾问
+function setZYGW(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/baobei/setZYGW', param, "POST", successCallback, errorCallback);
+}
+
+
 /////////页面跳转///////////////////////////////
 //判断是否需要跳转到设置信息页面
 function isNeedNavigateToSetMyInfoPage() {
@@ -121,9 +191,27 @@ function isNeedNavigateToSetMyInfoPage() {
 
 ///////////////////////////////////////////////
 
+// 获取本地用户缓存信息
+function getLocalUserInfo() {
+  return getApp().globalData.userInfo;
+}
+
 // 转换真实地址
 function getImgRealUrl(key) {
   return 'http://dsyy.isart.me/' + key
+}
+
+//根据id获取数组的index
+function getArrIndexById(arr, id) {
+  if (judgeIsAnyNullStr(id) || judgeIsAnyNullStr(arr)) {
+    return 0;
+  }
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].id == id) {
+      return i;
+    }
+  }
+  return 0;
 }
 
 
@@ -182,10 +270,14 @@ function showModal(title, content, confirmCallBack, cancelCallBack) {
     success: function (res) {
       if (res.confirm) {
         console.log('用户点击确定')
-        confirmCallBack(res)
+        if (typeof confirmCallBack == "function") {
+          confirmCallBack(res)
+        }
       } else if (res.cancel) {
         console.log('用户点击取消')
-        cancelCallBack(res)
+        if (typeof cancelCallBack == "function") {
+          cancelCallBack(res)
+        }
       }
     }
   })
@@ -253,8 +345,141 @@ function navigateBack(delta) {
   })
 }
 
+///业务层////////////////////////////////////////////////////////////////////
 
-//---------------------------------------------------  
+//报备状态
+function getStatusStr(status) {
+  switch (status) {
+    case "0":
+      return "无效报备";
+    case "1":
+      return "有效报备";
+  }
+}
+//获取是否可结算状态
+function getCanJiesuanStatusStr(can_jiesuan_status) {
+  switch (can_jiesuan_status) {
+    case "0":
+      return "不可结算";
+    case "1":
+      return "可以结算";
+  }
+}
+
+//获取是否可结算状态
+function getPayZhongieStatusStr(pay_zhongjie_status) {
+  switch (pay_zhongjie_status) {
+    case "0":
+      return "待结算";
+    case "1":
+      return "已结算";
+  }
+}
+
+//获取报备状态含义
+function getBaobeiStatusStr(baobei_status) {
+  switch (baobei_status) {
+    case "0":
+      return "已报备";
+    case "1":
+      return "已到访";
+    case "2":
+      return "已成交";
+    case "3":
+      return "已签约";
+    case "4":
+      return "已全款到账";
+  }
+}
+
+//获取到访方式的含义
+function getVisitWayStr(visit_way) {
+  switch (visit_way) {
+    case "0":
+      return "中介带领";
+    case "1":
+      return "自行到访";
+  }
+}
+
+//隐藏手机号
+function jmPhonenum(phonenum) {
+  var mtel = phonenum.substr(0, 3) + '****' + phonenum.substr(7);
+  return mtel;
+}
+
+//设置报备数据含义
+function setBaobeiInfo(baobei) {
+  //基本信息转换
+  baobei.client.phonenum_str = jmPhonenum(baobei.client.phonenum);
+  baobei.status_str = getStatusStr(baobei.status);
+  baobei.baobei_status_str = getBaobeiStatusStr(baobei.baobei_status);
+  baobei.baobei_status_int = parseInt(baobei.baobei_status);  //此处设置baobei_status_int值，后续通过大小比对
+  baobei.pay_zhongie_status_str = getPayZhongieStatusStr(baobei.pay_zhongie_status);
+  baobei.can_jiesuan_status_str = getCanJiesuanStatusStr(baobei.can_jiesuan_status);
+  baobei.created_at_str = baobei.created_at.split(" ")[0];
+  if (baobei.baobei_status_int >= 0) {
+    baobei.plan_visit_time_str = baobei.plan_visit_time.split(" ")[0];
+    baobei.visit_way_str = getVisitWayStr(baobei.visit_way);
+  }
+
+  console.log("setBaobeiInfo baobei:" + JSON.stringify(baobei));
+
+  return baobei;
+}
+
+
+///选择图片////////////////////////////////////////////////////////
+//参数说明
+/*
+ * By TerryQi
+ * 
+ * param为控制参数，具体
+ * param.count，默认，选择的图片张数，默认值为9
+ * param.sizeType，压缩效果，默认为compressed
+ * param.sourceType，获取图片位置，默认为album
+ * 
+ */
+function chooseImage(param, successCallBack, errorCallBack, completeCallBack) {
+
+  //进行参数配置
+  if (judgeIsAnyNullStr(param.count)) {
+    param.count = 9
+  }
+  if (judgeIsAnyNullStr(param.sizeType)) {
+    param.sizeType = ['compressed']
+  }
+  if (judgeIsAnyNullStr(param.sourceType)) {
+    param.sourceType = ['album']
+  }
+  console.log("param :" + JSON.stringify(param))
+
+  wx.chooseImage({
+    sizeType: param.sizeType, // 可以指定是原图还是压缩图，默认二者都有
+    sourceType: param.sourceType, // 可以指定来源是相册还是相机，默认二者都有
+    count: param.count,
+    success: function (res) {
+      // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+      console.log("wx.chooseImage success:" + JSON.stringify(res))
+      successCallBack(res)
+    },
+    fail: function (res) {
+      console.log("wx.chooseImage fail:" + JSON.stringify(res))
+      if (typeof errorCallBack == "function") {
+        errorCallBack(res)
+      }
+    },
+    complete: function (res) {
+      console.log("wx.chooseImage complete:" + JSON.stringify(res))
+      if (typeof completeCallBack == "function") {
+        completeCallBack(res)
+      }
+    }
+  })
+}
+
+
+//---------------------------------------------------
 // 日期格式化  
 // 格式 YYYY/yyyy/YY/yy 表示年份  
 // MM/M 月份  
@@ -313,14 +538,22 @@ function daysBetween(DateOne, DateTwo) {
 Date.prototype.DateAdd = function (strInterval, Number) {
   var dtTmp = this
   switch (strInterval) {
-    case 's': return new Date(Date.parse(dtTmp) + (1000 * Number))
-    case 'n': return new Date(Date.parse(dtTmp) + (60000 * Number))
-    case 'h': return new Date(Date.parse(dtTmp) + (3600000 * Number))
-    case 'd': return new Date(Date.parse(dtTmp) + (86400000 * Number))
-    case 'w': return new Date(Date.parse(dtTmp) + ((86400000 * 7) * Number))
-    case 'q': return new Date(dtTmp.getFullYear(), (dtTmp.getMonth()) + Number * 3, dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds())
-    case 'm': return new Date(dtTmp.getFullYear(), (dtTmp.getMonth()) + Number, dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds())
-    case 'y': return new Date((dtTmp.getFullYear() + Number), dtTmp.getMonth(), dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds())
+    case 's':
+      return new Date(Date.parse(dtTmp) + (1000 * Number))
+    case 'n':
+      return new Date(Date.parse(dtTmp) + (60000 * Number))
+    case 'h':
+      return new Date(Date.parse(dtTmp) + (3600000 * Number))
+    case 'd':
+      return new Date(Date.parse(dtTmp) + (86400000 * Number))
+    case 'w':
+      return new Date(Date.parse(dtTmp) + ((86400000 * 7) * Number))
+    case 'q':
+      return new Date(dtTmp.getFullYear(), (dtTmp.getMonth()) + Number * 3, dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds())
+    case 'm':
+      return new Date(dtTmp.getFullYear(), (dtTmp.getMonth()) + Number, dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds())
+    case 'y':
+      return new Date((dtTmp.getFullYear() + Number), dtTmp.getMonth(), dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds())
   }
 }
 
@@ -329,18 +562,25 @@ Date.prototype.DateAdd = function (strInterval, Number) {
 //+---------------------------------------------------  
 Date.prototype.DateDiff = function (strInterval, dtEnd) {
   var dtStart = this
-  if (typeof dtEnd == 'string')//如果是字符串转换为日期型  
+  if (typeof dtEnd == 'string')//如果是字符串转换为日期型
   {
     dtEnd = StringToDate(dtEnd)
   }
   switch (strInterval) {
-    case 's': return parseInt((dtEnd - dtStart) / 1000)
-    case 'n': return parseInt((dtEnd - dtStart) / 60000)
-    case 'h': return parseInt((dtEnd - dtStart) / 3600000)
-    case 'd': return parseInt((dtEnd - dtStart) / 86400000)
-    case 'w': return parseInt((dtEnd - dtStart) / (86400000 * 7))
-    case 'm': return (dtEnd.getMonth() + 1) + ((dtEnd.getFullYear() - dtStart.getFullYear()) * 12) - (dtStart.getMonth() + 1)
-    case 'y': return dtEnd.getFullYear() - dtStart.getFullYear()
+    case 's':
+      return parseInt((dtEnd - dtStart) / 1000)
+    case 'n':
+      return parseInt((dtEnd - dtStart) / 60000)
+    case 'h':
+      return parseInt((dtEnd - dtStart) / 3600000)
+    case 'd':
+      return parseInt((dtEnd - dtStart) / 86400000)
+    case 'w':
+      return parseInt((dtEnd - dtStart) / (86400000 * 7))
+    case 'm':
+      return (dtEnd.getMonth() + 1) + ((dtEnd.getFullYear() - dtStart.getFullYear()) * 12) - (dtStart.getMonth() + 1)
+    case 'y':
+      return dtEnd.getFullYear() - dtStart.getFullYear()
   }
 }
 
@@ -362,22 +602,22 @@ Date.prototype.toString = function (showWeek) {
 //| 格式为：YYYY-MM-DD或YYYY/MM/DD  
 //+---------------------------------------------------  
 function IsValidDate(DateStr) {
-  var sDate = DateStr.replace(/(^\s+|\s+$)/g, ''); //去两边空格;   
+  var sDate = DateStr.replace(/(^\s+|\s+$)/g, ''); //去两边空格;
   if (sDate == '') return true
-  //如果格式满足YYYY-(/)MM-(/)DD或YYYY-(/)M-(/)DD或YYYY-(/)M-(/)D或YYYY-(/)MM-(/)D就替换为''   
-  //数据库中，合法日期可以是:YYYY-MM/DD(2003-3/21),数据库会自动转换为YYYY-MM-DD格式   
+  //如果格式满足YYYY-(/)MM-(/)DD或YYYY-(/)M-(/)DD或YYYY-(/)M-(/)D或YYYY-(/)MM-(/)D就替换为''
+  //数据库中，合法日期可以是:YYYY-MM/DD(2003-3/21),数据库会自动转换为YYYY-MM-DD格式
   var s = sDate.replace(/[\d]{ 4,4 }[\-/]{ 1 }[\d]{ 1,2 }[\-/]{ 1 }[\d]{ 1,2 }/g, '')
-  if (s == '') //说明格式满足YYYY-MM-DD或YYYY-M-DD或YYYY-M-D或YYYY-MM-D   
+  if (s == '') //说明格式满足YYYY-MM-DD或YYYY-M-DD或YYYY-M-D或YYYY-MM-D
   {
     var t = new Date(sDate.replace(/\-/g, '/'))
     var ar = sDate.split(/[-/:]/)
     if (ar[0] != t.getYear() || ar[1] != t.getMonth() + 1 || ar[2] != t.getDate()) {
-      //alert('错误的日期格式！格式为：YYYY-MM-DD或YYYY/MM/DD。注意闰年。') 
+      //alert('错误的日期格式！格式为：YYYY-MM-DD或YYYY/MM/DD。注意闰年。')
       return false;
     }
   }
   else {
-    //alert('错误的日期格式！格式为：YYYY-MM-DD或YYYY/MM/DD。注意闰年。') 
+    //alert('错误的日期格式！格式为：YYYY-MM-DD或YYYY/MM/DD。注意闰年。')
     return false;
   }
   return true;
@@ -427,21 +667,29 @@ Date.prototype.DatePart = function (interval) {
   var partStr = ''
   var Week = ['日', '一', '二', '三', '四', '五', '六']
   switch (interval) {
-    case 'y': partStr = myDate.getFullYear()
+    case 'y':
+      partStr = myDate.getFullYear()
       break
-    case 'm': partStr = myDate.getMonth() + 1
+    case 'm':
+      partStr = myDate.getMonth() + 1
       break
-    case 'd': partStr = myDate.getDate()
+    case 'd':
+      partStr = myDate.getDate()
       break
-    case 'w': partStr = Week[myDate.getDay()]
+    case 'w':
+      partStr = Week[myDate.getDay()]
       break
-    case 'ww': partStr = myDate.WeekNumOfYear()
+    case 'ww':
+      partStr = myDate.WeekNumOfYear()
       break
-    case 'h': partStr = myDate.getHours()
+    case 'h':
+      partStr = myDate.getHours()
       break
-    case 'n': partStr = myDate.getMinutes()
+    case 'n':
+      partStr = myDate.getMinutes()
       break
-    case 's': partStr = myDate.getSeconds()
+    case 's':
+      partStr = myDate.getSeconds()
       break
   }
   return partStr
@@ -601,6 +849,7 @@ function gcj02towgs84(lng, lat) {
 
 module.exports = {
   //http request function
+  getQiniuToken: getQiniuToken,
   getUnionId: getUnionId,
   loginServer: loginServer,
   getUserInfoByIdWithToken: getUserInfoByIdWithToken,
@@ -614,8 +863,21 @@ module.exports = {
   userQDToday: userQDToday,
   getUserUpListByUserId: getUserUpListByUserId,
   userApplyUp: userApplyUp,
+  getListForZJByStatus: getListForZJByStatus,
+  getBaobeiInfoById: getBaobeiInfoById,
+  getBaobeiOption: getBaobeiOption,
+  setBaobeiNormalInfo: setBaobeiNormalInfo,
+  setBaobeiDaofang: setBaobeiDaofang,
+  getHuxingsByHouseId: getHuxingsByHouseId,
+  setBaobeiDeal: setBaobeiDeal,
+  setBaobeiCanJiesuan: setBaobeiCanJiesuan,
+  setBaobeiSign: setBaobeiSign,
+  setBaobeiQkdz: setBaobeiQkdz,
+  getZYGWsByHouseId: getZYGWsByHouseId,
+  setZYGW: setZYGW,
 
   //normal function
+  getArrIndexById: getArrIndexById,
   getImgRealUrl: getImgRealUrl,
   formatTime: formatTime,
   showLoading: showLoading,
@@ -626,6 +888,9 @@ module.exports = {
   getToday: getToday,
   getCurrentTime: getCurrentTime,
   isPoneAvailable: isPoneAvailable,
+  getLocalUserInfo: getLocalUserInfo,
+  setBaobeiInfo: setBaobeiInfo,
+  chooseImage: chooseImage,
   //navigation function
   navigateBack: navigateBack,   //进行页面跳回
   isNeedNavigateToSetMyInfoPage: isNeedNavigateToSetMyInfoPage,  //跳转到注册页面

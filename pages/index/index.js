@@ -2,7 +2,7 @@ var util = require('../../utils/util.js')
 
 //获取应用实例
 var app = getApp()
-var page = 0    //列表页码计数
+var page = 0    //列表页码计数，暂未使用，后续扩展使用
 var vm = null
 
 var reload_flag = true;  //重新加载楼盘数组标志
@@ -73,23 +73,12 @@ Page({
     area_text: "全部区域",
     type_text: "全部类型",
     label_text: "全部标签",
-    no_view_hidden: "hidden",
+    no_view_hidden: "hidden",   //未检索到数据的提示页面
     search_word: "",
     hidden: "hidden" //hidden来控制页面显示，待页面数据加载完毕再展现
   },
   //页面加载
   onLoad: function (options) {
-    vm = this
-    //重新获取
-    util.getUserInfoByIdWithToken({}, function (ret) {
-      if (ret.data.code == "200" && ret.data.result == true) {
-        app.storeUserInfo(ret.data.ret)
-      }
-    }, function (ret) { })
-  },
-  //展示
-  onShow: function () {
-    console.log('onLoad')
     vm = this
     //初始化sysInfo
     app.getSystemInfo(function (res) {
@@ -98,10 +87,21 @@ Page({
         systemInfo: res
       })
     })
+    //重新获取
+    util.getUserInfoByIdWithToken({}, function (ret) {
+      if (ret.data.code == "200" && ret.data.result == true) {
+        app.storeUserInfo(ret.data.ret)
+      }
+    }, function (ret) { })
+    //获取首页需要的信息
     util.showLoading('加载中...');
     vm.setADSwiper();   //获取轮播图
     vm.getHouseList(); //搜索楼盘
     vm.getSearchOptions();  //获取搜索楼盘选项
+  },
+  //展示
+  onShow: function () {
+    console.log('onShow')
   },
   //获取广告图片
   setADSwiper: function () {
@@ -120,7 +120,7 @@ Page({
     util.searchHouseByCon(search_param, function (res) {
       console.log("getHouseList res:" + JSON.stringify(res))
       var houses_arr = [];
-      if (!reload_flag) {
+      if (!reload_flag) { //如果不是重新加载，设置houses_arr为现有的vm.data.houses
         var houses_arr = vm.data.houses;
       }
       reload_flag = false;
@@ -146,6 +146,7 @@ Page({
       vm.setData({
         houses: houses_arr
       });
+      wx.stopPullDownRefresh();
       page++; //页面增加
     })
   },
@@ -230,7 +231,6 @@ Page({
     console.log('setLabelOption e:', e.detail.value)
     var id = e.detail.value;
     var label_option = vm.data.label_option
-    var id = e.detail.value;
     if (id == 0) {
       delete search_param.label_id;
     } else {
@@ -314,7 +314,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    wx.stopPullDownRefresh();
+    reload_flag = true;
+    vm.getHouseList(); //搜索楼盘
   },
 
   /**

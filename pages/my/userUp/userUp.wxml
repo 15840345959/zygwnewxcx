@@ -34,8 +34,8 @@
               <view class="weui-media-box__info__meta">管理员</view>
               <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
                 <text wx:if="{{item.status == '0'}}">申请中</text>
-                <text wx:elif="{{item.status == '1'}}"> 审核通过 </text>
-                <text wx:else> 审核驳回 </text>
+                <text class='aui-text-primary' wx:elif="{{item.status == '1'}}"> 审核通过 </text>
+                <text class='aui-text-primary' wx:else> 审核驳回 </text>
               </view>
             </view>
           </view>

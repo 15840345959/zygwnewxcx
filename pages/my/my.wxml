@@ -19,7 +19,7 @@
         <text class="font-size-16 white-font">{{userInfo.nick_name}}</text>
       </view>
       <view style="position: absolute;top:125px;width:100%;" class="text-center">
-        <text class="font-size-12 white-font text-oneline ">{{userInfo.role == "0 "?"中介 ":"案场负责人 "}}</text>         
+        <text class="font-size-12 white-font text-oneline ">{{userInfo.role == "0"?"中介 ":"案场负责人 "}}</text>         
       </view>
 
       <!--作品数+粉丝数+关注数-->

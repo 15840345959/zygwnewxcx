@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/client/baobeiOpt/baobeiOpt",
     "pages/index/index",
     "pages/my/userUp/userUp",
     "pages/baobei/baobei",
@@ -8,7 +9,15 @@
     "pages/my/my",
     "pages/my/setMyInfo/setMyInfo",
     "pages/templates/house/houseTpl",
-    "pages/houseInfo/houseInfo"
+    "pages/houseInfo/houseInfo",
+    "pages/templates/baobeiTpl/baobeiTpl",
+    "pages/client/setBaseInfo/setBaseInfo",
+    "pages/client/daofangOpt/daofangOpt",
+    "pages/client/dealOpt/dealOpt",
+    "pages/client/canjiesuanOpt/canjiesuanOpt",
+    "pages/client/signOpt/signOpt",
+    "pages/client/qkdzOpt/qkdzOpt",
+    "pages/client/setGuwenOpt/setGuwenOpt"
   ],
   "window": {
     "backgroundTextStyle": "light",
