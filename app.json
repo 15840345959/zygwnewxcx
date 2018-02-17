@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/client/baobeiOpt/baobeiOpt",
     "pages/index/index",
+    "pages/client/baobeiOpt/baobeiOpt",
     "pages/my/userUp/userUp",
     "pages/baobei/baobei",
     "pages/baobei/selHouse/selHouse",

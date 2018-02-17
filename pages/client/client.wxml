@@ -50,14 +50,14 @@
               <!-- 根据不同情况展示不同信息 -->
               <text wx:if="{{item.baobei_status == '0'}}">预计到访时间：{{item.plan_visit_time_str}}，到访方式：{{item.visit_way_str}}。</text>
               <text wx:if="{{item.baobei_status == '1'}}">到访时间：{{item.visit_time_str}}。</text>
+              <text wx:if="{{item.baobei_status == '2'}}">成交时间：{{item.deal_time_str}}，产生佣金：{{item.yongjin}}元。</text>
+              <text wx:if="{{item.baobei_status == '3'}}">成交时间：{{item.deal_time_str}}，产生佣金：{{item.yongjin}}元。</text>
+              <text wx:if="{{item.baobei_status == '4'}}">成交时间：{{item.deal_time_str}}，产生佣金：{{item.yongjin}}元。</text>
             </view>
             <view class="weui-media-box__info">
               <view class="weui-media-box__info__meta">{{item.status_str}}</view>
               <view wx:if="{{item.status=='1'}}" class="weui-media-box__info__meta aui-text-info">
                 {{item.baobei_status_str}}
-              </view>
-              <view wx:if="{{item.baobei_status=='2' || item.baobei_status=='3' ||item.baobei_status=='4'}}" class="weui-media-box__info__meta">
-                {{item.can_jiesuan_status_str}}
               </view>
               <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{item.created_at_str}}</view>
             </view>
@@ -65,6 +65,11 @@
         </view>
       </view>
     </block>
+
+    <view style='position:fixed;right:10px;bottom:30px;' class="{{userInfo.role=='0'?'hidden':''}}">
+      <image src='../../images/switch_role_btn.png' style='width:45px;height:45px;' catchtap='clickSwitchRole'></image>
+    </view>
+
     <!-- 没有报备信息展示的页面 -->
     <view class='{{no_view_hidden}}'>
       <view class="no-img-view">

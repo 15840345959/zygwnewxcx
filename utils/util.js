@@ -120,6 +120,12 @@ function getListForZJByStatus(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/baobei/getListForZJByStatus', param, "GET", successCallback, errorCallback);
 }
 
+//获取案场负责人的报备列表
+function getListForACByStatus(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/baobei/getListForACByStatus', param, "GET", successCallback, errorCallback);
+}
+
+
 //根据报备id获取报备详情
 function getBaobeiInfoById(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/baobei/getById', param, "GET", successCallback, errorCallback);
@@ -418,9 +424,18 @@ function setBaobeiInfo(baobei) {
   baobei.pay_zhongie_status_str = getPayZhongieStatusStr(baobei.pay_zhongie_status);
   baobei.can_jiesuan_status_str = getCanJiesuanStatusStr(baobei.can_jiesuan_status);
   baobei.created_at_str = baobei.created_at.split(" ")[0];
+  //报备信息
   if (baobei.baobei_status_int >= 0) {
     baobei.plan_visit_time_str = baobei.plan_visit_time.split(" ")[0];
     baobei.visit_way_str = getVisitWayStr(baobei.visit_way);
+  }
+  //到访信息
+  if (baobei.baobei_status_int >= 1) {
+    baobei.visit_time_str = baobei.visit_time.split(" ")[0];
+  }
+  //成交信息
+  if (baobei.baobei_status_int >= 2) {
+    baobei.deal_time_str = baobei.deal_time.split(" ")[0];
   }
 
   console.log("setBaobeiInfo baobei:" + JSON.stringify(baobei));
@@ -864,6 +879,7 @@ module.exports = {
   getUserUpListByUserId: getUserUpListByUserId,
   userApplyUp: userApplyUp,
   getListForZJByStatus: getListForZJByStatus,
+  getListForACByStatus: getListForACByStatus,
   getBaobeiInfoById: getBaobeiInfoById,
   getBaobeiOption: getBaobeiOption,
   setBaobeiNormalInfo: setBaobeiNormalInfo,

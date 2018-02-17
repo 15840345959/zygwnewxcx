@@ -46,7 +46,7 @@
       </view>
     </view>
     <!-- 设置信息 -->
-    <view class="weui-panel">
+    <view class="weui-panel {{set_role=='0'? 'hidden':''}}">
       <view class="weui-panel__bd">
         <view class="weui-media-box weui-media-box_small-appmsg">
           <view class="weui-cells weui-cells_in-small-appmsg">
@@ -113,7 +113,7 @@
               <view class="weui-cell__ft font-size-14">
               </view>
             </view>
-            <view class="weui-media-box__desc" style="margin:0 15px;padding-bottom:10px;">{{baobei.remark}}</view>
+            <view class="weui-media-box__desc" style="margin:0 15px;padding-bottom:10px;">{{baobei.remark == null?"暂无":baobei.remark}}</view>
           </view>
         </view>
       </view>

@@ -8,7 +8,6 @@ var page = 0    //列表页码计数
 var vm = null
 
 var baobei_id = ""; //报备id信息
-var set_role = "1"; //当前的角色
 
 Page({
 
@@ -18,6 +17,7 @@ Page({
   data: {
     button_text: "",    //操作按钮名称
     baobei: {},    //报备信息
+    set_role: "0",   //默认是中介角色
     hidden: "hidden"
   },
 
@@ -28,12 +28,13 @@ Page({
 
     vm = this;
     console.log(JSON.stringify(options));
-    // var jsonStr = options.jsonStr;
-    // var obj = JSON.parse(options.jsonStr);
-    // baobei_id = obj.id;
-    // set_role = obj.set_role;
-    baobei_id = 73;
-
+    var jsonStr = options.jsonStr;
+    var obj = JSON.parse(options.jsonStr);
+    baobei_id = obj.id;
+    vm.setData({
+      set_role: obj.set_role
+    })
+    //根据报备id获取信息
     vm.getBaobeiInfoById(baobei_id);
   },
 
@@ -51,7 +52,7 @@ Page({
           baobei: util.setBaobeiInfo(msgObj)
         })
         //如果是中介且状态变更为1以上，则不允许后续操作，需要退回
-        if (set_role == "0" && vm.data.baobei.baobei_status_int > 1) {
+        if (vm.data.set_role == "0" && vm.data.baobei.baobei_status_int >= 1) {
           util.navigateBack(1);
         }
         //根据状态不同，设置不同的操作按钮
