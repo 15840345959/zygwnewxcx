@@ -348,8 +348,13 @@
     </view>
 
     <!-- 提交按钮 -->
-    <view style="position:fixed;bottom:20px;" class='full-width text-center'>
+    <view style="position:fixed;bottom:20px;" class="full-width text-center {{baobei.anchang_id == null && set_role == '1' ? 'hidden':''}}">
       <button class='main-bg white-font font-size-14' style='width:80%;' catchtap='setBaobeiOpt' data-baobeiStatus='{{baobei.baobei_status}}'>{{button_text}}</button>
+    </view>
+
+    <!-- 确认接收报备信息按钮 -->
+    <view style="position:fixed;bottom:20px;" class="full-width text-center {{baobei.anchang_id == null && set_role == '1' ? '':'hidden'}}">
+      <button class='main-bg white-font font-size-14' style='width:80%;' catchtap='acceptBaobei'>确认接收该报备信息</button>
     </view>
 
 

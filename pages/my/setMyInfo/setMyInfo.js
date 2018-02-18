@@ -143,6 +143,8 @@ Page({
         app.storeUserInfo(ret.data.ret);  //重新保存信息
         util.showToast('保存成功');
         util.navigateBack(-1);
+      } else {
+        util.showModal("提示信息", ret.data.message, null, null);
       }
     }, function (err) {
       console.log('updateUserInfo err is : ' + JSON.stringify(err))

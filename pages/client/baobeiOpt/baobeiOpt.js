@@ -134,6 +134,18 @@ Page({
     }
   },
 
+  //确认接收报备信息
+  acceptBaobei: function (e) {
+    util.showModal("确认信息", "确认接收该报备信息", function (ret) {
+      util.acceptClient({ id: baobei_id }, function (ret) {
+        if (ret.data.result && ret.data.code == "200") {
+          util.showToast("接收成功");
+          util.navigateBack(1);
+        }
+      }, null);
+    }, null)
+  },
+
   //设置可结算状态
   setCanJiesuanStatus: function (e) {
     console.log("setCanJiesuanStatus e:" + JSON.stringify(e));

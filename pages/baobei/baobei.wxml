@@ -11,7 +11,7 @@
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__bd">
-            <input class="weui-input font-size-14" bindinput='inputName' placeholder="请输入客户姓名" />
+            <input class="weui-input font-size-14" type='text' bindinput='inputName' placeholder="请输入客户姓名" />
           </view>
         </view>
       </view>
@@ -22,7 +22,7 @@
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__bd">
-            <input class="weui-input font-size-14" bindinput='inputPhonenum' placeholder="请输入客户电话" />
+            <input class="weui-input font-size-14" type='number' bindinput='inputPhonenum' placeholder="请输入客户电话" />
           </view>
         </view>
       </view>

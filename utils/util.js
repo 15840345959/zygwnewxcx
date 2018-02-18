@@ -1,5 +1,5 @@
 //测试标识
-var TESTMODE = true;
+var TESTMODE = false;
 //服务器地址
 var SERVER_URL = "https://zygw.isart.me";
 var DEBUG_URL = "http://localhost/zygw/public";
@@ -32,7 +32,7 @@ function wxRequest(url, param, method, successCallback, errorCallback) {
     fail: function (err) {
       console.log("wxRequest fail:" + JSON.stringify(err))
       if (typeof errorCallback == "function") {
-        errorCallback(res)
+        errorCallback(ret)
       }
 
     },
@@ -144,6 +144,11 @@ function setBaobeiNormalInfo(param, successCallback, errorCallback) {
 //设置用户到访
 function setBaobeiDaofang(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/baobei/daofang', param, "POST", successCallback, errorCallback);
+}
+
+//接收报备信息
+function acceptClient(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/baobei/acceptClient', param, "POST", successCallback, errorCallback);
 }
 
 
@@ -884,6 +889,7 @@ module.exports = {
   getBaobeiOption: getBaobeiOption,
   setBaobeiNormalInfo: setBaobeiNormalInfo,
   setBaobeiDaofang: setBaobeiDaofang,
+  acceptClient: acceptClient,
   getHuxingsByHouseId: getHuxingsByHouseId,
   setBaobeiDeal: setBaobeiDeal,
   setBaobeiCanJiesuan: setBaobeiCanJiesuan,

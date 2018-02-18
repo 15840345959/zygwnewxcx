@@ -23,7 +23,7 @@
         <view class="weui-flex__item">
           <view class="placeholder" style='text-align: center;'>
             <picker bindchange="setAreaOption" mode='selector' range="{{area_option}}" range-key="name">
-              <text class='font-size-12'>{{area_text}}</text>
+              <text class='font-size-14'>{{area_text}}</text>
               <image src='../../../images/down_arrow.png' class='margin-left-10 opt-icon-12'></image>
             </picker>
           </view>
@@ -31,7 +31,7 @@
         <view class="weui-flex__item">
           <view class="placeholder" style='text-align: center;'>
             <picker bindchange="setTypeOption" mode='selector' range="{{type_option}}" range-key="name">
-              <text class='font-size-12'>{{type_text}}</text>
+              <text class='font-size-14'>{{type_text}}</text>
               <image src='../../../images/down_arrow.png' class='margin-left-10 opt-icon-12'></image>
             </picker>
           </view>
@@ -39,7 +39,7 @@
         <view class="weui-flex__item">
           <view class="placeholder" style='text-align: center;'>
             <picker bindchange="setLabelOption" mode='selector' range="{{label_option}}" range-key="name">
-              <text class='font-size-12'>{{label_text}}</text>
+              <text class='font-size-14'>{{label_text}}</text>
               <image src='../../../images/down_arrow.png' class='margin-left-10 opt-icon-12'></image>
             </picker>
           </view>

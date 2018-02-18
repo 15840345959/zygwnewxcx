@@ -1,11 +1,12 @@
 <!--pages/client/client.wxml-->
+<import src="../templates/baobeiTpl/baobeiTpl.wxml" />
 <view class="page {{hidden}}">
   <!--页头-->
   <view class="page__hd"></view>
   <!--主体-->
   <view class="page__bd page__bd_spacing">
     <!-- 顶部横向滚动条 -->
-    <scroll-view scroll-x="true" class="tab-nav white-bg grey-font font-size-12">
+    <scroll-view scroll-x="true" class="tab-nav white-bg grey-font font-size-14">
       <block wx:for="{{navbar}}">
         <view class="tab-item {{currentTab == index ? 'active':''}}" data-current="{{index}}" bindtap="switchNav">{{item.name}}</view>
       </block>
@@ -18,7 +19,7 @@
         <view class="weui-flex__item">
           <view class="placeholder" style='text-align: center;'>
             <picker bindchange="setHouseOption" mode='selector' range="{{houses}}" range-key="title">
-              <text class='font-size-12 grey-font'>{{house == ""?"全部楼盘":house.title}}</text>
+              <text class='font-size-14 grey-font'>{{house == ""?"全部楼盘":house.title}}</text>
               <image src='../../images/down_arrow.png ' class='margin-left-10 opt-icon-12 '></image>
             </picker>
           </view>
@@ -26,14 +27,14 @@
         <view class="weui-flex__item">
           <view class="placeholder" style='text-align: center; '>
             <picker mode="date" value="{{start_time}}" start="2018-01-01" end="2046-03-01" bindchange="setStartTime">
-              <text class='font-size-12 grey-font'>{{start_time == ""?"开始日期":start_time}}</text>
+              <text class='font-size-14 grey-font'>{{start_time == ""?"开始日期":start_time}}</text>
             </picker>
           </view>
         </view>
         <view class="weui-flex__item">
           <view class="placeholder" style='text-align: center; '>
             <picker mode="date" value="{{end_time}}" start="2018-01-01" end="2046-03-01" bindchange="setEndTime">
-              <text class='font-size-12 grey-font'>{{end_time == ""?"结束日期":end_time}}</text>
+              <text class='font-size-14 grey-font'>{{end_time == ""?"结束日期":end_time}}</text>
             </picker>
           </view>
         </view>
@@ -41,33 +42,11 @@
     </view>
 
     <block wx:for="{{baobeis}}">
-      <view class="weui-panel" data-id='{{item.id}}' data-baobeiStatus='{{item.baobei_status}}' catchtap='clickBaobeiOpt'>
-        <view class="weui-panel__hd">流水号：{{item.trade_no}}</view>
-        <view class="weui-panel__bd">
-          <view class="weui-media-box weui-media-box_text">
-            <view class="weui-media-box__title weui-media-box__title_in-text font-size-14">{{item.house.title}}</view>
-            <view class="weui-media-box__desc">{{item.client.name}}({{item.client.phonenum_str}})，
-              <!-- 根据不同情况展示不同信息 -->
-              <text wx:if="{{item.baobei_status == '0'}}">预计到访时间：{{item.plan_visit_time_str}}，到访方式：{{item.visit_way_str}}。</text>
-              <text wx:if="{{item.baobei_status == '1'}}">到访时间：{{item.visit_time_str}}。</text>
-              <text wx:if="{{item.baobei_status == '2'}}">成交时间：{{item.deal_time_str}}，产生佣金：{{item.yongjin}}元。</text>
-              <text wx:if="{{item.baobei_status == '3'}}">成交时间：{{item.deal_time_str}}，产生佣金：{{item.yongjin}}元。</text>
-              <text wx:if="{{item.baobei_status == '4'}}">成交时间：{{item.deal_time_str}}，产生佣金：{{item.yongjin}}元。</text>
-            </view>
-            <view class="weui-media-box__info">
-              <view class="weui-media-box__info__meta">{{item.status_str}}</view>
-              <view wx:if="{{item.status=='1'}}" class="weui-media-box__info__meta aui-text-info">
-                {{item.baobei_status_str}}
-              </view>
-              <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{item.created_at_str}}</view>
-            </view>
-          </view>
-        </view>
-      </view>
+      <template is="baobeiList" data="{{...item}}" />
     </block>
 
     <view style='position:fixed;right:10px;bottom:30px;' class="{{userInfo.role=='0'?'hidden':''}}">
-      <image src='../../images/switch_role_btn.png' style='width:45px;height:45px;' catchtap='clickSwitchRole'></image>
+      <image src='../../images/switch_role_btn.png' style='width:120rpx;height:120rpx;' catchtap='clickSwitchRole'></image>
     </view>
 
     <!-- 没有报备信息展示的页面 -->
