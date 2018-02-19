@@ -1,5 +1,5 @@
 //测试标识
-var TESTMODE = false;
+var TESTMODE = true;
 //服务器地址
 var SERVER_URL = "https://zygw.isart.me";
 var DEBUG_URL = "http://localhost/zygw/public";
@@ -413,6 +413,48 @@ function getVisitWayStr(visit_way) {
   }
 }
 
+
+/** 数字金额大写转换(可以处理整数,小数,负数) */
+function smalltoBIG(n) {
+  var fraction = ['角', '分'];
+  var digit = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
+  var unit = [['元', '万', '亿'], ['', '拾', '佰', '仟']];
+  var head = n < 0 ? '欠' : '';
+  n = Math.abs(n);
+
+  var s = '';
+
+  for (var i = 0; i < fraction.length; i++) {
+    s += (digit[Math.floor(n * 10 * Math.pow(10, i)) % 10] + fraction[i]).replace(/零./, '');
+  }
+  s = s || '整';
+  n = Math.floor(n);
+
+  for (var i = 0; i < unit[0].length && n > 0; i++) {
+    var p = '';
+    for (var j = 0; j < unit[1].length && n > 0; j++) {
+      p = digit[n % 10] + unit[1][j] + p;
+      n = Math.floor(n / 10);
+    }
+    s = p.replace(/(零.)*零$/, '').replace(/^$/, '零') + unit[0][i] + s;
+  }
+  return head + s.replace(/(零.)*零元/, '元').replace(/(零.)+/g, '零').replace(/^整$/, '零元整');
+}
+
+//s:传入的float数字 ，n:希望返回小数点几位 
+function fmoney(s, n){
+  n = n > 0 && n <= 20 ? n : 2;
+  s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
+  var l = s.split(".")[0].split("").reverse(),
+    r = s.split(".")[1];
+  var t = "";
+  for (var i = 0; i < l.length; i++) {
+    t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
+  }
+  return t.split("").reverse().join("") + "." + r;
+}
+
+
 //隐藏手机号
 function jmPhonenum(phonenum) {
   var mtel = phonenum.substr(0, 3) + '****' + phonenum.substr(7);
@@ -441,6 +483,8 @@ function setBaobeiInfo(baobei) {
   //成交信息
   if (baobei.baobei_status_int >= 2) {
     baobei.deal_time_str = baobei.deal_time.split(" ")[0];
+    baobei.deal_price_str = fmoney(baobei.deal_price,2);
+    baobei.deal_price_chi = smalltoBIG(baobei.deal_price);
   }
 
   console.log("setBaobeiInfo baobei:" + JSON.stringify(baobei));
