@@ -8,6 +8,8 @@
     "pages/client/client",
     "pages/my/my",
     "pages/my/setMyInfo/setMyInfo",
+    "pages/my/shop/shop",
+    "pages/my/shop/jl/jl",
     "pages/templates/house/houseTpl",
     "pages/houseInfo/houseInfo",
     "pages/templates/baobeiTpl/baobeiTpl",

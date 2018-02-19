@@ -77,6 +77,12 @@ Page({
       url: '/pages/my/userUp/userUp'
     })
   },
+  //打开积分商城
+  clickShop: function () {
+    wx.navigateTo({
+      url: '/pages/my/shop/shop?jsonStr=' + JSON.stringify(vm.data.userInfo)
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

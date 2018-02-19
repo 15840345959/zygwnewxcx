@@ -187,7 +187,21 @@ function setZYGW(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/baobei/setZYGW', param, "POST", successCallback, errorCallback);
 }
 
+//积分商城
+function getGoodsList(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/goods/getGoodsList', param, "GET", successCallback, errorCallback);
+}
 
+
+//积分兑换
+function exchange(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/goods/exchange', param, "POST", successCallback, errorCallback);
+}
+
+//积分兑换订单
+function getExchangeListByUserId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/goods/getExchangeListByUserId', param, "GET", successCallback, errorCallback);
+}
 /////////页面跳转///////////////////////////////
 //判断是否需要跳转到设置信息页面
 function isNeedNavigateToSetMyInfoPage() {
@@ -919,4 +933,8 @@ module.exports = {
   //other function
   getDiffentTime: getDiffentTime,
   gcj02towgs84: gcj02towgs84,
+ 
+  getGoodsList: getGoodsList,
+  exchange: exchange,
+  getExchangeListByUserId: getExchangeListByUserId,
 } 
