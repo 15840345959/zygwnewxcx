@@ -240,7 +240,15 @@
                 <view class='font-size-14'>成交总额</view>
               </view>
               <view class="weui-cell__ft font-size-14">
-                {{baobei.deal_price}}元
+                {{baobei.deal_price_str}}元
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='font-size-14'>大写金额</view>
+              </view>
+              <view class="weui-cell__ft font-size-14">
+                {{baobei.deal_price_chi}}
               </view>
             </view>
             <view class="weui-cell weui-cell_access">
