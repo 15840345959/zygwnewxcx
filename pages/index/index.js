@@ -246,13 +246,15 @@ Page({
     vm.getHouseList();
   },
 
-  // 根据房源id获取房源信息
+  // 点击房源跳转到详情页面
   clickHouse: function (e) {
     console.log("clickHouse e:" + JSON.stringify(e))
+    util.showModal("提示信息","该功能由月月负责迁移代码",null,null);
   },
   //点击广告跳转到咨询页面
   jumpZixun: function (e) {
     console.log("jumpZixun e:" + JSON.stringify(e))
+    util.showModal("提示信息", "该功能由月月负责迁移代码", null, null);
   },
   //输入楼盘名称
   inputSearchWord: function (e) {

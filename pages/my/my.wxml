@@ -36,7 +36,7 @@
             </view>
           </view>
           <view class="weui-flex__item ">
-            <view class="placeholder " catchtap="showGZ ">
+            <view class="placeholder " catchtap="">
               <view class="text-center font-size-14 ">
                 {{userInfo.all_yongjin}}
               </view>
@@ -46,7 +46,7 @@
             </view>
           </view>
           <view class="weui-flex__item ">
-            <view class="placeholder " catchtap="showFans ">
+            <view class="placeholder " catchtap="">
               <view class="text-center font-size-14 ">
                 {{userInfo.daijie_yongjin}}
               </view>
