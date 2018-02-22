@@ -23,7 +23,7 @@
             </view>
           </block>
           <!-- 暂无商品信息 -->
-          <view class='{{no_view_hidden}}'>
+          <view class='{{no_view_hidden_1}}'>
             <view class="no-img-view">
               <image src="../../../images/no.png" class="no-image"></image>
             </view>

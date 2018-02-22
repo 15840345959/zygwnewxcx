@@ -33,6 +33,9 @@ Page({
 
       var data = res.data.ret
       jifen = data.jifen
+      if (data.desc == null){
+        data.desc = '暂无描述'
+      }
       vm.setData({
         goodsList: data,
       })
@@ -98,7 +101,7 @@ Page({
 
   },
 
-
+//点击确定兑换
   duihuan: function () {
     var param = {
       goods_id: id,
@@ -106,8 +109,7 @@ Page({
     util.exchange(param, function (res) {
       console.log("兑换" + JSON.stringify(res))
       if (res.data.code == 200) {
-
-        //退回上个页面
+ //退回上个页面
         wx.navigateBack({
           delta: 1
         })
