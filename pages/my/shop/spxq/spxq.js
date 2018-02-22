@@ -29,7 +29,7 @@ Page({
       id: id,
     }
     util.getGoodsById(param, function (res) {
-      console.log("商品信息" + JSON.stringify(res.data.ret))
+      console.log("商品信息信息" + JSON.stringify(res.data.ret))
 
       var data = res.data.ret
       jifen = data.jifen
