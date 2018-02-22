@@ -1,5 +1,5 @@
 //测试标识
-var TESTMODE = false;
+var TESTMODE = true;
 //服务器地址
 var SERVER_URL = "https://zygw.isart.me";
 var DEBUG_URL = "http://localhost/zygw/public";
