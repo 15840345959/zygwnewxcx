@@ -3,43 +3,44 @@ const util = require('../../../utils/util.js')
 var vm = null
 var page = 0;
 var code;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-   datalist:[],
-   code: "",
+    datalist: [],
+    code: "",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  vm = this
+    vm = this
     console.log("数据" + JSON.stringify(options))
 
-var param = {
- page:page,
-}
+    var param = {
+      page: page,
+    }
 
     util.getGoodsList(param, function (res) {
       console.log("商品信息" + JSON.stringify(res.data.ret.data))
       code = res.data.code
-      var data= res.data.ret.data
-  vm.setData({
-    datalist: data,
-    code: code
-  })
-}, null)
- },
+      var data = res.data.ret.data
+      vm.setData({
+        datalist: data,
+        code: code
+      })
+    }, null)
+  },
 
   jumpJf: function (e) {
     console.log("111" + JSON.stringify(e))
     var id = e.currentTarget.dataset.id
     var jifen = e.currentTarget.dataset.jifen
-   
+
     if (code < jifen) {
       wx.showToast({
         title: '积分不足',
@@ -51,7 +52,7 @@ var param = {
       })
       return;
     }
-    
+
     wx.showModal({
       title: ' ',
       icon: 'loading',
@@ -69,15 +70,15 @@ var param = {
           }
 
           util.exchange(param, function (res) {
-           
-            
-          if(res){
-               wx.showToast({
-              title: res.data.message,
-              icon: 'loading',
-              duration: 2000
-            });
-          }
+
+
+            if (res) {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'loading',
+                duration: 2000
+              });
+            }
           }, null)
 
 
@@ -87,13 +88,13 @@ var param = {
         }
       }
     });
-   
-   
-   
-   
-   
+
+
+
+
+
     wx.navigateTo({
-    //  url: '/pages/product/product?officeid=' + officeid,
+      //  url: '/pages/product/product?officeid=' + officeid,
     })
   },
 
@@ -101,49 +102,49 @@ var param = {
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   },
   clickJl: function () {
     wx.navigateTo({
