@@ -17,11 +17,17 @@ Page({
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
+
+
+    no_view_hidden_1: "hidden",  //未检索商品列表信息
+
     no_view_hidden: "hidden",   //未检索到数据的提示页面
     mylist: [],   //我的订单
     goodsList: [],    //商品列表 
     userInfo: "",    //用户基本信息
-    ijifen:""
+
+    ijifen: ""
+
   },
 
   //顶部切换
@@ -51,8 +57,8 @@ Page({
     vm = this
     console.log("数据" + JSON.stringify(options))
     util.showLoading("加载中...");
-   var obj = JSON.parse(options.jsonStr);
- 
+    var obj = JSON.parse(options.jsonStr);
+
     id = obj.id
 
     //设置用户基本信息
@@ -68,19 +74,16 @@ Page({
     util.getGoodsList(param, function (res) {
       console.log("商品信息" + JSON.stringify(res.data.ret.data))
       var data = res.data.ret.data
-      
-
-
       if (data.length == 0) {
         vm.setData({
-          no_view_hidden: ""
+          no_view_hidden_1: ""
         })
       } else {
         vm.setData({
-          no_view_hidden: "hidden"
+          no_view_hidden_1: "hidden"
         })
       }
-      
+
       vm.setData({
         datalist: data,
       })
@@ -88,7 +91,7 @@ Page({
 
 
     vm.getExchangeListByUserId()
-     vm.getUserInfoByIdWithToken()  //获取我的积分
+    vm.getUserInfoByIdWithToken()  //获取我的积分
   },
   //获取我的订单
   getExchangeListByUserId: function () {
@@ -110,21 +113,21 @@ Page({
         mylist: mylist
       })
     }, null)
-},
- 
+  },
+
   //获取我的积分
   getUserInfoByIdWithToken: function () {
     var param = {
-      id:id
+      id: id
     }
     util.getUserInfoByIdWithToken(param, function (res) {
       console.log("我的积分" + JSON.stringify(res.data.ret.jifen))
-       ijifen = res.data.ret.jifen
-       vm.setData({
-         ijifen: ijifen
-       })
- 
-  }, null)
+      ijifen = res.data.ret.jifen
+      vm.setData({
+        ijifen: ijifen
+      })
+
+    }, null)
   },
   //跳转商品详细页面
   jumpJf: function (e) {
@@ -150,7 +153,7 @@ Page({
   onShow: function () {
 
     vm.getExchangeListByUserId()
-   vm.getUserInfoByIdWithToken()
+    vm.getUserInfoByIdWithToken()
   },
 
   /**
