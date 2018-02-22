@@ -83,6 +83,11 @@ Page({
       url: '/pages/my/shop/shop?jsonStr=' + JSON.stringify(vm.data.userInfo)
     })
   },
+  clickCalculator:function(){
+    wx.navigateTo({
+      url: '/pages/my/calculator/calculator',
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

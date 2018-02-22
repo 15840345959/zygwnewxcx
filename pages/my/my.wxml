@@ -78,7 +78,7 @@
           <image class="weui-grid__icon " src="../../images/shangcheng_icon.png " />
           <view class="weui-grid__label font-size-12 ">积分商城</view>
         </view>
-        <view class="weui-grid " hover-class="weui-grid_active ">
+        <view class="weui-grid " hover-class="weui-grid_active " catchtap='clickCalculator'>
           <image class="weui-grid__icon " src="../../images/jisuanqi_icon.png " />
           <view class="weui-grid__label font-size-12 ">计算器</view>
         </view>
