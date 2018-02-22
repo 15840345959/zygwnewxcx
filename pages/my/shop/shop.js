@@ -18,7 +18,7 @@ Page({
     sliderOffset: 0,
     sliderLeft: 0,
 
-    mylist :[],   //我的订单
+    mylist: [],   //我的订单
     goodsList: [],    //商品列表 
     userInfo: "",    //用户基本信息
 
@@ -69,19 +69,17 @@ Page({
     }
     util.getGoodsList(param, function (res) {
       console.log("商品信息" + JSON.stringify(res.data.ret.data))
-
       var data = res.data.ret.data
       vm.setData({
         datalist: data,
-      
       })
     }, null)
 
 
- vm.getExchangeListByUserId()
+    vm.getExchangeListByUserId()
   },
-    //获取我的订单
-  getExchangeListByUserId:function(){
+  //获取我的订单
+  getExchangeListByUserId: function () {
     var param = {
     }
     util.getExchangeListByUserId(param, function (res) {
@@ -154,6 +152,6 @@ Page({
    */
   onShareAppMessage: function () {
 
- },
+  },
 
 })
