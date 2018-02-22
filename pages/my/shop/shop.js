@@ -2,98 +2,93 @@ const util = require('../../../utils/util.js')
 
 var vm = null
 var page = 0;
-var code;
+var ijifen;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-   datalist:[],
-   code: "",
+    //顶部切换
+    tabs: ["商品列表", "兑换记录"],
+    activeIndex: 0,
+    sliderOffset: 0,
+    sliderLeft: 0,
+
+    mylist :[],   //我的订单
+    goodsList: [],    //商品列表 
+    userInfo: "",    //用户基本信息
+
   },
+
+  //顶部切换
+  onLoad: function () {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+        });
+      }
+    });
+  },
+  tabClick: function (e) {
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
+  },
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  vm = this
+    vm = this
     console.log("数据" + JSON.stringify(options))
+    util.showLoading("加载中...");
 
-var param = {
- page:page,
-}
+    var obj = JSON.parse(options.jsonStr);
+    ijifen = obj.jifen
+    //设置用户基本信息
+    vm.setData({
+      userInfo: obj
+    })
 
+    //获取商品列表
+    var param = {
+      page: page,
+    }
     util.getGoodsList(param, function (res) {
       console.log("商品信息" + JSON.stringify(res.data.ret.data))
-      code = res.data.code
-      var data= res.data.ret.data
-  vm.setData({
-    datalist: data,
-    code: code
-  })
-}, null)
- },
+      var data = res.data.ret.data
+      vm.setData({
+        datalist: data,
+      })
+    }, null)
+    getExchangeListByUserId()
+  },
+    //获取我的订单
+  getExchangeListByUserId:function(){
+    var param = {
+    }
+    util.getExchangeListByUserId(param, function (res) {
+      console.log("我的订单" + JSON.stringify(res.data.ret.data))
+      var mylist = res.data.ret.data
+      vm.setData({
+        mylist: mylist
+      })
+    }, null)
 
+  },
+  //跳转商品详细页面
   jumpJf: function (e) {
     console.log("111" + JSON.stringify(e))
     var id = e.currentTarget.dataset.id
     var jifen = e.currentTarget.dataset.jifen
-   
-    if (code < jifen) {
-      wx.showToast({
-        title: '积分不足',
-        icon: 'loading',
-        duration: 1000
-      });
-      vm.setData({
-        show: true
-      })
-      return;
-    }
-    
-    wx.showModal({
-      title: ' ',
-      icon: 'loading',
-      content: '请确认是否兑换',
-      confirmText: "确定",
-      cancelText: "取消",
-      success: function (res) {
-        console.log(res);
-        if (res.confirm) {
-          console.log('用户点击确定')
-
-
-          var param = {
-            goods_id: id,
-          }
-
-          util.exchange(param, function (res) {
-           
-            
-          if(res){
-               wx.showToast({
-              title: res.data.message,
-              icon: 'loading',
-              duration: 2000
-            });
-          }
-          }, null)
-
-
-
-        } else {
-          console.log('用户点击取消')
-        }
-      }
-    });
-   
-   
-   
-   
-   
     wx.navigateTo({
-    //  url: '/pages/product/product?officeid=' + officeid,
+      url: '/pages/my/shop/spxq/spxq?&id=' + id + '&ijifen=' + ijifen,
     })
   },
 
@@ -101,53 +96,49 @@ var param = {
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    vm.getExchangeListByUserId()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   },
-  clickJl: function () {
-    wx.navigateTo({
-      url: '/pages/my/shop/jl/jl'
-    })
-  },
+
 })

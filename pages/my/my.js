@@ -12,7 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userIno: {},  //用户信息
+    userInfo: {},  //用户信息
     hidden: "hidden",
   },
 

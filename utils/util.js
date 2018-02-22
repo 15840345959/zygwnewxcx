@@ -1,5 +1,5 @@
 //测试标识
-var TESTMODE = true;
+var TESTMODE = false;
 //服务器地址
 var SERVER_URL = "https://zygw.isart.me";
 var DEBUG_URL = "http://localhost/zygw/public";
@@ -201,6 +201,11 @@ function exchange(param, successCallback, errorCallback) {
 //积分兑换订单
 function getExchangeListByUserId(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/goods/getExchangeListByUserId', param, "GET", successCallback, errorCallback);
+}
+
+//商品详情
+function getGoodsById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/goods/getGoodsById', param, "GET", successCallback, errorCallback);
 }
 /////////页面跳转///////////////////////////////
 //判断是否需要跳转到设置信息页面
@@ -981,4 +986,5 @@ module.exports = {
   getGoodsList: getGoodsList,
   exchange: exchange,
   getExchangeListByUserId: getExchangeListByUserId,
+  getGoodsById: getGoodsById,
 } 
