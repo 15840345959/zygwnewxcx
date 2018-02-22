@@ -86,7 +86,7 @@ Page({
   },
   //跳转商品详细页面
   jumpJf: function (e) {
-    console.log("111" + JSON.stringify(e))
+    console.log("jumpJf信息" + JSON.stringify(e))
     var id = e.currentTarget.dataset.id
     var jifen = e.currentTarget.dataset.jifen
     wx.navigateTo({
