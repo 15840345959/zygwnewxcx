@@ -15,7 +15,7 @@
 
           <block wx:for="{{datalist}}">
             <view catchtap="jumpJf" data-id="{{item.id}}" data-jifen="{{item.jifen}}" class='sp-list'>
-              <image src='{{item.image}}?imageView1/1/w/120/h/80/interlace/1/q/75|imageslim' style='width:100%;;'></image>
+              <image src='{{item.image}}?imageView1/1/w/120/h/80/interlace/1/q/75|imageslim' style='width:100%;height:270rpx;;'></image>
               <view style='width:100%;height:50rpx;line-height:50rpx;text-align: center;font-size:14px;'>
                 {{item.name}}</view>
               <view style='width:100%;height:50rpx;line-height:50rpx;text-align: center;font-size:14px;color:#64b0ef'>

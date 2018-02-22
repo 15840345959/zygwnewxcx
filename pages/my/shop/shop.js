@@ -18,11 +18,14 @@ Page({
     sliderOffset: 0,
     sliderLeft: 0,
 
+
     no_view_hidden_1: "hidden",  //未检索商品列表信息
+
     no_view_hidden: "hidden",   //未检索到数据的提示页面
     mylist: [],   //我的订单
     goodsList: [],    //商品列表 
     userInfo: "",    //用户基本信息
+
     ijifen: ""
 
   },

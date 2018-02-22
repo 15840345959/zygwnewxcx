@@ -34,7 +34,7 @@ Page({
       var data = res.data.ret
       jifen = data.jifen
       if (data.desc == null){
-        data.desc = '暂无描述'
+        data.desc = '暂无商品描述'
       }
       vm.setData({
         goodsList: data,
