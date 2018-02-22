@@ -1,20 +1,67 @@
-<view style="width:100%;height:90rpx;background-color:white">
-  <view style='width:50%;height:90rpx;line-height:80rpx;text-align: center;font-size:12px;float:left'>我的积分:{{code}} </view>
-  <view catchtap='clickJl' style='width:50%;height:90rpx;line-height:80rpx;text-align: center;font-size:12px;float:left'>兑换记录 </view>
-</view>
+
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar" style='background-color:white'>
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
 
 
+      </view>
+      <view class="weui-tab__panel">
 
-<view style='width:750rpx;height:auto;padding:15rpx'>
+        <!-- 商品列表 -->
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}" style='padding:0'>
+          <view class='top-jifen'>我的积分:{{userInfo.jifen}} </view>
 
-  <block wx:for="{{datalist}}">
-    <view catchtap="jumpJf" data-id="{{item.id}}" data-jifen="{{item.jifen}}" style='width:340rpx;height:380rpx;padding:10rpx;float:left;background-color:white;margin:10rpx 5rpx'>
-      <image src='{{item.image}}' style='width:310rpx;height:300rpx;margin: 10rpx auto;display:block;border-bottom: 1px solid #eeeeee;'></image>
-      <view style='width:340rpx;height:30rpx;line-height:30rpx;text-align: center;font-size:12px;'>
-        {{item.name}}</view>
-      <view style='width:340rpx;height:30rpx;line-height:30rpx;text-align: center;font-size:12px;'>
-        所需积分:{{item.jifen}}</view>
+          <block wx:for="{{datalist}}">
+            <view catchtap="jumpJf" data-id="{{item.id}}" data-jifen="{{item.jifen}}" class='sp-list'>
+              <image src='{{item.image}}?imageView1/1/w/120/h/80/interlace/1/q/75|imageslim' style='width:100%;;'></image>
+              <view style='width:100%;height:50rpx;line-height:50rpx;text-align: center;font-size:14px;'>
+                {{item.name}}</view>
+              <view style='width:100%;height:50rpx;line-height:50rpx;text-align: center;font-size:14px;color:#64b0ef'>
+                所需积分:{{item.jifen}}</view>
+            </view>
+          </block>
+
+
+        </view>
+        
+        <!-- 兑换记录 -->
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}" style='padding:0'>
+
+
+          <block wx:for="{{mylist}}">
+            <view class="page__bd" style='margin-top:5px'>
+              <view class="weui-form-preview">
+                <view class="weui-form-preview__hd">
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">所用积分</view>
+                    <view class="weui-form-preview__value_in-hd" style='font-size:13px'>{{item.goods.jifen}}</view>
+                  </view>
+                </view>
+                <view class="weui-form-preview__bd">
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">商品</view>
+                    <view class="weui-form-preview__value">{{item.goods.name}}</view>
+                  </view>
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">交易时间</view>
+                    <view class="weui-form-preview__value">{{item.goods.updated_at}}</view>
+                  </view>
+
+                </view>
+              </view>
+            </view>
+          </block>
+
+
+        </view>
+
+      </view>
     </view>
-  </block>
-
+  </view>
 </view>

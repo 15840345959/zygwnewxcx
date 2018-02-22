@@ -202,6 +202,11 @@ function exchange(param, successCallback, errorCallback) {
 function getExchangeListByUserId(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/goods/getExchangeListByUserId', param, "GET", successCallback, errorCallback);
 }
+
+//商品详情
+function getGoodsById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/goods/getGoodsById', param, "GET", successCallback, errorCallback);
+}
 /////////页面跳转///////////////////////////////
 //判断是否需要跳转到设置信息页面
 function isNeedNavigateToSetMyInfoPage() {
@@ -981,4 +986,5 @@ module.exports = {
   getGoodsList: getGoodsList,
   exchange: exchange,
   getExchangeListByUserId: getExchangeListByUserId,
+  getGoodsById: getGoodsById,
 } 

@@ -26,6 +26,7 @@ Page({
     //如果入参不为空
     if (!util.judgeIsAnyNullStr(jsonStr)) {
       var obj = JSON.parse(e.jsonStr);
+     
       //姓名
       if (!util.judgeIsAnyNullStr(obj.real_name)) {
         vm.setData({

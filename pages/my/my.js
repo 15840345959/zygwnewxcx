@@ -12,7 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userIno: {},  //用户信息
+    userInfo: {},  //用户信息
     hidden: "hidden",
   },
 
@@ -36,8 +36,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-  },
+    vm.getMyInfo()
+},
   //获取用户页面相关数据
   getMyInfo: function () {
     util.getMyInfo({}, function (ret) {

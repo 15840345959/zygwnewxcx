@@ -1085,7 +1085,8 @@ icon {
 }
 
 .weui-navbar__item.weui-bar__item_on {
-  color: #1aad19;
+
+  color:#64b0ef
 }
 
 .weui-navbar__slider {
