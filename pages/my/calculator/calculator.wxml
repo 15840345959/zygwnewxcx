@@ -1,5 +1,5 @@
 <!--pages/my/calculator/calculator.wxml-->
-<wxs module="filters" src="./addmul.wxs"></wxs>
+<wxs module="filters" src="./../../addmul.wxs"></wxs>
 <view class="ji">
   <view style="height:80rpx;color:#707070;margin-left:15rpx;padding-top:20rpx;">贷款类型</view>
   <view class="weui-cells weui-cells_after-title">

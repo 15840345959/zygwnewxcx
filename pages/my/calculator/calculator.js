@@ -129,7 +129,7 @@ Page({
 t
     var twoStep3 = Math.pow((1 + month3), inputLoanMonth)
     var twoStep4 = Math.pow((1 + month4), inputLoanMonth)
-    var oneCountMonthlyPayment = parseFloat((oneStep * twoStep) / (twoStep - 1))//商业贷款等额本息月供
+    var oneCountMonthlyPayment = ((oneStep * twoStep) / (twoStep - 1))//商业贷款等额本息月供
    
     var twoCountMonthlyPayment = (oneStep1 * twoStep1) / (twoStep1 - 1)
     var threeCountMonthlyPayment = (oneStep2 * twoStep2) / (twoStep2 - 1)
