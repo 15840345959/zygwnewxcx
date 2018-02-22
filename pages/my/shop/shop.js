@@ -67,7 +67,9 @@ Page({
         datalist: data,
       })
     }, null)
-    getExchangeListByUserId()
+
+    
+  vm.getExchangeListByUserId()
   },
     //获取我的订单
   getExchangeListByUserId:function(){

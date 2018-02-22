@@ -36,8 +36,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-  },
+    vm.getMyInfo()
+},
   //获取用户页面相关数据
   getMyInfo: function () {
     util.getMyInfo({}, function (ret) {

@@ -102,11 +102,15 @@ Page({
      console.log("兑换" + JSON.stringify(res))
     if(res.data.code == 200){
      util.showToast('兑换成功');
+     //退回上个页面
+     wx.navigateBack({
+       delta: 1
+     })
+    }else{
+      util.showToast('操作失败');
     }
     }, null)
-   wx.navigateBack({
-     delta: 1
-   })
+
 
   },
 })
