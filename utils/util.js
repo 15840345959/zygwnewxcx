@@ -987,4 +987,5 @@ module.exports = {
   exchange: exchange,
   getExchangeListByUserId: getExchangeListByUserId,
   getGoodsById: getGoodsById,
+
 } 

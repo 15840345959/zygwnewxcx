@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goodsList:"",    //商品详情
+    goodsList: "",    //商品详情
   },
 
   /**
@@ -19,8 +19,8 @@ Page({
   onLoad: function (options) {
     vm = this
     console.log("数据" + JSON.stringify(options))
-     id = options.id
-     ijifen = options.ijifen
+    id = options.id
+    ijifen = options.ijifen
     vm.setData({
       ijifen: ijifen
     })
@@ -30,11 +30,11 @@ Page({
     }
     util.getGoodsById(param, function (res) {
       console.log("商品信息" + JSON.stringify(res.data.ret))
-    
+
       var data = res.data.ret
       jifen = data.jifen
       vm.setData({
-       goodsList: data,
+        goodsList: data,
       })
     }, null)
 
@@ -44,73 +44,77 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   },
   //点击兑换
   clickdh: function () {
-   if(ijifen<jifen){
-     util.showToast('积分不足');
-    // util.showModal('积分不足',);
-     return;
-   }
-   var param = {
-     goods_id: id,
-   }
-   util.exchange(param, function (res) {
-     console.log("兑换" + JSON.stringify(res))
-    if(res.data.code == 200){
-     util.showToast('兑换成功');
-     //退回上个页面
-     wx.navigateBack({
-       delta: 1
-     })
-    }else{
-      util.showToast('操作失败');
+    if (ijifen < jifen) {
+      util.showModal('', '积分不足');
+      return;
     }
-    }, null)
-
+    util.showModal('', '确定兑换', vm.duihuan, '');
 
   },
+
+
+  duihuan: function () {
+    var param = {
+      goods_id: id,
+    }
+    util.exchange(param, function (res) {
+      console.log("兑换" + JSON.stringify(res))
+      if (res.data.code == 200) {
+
+        //退回上个页面
+        wx.navigateBack({
+          delta: 1
+        })
+      } else {
+        util.showToast('操作失败');
+      }
+    }, null)
+  }
+
 })
