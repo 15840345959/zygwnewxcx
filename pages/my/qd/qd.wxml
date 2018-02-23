@@ -1,0 +1,45 @@
+<view style='width:100%;height:auto;background-color:white;padding:30rpx 0'>
+  <view class='qd-style' catchtap="clickCd">签到</view>
+</view>
+
+
+<view style='width:100%;height:auto;background-color:white'>
+  <view class="weui-loadmore weui-loadmore_line weui-loadmore_dot" style='background-color:white;margin:0 auto'>
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line weui-loadmore__tips_in-dot"></view>
+  </view>
+</view>
+
+
+<view class="page__bd">
+  <view class="weui-form-preview">
+    <view class="weui-form-preview__hd">
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label" style='color:#64b0ef;font-size:18px;'>签到日期</view>
+        <view class="weui-form-preview__value_in-hd" style='color:#64b0ef;font-size:18px;'>获得积分</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<block wx:for="{{qdList}}">
+  <view class="page__bd">
+    <view class="weui-form-preview">
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label" style='color:#64b0ef;font-size:15px;'>{{item.created_at}}</view>
+          <view class="weui-form-preview__value_in-hd" style='color:#64b0ef;font-size:15px;'>{{item.jifen}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+
+<!-- 无签到信息 -->
+<view class='{{no_view_hidden}}'>
+  <view class="no-img-view">
+    <image src="../../../images/no.png" class="no-image"></image>
+  </view>
+  <view class="grey-font center-style margin-top-10">
+    无签到信息
+  </view>
+</view>

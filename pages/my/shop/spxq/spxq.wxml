@@ -1,8 +1,8 @@
-<view class="page">
+<view class="page" style='background-color:white'>
   <view class="page__bd">
     <view class="weui-article">
       <view class="weui-article__section">
-        <view class="weui-article__title" style='text-align: center;fone-size:18px'>{{goodsList.name}}</view>
+        <view class="weui-article__title" style='text-align: center;fone-size:20px'>{{goodsList.name}}</view>
         <view class="weui-article__section">
           <view class="weui-article__h3" style='color:#64b0ef'>我的积分:{{ijifen}}</view>
 

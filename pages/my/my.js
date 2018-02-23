@@ -83,6 +83,13 @@ Page({
       url: '/pages/my/shop/shop?jsonStr=' + JSON.stringify(vm.data.userInfo)
     })
   },
+
+  //签到
+  clickQd: function () {
+    wx.navigateTo({
+      url: '/pages/my/qd/qd?jsonStr=' + JSON.stringify(vm.data.userInfo)
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
