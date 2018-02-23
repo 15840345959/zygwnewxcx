@@ -1,0 +1,8 @@
+/* pages/my/calculator/calculator.wxss */
+/* pages/jisuanqi/jisuanqi.wxss */
+.ji{
+  width:100%;
+  height:100%;
+  background-color: #f4f4f4;
+  overflow-x: hidden;
+}

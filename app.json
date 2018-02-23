@@ -10,7 +10,12 @@
     "pages/my/setMyInfo/setMyInfo",
     "pages/my/shop/shop",
     "pages/my/shop/spxq/spxq",
+
 "pages/my/qd/qd",
+
+
+    "pages/my/calculator/calculator",
+
     "pages/templates/house/houseTpl",
     "pages/houseInfo/houseInfo",
     "pages/templates/baobeiTpl/baobeiTpl",
