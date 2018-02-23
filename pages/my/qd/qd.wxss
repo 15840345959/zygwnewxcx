@@ -10,3 +10,9 @@
   color: white;
   margin: 0 auto;
 }
+
+.qd-b-style {
+  width: 100%;
+  height: auto;
+  padding: 80rpx 0;
+}

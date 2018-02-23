@@ -8,17 +8,16 @@
           </view>
         </block>
       </view>
-      <view class="weui-tab__panel">
+      <view class="weui-tab__panel" style='padding:10rpx'>
         <!-- 商品列表 -->
-        <view class="weui-tab__content" hidden="{{activeIndex != 0}}" style='padding:0'>
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
           <view class='top-jifen'>我的积分:{{ijifen}} </view>
-
           <block wx:for="{{datalist}}">
             <view catchtap="jumpJf" data-id="{{item.id}}" data-jifen="{{item.jifen}}" class='sp-list'>
               <image src='{{item.image}}?imageView1/1/w/120/h/80/interlace/1/q/75|imageslim' style='width:100%;height:270rpx;;'></image>
-              <view style='width:100%;height:50rpx;line-height:50rpx;text-align: center;font-size:14px;'>
+              <view class='titl-style'>
                 {{item.name}}</view>
-              <view style='width:100%;height:50rpx;line-height:50rpx;text-align: center;font-size:14px;color:#64b0ef'>
+              <view class='titl-style' style='color:#838383'>
                 所需积分:{{item.jifen}}</view>
             </view>
           </block>
@@ -31,7 +30,6 @@
               暂无商品
             </view>
           </view>
-
         </view>
 
         <!-- 兑换记录 -->

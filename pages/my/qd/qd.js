@@ -1,8 +1,9 @@
 const util = require('../../../utils/util.js')
 
 var vm = null
-var page = 0;
-var obj;
+var page = 1;
+
+var loadding_flag = false;  //页面是否在获取数据中..
 
 Page({
 
@@ -19,23 +20,20 @@ Page({
    */
   onLoad: function (options) {
     vm = this
-    console.log("数据" + JSON.stringify(options))
-    obj = JSON.parse(options.jsonStr);
     vm.getUserQDsByUserId()
   },
 
   //点击签到
   clickCd: function () {
-    var param = {
-      token: obj.token,
-      user_id: obj.id
-    }
-    util.userQDToday(param, function (res) {
+    util.userQDToday({}, function (res) {
       console.log("签到记录" + JSON.stringify(res))
-      util.showToast(res.data.message)
-      if (res.data.message == '今日已经签到') {
-      } else {
+      //如果成功
+      if (res.data.result == true && res.data.code=="200"){
+        util.showToast("签到成功");
+        page = 1;
         vm.getUserQDsByUserId()
+      }else{
+        util.showToast(res.data.message);
       }
 
     }, null)
@@ -43,48 +41,60 @@ Page({
 
   //签到明细
   getUserQDsByUserId: function () {
+    //如果在加载中，则不进行数据获取
+    if (loadding_flag == true) {
+      return;
+    }
+    loadding_flag = true;   //开始加载数据
+
     var param = {
       page: page,
-      token: obj.token,
-      user_id: obj.id
     }
+
+    //获取签到明细
     util.getUserQDsByUserId(param, function (res) {
       console.log("签到明细" + JSON.stringify(res))
-      var data = res.data.ret.data
-      if (data.length == 0) {
+      //获取数据成功
+      if (res.data.result == true && res.data.code == "200") {
+        var data = res.data.ret.data
+        var qd_arr = [];
+        //如果page==1，代表重新获取数据
+        if (page == 1) {
+          if (data.length == 0) {
+            vm.setData({
+              no_view_hidden: ""
+            })
+          } else {
+            qd_arr = data;
+            vm.setData({
+              no_view_hidden: "hidden"
+            })
+          }
+        }
+        //如果page不为1，代表加载更多
+        else {
+          qd_arr = vm.data.qdList;
+          //增加数据
+          for (var i = 0; i < data.length; i++) {
+            qd_arr.push(data[i]);
+          }
+        }
         vm.setData({
-          no_view_hidden: ""
+          qdList: qd_arr,
         })
-      } else {
-        vm.setData({
-          no_view_hidden: "hidden"
-        })
+        //如果没有数据，进行toast提示
+        if (data.length == 0) {
+          util.showToast('没有签到数据');
+        }
+        loadding_flag = false;  //已经完成数据加载
+        page++;
+        //关闭下拉刷新
+        wx.stopPullDownRefresh();
       }
-      vm.setData({
-        qdList: data,
-      })
     }, null)
   },
 
-  //下拉刷新签到明细
-  getUserQDsByUserIdNew: function () {
-    var param = {
-      page: page,
-      token: obj.token,
-      user_id: obj.id
-    }
-    util.getUserQDsByUserId(param, function (res) {
-      console.log("签到明细" + JSON.stringify(res))
-      var data = res.data.ret.data
-      if (data.length == 0) {
-        page = 0
-        vm.getUserQDsByUserId()
-      }
-      vm.setData({
-        qdList: data,
-      })
-    }, null)
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -117,15 +127,17 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    page = 1;
+    console.log("onPullDownRefresh page:" + page + "loadding_flag" + loadding_flag + "+++++++++++++++++++++++++++");
+    vm.getUserQDsByUserId();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    page++ ,
-      vm.getUserQDsByUserIdNew()
+    console.log("onReachBottom page:" + page + "loadding_flag" + loadding_flag + "+++++++++++++++++++++++++++");
+    vm.getUserQDsByUserId()
   },
 
   /**
