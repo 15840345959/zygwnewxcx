@@ -168,7 +168,6 @@ Page({
 
 
     var inputValg = ((aa * aaa) / (aaa - 1)).toFixed(2)
-    // console.log('7', JSON.stringify(inputValg))
     var inputValgg = ((aa1 * aaa1) / (aaa1 - 1)).toFixed(2)
     var inputValggg = ((aa2 * aaa) / (aaa2 - 1)).toFixed(2)
     var inputValgggg = ((aa3 * aaa) / (aaa3 - 1)).toFixed(2)
