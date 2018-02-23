@@ -126,34 +126,33 @@ Page({
     var twoStep2 = Math.pow((1 + month2), inputLoanMonth)
     var twoStep3 = Math.pow((1 + month3), inputLoanMonth)
     var twoStep4 = Math.pow((1 + month4), inputLoanMonth)
-t
-    var twoStep3 = Math.pow((1 + month3), inputLoanMonth)
-    var twoStep4 = Math.pow((1 + month4), inputLoanMonth)
-    var oneCountMonthlyPayment = ((oneStep * twoStep) / (twoStep - 1))//商业贷款等额本息月供
+    // var twoStep3 = Math.pow((1 + month3), inputLoanMonth)
+    // var twoStep4 = Math.pow((1 + month4), inputLoanMonth)
+    var oneCountMonthlyPayment = ((oneStep * twoStep) / (twoStep - 1)).toFixed(2)//商业贷款等额本息月供
    
-    var twoCountMonthlyPayment = (oneStep1 * twoStep1) / (twoStep1 - 1)
-    var threeCountMonthlyPayment = (oneStep2 * twoStep2) / (twoStep2 - 1)
-    var fourCountMonthlyPayment = (oneStep3 * twoStep3) / (twoStep3 - 1)
-    var fiveCountMonthlyPayment = (oneStep4 * twoStep4) / (twoStep4 - 1)
+    var twoCountMonthlyPayment = ((oneStep1 * twoStep1) / (twoStep1 - 1)).toFixed(2)
+    var threeCountMonthlyPayment = ((oneStep2 * twoStep2) / (twoStep2 - 1)).toFixed(2)
+    var fourCountMonthlyPayment = ((oneStep3 * twoStep3) / (twoStep3 - 1)).toFixed(2)
+    var fiveCountMonthlyPayment = ((oneStep4 * twoStep4) / (twoStep4 - 1)).toFixed(2)
 
     //商业贷款的等额本金月供
     //每月应还本金
     var benjin = inputTotalMoney / inputLoanMonth//每月应还本金=贷款本金/还款月数
     var zbenjin = benjin * inputHaveGiveMonth //每月应还本金*以还款月数
 
-    var oneCountBenjinMonthlyPayment = (inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month   //商业贷款等额本金每月月供额
-    var twoCountBenjinMonthlyPayment = (inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month1
-    var threeCountBenjinMonthlyPayment = (inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month2
-    var fourCountBenjinMonthlyPayment = (inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month3
-    var fiveCountBenjinMonthlyPayment = (inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month4
+    var oneCountBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month).toFixed(2)   //商业贷款等额本金每月月供额
+    var twoCountBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month1).toFixed(2)
+    var threeCountBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month2).toFixed(2)
+    var fourCountBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month3).toFixed(2)
+    var fiveCountBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month4).toFixed(2)
 
 
     //公积金类型的等额本金月供
-    var oneGongjijinBenjinMonthlyPayment = (inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month5  //公积金等额本金每月月供额
-    var twoGongjijinBenjinMonthlyPayment = (inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month6
-    var threeGongjijinBenjinMonthlyPayment = (inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month7
-    var fourGongjijinBenjinMonthlyPayment = (inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month8
-    var fiveGongjijinBenjinMonthlyPayment = (inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month9
+    var oneGongjijinBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month5).toFixed(2)  //公积金等额本金每月月供额
+    var twoGongjijinBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month6).toFixed
+    var threeGongjijinBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month7).toFixed(2)
+    var fourGongjijinBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month8).toFixed(2)
+    var fiveGongjijinBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month9).toFixed(2)
     // 公积金类型的等额本息年利率倍数的月供
 
     var aa = inputTotalMoney * month5
@@ -168,38 +167,37 @@ t
     var aaa4 = Math.pow((1 + month9), inputLoanMonth)
 
 
-    var inputValg = (aa * aaa) / (aaa - 1)
-    // console.log('7', JSON.stringify(inputValg))
-    var inputValgg = (aa1 * aaa1) / (aaa1 - 1)
-    var inputValggg = (aa2 * aaa) / (aaa2 - 1)
-    var inputValgggg = (aa3 * aaa) / (aaa3 - 1)
-    var inputValggggg = (aa4 * aaa) / (aaa4 - 1)
+    var inputValg = ((aa * aaa) / (aaa - 1)).toFixed(2)
+    var inputValgg = ((aa1 * aaa1) / (aaa1 - 1)).toFixed(2)
+    var inputValggg = ((aa2 * aaa) / (aaa2 - 1)).toFixed(2)
+    var inputValgggg = ((aa3 * aaa) / (aaa3 - 1)).toFixed(2)
+    var inputValggggg = ((aa4 * aaa) / (aaa4 - 1)).toFixed(2)
     var inputYue = inputLoanTime * 12
     // 商业贷款类型
-    var inputLixi = inputYue * oneCountMonthlyPayment - inputTotalMoney
-    var inputLixi1 = inputYue * twoCountMonthlyPayment - inputTotalMoney
-    var inputLixi2 = inputYue * threeCountMonthlyPayment - inputTotalMoney
-    var inputLixi3 = inputYue * fourCountMonthlyPayment - inputTotalMoney
-    var inputLixi4 = inputYue * fiveCountMonthlyPayment - inputTotalMoney
+    var inputLixi = (inputYue * oneCountMonthlyPayment - inputTotalMoney).toFixed(2)
+    var inputLixi1 = (inputYue * twoCountMonthlyPayment - inputTotalMoney).toFixed(2)
+    var inputLixi2 = (inputYue * threeCountMonthlyPayment - inputTotalMoney).toFixed(2)
+    var inputLixi3 = (inputYue * fourCountMonthlyPayment - inputTotalMoney).toFixed(2)
+    var inputLixi4 = (inputYue * fiveCountMonthlyPayment - inputTotalMoney).toFixed(2)
     //  公积金贷款类型总利息
-    var inputLixig = inputYue * inputValg - parseInt(inputTotalMoney)
+    var inputLixig = (inputYue * inputValg - parseInt(inputTotalMoney)).toFixed(2)
     console.log('666', JSON.stringify(inputLixig));
-    var inputLixigg = inputYue * inputValgg - inputTotalMoney
-    var inputLixiggg = inputYue * inputValggg - inputTotalMoney
-    var inputLixigggg = inputYue * inputValgggg - inputTotalMoney
-    var inputLixiggggg = inputYue * inputValggggg - inputTotalMoney
+    var inputLixigg = (inputYue * inputValgg - inputTotalMoney).toFixed(2)
+    var inputLixiggg = (inputYue * inputValggg - inputTotalMoney).toFixed(2)
+    var inputLixigggg = (inputYue * inputValgggg - inputTotalMoney).toFixed(2)
+    var inputLixiggggg = (inputYue * inputValggggg - inputTotalMoney).toFixed(2)
     //商业等额本金每月递减
-    var inputVal55 = benjin * month
-    var inputVal555 = benjin * month1
-    var inputVal5555 = benjin * month2
-    var inputVal55555 = benjin * month3
-    var inputVal555555 = benjin * month4
+    var inputVal55 = (benjin * month).toFixed(2)
+    var inputVal555 = (benjin * month1).toFixed(2)
+    var inputVal5555 = (benjin * month2).toFixed(2)
+    var inputVal55555 = (benjin * month3).toFixed(2)
+    var inputVal555555 = (benjin * month4).toFixed(2)
     //公积金本金每月递减
-    var inputValgd = benjin * month5
-    var inputValgdd = benjin * month6
-    var inputValgddd = benjin * month7
-    var inputValgdddd = benjin * month8
-    var inputValgddddd = benjin * month9
+    var inputValgd = (benjin * month5).toFixed(2)
+    var inputValgdd = (benjin * month6).toFixed(2)
+    var inputValgddd = (benjin * month7).toFixed(2)
+    var inputValgdddd = (benjin * month8).toFixed(2)
+    var inputValgddddd = (benjin * month9).toFixed(2)
     // 商业贷款等额本金总利息
     var z = inputTotalMoney * month
     var z1 = inputTotalMoney * month1
@@ -239,18 +237,18 @@ t
     console.log('1111111', JSON.stringify(benjin));
     console.log('33333', JSON.stringify(zz));
     console.log('44444', JSON.stringify(zzz));
-    var inputVal7 = (zz + parseInt(benjin) * zzz) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)
-    var inputVal77 = (zz1 + parseInt(benjin) * zzz1) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)
-    var inputVal777 = (zz2 + parseInt(benjin) * zzz2) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)
-    var inputVal7777 = (zz3 + parseInt(benjin) * zzz3) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)
-    var inputVal77777 = (zz4 + parseInt(benjin) * zzz4) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)
+    var inputVal7 = ((zz + parseInt(benjin) * zzz) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)).toFixed(2)
+    var inputVal77 = ((zz1 + parseInt(benjin) * zzz1) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)).toFixed(2)
+    var inputVal777 = ((zz2 + parseInt(benjin) * zzz2) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)).toFixed(2)
+    var inputVal7777 = ((zz3 + parseInt(benjin) * zzz3) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)).toFixed(2)
+    var inputVal77777 = ((zz4 + parseInt(benjin) * zzz4) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)).toFixed(2)
 
     //公积金
-    var inputVal8 = (zzg + parseInt(benjin) * zzzg) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)
-    var inputVal88 = (zz1g + parseInt(benjin) * zzz1g) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)
-    var inputVal888 = (zz2g + parseInt(benjin) * zzz2g) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)
-    var inputVal8888 = (zz3g + parseInt(benjin) * zzz3g) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)
-    var inputVal88888 = (zz4g + parseInt(benjin) * zzz4g) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)
+    var inputVal8 = ((zzg + parseInt(benjin) * zzzg) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)).toFixed(2)
+    var inputVal88 = ((zz1g + parseInt(benjin) * zzz1g) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)).toFixed(2)
+    var inputVal888 = ((zz2g + parseInt(benjin) * zzz2g) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)).toFixed(2)
+    var inputVal8888 = ((zz3g + parseInt(benjin) * zzz3g) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)).toFixed(2)
+    var inputVal88888 = ((zz4g + parseInt(benjin) * zzz4g) / 2 * parseInt(inputLoanMonth) - parseInt(inputTotalMoney)).toFixed(2)
     // 商业本金本息合计
     var inputValshj = parseInt(inputTotalMoney) + parseInt(inputVal7)
     var inputValshj1 = parseInt(inputTotalMoney) + parseInt(inputVal77)

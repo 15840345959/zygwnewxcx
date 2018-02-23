@@ -1,5 +1,5 @@
 <!--pages/my/calculator/calculator.wxml-->
-<wxs module="filters" src="./../../addmul.wxs"></wxs>
+<!-- <wxs module="filters" src="./../../addmul.wxs"></wxs> -->
 <view class="ji">
   <view style="height:80rpx;color:#707070;margin-left:15rpx;padding-top:20rpx;">贷款类型</view>
   <view class="weui-cells weui-cells_after-title">
@@ -164,7 +164,7 @@
     <view style="margin-left:25rpx;padding-top:15rpx;">月供 （元）
     <!-- 判断 -->
     <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
-        <input class="weui-input"  placeholder="{{}}" value="{{filters.toFix(oneCountMonthlyPayment)}}" style="border-style:none;color:red;"  />
+        <input class="weui-input"  placeholder="{{}}" value="{{oneCountMonthlyPayment}}" style="border-style:none;color:red;"  />
       </view>
 
   <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[1].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
@@ -182,7 +182,6 @@
        <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{fiveCountMonthlyPayment}}" style="border-style:none;color:red;"  />
       </view> 
-
 <!-- 公积金贷款类型 -->
 <view wx:if="{{chooseLoanType[1].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputValg}}" style="border-style:none;color:red;"  />
