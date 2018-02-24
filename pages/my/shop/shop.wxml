@@ -33,7 +33,7 @@
         </view>
 
         <!-- 兑换记录 -->
-        <view class="weui-tab__content" hidden="{{activeIndex != 1}}" style='padding:0'>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}" style='padding-top:90rpx'>
           <block wx:for="{{mylist}}">
             <view class="page__bd" style='margin-top:5px'>
               <view class="weui-form-preview">
