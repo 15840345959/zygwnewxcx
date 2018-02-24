@@ -50,7 +50,6 @@ Page({
     var param = {
       page: page,
     }
-
     //获取签到明细
     util.getUserQDsByUserId(param, function (res) {
       console.log("签到明细" + JSON.stringify(res))
@@ -74,6 +73,7 @@ Page({
         //如果page不为1，代表加载更多
         else {
           qd_arr = vm.data.qdList;
+       
           //增加数据
           for (var i = 0; i < data.length; i++) {
             qd_arr.push(data[i]);
@@ -120,7 +120,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+   page = 1
   },
 
   /**
