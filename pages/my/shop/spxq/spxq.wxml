@@ -2,27 +2,18 @@
   <view class="page__bd">
     <view class="weui-article">
       <view class="weui-article__section">
-        <view class="weui-article__title" style='text-align: center;fone-size:18px'>{{goodsList.name}}</view>
-        <view class="weui-article__section">
-          <view class="weui-article__h3" style='color:#64b0ef'>我的积分:{{ijifen}}</view>
-
+        <view class="weui-article__section" style='background-color:white;border-radius: 4px;padding:20rpx'>
           <view class="weui-article__p">
             <image class="weui-article__img" src="{{goodsList.image}}" mode="aspectFit" style="height: 180px;width:100%" />
           </view>
-          <view class="weui-article__h3" style='color:#64b0ef'>所需积分：{{goodsList.jifen}}</view>
-          <view class="weui-article__p">
-            商品描述：
-          </view>
-              <view class="weui-article__p">
-            {{goodsList.desc}}
+          <view class="weui-article__title" style='text-align: center;fone-size:16px;margin:20rpx 0'>{{goodsList.name}}</view>
+          <view class="weui-article__h3" style='color:#838383;fone-size:13px'>所需积分：{{goodsList.jifen}}</view>
+          <view class="weui-article__p" style='color:#838383;fone-size:13px'>
+            商品描述： {{goodsList.desc}}
           </view>
         </view>
-
       </view>
+      <button catchtap="clickdh" class="weui-btn" type="primary" style='background-color: #64b0ef;margin-top:30rpx'>兑换</button>
     </view>
   </view>
-</view>
-
-<view class="white-bg weui-flex book-shara-box border-top" catchtap="clickdh">
-  <view class='text-center aui-text-white' style='background-color: #64b0ef;width: 100%;margin-left: 0rpx;text-align: center;color:white;font'>兑换</view>
 </view>

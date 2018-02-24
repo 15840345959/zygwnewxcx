@@ -1,0 +1,18 @@
+.qd-style {
+  width: 50%;
+  height: 90rpx;
+  background-color: #64b0ef;
+  border-radius: 30px;
+  box-shadow: 0 0 8px #64b0ef;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  margin: 0 auto;
+}
+
+.qd-b-style {
+  width: 100%;
+  height: auto;
+  padding: 80rpx 0;
+}

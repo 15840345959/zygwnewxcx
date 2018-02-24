@@ -90,9 +90,16 @@ Page({
       url: '/pages/my/shop/shop?jsonStr=' + JSON.stringify(vm.data.userInfo)
     })
   },
+  //签到
+  clickQd: function () {
+    wx.navigateTo({
+      url: '/pages/my/qd/qd?jsonStr=' + JSON.stringify(vm.data.userInfo)
+    })
+  },
   clickCalculator: function () {
     wx.navigateTo({
       url: '/pages/my/calculator/calculator',
+
     })
   },
   /**

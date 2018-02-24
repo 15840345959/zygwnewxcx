@@ -1,5 +1,5 @@
 <!--pages/my/my.wxml-->
-<view class="page">
+<view class="page" style='background-color:white'>
   <!--页头-->
   <view class="page__hd"></view>
   <!--主体-->
@@ -85,6 +85,10 @@
         <view class="weui-grid " hover-class="weui-grid_active ">
           <image class="weui-grid__icon " src="../../images/baipishu_icon.png " />
           <view class="weui-grid__label font-size-12 ">白皮书</view>
+        </view>
+        <view class="weui-grid " hover-class="weui-grid_active " catchtap='clickQd'>
+          <image class="weui-grid__icon " src="../../images/qiandao_icon.png " />
+          <view class="weui-grid__label font-size-12 ">签到</view>
         </view>
       </view>
     </view>
