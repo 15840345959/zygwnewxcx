@@ -22,7 +22,7 @@ Page({
     vm = this
     console.log("数据" + JSON.stringify(options))
     userid = options.id
-    var ijifen = options.ijifen
+     ijifen = options.ijifen
     vm.setData({
       ijifen: ijifen
     })
@@ -95,7 +95,7 @@ Page({
   },
   //点击兑换
   clickdh: function () {
-    if (ijifen < jifen) {
+if (ijifen < jifen) {
       util.showModal('', '积分不足');
       return;
     }
