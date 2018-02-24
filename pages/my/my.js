@@ -37,7 +37,7 @@ Page({
    */
   onShow: function () {
     vm.getMyInfo()
-},
+  },
   //获取用户页面相关数据
   getMyInfo: function () {
     util.getMyInfo({}, function (ret) {
@@ -73,6 +73,13 @@ Page({
   },
   //升级案场负责人
   clickUserUp: function () {
+    if (util.isNeedNavigateToSetMyInfoPage()) {
+      util.showToast('请补充信息');
+      wx.navigateTo({
+        url: '/pages/my/setMyInfo/setMyInfo'
+      })
+      return;
+    }
     wx.navigateTo({
       url: '/pages/my/userUp/userUp'
     })
@@ -83,7 +90,7 @@ Page({
       url: '/pages/my/shop/shop?jsonStr=' + JSON.stringify(vm.data.userInfo)
     })
   },
-  clickCalculator:function(){
+  clickCalculator: function () {
     wx.navigateTo({
       url: '/pages/my/calculator/calculator',
     })
