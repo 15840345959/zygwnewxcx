@@ -17,20 +17,15 @@ Page({
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
-
-
     no_view_hidden_1: "hidden",  //未检索商品列表信息
-
     no_view_hidden: "hidden",   //未检索到数据的提示页面
     mylist: [],   //我的订单
     goodsList: [],    //商品列表 
     userInfo: "",    //用户基本信息
-
     ijifen: ""
-
   },
 
-  //顶部切换
+  //页面加载
   onLoad: function () {
     var that = this;
     wx.getSystemInfo({
@@ -42,13 +37,13 @@ Page({
       }
     });
   },
+  //点击切换
   tabClick: function (e) {
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
       activeIndex: e.currentTarget.id
     });
   },
-
 
   /**
    * 生命周期函数--监听页面加载
@@ -151,7 +146,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-vm.getExchangeListByUserId()
+    vm.getExchangeListByUserId()
     vm.getUserInfoByIdWithToken()
   },
 
