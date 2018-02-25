@@ -90,6 +90,11 @@
           <image class="weui-grid__icon " src="../../images/qiandao_icon.png " />
           <view class="weui-grid__label font-size-12 ">签到</view>
         </view>
+        <view class="weui-grid " hover-class="weui-grid_active " catchtap='clickFx'>
+          <image class="weui-grid__icon " src="../../images/qiandao_icon.png " />
+          <view class="weui-grid__label font-size-12 ">我的分享</view>
+        </view>
+        
       </view>
     </view>
   </view>
