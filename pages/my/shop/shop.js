@@ -25,10 +25,8 @@ Page({
     mylist: [],   //我的订单
     goodsList: [],    //商品列表 
     userInfo: "",    //用户基本信息
-
-    ijifen: ""
-
-  },
+    ijifen: ""        //我的积分
+},
 
 
   //顶部切换
