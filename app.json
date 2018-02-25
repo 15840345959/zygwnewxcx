@@ -2,6 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/my/qd/qd",
+    "pages/my/fx/fx",
+    "pages/my/fx/tj/tj",
     "pages/client/baobeiOpt/baobeiOpt",
     "pages/my/userUp/userUp",
     "pages/baobei/baobei",

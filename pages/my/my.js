@@ -96,6 +96,12 @@ Page({
       url: '/pages/my/qd/qd?jsonStr=' + JSON.stringify(vm.data.userInfo)
     })
   },
+  //签到
+  clickFx: function () {
+    wx.navigateTo({
+      url: '/pages/my/fx/fx?jsonStr=' + JSON.stringify(vm.data.userInfo)
+    })
+  },
   clickCalculator: function () {
     wx.navigateTo({
       url: '/pages/my/calculator/calculator',
