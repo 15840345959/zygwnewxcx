@@ -207,6 +207,27 @@ function getExchangeListByUserId(param, successCallback, errorCallback) {
 function getGoodsById(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/goods/getGoodsById', param, "GET", successCallback, errorCallback);
 }
+
+//用户签到
+function userQDToday(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/user/userQDToday', param, "POST", successCallback, errorCallback);
+}
+
+//签到明细
+function getUserQDsByUserId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/user/getUserQDsByUserId', param, "GET", successCallback, errorCallback);
+}
+
+//分享列表
+function getListByReUserId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/recomm/getListByReUserId', param, "GET", successCallback, errorCallback);
+}
+
+//推荐用户
+function recommUser(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/recomm/recommUser', param, "POST", successCallback, errorCallback);
+}
+
 /////////页面跳转///////////////////////////////
 //判断是否需要跳转到设置信息页面
 function isNeedNavigateToSetMyInfoPage() {
@@ -987,5 +1008,8 @@ module.exports = {
   exchange: exchange,
   getExchangeListByUserId: getExchangeListByUserId,
   getGoodsById: getGoodsById,
-
+  userQDToday: userQDToday,
+  getUserQDsByUserId: getUserQDsByUserId,
+  getListByReUserId: getListByReUserId,
+  recommUser: recommUser,
 } 

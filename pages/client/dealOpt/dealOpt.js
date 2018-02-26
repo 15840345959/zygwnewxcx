@@ -66,6 +66,9 @@ Page({
       console.log("getHuxingsByHouseId ret:" + JSON.stringify(ret));
       if (ret.data.code == "200" && ret.data.result) {
         var msgObj = ret.data.ret;
+        if(msgObj.length==0){
+          return;
+        }
         msgObj[0].checked = true;
         vm.setData({
           huxings: msgObj,
@@ -100,7 +103,7 @@ Page({
   getSelHuxingIndex: function (e) {
     var huxings = vm.data.huxings;
     for (var i = 0; i < huxings.length; i++) {
-      if (huxings[i].checked = true)
+      if (huxings[i].checked == true)
         return i;
     }
     return 0;

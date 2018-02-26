@@ -1,9 +1,10 @@
 const util = require('../../../../utils/util.js')
 
 var vm = null
-var ijifen;
-var jifen;
-var id;
+
+var ijifen;   //我的积分值，来自页面传参
+var jifen;    //商品积分值，来自接口获取数据
+var userid;//用户id
 Page({
 
   /**
@@ -11,6 +12,7 @@ Page({
    */
   data: {
     goodsList: "",    //商品详情
+    ijifen:"",    //我的积分
   },
 
   /**
@@ -19,14 +21,14 @@ Page({
   onLoad: function (options) {
     vm = this
     console.log("数据" + JSON.stringify(options))
-    id = options.id
-    ijifen = options.ijifen
+    userid = options.id
+     ijifen = options.ijifen
     vm.setData({
       ijifen: ijifen
     })
     //获取商品信息
     var param = {
-      id: id,
+      id: userid,
     }
     util.getGoodsById(param, function (res) {
       console.log("商品信息信息" + JSON.stringify(res.data.ret))
@@ -93,7 +95,7 @@ Page({
   },
   //点击兑换
   clickdh: function () {
-    if (ijifen < jifen) {
+if (ijifen < jifen) {
       util.showModal('', '积分不足');
       return;
     }
@@ -104,7 +106,7 @@ Page({
 //点击确定兑换
   duihuan: function () {
     var param = {
-      goods_id: id,
+      goods_id: userid,
     }
     util.exchange(param, function (res) {
       console.log("兑换" + JSON.stringify(res))
