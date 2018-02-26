@@ -181,7 +181,7 @@ Page({
     var inputLixi4 = (inputYue * fiveCountMonthlyPayment - inputTotalMoney).toFixed(2)
     //  公积金贷款类型总利息
     var inputLixig = (inputYue * inputValg - parseInt(inputTotalMoney)).toFixed(2)
-    console.log('666', JSON.stringify(inputLixig));
+   // console.log('666', JSON.stringify(inputLixig));
     var inputLixigg = (inputYue * inputValgg - inputTotalMoney).toFixed(2)
     var inputLixiggg = (inputYue * inputValggg - inputTotalMoney).toFixed(2)
     var inputLixigggg = (inputYue * inputValgggg - inputTotalMoney).toFixed(2)
@@ -276,6 +276,57 @@ Page({
     var inputValhhhhh = parseInt(inputTotalMoney) + parseInt(inputLixiggggg)
     // var inputTVal = e.detail.value
     console.log('2222', JSON.stringify(parseInt(inputTotalMoney) + parseInt(inputLixi4)));
+
+    if (inputLoanTime == '') {
+      wx.showModal({
+        content: '请输入贷款期限',
+        showCancel: false,
+        confirmText: "确定",
+        success: function (res) {
+          console.log('1111', JSON.stringify(res));
+          if (res.confirm) {
+            console.log('用户点击确定')
+          }
+
+        }
+      })
+
+      return
+    }
+    
+
+    if (inputHouseTotal == '') {
+      wx.showModal({
+        content: '请输入房屋总价',
+        showCancel: false,
+        confirmText: "确定",
+        success: function (res) {
+          console.log('1111', JSON.stringify(res));
+          if (res.confirm) {
+            console.log('用户点击确定')
+          }
+
+        }
+      })
+      return
+    }
+   
+    if (inputTotalMoney == '') {
+      wx.showModal({
+        content: '请输入贷款总额',
+        showCancel: false,
+        confirmText: "确定",
+        success: function (res) {
+          console.log('1111', JSON.stringify(res));
+          if (res.confirm) {
+            console.log('用户点击确定')
+          }
+
+        }
+      })
+      return
+    }
+   
     this.setData({
       inputLoanTime: inputLoanTime,
       inputTotalMoney: inputTotalMoney,
@@ -355,45 +406,7 @@ Page({
 
     })
 
-    if (inputLoanTime == '') {
-      wx.showModal({
-        content: '请输入贷款期限',
-        showCancel: false,
-        confirmText: "确定",
-        success: function (res) {
-          console.log('1111', JSON.stringify(res));
-          if (res.confirm) {
-            console.log('用户点击确定')
-          }
-        }
-      })
-    }
-    if (inputHouseTotal == '') {
-      wx.showModal({
-        content: '请输入房屋总价',
-        showCancel: false,
-        confirmText: "确定",
-        success: function (res) {
-          console.log('1111', JSON.stringify(res));
-          if (res.confirm) {
-            console.log('用户点击确定')
-          }
-        }
-      })
-    }
-    if (inputTotalMoney == '') {
-      wx.showModal({
-        content: '请输入贷款总额',
-        showCancel: false,
-        confirmText: "确定",
-        success: function (res) {
-          console.log('1111', JSON.stringify(res));
-          if (res.confirm) {
-            console.log('用户点击确定')
-          }
-        }
-      })
-    }
+   
 
   },
 
@@ -427,6 +440,14 @@ Page({
       chooseInterestRate: chooseInterestRate
     });
   },
+  //展示
+  onShow: function () {
+   
+  },
+  //下拉刷新
+onPullDownRefresh:function(){
+
+},
 
   getClear: function (e) {
     this.setData({
