@@ -49,7 +49,7 @@ Page({
           delta: 1
         })
        } else{
-        util.showToast(res.data.message);
+        util.showModal("",res.data.message);
        }
 
 
