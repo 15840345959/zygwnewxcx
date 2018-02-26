@@ -33,11 +33,11 @@ Page({
       var data = res.data.ret
       if (data.length == 0) {
         vm.setData({
-          no_view_hidden_1: ""
+          no_view_hidden: ""
         })
       } else {
         vm.setData({
-          no_view_hidden_1: "hidden"
+          no_view_hidden: "hidden"
         })
       }
      vm.setData({

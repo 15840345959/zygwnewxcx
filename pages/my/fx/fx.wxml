@@ -5,10 +5,10 @@
   <view class="page__bd page__bd_spacing {{hidden}}">
     <!-- 头像相关 -->
     <view style="position:relative;">
-      <image src="http://art.isart.me/tw_pbg.png?imageView2/2/w/600/q/75/interlace/1" class="head-bg" mode="aspectFill"></image>
+      <image src="../../../images/background-fx.jpg " class="head-bg" mode="aspectFill"></image>
       <view class="mask-div-black-d head-bg"></view>
       <view style="position: absolute;top:15px;right:15px;">
-        <image src="../../../images/qiandao_btn.png" class="opt-icon-nor" catchtap="jumpTj"></image>
+        <image src="../../../images/tuijian_t_icon.png" class="opt-icon-nor" catchtap="jumpTj"></image>
       </view>
       <!--头像+邀请码-->
       <view style="position: absolute;top:35px;width:100%;" class="text-center">
@@ -22,11 +22,10 @@
       </view>
     </view>
     <!-- 列表展示 -->
+ <view class="page__bd">
+     
 
-    <view class="page__bd">
-      <view class="weui-panel weui-panel_access">
-
-        <view class="weui-panel__hd">推荐列表</view>
+        <view class="weui-panel__hd">推荐人列表</view>
         <view class="weui-panel__bd">
           <block wx:for="{{userlist}}">
             <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
@@ -38,22 +37,21 @@
                 <view class="weui-media-box__desc">其他描述</view>
               </view>
             </navigator>
-
-            <!-- 暂无推荐人 -->
-            <view class='{{no_view_hidden}}'>
-              <view class="no-img-view">
-                <image src="../../../images/no.png" class="no-image"></image>
-              </view>
-              <view class="grey-font center-style margin-top-10">
-                暂无推荐人
-              </view>
-            </view>
-
           </block>
+
+          <!-- 暂无推荐人 -->
+          <view class='{{no_view_hidden}}'>
+            <view class="no-img-view">
+              <image src="../../../images/no.png" class="no-image"></image>
+            </view>
+            <view class="grey-font center-style margin-top-10">
+              暂无推荐人
+            </view>
+          </view>
         </view>
       </view>
 
-    </view>
+ 
 
   </view>
 </view>

@@ -27,11 +27,19 @@ Page({
 
 //点击确定
   clickdh: function (e) {
+
+    if (vm.data.re_user_id.length < 5){
+      util.showToast('邀请码格式不正确');
+      return;
+    }
     var re_user_id = vm.data.re_user_id.substring(5)
     console.log("re_user_id" + JSON.stringify(re_user_id))
+    
     var param = {
       re_user_id: re_user_id,
       user_id: userid,
+      // user_id: re_user_id,
+      // re_user_id: userid,
 }
     util.recommUser(param, function (res) {
       console.log("点击确定" + JSON.stringify(res))
