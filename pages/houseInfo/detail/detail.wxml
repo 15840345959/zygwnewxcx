@@ -1,0 +1,72 @@
+<!--pages/houseInfo/detail/detail.wxml-->
+
+<view class="office-bg">
+<!-- 楼盘参数 -->
+<view style="height:30px;margin-left:20px;margin-top:10px;">
+    <view style="font-size:15px;">基本参数</view>
+  </view>
+  <view style='height: 3rpx; background: #f5f5f5;'></view>
+ <view style="height:25px; margin-left:20px;margin-top:8px;">开盘时间：
+ <view style="margin-left:80px;margin-top:-17px;">{{HouseDetail.kaipantime}}</view>
+ </view>
+ <view style='height: 3rpx; background: #f5f5f5;'></view>
+ <view style="height:25px; margin-left:20px;margin-top:8px;">交盘时间：
+ <view style="margin-left:80px;margin-top:-17px;">{{HouseDetail.jiaopantime}}</view></view>
+ <view style='height: 3rpx; background: #f5f5f5;'></view>
+ <view style="height:25px; margin-left:20px;margin-top:8px;">开发商：
+ <view style="margin-left:80px;margin-top:-17px;">{{HouseDetail.developer}}</view></view>
+ <view style='height: 3rpx; background: #f5f5f5;'></view>
+ <view style="height:25px; margin-left:20px;margin-top:8px;">物业公司：
+ <view style="margin-left:80px;margin-top:-17px;">{{HouseDetail.property}}</view></view>
+ <view style='height: 3rpx; background: #f5f5f5;'></view>
+ <view style="height:25px; margin-left:20px;margin-top:8px;">建筑面积：{{HouseDetail.size}}
+  <view style="height:25px; margin-left:150px;margin-top:-19px;">总户数：{{HouseDetail.households}}</view>
+ </view>
+ <view style='height: 3rpx; background: #f5f5f5;'></view>
+ <view style="height:25px; margin-left:20px;margin-top:8px;">容积率：{{HouseDetail.plotratio}}
+ <view style="height:25px; margin-left:150px;margin-top:-19px;">绿化率：{{HouseDetail.green}}</view>
+ </view>
+ <view style='height: 3rpx; background: #f5f5f5;'></view>
+ <view style="height:25px; margin-left:20px;margin-top:8px;">车位数：{{HouseDetail.park}}
+ <view style="height:25px; margin-left:150px;margin-top:-19px;">车位比：{{HouseDetail.parkper}}</view>
+ </view>
+   <view style='height: 10rpx; background: #f5f5f5;'></view>
+<!-- 住宅参数 -->
+   <view style="height:30px;margin-left:20px;margin-top:10px;">
+    <view style="font-size:15px;">住宅参数</view>
+  </view>
+  <view style='height: 3rpx; background: #f5f5f5;'></view>
+ <view style="height:25px; margin-left:20px;margin-top:8px;">均价：
+ <view style="margin-left:80px;margin-top:-15px;">{{HouseDetail.price}}</view></view>
+ <view style='height: 3rpx; background: #f5f5f5;'></view>
+ <view style="height:25px; margin-left:20px;margin-top:8px;">物业费：
+ <view style="margin-left:80px;margin-top:-15px;">{{HouseDetail.propertyfee}}</view></view>
+ <view style='height: 3rpx; background: #f5f5f5;'></view>
+ <view style="height:25px; margin-left:20px;margin-top:8px;">建筑类型：
+ <view style="margin-left:80px;margin-top:-15px;">{{HouseDetail.buildtype}}</view></view>
+ <view style='height: 3rpx; background: #f5f5f5;'></view>
+ <view style="height:25px; margin-left:20px;margin-top:8px;">装修状态：
+ <view style="margin-left:80px;margin-top:-15px;">{{HouseDetail.decorate}}</view></view>
+ <view style='height: 3rpx; background: #f5f5f5;'></view>
+ <view style="height:25px; margin-left:20px;margin-top:8px;" data-officeid="{{id}}">产权年限：
+ <view style="margin-left:80px;margin-top:-15px;">{{HouseDetail.years}}</view></view>
+ <view style='height: 3rpx; background: #f5f5f5;'></view>
+<!-- 周边配套 -->
+ <view style="height:30px;margin-left:20px;margin-top:10px;">
+    <view style="font-size:15px;">周边配套</view>
+  </view>
+  <view style='height: 3rpx; background: #f5f5f5;'></view>
+ <view style="height:25px; margin-left:20px;margin-top:8px;">商业配套：
+ <view style="margin-left:80px;margin-top:-15px;">{{HouseDetail.shangye}}</view></view>
+ <view style='height: 3rpx; background: #f5f5f5;'></view>
+ <view style="height:25px; margin-left:20px;margin-top:8px;">教育配套：
+ <view style="margin-left:80px;margin-top:-15px;">{{HouseDetail.jiaoyu}}</view></view>
+ <view style='height: 3rpx; background: #f5f5f5;'></view>
+  <view style="height:25px; margin-left:20px;margin-top:8px;">交通配套：
+  <view style="margin-left:80px;margin-top:-15px;">{{HouseDetail.jiaotong}}</view></view>
+   <view style='height: 3rpx; background: #f5f5f5;'></view>
+   <view style="height:25px; margin-left:20px;margin-top:8px;">环境配套：
+   <view style="margin-left:80px;margin-top:-15px;">{{HouseDetail.huanjing}}</view></view>
+
+</view>
+ 

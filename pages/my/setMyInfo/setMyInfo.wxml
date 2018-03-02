@@ -9,7 +9,7 @@
       <view class="weui-flex" style="padding-top:80px;">
         <view class="weui-flex__item">
           <view class="placeholder center-style white-bg register-input-style">
-            <input class="weui-input full-width font-size-14" value='{{real_name}}' placeholder="真实姓名" style='text-align: center;' bindinput='inputRealName' />
+            <input class="weui-input full-width font-size-14" disabled='true' value='{{real_name}}' placeholder="真实姓名" style='text-align: center;' bindinput='inputRealName' />
           </view>
         </view>
       </view>
@@ -25,7 +25,7 @@
       <view class="weui-flex" style="padding-top:20px;">
         <view class="weui-flex__item">
           <view class="placeholder center-style white-bg register-input-style">
-            <input class="weui-input full-width font-size-14" type='number' value='{{cardID}}' placeholder="输入身份证" style='text-align: center;' bindinput='inputCardId' />
+            <input class="weui-input full-width font-size-14" type='text' disabled='true' value='{{cardID}}' placeholder="输入身份证" style='text-align: center;' bindinput='inputCardId' />
           </view>
         </view>
       </view>

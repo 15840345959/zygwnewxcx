@@ -1,0 +1,42 @@
+<!--pages/houseInfo/huxing/huxing.wxml-->
+<view class="page">
+<block wx:for="{{HuXingInfo}}">
+<view class="office margin-top-5 margin-left-30" style='margin-bottom:0rpx;padding:10rpx 0' >
+    <view class="office-img" style='padding-top:5rpx;'>
+      <image src="{{item.image}}" class="office-img-sml" mode="aspectFill"></image>
+    </view>
+
+    <view class="office-info">
+      <view style='display:flex;flex-direction:row;align-items:center;margin-top:0rpx;'>
+
+        <view class="text-oneline font-weight office-title-font " style='margin-left:300rpx;margin-top:-330rpx;float:left;'>{{item.huxing}}</view>
+        <view style='text-align:right;float:right;text-align:right;color:black;font-size:30rpx;margin-left:100rpx;margin-top:-330rpx;'>{{item.size_min}}m²-{{item.size_max}}m²</view>
+      </view>
+      <view class="text-oneline office-font" style='margin-left:300rpx;margin-top:-100rpx;'>{{item.type.name}}</view>
+       <view class="text-oneline office-font" style='margin-left:40rpx;margin-top:10px;color:red;'>{{item.price}}</view>
+        <view class="text-oneline  office-font" style='margin-left:10rpx;'>{{size}}</view>
+      <view class="text-oneline  office-font" style='margin-left:500rpx;;margin-top:-70rpx;'>佣金 {{item.yongjin_value}}元</view>
+      <!-- <view class="text-oneline margin-bottom-5 office-font margin-top-5" style='margin-left:10rpx;'>{{desc}}</view> -->
+    </view>
+  </view>
+  <view style='width: 100%;height: 6rpx; background: #f5f5f5;'></view>
+
+  <view style="width:100%;height:25px;">
+   
+    <view style="margin-left:15px;margin-top:5px;">户型优惠：{{item.benefit}}</view>
+  </view>
+  <view style='width: 100%;height: 6rpx; background: #f5f5f5;'></view>
+  <view style="width:100%;height:25px;">
+    <view style="margin-left:15px;margin-top:5px;">户型朝向：{{item.orientation}}</view>
+  </view>
+
+  <view style='width: 100%;height: 6rpx; background: #f5f5f5;'></view>
+  <view style="width:100%;height:25px;">
+    <view style="margin-left:15px;margin-top:5px;">推荐理由：{{item.reason}}</view>
+  </view>
+   <view style='width: 100%;height: 10rpx; background: #f5f5f5;'></view> 
+  </block>
+ <view class='product-down-line'></view>
+ </view>
+
+
