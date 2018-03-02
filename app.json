@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    
     "pages/my/qd/qd",
     "pages/my/fx/fx",
     "pages/my/fx/tj/tj",
@@ -16,6 +17,8 @@
     "pages/my/calculator/calculator",
     "pages/templates/house/houseTpl",
     "pages/houseInfo/houseInfo",
+    "pages/houseInfo/huxing/huxing",
+    "pages/houseInfo/detail/detail",
     "pages/templates/baobeiTpl/baobeiTpl",
     "pages/client/setBaseInfo/setBaseInfo",
     "pages/client/daofangOpt/daofangOpt",

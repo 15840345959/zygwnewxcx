@@ -51,7 +51,7 @@
                 {{userInfo.daijie_yongjin}}
               </view>
               <view class="text-center font-size-12 ">
-                带结佣金
+                待结佣金
               </view>
             </view>
           </view>

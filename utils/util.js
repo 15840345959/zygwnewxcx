@@ -79,6 +79,13 @@ function getHouseOptions(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/house/getOptions', param, "GET", successCallback, errorCallback);
 }
 
+//根据楼盘id获取楼盘的详细信息
+function getHouseById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/house/getById', param, "GET", successCallback, errorCallback);
+}
+
+
+
 //根据条件搜索楼盘
 function searchHouseByCon(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/house/searchByCon', param, "POST", successCallback, errorCallback);
@@ -155,6 +162,11 @@ function acceptClient(param, successCallback, errorCallback) {
 //根据楼盘id获取户型列表
 function getHuxingsByHouseId(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/house/getHuxings', param, "GET", successCallback, errorCallback);
+}
+
+//根据楼盘id获取楼盘参数
+function getHouseDetailByHouseId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/house/getHouseDetail', param, "GET", successCallback, errorCallback);
 }
 
 //设置报备成交
@@ -959,6 +971,7 @@ module.exports = {
   getUserInfoByIdWithToken: getUserInfoByIdWithToken,
   getADs: getADs,
   getHouseOptions, getHouseOptions,
+  getHouseById: getHouseById,
   searchHouseByCon, searchHouseByCon,
   searchHouseByName, searchHouseByName,
   updateUserInfo: updateUserInfo,
@@ -975,6 +988,7 @@ module.exports = {
   setBaobeiDaofang: setBaobeiDaofang,
   acceptClient: acceptClient,
   getHuxingsByHouseId: getHuxingsByHouseId,
+  getHouseDetailByHouseId: getHouseDetailByHouseId,
   setBaobeiDeal: setBaobeiDeal,
   setBaobeiCanJiesuan: setBaobeiCanJiesuan,
   setBaobeiSign: setBaobeiSign,

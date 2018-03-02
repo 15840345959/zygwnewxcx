@@ -380,6 +380,23 @@ page {
   background: #f0f0f0;
 }
 
+.image_frame {
+  width: 220rpx;
+  /* height: 210rpx; */
+  height: 180rpx;
+  border-radius: 10rpx;
+  
+}
+
+.office-img-sml {
+  width: 220rpx;
+  /* height: 210rpx; */
+  height: 180rpx;
+  border-radius: 10rpx;
+  
+ 
+}
+
 .head-img-circle {
   border-radius: 50%;
 }

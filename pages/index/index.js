@@ -249,7 +249,12 @@ Page({
   // 点击房源跳转到详情页面
   clickHouse: function (e) {
     console.log("clickHouse e:" + JSON.stringify(e))
-    util.showModal("提示信息","该功能由月月负责迁移代码",null,null);
+    //util.showModal("提示信息","该功能由月月负责迁移代码",null,null);
+    var id = JSON.stringify(e.currentTarget.dataset.id)
+    var house_id = JSON.stringify(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '/pages/houseInfo/houseInfo?id=' + id + '&house_id=' + house_id
+    })
   },
   //点击广告跳转到咨询页面
   jumpZixun: function (e) {

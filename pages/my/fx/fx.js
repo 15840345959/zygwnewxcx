@@ -2,6 +2,7 @@ const util = require('../../../utils/util.js')
 
 var vm = null
 var userid; //用户id
+var token;
 Page({
 
   /**
@@ -20,6 +21,7 @@ Page({
     vm = this
     var obj = JSON.parse(options.jsonStr);
     userid = obj.id
+    token = obj.token
     console.log("数据" + JSON.stringify(obj))
     vm.setData({
       userInfo: obj,
@@ -53,7 +55,7 @@ Page({
     var id = e.currentTarget.dataset.id
     var jifen = e.currentTarget.dataset.jifen
     wx.navigateTo({
-      url: '/pages/my/fx/tj/tj?&userid=' + userid,
+      url: '/pages/my/fx/tj/tj?&userid=' + userid ,
 })
   },
 

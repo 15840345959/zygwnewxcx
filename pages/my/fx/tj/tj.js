@@ -2,6 +2,7 @@ const util = require('../../../../utils/util.js')
 
 var vm = ''
 var userid //用户id
+var token
 Page({
 
   /**
@@ -16,6 +17,7 @@ Page({
    */
   onLoad: function (options) {
     userid: options.userid
+    token:options.token
   },
   //获取推荐用户id
   re_user_id: function (e) {
@@ -38,8 +40,9 @@ Page({
     var param = {
       re_user_id: re_user_id,
       user_id: userid,
-      // user_id: re_user_id,
-      // re_user_id: userid,
+      //  user_id: re_user_id,
+      //  re_user_id: userid,
+      
 }
     util.recommUser(param, function (res) {
       console.log("点击确定" + JSON.stringify(res))
