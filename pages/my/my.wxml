@@ -70,9 +70,9 @@
           <image class="weui-grid__icon " src="../../images/shegnjianchang_icon.png " />
           <view class="weui-grid__label font-size-12 ">案场升级</view>
         </view>
-        <view class="weui-grid " hover-class="weui-grid_active ">
+        <view class="weui-grid " hover-class="weui-grid_active " catchtap='clickWhiteBook'>
           <image class="weui-grid__icon " src="../../images/tuijian_icon.png " />
-          <view class="weui-grid__label font-size-12 ">推荐</view>
+          <view class="weui-grid__label font-size-12 ">行业白皮书</view>
         </view>
         <view class="weui-grid " hover-class="weui-grid_active " catchtap='clickShop'>
           <image class="weui-grid__icon " src="../../images/shangcheng_icon.png " />
@@ -82,9 +82,9 @@
           <image class="weui-grid__icon " src="../../images/jisuanqi_icon.png " />
           <view class="weui-grid__label font-size-12 ">计算器</view>
         </view>
-        <view class="weui-grid " hover-class="weui-grid_active ">
+        <view class="weui-grid " hover-class="weui-grid_active " catchtap='clickHeZuo' >
           <image class="weui-grid__icon " src="../../images/baipishu_icon.png " />
-          <view class="weui-grid__label font-size-12 ">白皮书</view>
+          <view class="weui-grid__label font-size-12 ">合作细则</view>
         </view>
         <view class="weui-grid " hover-class="weui-grid_active " catchtap='clickQd'>
           <image class="weui-grid__icon " src="../../images/qiandao_icon.png " />

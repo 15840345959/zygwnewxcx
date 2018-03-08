@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    
+    "pages/index/zixun/zixun",
     "pages/my/qd/qd",
     "pages/my/fx/fx",
     "pages/my/fx/tj/tj",
@@ -13,6 +13,8 @@
     "pages/my/my",
     "pages/my/setMyInfo/setMyInfo",
     "pages/my/shop/shop",
+    "pages/my/whitebook/whitebook",
+    "pages/my/hezuo/hezuo",
     "pages/my/shop/spxq/spxq",
     "pages/my/calculator/calculator",
     "pages/templates/house/houseTpl",
@@ -20,6 +22,7 @@
     "pages/houseInfo/huxing/huxing",
     "pages/houseInfo/detail/detail",
     "pages/templates/baobeiTpl/baobeiTpl",
+    "pages/templates/zixunTpl/zixunTpl",
     "pages/client/setBaseInfo/setBaseInfo",
     "pages/client/daofangOpt/daofangOpt",
     "pages/client/dealOpt/dealOpt",

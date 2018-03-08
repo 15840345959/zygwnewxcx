@@ -73,6 +73,10 @@ function getMyInfo(param, successCallback, errorCallback) {
 function getADs(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/ad/getADs', param, "GET", successCallback, errorCallback);
 }
+//根据广告图的id获取资讯
+function getADById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/ad/getADById', param, "GET", successCallback, errorCallback);
+}
 
 //获取楼盘选项
 function getHouseOptions(param, successCallback, errorCallback) {
@@ -219,6 +223,11 @@ function getExchangeListByUserId(param, successCallback, errorCallback) {
 function getGoodsById(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/goods/getGoodsById', param, "GET", successCallback, errorCallback);
 }
+//合作细则
+function getTWByType(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/tw/getTWByType', param, "GET", successCallback, errorCallback);
+}
+
 
 //用户签到
 function userQDToday(param, successCallback, errorCallback) {
@@ -298,6 +307,15 @@ function judgeIsAnyNullStr() {
 //是否为手机号
 function isPoneAvailable(str) {
   var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+  if (!myreg.test(str)) {
+    return false
+  } else {
+    return true
+  }
+}
+//是否为身份证号
+function isCardIDAvailable(str) {
+  var myreg = /^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/;
   if (!myreg.test(str)) {
     return false
   } else {
@@ -970,6 +988,7 @@ module.exports = {
   loginServer: loginServer,
   getUserInfoByIdWithToken: getUserInfoByIdWithToken,
   getADs: getADs,
+  getADById:getADById,
   getHouseOptions, getHouseOptions,
   getHouseById: getHouseById,
   searchHouseByCon, searchHouseByCon,
@@ -980,6 +999,7 @@ module.exports = {
   userQDToday: userQDToday,
   getUserUpListByUserId: getUserUpListByUserId,
   userApplyUp: userApplyUp,
+  getTWByType: getTWByType,
   getListForZJByStatus: getListForZJByStatus,
   getListForACByStatus: getListForACByStatus,
   getBaobeiInfoById: getBaobeiInfoById,
@@ -1008,6 +1028,7 @@ module.exports = {
   getToday: getToday,
   getCurrentTime: getCurrentTime,
   isPoneAvailable: isPoneAvailable,
+  isCardIDAvailable:isCardIDAvailable,
   getLocalUserInfo: getLocalUserInfo,
   setBaobeiInfo: setBaobeiInfo,
   chooseImage: chooseImage,

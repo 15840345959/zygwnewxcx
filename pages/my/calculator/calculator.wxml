@@ -46,7 +46,7 @@
 
  
   <!-- 贷款总额 -->
-  <view style="height:80rpx;color:#707070;margin-left:15rpx;padding-top:20rpx;">贷款总额 （元）</view>
+  <view style="height:80rpx;color:#707070;margin-left:15rpx;padding-top:20rpx;">贷款总额 （万元）</view>
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell weui-cell_input">
 
@@ -54,6 +54,30 @@
         <input class="weui-input" bindinput='getTotal' value="{{inputTotalMoney}}" placeholder="请输入大于0的数字" />
       </view>
 
+    </view>
+  </view>
+
+   <!-- 公积金贷款总额 -->
+   <view wx:if="{{chooseLoanType[2].checked}}">
+  <view style="height:80rpx;color:#707070;margin-left:15rpx;padding-top:20rpx;">公积金贷款总额 （万元）</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__bd">
+        <input class="weui-input" bindinput='getGongJiJinMoney' value="{{inputGongJiJinMoney}}" placeholder="请输入大于0的数字" />
+      </view>
+</view>
+    </view>
+  </view>
+
+  <!-- 商业贷款总额 -->
+   <view wx:if="{{chooseLoanType[2].checked}}">
+  <view style="height:80rpx;color:#707070;margin-left:15rpx;padding-top:20rpx;">商业贷款总额 （万元）</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__bd">
+        <input class="weui-input" bindinput='getShangyeMoney' value="{{inputShangyeMoney}}" placeholder="请输入大于0的数字" />
+      </view>
+</view>
     </view>
   </view>
   <!-- 贷款年利率倍数 -->
@@ -182,6 +206,26 @@
        <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{fiveCountMonthlyPayment}}" style="border-style:none;color:red;"  />
       </view> 
+<!-- 
+组合贷类型 -->
+       <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input"  placeholder="{{}}" value="{{ZHYueGong1}}" style="border-style:none;color:red;"  />
+      </view>
+
+  <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[1].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHYueGong2}}" style="border-style:none;color:red;"  />
+      </view>
+ <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[2].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHYueGong3}}" style="border-style:none;color:red;"  />
+      </view> 
+
+       <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[3].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHYueGong4}}" style="border-style:none;color:red;"  />
+      </view> 
+
+       <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHYueGong5}}" style="border-style:none;color:red;"  />
+      </view> 
 <!-- 公积金贷款类型 -->
 <view wx:if="{{chooseLoanType[1].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputValg}}" style="border-style:none;color:red;"  />
@@ -227,6 +271,28 @@
       <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputLixi4}}" style="border-style:none;color:red;"  />
       </view>
+
+
+       <!-- 组合贷款类型 -->
+     <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHTotalLixi}}" style="border-style:none;color:red;"  />
+      </view>
+
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[1].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHTotalLixi1}}" style="border-style:none;color:red;"  />
+      </view>
+
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[2].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHTotalLixi2}}" style="border-style:none;color:red;"  />
+      </view>
+
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[3].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHTotalLixi3}}" style="border-style:none;color:red;"  />
+      </view>
+
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHTotalLixi4}}" style="border-style:none;color:red;"  />
+      </view>
       <!-- 公积金贷款类型 -->
 <view wx:if="{{chooseLoanType[1].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputLixig}}" style="border-style:none;color:red;"  />
@@ -246,6 +312,7 @@
       
      </view>
     <view  style="margin-left:25rpx; padding-top:25rpx;">本息合计 （元）
+     <!-- 商业类型 -->
      <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}"  class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputVal3}}" style="border-style:none;color:red;"  />
       </view>
@@ -264,6 +331,27 @@
       <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}"  class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputVal33333}}" style="border-style:none;color:red;"  />
       </view>
+
+       <!-- 组合贷类型 -->
+     <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}"  class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{inputVal3ZH}}" style="border-style:none;color:red;"  />
+      </view>
+     <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[1].checked}}"  class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{inputVal33ZH}}" style="border-style:none;color:red;"  />
+      </view>
+
+<view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[2].checked}}"  class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{inputVal333ZH}}" style="border-style:none;color:red;"  />
+      </view>
+
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[3].checked}}"  class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{inputVal3333ZH}}" style="border-style:none;color:red;"  />
+      </view>
+
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}"  class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{inputVal33333ZH}}" style="border-style:none;color:red;"  />
+      </view>
+      <!-- 公积金类型 -->
        <view wx:if="{{chooseLoanType[1].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}"  class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputValh}}" style="border-style:none;color:red;"  />
       </view>
@@ -285,6 +373,7 @@
   <view style="background-color:white; width:100%;height:200px;margin-top:50rpx;">
     <view style="font-size:18px; margin-left:240rpx; color:#5e7dfe;">等额本金还款</view>
     <view style="margin-left:25rpx; padding-top:15rpx;">月供 （元）
+    <!-- 商业贷款 -->
      <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{oneCountBenjinMonthlyPayment}}" style="border-style:none;color:red;"  />
       </view>
@@ -299,6 +388,24 @@
       </view>
        <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{fiveCountBenjinMonthlyPayment}}" style="border-style:none;color:red;"  />
+      </view>
+
+
+      <!-- 组合贷款 -->
+     <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHTotalBJYueGong}}" style="border-style:none;color:red;"  />
+      </view>
+       <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[1].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHTotalBJYueGong1}}" style="border-style:none;color:red;"  />
+      </view>
+       <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[2].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHTotalBJYueGong2}}" style="border-style:none;color:red;"  />
+      </view>
+       <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[3].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHTotalBJYueGong3}}" style="border-style:none;color:red;"  />
+      </view>
+       <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHTotalBJYueGong4}}" style="border-style:none;color:red;"  />
       </view>
      <!-- 公积金类型的本金月供 -->
            <view wx:if="{{chooseLoanType[1].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
@@ -318,6 +425,7 @@
       </view>
      </view>
     <view style="margin-left:25rpx; padding-top:25rpx;">每月递减 （元）
+    <!-- 商业类型 -->
      <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputVal55}}" style="border-style:none;color:red;"  />
       </view>
@@ -333,7 +441,23 @@
        <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputVal555555}}" style="border-style:none;color:red;"  />
       </view>
-
+        <!-- 组合贷款类型 -->
+     <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{TotalZHDiJian}}" style="border-style:none;color:red;"  />
+      </view>
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[1].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{TotalZHDiJian1}}" style="border-style:none;color:red;"  />
+      </view>
+       <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[2].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{TotalZHDiJian2}}" style="border-style:none;color:red;"  />
+      </view>
+       <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[3].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{TotalZHDiJian3}}" style="border-style:none;color:red;"  />
+      </view>
+       <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{TotalZHDiJian4}}" style="border-style:none;color:red;"  />
+      </view>
+<!-- 公积金类型 -->
        <view wx:if="{{chooseLoanType[1].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}" class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputValgd}}" style="border-style:none;color:red;"  />
       </view>
@@ -356,6 +480,7 @@
       </view>
      </view>
     <view style="margin-left:25rpx; padding-top:25rpx;">总利息 （元）
+    <!-- 商业类型 -->
      <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputVal7}}" style="border-style:none;color:red;"  />
       </view>
@@ -371,6 +496,24 @@
       <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputVal77777}}" style="border-style:none;color:red;"  />
       </view>
+
+       <!-- 组合贷类型 -->
+     <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{TotalZHLiXi}}" style="border-style:none;color:red;"  />
+      </view>
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[1].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{TotalZHLiXi1}}" style="border-style:none;color:red;"  />
+      </view>
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[2].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{TotalZHLiXi2}}" style="border-style:none;color:red;"  />
+      </view>
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[3].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{TotalZHLiXi3}}" style="border-style:none;color:red;"  />
+      </view>
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{TotalZHLiXi4}}" style="border-style:none;color:red;"  />
+      </view>
+      <!-- 公积金类型 -->
       <view wx:if="{{chooseLoanType[1].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputVal8}}" style="border-style:none;color:red;"  />
       </view>
@@ -389,7 +532,7 @@
       </view>
      </view>
     <view style="margin-left:25rpx; padding-top:25rpx;">本息合计 （元）
-    
+    <!-- 商业类型 -->
      <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputValshj}}" style="border-style:none;color:red;"  />
       </view>
@@ -405,6 +548,24 @@
       <view wx:if="{{chooseLoanType[0].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputValshj4}}" style="border-style:none;color:red;"  />
       </view>
+
+        <!-- 组合贷类型 -->
+     <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHBXTotal}}" style="border-style:none;color:red;"  />
+      </view>
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[1].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHBXTotal1}}" style="border-style:none;color:red;"  />
+      </view>
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[2].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHBXTotal2}}" style="border-style:none;color:red;"  />
+      </view>
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[3].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHBXTotal3}}" style="border-style:none;color:red;"  />
+      </view>
+      <view wx:if="{{chooseLoanType[2].checked && chooseCountWay[1].checked && chooseInterestRate[4].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
+        <input class="weui-input" placeholder="{{}}" value="{{ZHBXTotal4}}" style="border-style:none;color:red;"  />
+      </view>
+      <!-- 公积金类型 -->
       <view wx:if="{{chooseLoanType[1].checked && chooseCountWay[1].checked && chooseInterestRate[0].checked}}"   class="weui-cell__bd" style="margin-left:560rpx; margin-top:-60rpx;">
         <input class="weui-input" placeholder="{{}}" value="{{inputValghj}}" style="border-style:none;color:red;"  />
       </view>

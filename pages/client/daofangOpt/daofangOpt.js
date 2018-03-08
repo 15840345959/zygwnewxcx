@@ -99,6 +99,7 @@ Page({
     var param = {
       id: baobei.id,
       visit_time: vm.data.visit_date + " " + vm.data.visit_time,
+      //visit_time: vm.data.visit_time,
       visit_attach: vm.data.visit_attach
     }
     //如果没有上传照片

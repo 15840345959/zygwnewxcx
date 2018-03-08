@@ -259,7 +259,11 @@ Page({
   //点击广告跳转到咨询页面
   jumpZixun: function (e) {
     console.log("jumpZixun e:" + JSON.stringify(e))
-    util.showModal("提示信息", "该功能由月月负责迁移代码", null, null);
+   // util.showModal("提示信息", "该功能由月月负责迁移代码", null, null);
+    var id = JSON.stringify(e.currentTarget.dataset.adid)
+   wx.navigateTo({
+     url: '/pages/index/zixun/zixun?id='+id,
+   })
   },
   //输入楼盘名称
   inputSearchWord: function (e) {

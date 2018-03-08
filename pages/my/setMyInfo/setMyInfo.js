@@ -13,7 +13,9 @@ Page({
   data: {
     phonenum: "",
     real_name: "",
-    cardID: ""
+    cardID: "",
+    ID_disabled:false,
+    name_disabled: false,
   },
 
   /**
@@ -30,7 +32,8 @@ Page({
       //姓名
       if (!util.judgeIsAnyNullStr(obj.real_name)) {
         vm.setData({
-          real_name: obj.real_name
+          real_name: obj.real_name,
+            name_disabled: true
         })
       }
       //电话
@@ -42,11 +45,26 @@ Page({
       //身份证
       if (!util.judgeIsAnyNullStr(obj.cardID)) {
         vm.setData({
-          cardID: obj.cardID
+          cardID: obj.cardID,
+           ID_disabled: true
         })
+    
       }
+      
+    
+
     }
   },
+  // checkCardID:function(id){
+  //   var s="0123456789X"
+  //   for(var x=0;x<id.length;x++){
+  //      if(s.match(id[x])==null){
+  //        return false
+  //      }
+  //   }
+  //   return true;
+
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -110,7 +128,7 @@ Page({
       real_name: e.detail.value
     })
   },
-  //输入真实姓名
+  //输入身份证号
   inputCardId: function (e) {
     console.log("inputCardId e:" + JSON.stringify(e));
     this.setData({
@@ -134,6 +152,12 @@ Page({
       util.showModal('提示信息', '请输入正确的手机号码', function (ret) { }, function (ret) { });
       return;
     }
+    //身份证校验不通过
+    if (!util.isCardIDAvailable(cardID)) {
+      util.showModal('提示信息', '请输入正确的身份证号', function (ret) { }, function (ret) { });
+      return;
+    }
+  
     var param = {
       phonenum: phonenum,
       real_name: real_name,

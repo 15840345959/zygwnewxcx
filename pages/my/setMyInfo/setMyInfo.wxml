@@ -9,7 +9,12 @@
       <view class="weui-flex" style="padding-top:80px;">
         <view class="weui-flex__item">
           <view class="placeholder center-style white-bg register-input-style">
-            <input class="weui-input full-width font-size-14" disabled='true' value='{{real_name}}' placeholder="真实姓名" style='text-align: center;' bindinput='inputRealName' />
+          <block wx:if="{{name_disabled==true}}">
+            <input class="weui-input full-width font-size-14"  value='{{real_name}}' placeholder="真实姓名" style='text-align: center;' bindinput='inputRealName' disabled='true'/>
+            </block>
+            <block wx:else>
+<input class="weui-input full-width font-size-14"  value='{{real_name}}' placeholder="真实姓名" style='text-align: center;' bindinput='inputRealName'/>
+            </block>
           </view>
         </view>
       </view>
@@ -25,7 +30,12 @@
       <view class="weui-flex" style="padding-top:20px;">
         <view class="weui-flex__item">
           <view class="placeholder center-style white-bg register-input-style">
-            <input class="weui-input full-width font-size-14" type='text' disabled='true' value='{{cardID}}' placeholder="输入身份证" style='text-align: center;' bindinput='inputCardId' />
+          <block wx:if="{{ID_disabled==true}}">
+            <input   class="weui-input full-width font-size-14" type='idcard' value='{{cardID}}' placeholder="输入身份证" style='text-align: center;' bindinput='inputCardId' disabled='true'/>
+            </block>
+            <block wx:else>
+             <input class="weui-input full-width font-size-14" type='idcard' value='{{cardID}}' placeholder="输入身份证" style='text-align: center;' bindinput='inputCardId'/>
+             </block>
           </view>
         </view>
       </view>

@@ -394,7 +394,6 @@ page {
   height: 180rpx;
   border-radius: 10rpx;
   
- 
 }
 
 .head-img-circle {
