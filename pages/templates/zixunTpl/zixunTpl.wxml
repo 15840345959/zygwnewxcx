@@ -1,0 +1,49 @@
+<!--pages/templates/zixunTpl/zixunTpl.wxml-->
+<!--该模板用于资讯页展示-->
+<template name="twListIndex">
+
+  <view class="ad">
+
+    <view class="page__bd">
+      <view class="weui-article">
+        <view class="weui-article__h1">您身边的购房小知识</view>
+
+
+        <view class="weui-article__section">
+          <view class="weui-article__h3">1.1购房小技巧</view>
+          <view class="weui-article__p">
+            {{zixun.title}}
+          </view>
+          <view class="weui-article__p">
+            <!-- <image  class="tw-img" src="{{image}}" mode="aspectFit" style="height: 180px" /> -->
+            <image class="weui-article__img" src="{{image}}" mode="aspectFit" style="width:100%;height: 180px" />
+          </view>
+        </view>
+
+        <view class="weui-article__section">
+          <view class="weui-article__h3">1.2 购房指南</view>
+          <view class="weui-article__p">
+            {{twocontent}}
+          </view>
+          <view class="weui-article__p">
+            <image class="weui-article__img" src="{{image}}" mode="aspectFit" style=" width:100%;height: 180px" />
+
+          </view>
+        </view>
+
+        <view class="weui-article__section">
+          <view class="weui-article__h3">1.3 购房学问</view>
+          <view class="weui-article__p">
+            {{threecontent}}
+          </view>
+          <view class="weui-article__p">
+            <image class="weui-article__img" src="{{image}}" mode="aspectFit" style="width:100%; height: 180px" />
+
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+</template>
