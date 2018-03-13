@@ -31,7 +31,7 @@ Page({
     }
     util.getHouseDetailByHouseId(param,function(ret){
       console.log("getHouseDetailByHouseId",JSON.stringify(ret))
-      var HouseDetail=ret.data.ret
+      var HouseDetail=ret.data.ret.data
       if(ret.data.code=="200"){
         vm.setData({
           HouseDetail:HouseDetail

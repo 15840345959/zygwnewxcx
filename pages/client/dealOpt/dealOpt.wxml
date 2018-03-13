@@ -70,7 +70,7 @@
           </view>
         </view>
       </picker>
-      <picker mode="date" value="{{deal_date}}" start="2018-01-01" end="2046-03-01" bindchange="setDealDate">
+      <picker mode="date" value="{{deal_date}}" start="{{start}}" end="{{end}}" bindchange="setDealDate">
         <view class="weui-cell weui-cell_select">
           <view class="weui-cell__bd">
             <view class="weui-select font-size-14">成交日期
@@ -79,7 +79,7 @@
           </view>
         </view>
       </picker>
-      <picker mode="time" value="{{deal_time}}" start="07:00" end="21:00" bindchange="setDealTime">
+      <picker mode="time" value="{{deal_time}}" start="{{timestart}}" end="{{timeend}}" bindchange="setDealTime">
         <view class="weui-cell weui-cell_select">
           <view class="weui-cell__bd">
             <view class="weui-select font-size-14">成交时间

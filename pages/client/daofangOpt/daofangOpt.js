@@ -31,6 +31,10 @@ Page({
     baobei: {},
     visit_date: util.getToday(),
     visit_time: util.getCurrentTime(),
+    start: util.getToday(),
+    end: util.getToday(),
+    timestart: util.getCurrentTime(),
+    timeend: util.getCurrentTime(),
     visit_attach: "" //到访附件
   },
 
@@ -42,6 +46,11 @@ Page({
     console.log(JSON.stringify(options));
     var jsonStr = options.jsonStr;
     var obj = JSON.parse(options.jsonStr);
+    // var stringtime = plan_visit_time
+    // var date =new Date(stringtime)
+    // var timestamp=Data.parse(date)/1000+108000
+    // var date = new Date(timestamp)
+    // console.log("timestamp",date);
     console.log("obj:" + JSON.stringify(obj))
     baobei = obj;
     vm.setData({

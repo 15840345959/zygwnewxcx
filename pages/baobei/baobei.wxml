@@ -46,10 +46,10 @@
           </view>
         </view>
       </picker> -->
-      <picker mode="time" value="{{plan_visit_time}}" start="07:00" end="21:00" bindchange="setPlanVisitTime">
+      <picker mode="time" value="{{plan_visit_time}}" start="{{start}}" end="{{end}}" fields="day" bindchange="setPlanVisitTime">
         <view class="weui-cell weui-cell_select">
           <view class="weui-cell__bd">
-            <view class="weui-select font-size-14">预约时间
+            <view class="weui-select font-size-14">预约到访时间
               <text class='float-right grey-font text-oneline'>{{plan_visit_time}}</text>
             </view>
           </view>

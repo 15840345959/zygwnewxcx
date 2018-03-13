@@ -219,14 +219,14 @@
                 {{baobei.deal_huxing.name}}
               </view>
             </view>
-            <view class="weui-cell weui-cell_access">
+            <!-- <view class="weui-cell weui-cell_access">
               <view class="weui-cell__bd weui-cell_primary">
                 <view class='font-size-14'>分佣规则</view>
               </view>
               <view class="weui-cell__ft font-size-14">
                 {{baobei.deal_huxing.yongjin_type=="0"?"固定金额":"按比分成"}}-{{baobei.deal_huxing.yongjin_value}}{{baobei.deal_huxing.yongjin_type=="0"?"元":"‰"}}
               </view>
-            </view>
+            </view> -->
             <view class="weui-cell weui-cell_access">
               <view class="weui-cell__bd weui-cell_primary">
                 <view class='font-size-14'>付款方式</view>

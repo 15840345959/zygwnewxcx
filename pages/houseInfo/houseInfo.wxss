@@ -6,6 +6,20 @@ overflow-x: hidden;
 }
 
 .type{
- margin-left:185rpx;
- margin-top:20rpx;
+ margin-left:270rpx;
+ margin-top:15rpx;
+}
+.address {
+  /* font-family: PingFangSC-Regular; */
+  font-size: 24rpx;
+  color: #969696;
+  letter-spacing: -0.58rpx;
+  line-height: 38rpx;
+}
+
+.title {
+  /* font-family: PingFangSC-Regular; */
+  font-size: 28rpx;
+  letter-spacing: -0.58rpx;
+  line-height: 28rpx;
 }

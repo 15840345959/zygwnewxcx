@@ -13,7 +13,7 @@ Page({
       { name: '组合贷款', value: '2' },
     ],//贷款类型
     chooseCountWay: [
-      { name: '按房屋总价', value: '0' },
+      // { name: '按房屋总价', value: '0' },
       { name: '按贷款总额', value: '1', checked: true },
 
     ],//计算方式
@@ -122,6 +122,7 @@ Page({
     var inputHaveGiveMonth = this.data.inputHaveGiveMonth
     var inputShangyeMoney = (this.data.inputShangyeMoney)*10000
     var inputGongJiJinMoney = (this.data.inputGongJiJinMoney)*10000
+    var chooseLoanType = this.data.chooseLoanType
     //商业贷款的年利率倍数
     var month = 0.0343 / 12 //根据选择不同的年利率倍数所对应的年利率然后再换算成月利率
     var month1 = 0.04165 / 12
@@ -210,13 +211,13 @@ Page({
     var ZHinputValgggg = ((ZHaa3 * ZHaaa) / (ZHaaa3 - 1)).toFixed(2)
     var ZHinputValggggg = ((ZHaa4 * ZHaaa) / (ZHaaa4 - 1)).toFixed(2)
     var inputYue = inputLoanTime * 12
-
+    console.log("34567",typeof (ZHinputValg), typeof (oneZHCountMonthlyPayment) )
     //选择组合贷时的总等额本息月供
-    var ZHYueGong1 = oneZHCountMonthlyPayment + ZHinputValg
-    var ZHYueGong2 = twoZHCountMonthlyPayment + ZHinputValgg
-    var ZHYueGong3 = threeZHCountMonthlyPayment + ZHinputValggg
-    var ZHYueGong4 = fourZHCountMonthlyPayment + ZHinputValgggg
-    var ZHYueGong5 = fiveZHCountMonthlyPayment + ZHinputValggggg
+    var ZHYueGong1 = (parseFloat(oneZHCountMonthlyPayment) + parseFloat(ZHinputValg)).toFixed(2)
+    var ZHYueGong2 = (parseFloat(twoZHCountMonthlyPayment) + parseFloat(ZHinputValgg)).toFixed(2)
+    var ZHYueGong3 = (parseFloat(threeZHCountMonthlyPayment) + parseFloat(ZHinputValggg)).toFixed(2)
+    var ZHYueGong4 = (parseFloat(fourZHCountMonthlyPayment) + parseFloat(ZHinputValgggg)).toFixed(2)
+var ZHYueGong5 = (parseFloat(fiveZHCountMonthlyPayment) + parseFloat(ZHinputValggggg)).toFixed(2)
     //组合贷时的商业贷款的等额本金月供
     //每月应还本金
     var ZHbenjin = inputShangyeMoney / inputLoanMonth//每月应还本金=贷款本金/还款月数
@@ -291,11 +292,11 @@ Page({
     var inputZHLixigggg = (inputYue * ZHinputValgggg - inputGongJiJinMoney).toFixed(2)
     var inputZHLixiggggg = (inputYue * ZHinputValggggg - inputGongJiJinMoney).toFixed(2)
     //组合贷等额本息商业加上公积金的总利息
-    var ZHTotalLixi = inputZHLixi + inputZHLixig
-    var ZHTotalLixi1 = inputZHLixi + inputZHLixigg
-    var ZHTotalLixi2 = inputZHLixi + inputZHLixiggg
-    var ZHTotalLixi3 = inputZHLixi + inputZHLixigggg
-    var ZHTotalLixi4= inputZHLixi + inputZHLixiggggg
+    var ZHTotalLixi = (parseFloat(inputZHLixi) + parseFloat(inputZHLixig)).toFixed(2)
+    var ZHTotalLixi1 = (parseFloat(inputZHLixi) + parseFloat(inputZHLixigg)).toFixed(2)
+    var ZHTotalLixi2 = (parseFloat(inputZHLixi) + parseFloat(inputZHLixiggg)).toFixed(2)
+    var ZHTotalLixi3 = (parseFloat(inputZHLixi) + parseFloat(inputZHLixigggg)).toFixed(2)
+    var ZHTotalLixi4 = (parseFloat(inputZHLixi) + parseFloat(inputZHLixiggggg)).toFixed(2)
     //  公积金贷款类型总利息
     var inputLixig = (inputYue * inputValg - parseInt(inputTotalMoney)).toFixed(2)
    // console.log('666', JSON.stringify(inputLixig));
@@ -492,7 +493,7 @@ Page({
 
       return
     }
-    if (inputShangyeMoney == '') {
+    if (chooseLoanType[2].checked&&inputShangyeMoney == '') {
       wx.showModal({
         content: '请输人商业贷款金额',
         showCancel: false,

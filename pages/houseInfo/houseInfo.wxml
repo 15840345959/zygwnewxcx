@@ -1,7 +1,7 @@
 <!--pages/product/product.wxml-->
 <view class="page" style="width:100%;">
   <view style='margin-left:10rpx; padding-top:30rpx;'>
-    <image class="image_frame" src="{{houseInfo.image}}" bindtap='getVideo' mode="aspectFill"></image>
+    <image class="image1_frame" src="{{houseInfo.image}}" bindtap='getVideo' mode="aspectFill"></image>
   </view>
 
   <view style='display: flex;flex-direction: row; margin-bottom:20rpx'>
@@ -9,21 +9,21 @@
       <view class='flex-row' style='width:100%;'>
 
         <!-- 小区名 -->
-        <view class='office-title-font' style='font-weight:bold;margin-left:240rpx;margin-top:-180rpx;'>
+        <view class='title' style='font-weight:bold;margin-left:320rpx;margin-top:-220rpx;'>
           【 {{houseInfo.title}}】
         </view>
-        <view class='office-font-price' style='margin-left:500rpx;margin-top:-43rpx;;float:left;color:yellowgreen;'>均价{{houseInfo.price}}/m²</view>
+        <view class='office-font-price' style='margin-left:550rpx;margin-top:-40rpx;;float:left;color:yellowgreen;'>均价{{houseInfo.price}}元/m²</view>
         <!-- 类型 -->
         <view class="type">
           <block wx:for="{{houseType}}">
-            <view class='office-title-font' style='margin-left:70rpx;float:left; color:yellowgreen;'>{{item.name}}</view>
+            <view class='office-title-font' style='margin-left:60rpx;float:left; color:yellowgreen;'>{{item.name}}</view>
           </block>
         </view>
       </view>
       <!--楼盘的地址-->
 
-      <view class='office-title-font' style='font-weight:bold;margin-left:250rpx;margin-top:90rpx;'>
-        <image src='../../images/address.png' style='width:25rpx;height:25rpx;margin-left:10rpx;'></image>
+      <view class='address' style='font-weight:bold;margin-left:290rpx;margin-top:120rpx;'>
+        <image src='../../images/address.png' style='width:25rpx;height:25rpx;margin-left:25rpx;'></image>
         {{houseInfo.address}}
       </view>
 
@@ -32,14 +32,6 @@
   </view>
 
   <view style='width: 100%;height: 10rpx; background: #f5f5f5;'></view>
-
-
-  <!-- </view> -->
-  <!-- 户型推荐及用户评论 -->
-  <!-- <view style="width:100%;height:40px;margin-left:12px;margin-top:10px;" bindtap="clickHuXings" data-houseid="{{id}}">
-    <image class="image_frame" src="../../images/h1.png" style="width:25px;height:25px;" mode="aspectFill"></image>
-    <view style="color:black;font-size:13px;margin-left:32px;margin-top:-25px;">户型推荐</view>
-  </view> -->
   <view style="width:100%;height:80rpx;margin-left:30rpx;margin-top:9px;" bindtap="clickHouseDetail" data-houseid="{{id}}">
     <image class="image_frame" src="../../images/loupan.png" style="width:25px;height:25px;" mode="aspectFill"></image>
     <view style="color:black;font-size:13px;margin-left:75rpx;margin-top:-25px;">楼盘参数</view>
@@ -60,14 +52,11 @@
       <view class="office-info">
         <view style='display:flex;flex-direction:row;align-items:center;margin-top:0rpx;'>
 
-          <view class="text-oneline font-weight office-title-font " style='margin-left:300rpx;margin-top:-330rpx;float:left;'>{{item.type.name}}</view>
-          <view style='text-align:right;float:right;text-align:right;color:black;font-size:30rpx;margin-left:100rpx;margin-top:-330rpx;'>{{item.size_min}}m²-{{item.size_max}}m²</view>
+          <view class="text-oneline font-weight office-title-font " style='margin-left:290rpx;margin-top:-280rpx;font-size:28rpx;float:left;'>{{item.type.name}}</view>
+          <view style='text-align:right;float:right;text-align:right;color:black;font-size:30rpx;margin-left:100rpx;margin-top:-280rpx;font-size:30rpx;'>{{item.size_min}}m²-{{item.size_max}}m²</view>
         </view>
-        <!-- <view class="text-oneline office-font" style='margin-left:300rpx;margin-top:-100rpx;'>{{item.type.name}}</view> -->
-        <view class="text-oneline office-font" style='margin-left:40rpx;margin-top:10px;color:red;'>{{item.price}}</view>
-        <view class="text-oneline  office-font" style='margin-left:10rpx;'>{{size}}</view>
-        <view class="text-oneline  office-font" style='margin-left:500rpx;;margin-top:-58rpx;'>佣金 {{item.yongjin_value}}元</view>
-        <!-- <view class="text-oneline margin-bottom-5 office-font margin-top-5" style='margin-left:10rpx;'>{{desc}}</view> -->
+        <view class="text-oneline  office-font" style='margin-left:360rpx;;margin-top:-68rpx;color:yellowgreen ;'>佣金 {{item.yongjin_value}}元</view>
+      
       </view>
     </view>
     <view style='width: 100%;height: 6rpx; background: #f5f5f5;'></view>

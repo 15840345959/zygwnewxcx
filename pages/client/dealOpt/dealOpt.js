@@ -25,6 +25,10 @@ Page({
     deal_size: 0,
     deal_price: 0,
     deal_room: "",
+    start: util.getToday(),
+    end: util.getToday(),
+    timestart: util.getCurrentTime(),
+    timestart: util.getCurrentTime(),
   },
 
   /**

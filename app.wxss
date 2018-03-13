@@ -388,6 +388,15 @@ page {
   
 }
 
+
+.image1_frame {
+  width: 330rpx;
+  /* height: 210rpx; */
+  height: 220rpx;
+  border-radius: 10rpx;
+  
+}
+
 .office-img-sml {
   width: 220rpx;
   /* height: 210rpx; */

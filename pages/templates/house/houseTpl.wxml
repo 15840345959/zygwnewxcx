@@ -4,12 +4,11 @@
     <view class="house-img">
       <image src="{{image}}?imageView2/1/w/480/h/4400/interlace/1/q/75" class="house-img-sml" mode="aspectFill"></image>
     </view>
-
     <view class="house-info">
       <view style='display:flex;flex-direction:row;align-items:center;' class='margin-top-10'>
-
         <view class="text-oneline font-weight house-title-font" style='margin-left:10rpx;float:left; width:240rpx;'>{{title}}</view>
-        <view style='text-align:right;float:right; color:#ffcc00;font-size:30rpx;margin-top:0rpx;'>{{price}}元/㎡</view>
+        <!-- <view style='text-align:right;float:right; color:#ffcc00;font-size:30rpx;margin-top:0rpx;'>{{price}}元/㎡</view> -->
+             <view style='text-align:right;float:right; color:yellowgreen;font-size:30rpx;font-weight:bold;margin-top:0rpx;'>{{price}}元/㎡</view>
       </view>
       <view class="text-oneline margin-bottom-5 house-font margin-top-10" style='margin-left:10rpx;'>面积:{{size_min}}㎡至{{size_max}}㎡</view>
 

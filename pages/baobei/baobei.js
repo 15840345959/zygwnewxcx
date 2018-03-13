@@ -19,6 +19,7 @@ Page({
     house: "",  //意向楼盘id
     plan_visit_date: "", //计划到访日期
     plan_visit_time: "", //计划到访时间
+    start:"",//开始时间
     visit_way: "", //到访方式
   },
 
@@ -33,7 +34,9 @@ Page({
       visit_way_option: visit_way_option,
       visit_way: visit_way_option[0],
       plan_visit_date: util.getToday(),
-      plan_visit_time: util.getCurrentTime()
+      plan_visit_time: util.getCurrentTime(),
+      start: util.getCurrentTime(),
+     // end: util.getCurrentTime()+,
     });
 
 
