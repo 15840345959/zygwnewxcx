@@ -90,6 +90,19 @@ Page({
       url: '/pages/baobei/baobei',
     })
   },
+  bindButtonTap: function () {
+    var that = this
+    wx.chooseVideo({
+      sourceType: ['album', 'camera'],
+      maxDuration: 60,
+      camera: 'back',
+      success: function (res) {
+        that.setData({
+          src: res.tempFilePath
+        })
+      }
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

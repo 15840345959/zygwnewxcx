@@ -33,8 +33,8 @@ Page({
     visit_time: util.getCurrentTime(),
     start: util.getToday(),
     end: util.getToday(),
-    timestart: util.getCurrentTime(),
-    timeend: util.getCurrentTime(),
+    //timestart: util.getCurrentTime(),
+    //timeend: util.getCurrentTime(),
     visit_attach: "" //到访附件
   },
 
@@ -43,7 +43,7 @@ Page({
    */
   onLoad: function (options) {
     vm = this;
-    console.log(JSON.stringify(options));
+   // console.log(JSON.stringify(options));
     var jsonStr = options.jsonStr;
     var obj = JSON.parse(options.jsonStr);
     // var stringtime = plan_visit_time
@@ -51,7 +51,7 @@ Page({
     // var timestamp=Data.parse(date)/1000+108000
     // var date = new Date(timestamp)
     // console.log("timestamp",date);
-    console.log("obj:" + JSON.stringify(obj))
+   // console.log("obj:" + JSON.stringify(obj))
     baobei = obj;
     vm.setData({
       baobei: baobei
@@ -121,7 +121,10 @@ Page({
       if (ret.data.code == "200" && ret.data.result) {
         util.showToast("成功到访");
         util.navigateBack(1);
+      } else {
+        util.showModal("到访失败", ret.data.message, function (ret) { }, function (ret) { });
       }
+      console.log("setBaobeiDaofang",JSON.stringify(ret))
     }, null);
 
   },

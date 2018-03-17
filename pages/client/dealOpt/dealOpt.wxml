@@ -79,7 +79,7 @@
           </view>
         </view>
       </picker>
-      <picker mode="time" value="{{deal_time}}" start="{{timestart}}" end="{{timeend}}" bindchange="setDealTime">
+      <picker mode="time" value="{{deal_time}}" start="{{}}" end="{{}}" bindchange="setDealTime">
         <view class="weui-cell weui-cell_select">
           <view class="weui-cell__bd">
             <view class="weui-select font-size-14">成交时间

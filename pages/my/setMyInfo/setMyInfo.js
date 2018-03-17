@@ -157,6 +157,13 @@ Page({
       util.showModal('提示信息', '请输入正确的身份证号', function (ret) { }, function (ret) { });
       return;
     }
+
+    //用户姓名不通过
+    if (!util.isNameAvailable(real_name)) {
+      util.showModal('提示信息', '您提交的姓名不符合标准', function (ret) { }, function (ret) { });
+      return;
+    }
+
   
     var param = {
       phonenum: phonenum,

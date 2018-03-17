@@ -1,7 +1,9 @@
 <!--pages/product/product.wxml-->
 <view class="page" style="width:100%;">
   <view style='margin-left:10rpx; padding-top:30rpx;'>
-    <image class="image1_frame" src="{{houseInfo.image}}" bindtap='getVideo' mode="aspectFill"></image>
+    <video class="image1_frame" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" poster="{{houseInfo.image}}" controls='true' mode="aspectFill"></video>
+    <!-- <image class="image1_frame" src="{{houseInfo.image}}" bindtap='getVideo' mode="aspectFill"></image> -->
+    
   </view>
 
   <view style='display: flex;flex-direction: row; margin-bottom:20rpx'>
@@ -78,7 +80,7 @@
   </block>
   <view class='product-down-line'></view>
 
-  <button bindtap="jumpBaobei" style='background-color:yellowgreen;color:white;' hover-class="other-button-hover"> 报备客户 </button>
+  <button bindtap="jumpBaobei" style='background-color:yellowgreen;color:white;position:fixed;bottom:20rpx;' class="full-width" hover-class="other-button-hover"> 报备客户 </button>
 
 
 

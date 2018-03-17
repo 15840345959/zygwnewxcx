@@ -50,7 +50,7 @@
                   </view>
                   <view class="weui-form-preview__item">
                     <view class="weui-form-preview__label">交易时间</view>
-                    <view class="weui-form-preview__value">{{item.goods.updated_at}}</view>
+                    <view class="weui-form-preview__value">{{item.created_at}}</view>
                   </view>
 
                 </view>

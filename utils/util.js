@@ -323,6 +323,16 @@ function isCardIDAvailable(str) {
   }
 }
 
+//是否为身份证号
+function isNameAvailable(str) {
+  var myreg = /^[\u4E00-\u9FA5]{2,4}$/;
+  if (!myreg.test(str)) {
+    return false
+  } else {
+    return true
+  }
+}
+
 
 //展示toast
 function showToast(msg, img) {
@@ -543,16 +553,16 @@ function setBaobeiInfo(baobei) {
   baobei.created_at_str = baobei.created_at.split(" ")[0];
   //报备信息
   if (baobei.baobei_status_int >= 0) {
-    baobei.plan_visit_time_str = baobei.plan_visit_time.split(" ")[0];
+    baobei.plan_visit_time_str = baobei.plan_visit_time;
     baobei.visit_way_str = getVisitWayStr(baobei.visit_way);
   }
   //到访信息
   if (baobei.baobei_status_int >= 1) {
-    baobei.visit_time_str = baobei.visit_time.split(" ")[0];
+    baobei.visit_time_str = baobei.visit_time;
   }
   //成交信息
   if (baobei.baobei_status_int >= 2) {
-    baobei.deal_time_str = baobei.deal_time.split(" ")[0];
+    baobei.deal_time_str = baobei.deal_time;
     baobei.deal_price_str = fmoney(baobei.deal_price,2);
     baobei.deal_price_chi = smalltoBIG(baobei.deal_price);
   }
@@ -1029,6 +1039,7 @@ module.exports = {
   getCurrentTime: getCurrentTime,
   isPoneAvailable: isPoneAvailable,
   isCardIDAvailable:isCardIDAvailable,
+  isNameAvailable: isNameAvailable,
   getLocalUserInfo: getLocalUserInfo,
   setBaobeiInfo: setBaobeiInfo,
   chooseImage: chooseImage,

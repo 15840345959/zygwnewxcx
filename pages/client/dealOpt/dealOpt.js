@@ -27,8 +27,8 @@ Page({
     deal_room: "",
     start: util.getToday(),
     end: util.getToday(),
-    timestart: util.getCurrentTime(),
-    timestart: util.getCurrentTime(),
+    //    timestart: util.getCurrentTime(),
+    //timestart: util.getCurrentTime(),
   },
 
   /**
@@ -179,6 +179,8 @@ Page({
       if (ret.data.code == "200" && ret.data.result) {
         util.showToast("报备成功");
         util.navigateBack(1);
+      } else {
+        util.showModal("成交失败", ret.data.message, function (ret) { }, function (ret) { });
       }
     }, null);
 

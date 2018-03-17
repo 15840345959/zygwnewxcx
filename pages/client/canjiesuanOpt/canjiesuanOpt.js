@@ -18,6 +18,9 @@ Page({
     baobei: {},
     canJiesuan_date: util.getToday(),
     canJiesuan_time: util.getCurrentTime(),
+    start: util.getToday(),
+    end: util.getToday(),
+    timeend: util.getCurrentTime(),
   },
 
   /**
