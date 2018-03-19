@@ -27,7 +27,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log('----' + JSON.stringify(options))
     vm = this;
     //初始化
     vm.setData({
@@ -36,8 +36,11 @@ Page({
       plan_visit_date: util.getToday(),
       plan_visit_time: util.getCurrentTime(),
       start: util.getCurrentTime(),
+      house_id: options.house_id,
+      title:options.title
      // end: util.getCurrentTime()+,
     });
+    console.log("house_id",JSON.stringify(vm.data.house_id))
 
 
   },
@@ -120,6 +123,14 @@ Page({
       name: e.detail.value
     })
   },
+
+  getHouse:function(e){
+    console.log("getHouse e:" + JSON.stringify(e));
+    this.setData({
+      title: vm.data.title
+    })
+  },
+
   //设置客户手机号
   inputPhonenum: function (e) {
     console.log("inputPhonenum e:" + JSON.stringify(e));
@@ -151,7 +162,7 @@ Page({
     var house_id = vm.data.house.id;
     var plan_visit_time = vm.data.plan_visit_date + " " + vm.data.plan_visit_time;
     var visit_way = vm.data.visit_way.value;
-
+    var house_id = vm.data.house_id
     var param = {
       name: name,
       phonenum: phonenum,

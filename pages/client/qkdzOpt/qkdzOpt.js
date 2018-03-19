@@ -63,6 +63,9 @@ Page({
         util.showToast("设置成功");
         util.navigateBack(1);
       }
+      else {
+        util.showModal("全款到账失败", ret.data.message, function (ret) { }, function (ret) { });
+      }
     }, null);
 
   },

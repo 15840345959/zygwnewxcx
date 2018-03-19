@@ -35,7 +35,7 @@ Page({
       id:vm.data.id
     }
     util.getHouseById(param,function(ret){
-      console.log("getHouseById",JSON.stringify(ret))
+      console.log("getHouseById", JSON.stringify(ret.data.ret))
       var houseInfo=ret.data.ret
       var houseType =ret.data.ret.types
       console.log("houseType", JSON.stringify(houseType))
@@ -84,10 +84,14 @@ Page({
       url: '/pages/houseInfo/detail/detail?house_id='+house_id,
     })
   },
-
+//点击跳到报备页面
   jumpBaobei:function(e){
+    var house_id = e.currentTarget.dataset.houseid
+    var title = e.currentTarget.dataset.housename
+    console.log("house_id", JSON.stringify(e))
+    console.log("title", JSON.stringify(title))
     wx.navigateTo({
-      url: '/pages/baobei/baobei',
+      url: '/pages/baobei/baobei?house_id='+house_id+'&title='+title,
     })
   },
   bindButtonTap: function () {
