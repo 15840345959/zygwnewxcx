@@ -39,6 +39,7 @@ Page({
           zixun: zixun,
           zixunsteps: zixunsteps
         })
+       
         console.log("data",JSON.stringify(vm.data.zixun))
       }
     })
@@ -87,10 +88,12 @@ Page({
   
   },
 
+
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
   
   }
+  
 })

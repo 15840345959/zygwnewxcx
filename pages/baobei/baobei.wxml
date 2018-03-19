@@ -31,9 +31,10 @@
     <view class="weui-cells__title">报备信息</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_select">
-        <view class="weui-cell__bd" catchtap='setHouse'>
-          <view class="weui-select font-size-14">意向楼盘
-            <text class='float-right grey-font text-oneline'>{{house?house.title:"请选择"}}</text>
+        <view class="weui-cell__bd" catchtap='setHouse' bindtap='getHouse' data-houseid='{{id}}'>
+          <view class="weui-select font-size-14" >意向楼盘{{title}}
+           <text class='float-right grey-font text-oneline' >{{house?house.title:"请选择"}}</text> 
+        
           </view>
         </view>
       </view>

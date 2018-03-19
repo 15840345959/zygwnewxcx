@@ -72,7 +72,7 @@ Page({
   //输入贷款总额
   getTotal: function (e) {
     console.log("输入框的文字" + e.detail.value)
-    var inputTotalMoney = e.detail.value
+    var inputTotalMoney = (e.detail.value)
     this.setData({
       inputTotalMoney: inputTotalMoney
     })
@@ -117,11 +117,11 @@ Page({
   jumpJisuan: function (e) {
     var inputLoanTime = this.data.inputLoanTime
     var inputLoanMonth = inputLoanTime * 12   //按照月数 年*12
-    var inputTotalMoney = (this.data.inputTotalMoney)*10000
-    var inputHouseTotal = (this.data.inputHouseTotal)*10000
+    var inputTotalMoney = (this.data.inputTotalMoney)
+    var inputHouseTotal = (this.data.inputHouseTotal)
     var inputHaveGiveMonth = this.data.inputHaveGiveMonth
-    var inputShangyeMoney = (this.data.inputShangyeMoney)*10000
-    var inputGongJiJinMoney = (this.data.inputGongJiJinMoney)*10000
+    var inputShangyeMoney = (this.data.inputShangyeMoney)
+    var inputGongJiJinMoney = (this.data.inputGongJiJinMoney)
     var chooseLoanType = this.data.chooseLoanType
     //商业贷款的年利率倍数
     var month = 0.0343 / 12 //根据选择不同的年利率倍数所对应的年利率然后再换算成月利率
@@ -161,8 +161,8 @@ Page({
     var benjin = inputTotalMoney / inputLoanMonth//每月应还本金=贷款本金/还款月数
     var zbenjin = benjin * inputHaveGiveMonth //每月应还本金*以还款月数
 
-    var oneCountBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month).toFixed(2)   //商业贷款等额本金每月月供额
-    var twoCountBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month1).toFixed(2)
+    var oneCountBenjinMonthlyPayment = (parseFloat(inputTotalMoney / inputLoanMonth) + (parseFloat(inputTotalMoney) - parseInt(zbenjin)) * month).toFixed(2)   //商业贷款等额本金每月月供额
+    var twoCountBenjinMonthlyPayment = (parseFloat(inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month1).toFixed(2)
     var threeCountBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month2).toFixed(2)
     var fourCountBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month3).toFixed(2)
     var fiveCountBenjinMonthlyPayment = ((inputTotalMoney / inputLoanMonth) + (parseInt(inputTotalMoney) - parseInt(zbenjin)) * month4).toFixed(2)

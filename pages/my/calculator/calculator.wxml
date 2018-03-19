@@ -46,20 +46,18 @@
 
  
   <!-- 贷款总额 -->
-  <view style="height:80rpx;color:#707070;margin-left:15rpx;padding-top:20rpx;">贷款总额 （万元）</view>
+  <view style="height:80rpx;color:#707070;margin-left:15rpx;padding-top:20rpx;">贷款总额 （元）</view>
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell weui-cell_input">
-
       <view class="weui-cell__bd">
         <input class="weui-input" bindinput='getTotal' value="{{inputTotalMoney}}" placeholder="请输入大于0的数字" />
       </view>
-
     </view>
   </view>
 
    <!-- 公积金贷款总额 -->
    <view wx:if="{{chooseLoanType[2].checked}}">
-  <view style="height:80rpx;color:#707070;margin-left:15rpx;padding-top:20rpx;">公积金贷款总额 （万元）</view>
+  <view style="height:80rpx;color:#707070;margin-left:15rpx;padding-top:20rpx;">公积金贷款总额 （元）</view>
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__bd">
@@ -71,7 +69,7 @@
 
   <!-- 商业贷款总额 -->
    <view wx:if="{{chooseLoanType[2].checked}}">
-  <view style="height:80rpx;color:#707070;margin-left:15rpx;padding-top:20rpx;">商业贷款总额 （万元）</view>
+  <view style="height:80rpx;color:#707070;margin-left:15rpx;padding-top:20rpx;">商业贷款总额 （元）</view>
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__bd">
