@@ -16,10 +16,10 @@ Page({
   data: {
     name: "",    //客户姓名
     phonenum: "",  //电话
-    house: "",  //意向楼盘id
+    house: "",  //意向楼盘
     plan_visit_date: "", //计划到访日期
     plan_visit_time: "", //计划到访时间
-    start:"",//开始时间
+    start: "",//开始时间
     visit_way: "", //到访方式
   },
 
@@ -27,8 +27,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('----' + JSON.stringify(options))
     vm = this;
+    console.log('onLoad options:' + options.jsonStr)
+    console.log('current_time:' + util.getCurrentTime())
+    //如果页面传入house值
+    if (!util.judgeIsAnyNullStr(options.jsonStr)) {
+      console.log("set house default info");
+      var house = JSON.parse(options.jsonStr);
+      console.log("house:"+JSON.stringify(house))
+      vm.setData({
+        house: JSON.parse(options.jsonStr)
+      })
+      // console.log("vm.data.house:" + vm.data.house);
+    }
     //初始化
     vm.setData({
       visit_way_option: visit_way_option,
@@ -36,13 +47,8 @@ Page({
       plan_visit_date: util.getToday(),
       plan_visit_time: util.getCurrentTime(),
       start: util.getCurrentTime(),
-     // house_id: options.house_id,
-     // title:options.title
-     // end: util.getCurrentTime()+,
+      end: '22:00'
     });
-    console.log("house_id",JSON.stringify(vm.data.house_id))
-
-
   },
 
   /**
@@ -124,13 +130,6 @@ Page({
     })
   },
 
-  // getHouse:function(e){
-  //   console.log("getHouse e:" + JSON.stringify(e));
-  //   this.setData({
-  //     title: vm.data.title
-  //   })
-  // },
-
   //设置客户手机号
   inputPhonenum: function (e) {
     console.log("inputPhonenum e:" + JSON.stringify(e));
@@ -162,7 +161,7 @@ Page({
     var house_id = vm.data.house.id;
     var plan_visit_time = vm.data.plan_visit_date + " " + vm.data.plan_visit_time;
     var visit_way = vm.data.visit_way.value;
-   // var house_id = vm.data.house_id
+    // var house_id = vm.data.house_id
     var param = {
       name: name,
       phonenum: phonenum,
