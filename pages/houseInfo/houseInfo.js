@@ -86,12 +86,10 @@ Page({
   },
 //点击跳到报备页面
   jumpBaobei:function(e){
-    var house_id = e.currentTarget.dataset.houseid
-    var title = e.currentTarget.dataset.housename
-    console.log("house_id", JSON.stringify(e))
-    console.log("title", JSON.stringify(title))
+
+    console.log("jumpBaobei houseInfo:"+JSON.stringify(vm.data.houseInfo));
     wx.navigateTo({
-      url: '/pages/baobei/baobei?house_id='+house_id+'&title='+title,
+      url: '/pages/baobei/baobei?jsonStr='+JSON.stringify(vm.data.houseInfo),
     })
   },
   bindButtonTap: function () {
