@@ -13,7 +13,7 @@
            <view class="weui-article__p">
             {{item.text}}
           </view>
-            <image class="weui-article__img" src="{{item.img}}" mode="aspectFit" style="width:100%;height: 180px" />
+            <image class="weui-article__img" src="{{item.img}}" mode="aspectFit" bindtap='getImageInfo' style="width:100%;height: 180px" />
             </block>
           </view>
         </view>

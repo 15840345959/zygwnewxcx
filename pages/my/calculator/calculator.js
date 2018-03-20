@@ -691,13 +691,17 @@ var ZHYueGong5 = (parseFloat(fiveZHCountMonthlyPayment) + parseFloat(ZHinputValg
       chooseInterestRate: chooseInterestRate
     });
   },
+  //页面加载
+  onLoad: function () {
+  
+  },
   //展示
   onShow: function () {
    
   },
   //下拉刷新
 onPullDownRefresh:function(){
-
+ 
 },
 
   getClear: function (e) {

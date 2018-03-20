@@ -62,6 +62,8 @@ Page({
       if (ret.data.code == "200" && ret.data.result) {
         util.showToast("设置成功");
         util.navigateBack(1);
+      } else {
+        util.showModal("签约失败", ret.data.message, function (ret) { }, function (ret) { });
       }
     }, null);
 

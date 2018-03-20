@@ -22,7 +22,7 @@
 
   <view style="width:100%;height:25px;">
    
-    <view style="margin-left:15px;margin-top:5px;">户型优惠：{{item.benefit}}</view>
+    <view style="margin-left:15px;margin-top:5px;">户型优点：{{item.benefit}}</view>
   </view>
   <view style='width: 100%;height: 6rpx; background: #f4f4f4;'></view>
   <view style="width:100%;height:25px;">

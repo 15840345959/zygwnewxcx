@@ -323,7 +323,7 @@ function isCardIDAvailable(str) {
   }
 }
 
-//是否为身份证号
+//是否为姓名的正确格式
 function isNameAvailable(str) {
   var myreg = /^[\u4E00-\u9FA5]{2,4}$/;
   if (!myreg.test(str)) {

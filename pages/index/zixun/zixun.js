@@ -11,7 +11,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    zixun:[]
+    zixun:[],
+    zixunsteps: [
+    ]
   },
 
   /**
@@ -23,7 +25,7 @@ Page({
       id:options.id
     })
     vm.getZiXunInfo()//获取轮播图下的资讯   
-  
+   
   },
   getZiXunInfo:function(){
     var param={
@@ -40,10 +42,30 @@ Page({
           zixunsteps: zixunsteps
         })
        
+        wx.getImageInfo({
+          src: '{{item.img}}',
+          success: function (res) {
+            console.log(res.width)
+            console.log(res.height)
+          }
+        })
         console.log("data",JSON.stringify(vm.data.zixun))
       }
     })
   },
+  // getImageInfo:function(e){
+
+  //   wx.previewImage({
+  //     current: zixunsteps.img[0],     //当前图片地址
+  //     urls: imgArr,               //所有要预览的图片的地址集合 数组形式
+  //     success: function (res) { },
+  //     fail: function (res) { },
+  //     complete: function (res) { },
+  //   })
+
+  // },
+
+ 
 
 
   /**

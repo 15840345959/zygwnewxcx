@@ -148,7 +148,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    vm.getHouseInfoById()//根据楼盘id获取楼盘的详细信息
   },
 
   /**

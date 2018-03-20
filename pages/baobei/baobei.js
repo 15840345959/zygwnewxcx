@@ -124,13 +124,6 @@ Page({
     })
   },
 
-  // getHouse:function(e){
-  //   console.log("getHouse e:" + JSON.stringify(e));
-  //   this.setData({
-  //     title: vm.data.title
-  //   })
-  // },
-
   //设置客户手机号
   inputPhonenum: function (e) {
     console.log("inputPhonenum e:" + JSON.stringify(e));
@@ -147,6 +140,10 @@ Page({
     //客户基本信息校验
     if (util.judgeIsAnyNullStr(name) || util.judgeIsAnyNullStr(phonenum)) {
       util.showModal('提示信息', '请填写客户相关信息', function (ret) { }, function (ret) { });
+      return;
+    }
+    if (!util.isNameAvailable(name)){
+      util.showModal('提示信息', '请输入正确的姓名', function (ret) { }, function (ret) { });
       return;
     }
     //判断手机号是否正确
