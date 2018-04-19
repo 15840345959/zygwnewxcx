@@ -167,6 +167,9 @@ function acceptClient(param, successCallback, errorCallback) {
 function getHuxingsByHouseId(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/house/getHuxings', param, "GET", successCallback, errorCallback);
 }
+function getHuxingsByHuXingId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/huxing/getById', param, "GET", successCallback, errorCallback);
+}
 
 //根据楼盘id获取楼盘参数
 function getHouseDetailByHouseId(param, successCallback, errorCallback) {
@@ -1018,6 +1021,7 @@ module.exports = {
   setBaobeiDaofang: setBaobeiDaofang,
   acceptClient: acceptClient,
   getHuxingsByHouseId: getHuxingsByHouseId,
+  getHuxingsByHuXingId: getHuxingsByHuXingId,
   getHouseDetailByHouseId: getHouseDetailByHouseId,
   setBaobeiDeal: setBaobeiDeal,
   setBaobeiCanJiesuan: setBaobeiCanJiesuan,

@@ -61,7 +61,7 @@
   -webkit-flex:auto;
   flex:auto;
   background:#fff;
-  border:1rpx solid #e6e6ea;
+  border:1rpx solid #ff6e33;
   border-radius: 10rpx;
   height:80rpx;
   line-height: 80rpx;

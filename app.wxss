@@ -10,13 +10,15 @@ page {
   background-color: #f8f8f8;
 }
 
+
+
 .page {
   background-color: #f8f8f8;
   height: 100%;
 }
 
 .main-bg {
-  background: #5e7dfe;
+  background: #ff6e33;
 }
 
 .full-width {
@@ -303,6 +305,9 @@ page {
 .grey-font {
   color: #888;
 }
+.grey1-font {
+  color: #999999;
+}
 
 .center-style {
   display: flex;
@@ -336,8 +341,8 @@ page {
 }
 
 .opt-icon-nor {
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
 }
 
 .opt-icon-28 {
@@ -390,9 +395,9 @@ page {
 
 
 .image1_frame {
-  width: 330rpx;
+  width: 700rpx;
   /* height: 210rpx; */
-  height: 220rpx;
+  height: 320rpx;
   border-radius: 10rpx;
   
 }
@@ -402,6 +407,17 @@ page {
   /* height: 210rpx; */
   height: 180rpx;
   border-radius: 10rpx;
+  
+}
+
+.office2-img-sml {
+  width: 92%;
+  /* height: 210rpx; */
+  height: 180rpx;
+  border-radius: 10rpx;
+   padding-left:15rpx;
+  padding-right:15rpx; 
+  padding-top:10px;
   
 }
 
@@ -564,7 +580,7 @@ page {
 }
 
 .aui-text-primary {
-  color: #00bcd4 !important;
+  color: #ff6e33 !important;
 }
 
 .aui-text-success {
@@ -572,7 +588,11 @@ page {
 }
 
 .aui-text-info {
-  color: #03a9f4 !important;
+  color: #ff6e33 !important;
+}
+
+.aui1-text-info {
+  color: #ff6e33 !important;
 }
 
 .aui-text-warning {

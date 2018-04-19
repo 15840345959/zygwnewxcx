@@ -1,1 +1,5 @@
 /* pages/client/baobeiOpt/baobeiOpt.wxss */
+.bpage{
+  width:100%;
+   background-color: white;
+}

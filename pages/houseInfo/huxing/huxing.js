@@ -19,23 +19,23 @@ Page({
    */
   onLoad: function (options) {
     vm=this
-    console.log("house_id", JSON.stringify(options))    
+    console.log("huxing_id", JSON.stringify(options))    
     vm.setData({
-      house_id:options.house_id
+      huxing_id:options.huxing_id
     })
-    console.log("house_id", JSON.stringify(vm.data.house_id))
+    console.log("huxing_id", JSON.stringify(vm.data.huxing_id))
     vm.getHouseHuXings()//获取楼盘下的户型
   },
 
   getHouseHuXings:function(e){
     var param={
-      house_id:vm.data.house_id
+      huxing_id: vm.data.huxing_id
     }
-    util.getHuxingsByHouseId(param,function(ret){
-      console.log("getHuxingsByHouseId",JSON.stringify(ret))
+    util.getHuxingsByHuXingId(param,function(ret){
+      console.log("getHuxingsByHuXingId",JSON.stringify(ret))
       var HuXingInfo=ret.data.ret
       // var HuXingType=ret.data.ret.type
-      // console.log("HuXingType", JSON.stringify(HuXingType))
+      console.log("HuXingInfo", JSON.stringify(HuXingInfo))
       if(ret.data.code=="200"){
         vm.setData({
           HuXingInfo:HuXingInfo,

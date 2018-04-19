@@ -8,8 +8,8 @@
           <view class="bar-img weui-flex__item padding-top-5">
             <input class="weui-input font-size-14" placeholder="请输入楼盘名" style='text-align: left;' bindinput='inputSearchWord' />
           </view>
-          <view class="bar-img weui-flex__item text-right padding-top-5">
-            <image src="/images/search_icon.png" class="opt-icon-18" catchtap='clickSearch'></image>
+          <view class="bar-img weui-flex__item text-right padding-top-10">
+            <image src="/images/search1.png" class="opt-icon-18" catchtap='clickSearch'></image>
           </view>
         </view>
       </view>
@@ -32,7 +32,7 @@
           <view class="placeholder" style='text-align: center;'>
             <picker bindchange="setAreaOption" mode='selector' range="{{area_option}}" range-key="name">
               <text class='font-size-14'>{{area_text}}</text>
-              <image src='../../images/down_arrow.png' class='margin-left-10 opt-icon-12'></image>
+              <image src='../../images/down.png' class='margin-left-10 opt-icon-12'></image>
             </picker>
           </view>
         </view>
@@ -40,7 +40,7 @@
           <view class="placeholder" style='text-align: center;'>
             <picker bindchange="setTypeOption" mode='selector' range="{{type_option}}" range-key="name">
               <text class='font-size-14'>{{type_text}}</text>
-              <image src='../../images/down_arrow.png' class='margin-left-10 opt-icon-12'></image>
+              <image src='../../images/down.png' class='margin-left-10 opt-icon-12'></image>
             </picker>
           </view>
         </view>
@@ -48,7 +48,7 @@
           <view class="placeholder" style='text-align: center;'>
             <picker bindchange="setLabelOption" mode='selector' range="{{label_option}}" range-key="name">
               <text class='font-size-14'>{{label_text}}</text>
-              <image src='../../images/down_arrow.png' class='margin-left-10 opt-icon-12'></image>
+              <image src='../../images/down.png' class='margin-left-10 opt-icon-12'></image>
             </picker>
           </view>
         </view>
@@ -69,6 +69,6 @@
     </view>
   </view>
   <view style='position:fixed;right:10px;bottom:30px;'>
-    <image src='../../images/baobei_button.png' style='width:120rpx;height:120rpx;' catchtap='clickBaobeiBtn'></image>
+    <image src='../../images/baobei.png' style='width:120rpx;height:120rpx;' catchtap='clickBaobeiBtn'></image>
   </view>
 </view>

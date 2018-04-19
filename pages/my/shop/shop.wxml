@@ -1,7 +1,7 @@
-<view class="page">
-  <view class="page__bd">
-    <view class="weui-tab">
-      <view class="weui-navbar" style='background-color:white'>
+<view class="page" style="background-image:url('{{pic}}');">
+  <view class="page__bd" style='width:100%;heigth:100%;'>
+    <view class="weui-tab" style='width:100%;heigth:100%;'>
+      <view class="weui-navbar" style='background-color:ff898f;'>
         <block wx:for="{{tabs}}" wx:key="*this">
           <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
             <view class="weui-navbar__title">{{item}}</view>
@@ -11,10 +11,11 @@
       <view class="weui-tab__panel" style='padding:10rpx'>
         <!-- 商品列表 -->
         <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-          <view class='top-jifen'>我的积分:{{ijifen}} </view>
+          <view class='top-jifen'>我的积分:{{ijifen}}
+           </view>
           <block wx:for="{{datalist}}">
-            <view catchtap="jumpJf" data-id="{{item.id}}" data-jifen="{{item.jifen}}" class='sp-list'>
-              <image src='{{item.image}}?imageView1/1/w/120/h/80/interlace/1/q/75|imageslim' style='width:100%;height:270rpx;;'></image>
+            <view catchtap="jumpJf" data-id="{{item.id}}" data-jifen="{{item.jifen}}" class='sp-list' >
+               <image src='{{item.image}}?imageView1/1/w/120/h/80/interlace/1/q/75|imageslim' style='width:100%;height:270rpx;;'></image> 
               <view class='titl-style'>
                 {{item.name}}</view>
               <view class='titl-style' style='color:#838383'>
@@ -33,9 +34,9 @@
         </view>
 
         <!-- 兑换记录 -->
-        <view class="weui-tab__content" hidden="{{activeIndex != 1}}" style='padding-top:90rpx'>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}" style=''>
           <block wx:for="{{mylist}}">
-            <view class="page__bd" style='margin-top:5px'>
+            <view class="page__bd" style='margin-top:5px;'>
               <view class="weui-form-preview">
                 <view class="weui-form-preview__hd">
                   <view class="weui-form-preview__item">

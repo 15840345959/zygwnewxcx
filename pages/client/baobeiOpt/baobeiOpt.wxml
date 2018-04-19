@@ -1,11 +1,11 @@
 <!--pages/client/baobeiOpt/baobeiOpt.wxml-->
 <view class="page {{hidden}}">
-  <view class="page__hd">
-  </view>
+  <!-- <view class="page__hd">
+  </view> -->
   <view class="page__bd">
     <!-- 基本信息 -->
     <view class="weui-panel" style='margin-top:10px;'>
-      <view class="weui-panel__hd">基本资料</view>
+       <image src="/images/jbzl.png" style="width:94%;height:95rpx;margin-left:20rpx;"/>
       <view class="weui-panel__bd">
         <view class="weui-media-box weui-media-box_small-appmsg">
           <view class="weui-cells weui-cells_in-small-appmsg">
@@ -50,14 +50,15 @@
       <view class="weui-panel__bd">
         <view class="weui-media-box weui-media-box_small-appmsg">
           <view class="weui-cells weui-cells_in-small-appmsg">
-            <view class="weui-cell weui-cell_access" catchtap='setClientInfo'>
+             <!-- <view class="weui-cell weui-cell_access" catchtap='setClientInfo'>
               <view class="weui-cell__bd weui-cell_primary">
                 <view class='font-size-14 grey-font'>编辑客户资料</view>
               </view>
               <view class="weui-cell__ft font-size-14 weui-cell__ft_in-access aui-text-primary">
                 设置
               </view>
-            </view>
+            </view>  -->
+             <image src="/images/bjkh.png" catchtap='setClientInfo' style="width:94%;height:95rpx;margin-left:20rpx;"/> 
             <view class="weui-cell weui-cell_access">
               <view class="weui-cell__bd weui-cell_primary">
                 <view class='font-size-14'>所在区域</view>
@@ -120,8 +121,9 @@
     </view>
 
     <!-- step1报备基本信息 -->
-    <view wx:if="{{baobei.baobei_status_int >= 0}}" class="weui-panel" style='margin-top:10px;'>
-      <view class="weui-panel__hd aui-text-primary">Step1.报备</view>
+    <view wx:if="{{baobei.baobei_status_int >= 0}}" class="weui-panel" style='width:100%;margin-top:10px;'>
+      <view class="weui-panel__hd aui-text-primary" style=''></view>
+       <image src="/images/bb.png" style="width:94%;height:95rpx;margin-left:20rpx;"/>
       <view class="weui-panel__bd">
         <view class="weui-media-box weui-media-box_small-appmsg">
           <view class="weui-cells weui-cells_in-small-appmsg">
@@ -156,7 +158,8 @@
 
     <!-- step2到访基本信息 -->
     <view wx:if="{{baobei.baobei_status_int >= 1}}" class="weui-panel" style='margin-top:10px;'>
-      <view class="weui-panel__hd aui-text-primary">Step2.到访</view>
+      <view class="weui-panel__hd aui-text-primary"></view>
+       <image src="/images/df.png" style="width:94%;height:95rpx;margin-left:20rpx;"/>
       <view class="weui-panel__bd">
         <view class="weui-media-box weui-media-box_small-appmsg">
           <view class="weui-cells weui-cells_in-small-appmsg">
@@ -199,7 +202,8 @@
 
     <!-- step3成交基本信息 -->
     <view wx:if="{{baobei.baobei_status_int >= 2}}" class="weui-panel" style='margin-top:10px;'>
-      <view class="weui-panel__hd aui-text-primary">Step3.成交</view>
+      <view class="weui-panel__hd aui-text-primary"></view>
+      <image src="/images/cj.png" style="width:94%;height:95rpx;margin-left:20rpx;"/>
       <view class="weui-panel__bd">
         <view class="weui-media-box weui-media-box_small-appmsg">
           <view class="weui-cells weui-cells_in-small-appmsg">
@@ -271,7 +275,7 @@
               <view class="weui-cell__bd weui-cell_primary">
                 <view class='font-size-14'>本单佣金</view>
               </view>
-              <view class="weui-cell__ft font-size-14 aui-text-primary">
+              <view class="weui-cell__ft font-size-14 aui-text-primary" >
                 {{baobei.yongjin}}元
               </view>
             </view>
@@ -290,7 +294,8 @@
 
     <!-- step4签约基本信息 -->
     <view wx:if="{{baobei.baobei_status_int >= 3}}" class="weui-panel" style='margin-top:10px;'>
-      <view class="weui-panel__hd aui-text-primary">Step4.签约</view>
+      <view class="weui-panel__hd aui-text-primary"></view>
+      <image src="/images/qy.png" style="width:94%;height:95rpx;margin-left:20rpx;"/>
       <view class="weui-panel__bd">
         <view class="weui-media-box weui-media-box_small-appmsg">
           <view class="weui-cells weui-cells_in-small-appmsg">
@@ -309,7 +314,8 @@
 
     <!-- step5全款到账基本信息 -->
     <view wx:if="{{baobei.baobei_status_int >= 4}}" class="weui-panel" style='margin-top:10px;'>
-      <view class="weui-panel__hd aui-text-primary">Step5.全款到账</view>
+      <view class="weui-panel__hd aui-text-primary"></view>
+      <image src="/images/qkdz.png" style="width:94%;height:95rpx;margin-left:20rpx;"/>
       <view class="weui-panel__bd">
         <view class="weui-media-box weui-media-box_small-appmsg">
           <view class="weui-cells weui-cells_in-small-appmsg">
@@ -328,7 +334,8 @@
 
     <!-- 是否已经向中介结算 -->
     <view wx:if="{{baobei.can_jiesuan_status == '1'}}" class="weui-panel" style='margin-top:10px;'>
-      <view class="weui-panel__hd aui-text-primary">佣金结算</view>
+      <!-- <view class="weui-panel__hd aui-text-primary">佣金结算</view> -->
+       <image src="/images/yjjs.png" style="width:94%;height:95rpx;margin-left:20rpx;"/>
       <view class="weui-panel__bd">
         <view class="weui-media-box weui-media-box_small-appmsg">
           <view class="weui-cells weui-cells_in-small-appmsg">

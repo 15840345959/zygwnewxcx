@@ -42,26 +42,26 @@
   "tabBar": {
     "color": "#666666",
     "borderStyle": "white",
-    "selectedColor": "#5E7DFE",
+    "selectedColor": "#ff6e33",
     "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "images/shouye.png",
-        "selectedIconPath": "images/shouye(1).png"
+        "text":"首页",
+        "iconPath": "images/44444.png",
+        "selectedIconPath": "images/shouye.png"
       },
       {
         "pagePath": "pages/client/client",
         "text": "客户",
-        "iconPath": "images/kehu.png",
-        "selectedIconPath": "images/kehu(1).png"
+        "iconPath": "images/9999.png",
+        "selectedIconPath": "images/7777.png"
       },
       {
-        "pagePath": "pages/my/my",
-        "text": "我的",
-        "iconPath": "images/wode.png",
-        "selectedIconPath": "images/wode(1).png"
+        "pagePath": "pages/my/my",   
+        "text": "我的",  
+        "iconPath": "images/3333.png",
+        "selectedIconPath": "images/222.png"
       }
     ]
   },

@@ -5,7 +5,8 @@
   <view class="page__bd">
     <!-- 基本信息 -->
     <view class="weui-panel" style='margin-top:10px;'>
-      <view class="weui-panel__hd">基本资料</view>
+      
+       <image src="/images/jbzl.png" style="width:94%;height:95rpx;margin-left:20rpx;"/>
       <view class="weui-panel__bd">
         <view class="weui-media-box weui-media-box_small-appmsg">
           <view class="weui-cells weui-cells_in-small-appmsg">
@@ -47,8 +48,9 @@
     </view>
 
     <!-- 设置全款到账信息 -->
-    <view class="weui-cells__title aui-text-primary">全款到账</view>
-    <view class="weui-cells weui-cells_after-title">
+    <view style="width:100%;background-color:white;">
+     <image src="/images/qkdz.png" style="width:94%;height:95rpx;margin-left:20rpx;margin-top:5rpx;"/></view>
+    <view class="weui-cells weui-cells_after-title" style='margin-top:-30rpx;'>
       <picker mode="date" value="{{qkdz_date}}" start="2018-01-01" end="2046-03-01" bindchange="setQkdzDate">
         <view class="weui-cell weui-cell_select">
           <view class="weui-cell__bd">

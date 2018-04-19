@@ -33,7 +33,7 @@ Page({
   onLoad: function (options) {
 
     vm = this;
-    console.log(JSON.stringify(options));
+    console.log("options11"+JSON.stringify(options));
     var jsonStr = options.jsonStr;
     var obj = JSON.parse(options.jsonStr);
     console.log("obj:" + JSON.stringify(obj))

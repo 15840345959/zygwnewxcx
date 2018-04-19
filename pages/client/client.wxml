@@ -14,27 +14,27 @@
     <!--区隔 -->
     <view style='height:80rpx;'></view>
     <!-- 条件筛选 -->
-    <view style='margin-top:10px;'>
-      <view class="weui-flex">
+    <view style='margin-top:1px;' style="width:100%;height:80rpx;background-color:#fbded5;">
+      <view class="weui-flex" >
         <view class="weui-flex__item">
-          <view class="placeholder" style='text-align: center;'>
+          <view class="placeholder" style='text-align: center;margin-top:20rpx;'>
             <picker bindchange="setHouseOption" mode='selector' range="{{houses}}" range-key="title">
-              <text class='font-size-14 grey-font'>{{house == ""?"全部楼盘":house.title}}</text>
-              <image src='../../images/down_arrow.png ' class='margin-left-10 opt-icon-12 '></image>
+              <text class='font-size-14 grey1-font'>{{house == ""?"全部楼盘":house.title}}</text>
+              <image src='../../images/down.png ' class='margin-left-10 opt-icon-12 '></image>
             </picker>
           </view>
         </view>
         <view class="weui-flex__item">
-          <view class="placeholder" style='text-align: center; '>
+          <view class="placeholder" style='text-align: center; margin-top:20rpx;'>
             <picker mode="date" value="{{start_time}}" start="2018-01-01" end="2046-03-01" bindchange="setStartTime">
-              <text class='font-size-14 grey-font'>{{start_time == ""?"开始日期":start_time}}</text>
+              <text class='font-size-14 grey1-font'>{{start_time == ""?"开始日期":start_time}}</text>
             </picker>
           </view>
         </view>
         <view class="weui-flex__item">
-          <view class="placeholder" style='text-align: center; '>
+          <view class="placeholder" style='text-align: center; margin-top:20rpx;'>
             <picker mode="date" value="{{end_time}}" start="2018-01-01" end="2046-03-01" bindchange="setEndTime">
-              <text class='font-size-14 grey-font'>{{end_time == ""?"结束日期":end_time}}</text>
+              <text class='font-size-14 grey1-font'>{{end_time == ""?"结束日期":end_time}}</text>
             </picker>
           </view>
         </view>
@@ -46,7 +46,7 @@
     </block>
 
     <view style='position:fixed;right:10px;bottom:30px;' class="{{userInfo.role=='0'?'hidden':''}}">
-      <image src='../../images/switch_role_btn.png' style='width:120rpx;height:120rpx;' catchtap='clickSwitchRole'></image>
+      <image src='../../images/turn.png' style='width:120rpx;height:120rpx;' catchtap='clickSwitchRole'></image>
     </view>
 
     <!-- 没有报备信息展示的页面 -->

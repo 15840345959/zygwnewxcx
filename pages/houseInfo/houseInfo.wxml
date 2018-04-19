@@ -1,30 +1,28 @@
 <!--pages/product/product.wxml-->
 <view class="page" style="width:100%;">
-  <view style='margin-left:10rpx; padding-top:30rpx;'>
-    <video class="image1_frame" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" poster="{{houseInfo.image}}" controls='true' mode="aspectFill" ></video>
-    <!-- <image class="image1_frame" src="{{houseInfo.image}}" bindtap='getVideo' mode="aspectFill"></image> -->
-    
+  <view style='margin-left:25rpx; padding-top:30rpx;'>
+    <video wx:if="{{houseInfo.video!=''&&houseInfo.video!=null}}" class="image1_frame" src="{{houseInfo.video}}" poster="{{houseInfo.image}}" controls='true' mode="aspectFill" ></video>
+     <image wx:else class="image1_frame" src="{{houseInfo.image}}" bindtap='getVideo' mode="aspectFill"></image>    
   </view>
-
   <view style='display: flex;flex-direction: row; margin-bottom:20rpx'>
     <view class='' style='padding-left: 30rpx;float: left;width: 700rpx;position: relative;'>
       <view class='flex-row' style='width:100%;'>
 
         <!-- 小区名 -->
-        <view class='title' style='font-weight:bold;margin-left:320rpx;margin-top:-220rpx;'>
-          【 {{houseInfo.title}}】
+        <view class='title' style='font-weight:bold;margin-left:5rpx;margin-top:20rpx;font-size:13px;'>
+          {{houseInfo.title}}
         </view>
-        <view class='office-font-price' style='margin-left:570rpx;margin-top:-34rpx;;float:left;color:yellowgreen;'>均价{{houseInfo.price}}元/m²</view>
+        <view class='office-font-price' style='margin-left:270rpx;margin-top:-32rpx;;float:left;color:#ff6e33;font-weight:bold;'>均价{{houseInfo.price}}元/m²</view>
         <!-- 类型 -->
         <view class="type">
           <block wx:for="{{houseType}}">
-            <view class='office-title-font' style='margin-left:60rpx;float:left; color:yellowgreen;'>{{item.name}}</view>
+            <view class='office-title-font' style='margin-left:60rpx;float:left; color:#ff6e33;'>{{item.name}}</view>
           </block>
         </view>
       </view>
       <!--楼盘的地址-->
 
-      <view class='address' style='font-weight:bold;margin-left:300rpx;margin-top:140rpx;'>
+      <view class='address' style='font-weight:bold;margin-left:-10rpx;margin-top:70rpx;'>
         <image src='../../images/address.png' style='width:25rpx;height:25rpx;margin-left:25rpx;'></image>
         {{houseInfo.address}}
       </view>
@@ -35,9 +33,9 @@
 
   <view style='width: 100%;height: 10rpx; background: #f5f5f5;'></view>
   <view style="width:100%;height:80rpx;margin-left:30rpx;margin-top:9px;" bindtap="clickHouseDetail" data-houseid="{{id}}">
-    <image class="image_frame" src="../../images/loupan.png" style="width:25px;height:25px;" mode="aspectFill"></image>
-    <view style="color:black;font-size:13px;margin-left:75rpx;margin-top:-25px;">楼盘参数</view>
-    <view style="margin-left:620rpx;margin-top:-45rpx;">
+    <image class="image_frame" src="../../images/house.png" style="width:25px;height:25px;" mode="aspectFill"></image>
+    <view style="color:#ff6e33;font-size:13px;margin-left:75rpx;margin-top:-25px;font-weight:bold;">楼盘参数</view>
+    <view style="margin-left:620rpx;margin-top:-35rpx;">
       <image class="image_frame" src="../../images/dianji.png" style="width:18px;height:18px;" mode="aspectFill"></image>
     </view>
   </view>
@@ -45,23 +43,29 @@
 
 
   <!--pages/houseInfo/huxing/huxing.wxml-->
-  <block wx:for="{{HuXingInfo}}">
-    <view class="office margin-top-5 margin-left-20" style='margin-bottom:0rpx;padding:10rpx 0'>
-      <view class="office-img" catchtap='clickHuXings' data-houseid="{{id}}"  style='padding-top:5rpx;'>
-        <image src="{{item.image}}" class="office-img-sml" mode="aspectFill"></image>
-      </view>
+  
+    <view class="office margin-top-5" style='width:100%;'>
+    <block wx:for="{{HuXingInfo}}">
+      <view class="" catchtap='clickHuXings' data-huxingid="{{item.id}}"  style='float:left;width:50%;background-color:white; box-shadow:0px 0px 10px 5px #f5f5f5;'>
+        <image src="{{item.image}}" class="office2-img-sml" mode="aspectFill" ></image>
+        <view class="text-oneline office-title-font " style='margin-left:20rpx;margin-top:0rpx;font-size:28rpx;'>{{item.type.name}}</view>
 
-      <view class="office-info">
+         <view style='color:black;font-size:30rpx;margin-left:100rpx;margin-top:-40rpx;'>{{item.size_min}}m²-{{item.size_max}}m²</view>
+
+         <view class="text-oneline  office-font" style='margin-left:20rpx;;margin-top:-8rpx;color:#ff6e33 ;'>佣金{{item.yongjin_value}}{{item.yongjin_type=="0"?"元":"‰"}}/套</view>
+      </view>
+ 
+      <!-- <view class="office-info">
         <view style='display:flex;flex-direction:row;align-items:center;margin-top:0rpx;'>
 
-          <view class="text-oneline font-weight office-title-font " style='margin-left:290rpx;margin-top:-280rpx;font-size:28rpx;float:left;'>{{item.type.name}}</view>
+         
           <view style='text-align:right;float:right;text-align:right;color:black;font-size:30rpx;margin-left:100rpx;margin-top:-280rpx;font-size:30rpx;'>{{item.size_min}}m²-{{item.size_max}}m²</view>
         </view>
-        <view class="text-oneline  office-font" style='margin-left:360rpx;;margin-top:-68rpx;color:yellowgreen ;'>佣金 {{item.yongjin_value}}元/套</view>
+        <view class="text-oneline  office-font" style='margin-left:360rpx;;margin-top:-68rpx;color:yellowgreen ;'>佣金 {{item.yongjin_type=="0"?"固定金额":"按比分成"}}-{{item.yongjin_value}}{{item.yongjin_type=="0"?"元":"‰"}}/套</view>
       
-      </view>
-    </view>
-    <view style='width: 100%;height: 6rpx; background: #f5f5f5;'></view>
+      </view> -->
+   
+    <!-- <view style='width: 100%;height: 6rpx; background: #f5f5f5;'></view> -->
 
     <!-- <view style="width:100%;height:25px;">
 
@@ -76,14 +80,15 @@
     <view style="width:100%;height:25px;">
       <view style="margin-left:15px;margin-top:5px;">推荐理由：{{item.reason}}</view>
     </view> -->
-    <view style='width: 100%;height: 10rpx; background: #f5f5f5;'></view>
+    <!-- <view style='width: 100%;height: 10rpx; background: #f5f5f5;'></view> -->
   </block>
+   </view>
   <view class='product-down-line'></view>
 
 
   <!-- <button bindtap="jumpBaobei" style='background-color:yellowgreen;color:white;height:40px;' class="full-width" hover-class="other-button-hover" data-houseid="{{id}}" data-houseName="{{houseInfo.title}}"> 报备客户 </button> -->
 
-  <button bindtap="jumpBaobei" style='background-color:yellowgreen;color:white;position:fixed;bottom:20rpx;' class="full-width" hover-class="other-button-hover"> 报备客户 </button>
+  <button bindtap="jumpBaobei" style='background-color:#ff6e33;color:white;margin-top:200px;' class="full-width" hover-class="other-button-hover"> 报备客户 </button>
 
 
 

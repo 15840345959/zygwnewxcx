@@ -22,7 +22,10 @@ Page({
     mylist: [],   //我的订单
     goodsList: [],    //商品列表 
     userInfo: "",    //用户基本信息
-    ijifen: ""
+    ijifen: "",
+    pic:"http://art.isart.me/zygw.jpg",
+    shoppic: "http://art.isart.me/shangcheng1.jpg",
+    
   },
 
   //页面加载

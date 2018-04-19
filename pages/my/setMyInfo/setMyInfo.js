@@ -182,4 +182,10 @@ Page({
       console.log('updateUserInfo err is : ' + JSON.stringify(err))
     });
   },
+  jumpHeZuo: function(e){
+    wx.navigateTo({
+      url: '/pages/my/hezuo/hezuo',
+    })
+  }
 })
+

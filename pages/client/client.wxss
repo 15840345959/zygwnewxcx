@@ -27,5 +27,5 @@
 }
 
 .tab-item.active {
-  color: #5e7dfe;
+  color: #ff6e33;
 }

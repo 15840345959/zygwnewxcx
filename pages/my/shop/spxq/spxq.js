@@ -13,6 +13,7 @@ Page({
   data: {
     goodsList: "",    //商品详情
     ijifen:"",    //我的积分
+    pic: "http://art.isart.me/yueyue.jpg"
   },
 
   /**

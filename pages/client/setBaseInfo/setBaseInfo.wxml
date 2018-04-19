@@ -4,7 +4,7 @@
   </view>
   <view class="page__bd">
     <!-- 基本信息 -->
-    <view class="weui-panel" style='margin-top:10px;'>
+    <view class="weui-panel" style='margin-top:0px;'>
       <view class="weui-panel__bd">
         <view class="weui-media-box weui-media-box_small-appmsg">
           <view class="weui-cells weui-cells_in-small-appmsg">
@@ -27,7 +27,7 @@
             <picker bindchange="setAreaOption" mode='selector' range="{{options.areas}}" range-key="name">
               <view class="weui-cell weui-cell_access">
                 <view class="weui-cell__bd weui-cell_primary">
-                  <view class='font-size-14'>所在区域</view>
+                  <view class='font-size-14'>工作区域</view>
                 </view>
                 <view class="weui-cell__ft font-size-14">
                   {{options.areas[area_index].name}}

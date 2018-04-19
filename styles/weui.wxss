@@ -747,11 +747,11 @@ icon {
 .weui-grid {
   position: relative;
   float: left;
-  padding: 20px 10px;
+  padding: -30px 10px -30px;
   width: 33.33333333%;
   box-sizing: border-box;
-  border-right: 1rpx solid #d9d9d9;
-  border-bottom: 1rpx solid #d9d9d9;
+  /* border-right: 1rpx solid #d9d9d9;
+  border-bottom: 1rpx solid #d9d9d9; */
 }
 
 .weui-grid_active {
@@ -760,8 +760,8 @@ icon {
 
 .weui-grid__icon {
   display: block;
-  width: 28px;
-  height: 28px;
+  width: 220rpx;
+  height: 220rpx;
   margin: 0 auto;
 }
 
@@ -1079,14 +1079,15 @@ icon {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   flex: 1;
-  padding: 13px 0;
+  padding: 19px 0;
   text-align: center;
   font-size: 0;
+  color:white;
 }
 
 .weui-navbar__item.weui-bar__item_on {
 
-  color:#64b0ef
+  color:#ff6e33;
 }
 
 .weui-navbar__slider {

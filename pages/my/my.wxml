@@ -6,10 +6,10 @@
   <view class="page__bd page__bd_spacing {{hidden}}">
     <!-- 头像相关 -->
     <view style="position:relative;">
-      <image src="http://art.isart.me/tw_pbg.png?imageView2/2/w/600/q/75/interlace/1" class="head-bg" mode="aspectFill"></image>
+      <image src="../../images/wode-14.png" class="head-bg" mode="aspectFill"></image>
       <view class="mask-div-black-d head-bg"></view>
       <view style="position: absolute;top:15px;right:15px;">
-        <image src="../../images/qiandao_btn.png" class="opt-icon-nor" catchtap='clickQianDao'></image>
+        <image src="../../images/wode-04.png" class="opt-icon-nor" catchtap='clickQianDao'></image>
       </view>
       <!--头像+昵称+签名-->
       <view style="position: absolute;top:35px;width:100%;" class="text-center">
@@ -19,7 +19,7 @@
         <text class="font-size-16 white-font">{{userInfo.nick_name}}</text>
       </view>
       <view style="position: absolute;top:125px;width:100%;" class="text-center">
-        <text class="font-size-12 white-font text-oneline ">我是{{userInfo.role == "0"?"中介 ":"案场负责人 "}}</text>         
+        <text class="font-size-14 white-font text-oneline ">我是{{userInfo.role == "0"?"中介 ":"案场负责人 "}}</text>         
       </view>
 
       <!--作品数+粉丝数+关注数-->
@@ -61,40 +61,43 @@
     <!-- 下方操作图标 -->
     <view class='margin-top-30'>
 
-      <view class="weui-grids white-bg ">
-        <view class="weui-grid " hover-class="weui-grid_active" catchtap='clickSetZiliao'>
-          <image class="weui-grid__icon " src="../../images/ziliao_icon.png " />
-          <view class="weui-grid__label font-size-12 ">资料</view>
-        </view>
-        <view class="weui-grid " hover-class="weui-grid_active" catchtap='clickUserUp'>
-          <image class="weui-grid__icon " src="../../images/shegnjianchang_icon.png " />
-          <view class="weui-grid__label font-size-12 ">案场升级</view>
-        </view>
-        <view class="weui-grid " hover-class="weui-grid_active " catchtap='clickWhiteBook'>
-          <image class="weui-grid__icon " src="../../images/tuijian_icon.png " />
-          <view class="weui-grid__label font-size-12 ">行业白皮书</view>
-        </view>
-        <view class="weui-grid " hover-class="weui-grid_active " catchtap='clickShop'>
-          <image class="weui-grid__icon " src="../../images/shangcheng_icon.png " />
-          <view class="weui-grid__label font-size-12 ">积分商城</view>
-        </view>
-        <view class="weui-grid " hover-class="weui-grid_active " catchtap='clickCalculator'>
-          <image class="weui-grid__icon " src="../../images/jisuanqi_icon.png " />
-          <view class="weui-grid__label font-size-12 ">计算器</view>
-        </view>
-        <view class="weui-grid " hover-class="weui-grid_active " catchtap='clickHeZuo' >
-          <image class="weui-grid__icon " src="../../images/baipishu_icon.png " />
-          <view class="weui-grid__label font-size-12 ">合作细则</view>
-        </view>
-        <view class="weui-grid " hover-class="weui-grid_active " catchtap='clickQd'>
-          <image class="weui-grid__icon " src="../../images/qiandao_icon.png " />
-          <view class="weui-grid__label font-size-12 ">签到</view>
-        </view>
-        <view class="weui-grid " hover-class="weui-grid_active " catchtap='clickFx'>
-          <image class="weui-grid__icon " src="../../images/fenxiang_icon.png " />
-          <view class="weui-grid__label font-size-12 ">我的分享</view>
-        </view>
+      <view class="weui-grids white-bg " style="margin auto" >
+       <view  style="width:660rpx;height:80px; margin:auto;">
+          <image class="weui-grid__icon " style="float:left;" catchtap='clickSetZiliao' src="../../images/wode-05.png " />
         
+        
+          <image class="weui-grid__icon " style="float:left;"  catchtap='clickUserUp' src="../../images/wode-06.png " />
+         
+     
+       
+          <image class="weui-grid__icon " style="float:left;"  catchtap='clickWhiteBook' src="../../images/wode-07.png " />
+  </view>
+       <view  style="width:660rpx;height:80px;  margin:auto;">
+          <image class="weui-grid__icon " style="float:left;" catchtap='clickShop' src="../../images/wode-10.png " />
+          
+       
+       
+          <image class="weui-grid__icon " style="float:left;" catchtap='clickCalculator' src="../../images/wode-09.png " />
+          
+      
+       
+          <image class="weui-grid__icon " style="float:left;" catchtap='clickHeZuo' src="../../images/wode-08.png " />
+          
+   </view>
+    <view  style="width:660rpx;height:80px;  margin:auto;">
+       
+          <image class="weui-grid__icon " style="float:left;" catchtap='clickQd' src="../../images/wode-11.png " />
+          
+      
+       
+          <image class="weui-grid__icon " style="float:left;" catchtap='clickFx' src="../../images/wode-12.png " />
+          
+    
+
+       
+          <image class="weui-grid__icon " style="float:left;" catchtap='' src="../../images/wode-13.png " />
+       
+        </view>
       </view>
     </view>
   </view>

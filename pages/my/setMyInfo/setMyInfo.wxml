@@ -49,7 +49,7 @@
       <view class=" weui-flex " style="padding-top:20px; ">
         <view class="weui-flex__item ">
           <view class='grey-font text-center'>点击绑定同意
-            <text class='aui-text-info' bindtap="">《置业顾问服务协议》</text>
+            <text class='aui-text-info' bindtap="jumpHeZuo" style="color:#ff6e33;">《置业顾问服务协议》</text>
           </view>
         </view>
       </view>

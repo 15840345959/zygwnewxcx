@@ -37,6 +37,7 @@ Page({
     util.getHouseById(param,function(ret){
       console.log("getHouseById", JSON.stringify(ret.data.ret))
       var houseInfo=ret.data.ret
+      console.log("houseInfo e", JSON.stringify(ret.data.ret))
       var houseType =ret.data.ret.types
       console.log("houseType", JSON.stringify(houseType))
       if(ret.data.code=="200"){
@@ -58,6 +59,7 @@ Page({
     util.getHuxingsByHouseId(param, function (ret) {
       console.log("getHuxingsByHouseId", JSON.stringify(ret))
       var HuXingInfo = ret.data.ret
+      console.log("HuXingInfo e", JSON.stringify(ret.data.ret))
       if (ret.data.code == "200") {
         vm.setData({
           HuXingInfo: HuXingInfo,
@@ -70,9 +72,10 @@ Page({
 //点击跳到户型页面
   clickHuXings:function(e){
     console.log('clickHuXings e',JSON.stringify(e))
-    var house_id = e.currentTarget.dataset.houseid
+    var huxing_id = e.currentTarget.dataset.huxingid
+
     wx.navigateTo({
-      url: '/pages/houseInfo/huxing/huxing?house_id='+house_id,
+      url: '/pages/houseInfo/huxing/huxing?huxing_id='+huxing_id,
     })
 
   },

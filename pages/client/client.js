@@ -228,7 +228,7 @@ Page({
             delete search_param.pay_zhongjie_status;
             break;
           case 6:
-            search_param.can_jiesuan_status = "1";
+            search_param.can_jiesuan_status = "0";
             delete search_param.baobei_status;
             delete search_param.pay_zhongjie_status;
             break;
@@ -273,9 +273,9 @@ Page({
             delete search_param.pay_zhongjie_status;
             break;
           case 6:
-            search_param.can_jiesuan_status = "1";
+            search_param.pay_zhongjie_status = "0";
             delete search_param.baobei_status;
-            delete search_param.pay_zhongjie_status;
+            delete search_param.can_jiesuan_status;
             break;
           case 7:
             search_param.pay_zhongjie_status = "1";

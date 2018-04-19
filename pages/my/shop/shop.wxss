@@ -1,6 +1,7 @@
-page, .page, .page__bd {
+ page, .page, .page__bd {
   height: 100%;
-}
+} 
+
 
 .page__bd {
   padding-bottom: 0;
@@ -17,20 +18,24 @@ page, .page, .page__bd {
   line-height: 80rpx;
   text-align: center;
   font-size: 15px;
-  border: 1px solid #64b0ef;
+  /* border: 0px solid #64b0ef; */
   border-radius: 4px;
   margin: 30rpx auto;
+  background-color: orange;
+  color:red;
+  
 }
 
 .sp-list {
   width: 47%;
   height: auto;
-  float: left;
-  background-color: white;
-  overflow: hidden;
+   float: left; 
+   background-color: white; 
+   overflow: hidden; 
   margin: 2% 0;
   margin-left: 2%;
   border-radius: 4px;
+  /* background-image: url('http://art.isart.me/shangcheng1.jpg'); */
 }
 
 .image-style {

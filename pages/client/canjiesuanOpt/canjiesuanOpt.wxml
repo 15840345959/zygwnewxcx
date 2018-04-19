@@ -5,7 +5,9 @@
   <view class="page__bd">
     <!-- 基本信息 -->
     <view class="weui-panel" style='margin-top:10px;'>
-      <view class="weui-panel__hd">基本资料</view>
+      <!-- <view class="weui-panel__hd" style='position:fixed;padding-top:10px' >基本资料
+    </view> -->
+       <image src="/images/jbzl.png" style="width:94%;height:95rpx;"/>
       <view class="weui-panel__bd">
         <view class="weui-media-box weui-media-box_small-appmsg">
           <view class="weui-cells weui-cells_in-small-appmsg">
@@ -58,7 +60,7 @@
           </view>
         </view>
       </picker>
-      <picker mode="time" value="{{canJiesuan_time}}" start="07:00" end="{{timeend}}" bindchange="setCanJiesuanTime">
+      <picker mode="time" value="{{canJiesuan_time}}" start="06:00" end="23:59" bindchange="setCanJiesuanTime">
         <view class="weui-cell weui-cell_select">
           <view class="weui-cell__bd">
             <view class="weui-select font-size-14">设置时间

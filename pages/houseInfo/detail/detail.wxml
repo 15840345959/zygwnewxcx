@@ -1,73 +1,74 @@
 <!--pages/houseInfo/detail/detail.wxml-->
 
-<view class="office-bg">
+<view class="office-bg" style="background-color:white;">
 <!-- 楼盘参数 -->
-<view style="height:30px;margin-left:20px;margin-top:10px;">
-    <view style="font-size:15px;">基本参数</view>
+<view style="height:30px;margin-left:0px;margin-top:0px;">
+    <!-- <view style="font-size:15px;">基本参数</view> -->
+     <image src="/images/jb2.png" style="width:94%;height:90rpx;margin-left:22rpx;"/>
   </view>
   <view style='height: 3rpx; background: #f5f5f5;'></view>
   <block wx:for="{{HouseDetail}}">
- <view style="height:25px; margin-left:20px;margin-top:8px;">开盘时间：
- <view style="margin-left:80px;margin-top:-17px;">{{item.kaipantime}}</view>
+ <view style="height:20px; margin-left:70rpx;margin-top:20px;">开盘时间：
+ <view style="margin-left:80px;margin-top:-34.4rpx;">{{item.kaipantime}}</view>
  </view>
- <view style='height: 3rpx; background: #f5f5f5;'></view>
- <view style="height:25px; margin-left:20px;margin-top:8px;">交盘时间：
- <view style="margin-left:80px;margin-top:-17px;">{{item.jiaopantime}}</view></view>
- <view style='height: 3rpx; background: #f5f5f5;'></view>
- <view style="height:25px; margin-left:20px;margin-top:8px;">开发商：
- <view style="margin-left:80px;margin-top:-17px;">{{item.developer}}</view></view>
- <view style='height: 3rpx; background: #f5f5f5;'></view>
- <view style="height:25px; margin-left:20px;margin-top:8px;">物业公司：
- <view style="margin-left:80px;margin-top:-17px;">{{item.property}}</view></view>
- <view style='height: 3rpx; background: #f5f5f5;'></view>
- <view style="height:25px; margin-left:20px;margin-top:8px;">建筑面积：{{item.size}}
-  <view style="height:25px; margin-left:150px;margin-top:-19px;">总户数：{{item.households}}</view>
+ <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
+ <view style="height:25px; margin-left:70rpx;margin-top:8px;">交盘时间：
+ <view style="margin-left:80px;margin-top:-34.4rpx;">{{item.jiaopantime}}</view></view>
+  <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
+ <view style="height:20px; margin-left:70rpx;margin-top:8px;">开发商：
+ <view style="margin-left:80px;margin-top:-34.4rpx;">{{item.developer}}</view></view>
+ <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
+ <view style="height:20px; margin-left:70rpx;margin-top:8px;">物业公司：
+ <view style="margin-left:80px;margin-top:-34.4rpx;">{{item.property}}</view></view>
+ <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
+ <view style="height:20px; margin-left:70rpx;margin-top:8px;">建筑面积：{{item.size}}
+  <view style="height:20px; margin-left:165px;margin-top:-19px;">总户数：{{item.households}}</view>
  </view>
- <view style='height: 3rpx; background: #f5f5f5;'></view>
- <view style="height:25px; margin-left:20px;margin-top:8px;">容积率：{{item.plotratio}}
- <view style="height:25px; margin-left:150px;margin-top:-19px;">绿化率：{{item.green}}</view>
+  <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
+ <view style="height:20px; margin-left:70rpx;margin-top:8px;">容积率：{{item.plotratio}}
+ <view style="height:20px; margin-left:165px;margin-top:-19px;">绿化率：{{item.green}}</view>
  </view>
- <view style='height: 3rpx; background: #f5f5f5;'></view>
- <view style="height:25px; margin-left:20px;margin-top:8px;">车位数：{{item.park}}
- <view style="height:25px; margin-left:150px;margin-top:-19px;">车位比：{{item.parkper}}</view>
+ <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
+ <view style="height:20px; margin-left:70rpx;margin-top:8px;">车位数：{{item.park}}
+ <view style=" margin-left:165px;margin-top:-19px;">车位比：{{item.parkper}}</view>
  </view>
-   <view style='height: 10rpx; background: #f5f5f5;'></view>
+ <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
 <!-- 住宅参数 -->
-   <view style="height:30px;margin-left:20px;margin-top:10px;">
-    <view style="font-size:15px;">住宅参数</view>
-  </view>
-  <view style='height: 3rpx; background: #f5f5f5;'></view>
- <view style="height:25px; margin-left:20px;margin-top:8px;">均价：
- <view style="margin-left:80px;margin-top:-15px;">{{item.price}}</view></view>
- <view style='height: 3rpx; background: #f5f5f5;'></view>
- <view style="height:25px; margin-left:20px;margin-top:8px;">物业费：
- <view style="margin-left:80px;margin-top:-15px;">{{item.propertyfee}}</view></view>
- <view style='height: 3rpx; background: #f5f5f5;'></view>
- <view style="height:25px; margin-left:20px;margin-top:8px;">建筑类型：
- <view style="margin-left:80px;margin-top:-15px;">{{item.buildtype}}</view></view>
- <view style='height: 3rpx; background: #f5f5f5;'></view>
- <view style="height:25px; margin-left:20px;margin-top:8px;">装修状态：
- <view style="margin-left:80px;margin-top:-15px;">{{item.decorate}}</view></view>
- <view style='height: 3rpx; background: #f5f5f5;'></view>
- <view style="height:25px; margin-left:20px;margin-top:8px;" data-officeid="{{id}}">产权年限：
- <view style="margin-left:80px;margin-top:-15px;">{{item.years}}</view></view>
- <view style='height: 3rpx; background: #f5f5f5;'></view>
+    <!-- <view style="font-size:15px;">住宅参数</view> -->
+      <image src="/images/zz2.png" style="width:94%;height:90rpx;margin-left:22rpx;margin-top:-6rpx;"/>
+
+ <view style="height:20px; margin-left:70rpx;margin-top:0px;">均价：
+ <view style="margin-left:80px;margin-top:-34.4rpx;">{{item.price}}</view></view>
+ <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
+ <view style="height:20px; margin-left:70rpx;margin-top:8px;">物业费：
+ <view style="margin-left:80px;margin-top:-34.4rpx;">{{item.propertyfee}}</view></view>
+ <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
+ <view style="height:20px; margin-left:70rpx;margin-top:8px;">建筑类型：
+ <view style="margin-left:80px;margin-top:-34.4rpx;">{{item.buildtype}}</view></view>
+ <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
+ <view style="height:20px; margin-left:70rpx;margin-top:8px;">装修状态：
+ <view style="margin-left:80px;margin-top:-34.4rpx;">{{item.decorate}}</view></view>
+  <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
+ <view style="height:20px; margin-left:70rpx;margin-top:8px;" data-officeid="{{id}}">产权年限：
+ <view style="margin-left:80px;margin-top:-34.4rpx;">{{item.years}}</view></view>
+ <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
 <!-- 周边配套 -->
- <view style="height:30px;margin-left:20px;margin-top:10px;">
-    <view style="font-size:15px;">周边配套</view>
+ <view style="height:30px;margin-left:0px;margin-top:0px;">
+    <!-- <view style="font-size:15px;">周边配套</view> -->
+      <image src="/images/zb2.png" style="width:94%;height:90rpx;margin-left:22rpx;"/>
   </view>
-  <view style='height: 3rpx; background: #f5f5f5;'></view>
- <view style="height:25px; margin-left:20px;margin-top:8px;">商业配套：
- <view style="margin-left:80px;margin-top:-15px;">{{item.shangye}}</view></view>
- <view style='height: 3rpx; background: #f5f5f5;'></view>
- <view style="height:25px; margin-left:20px;margin-top:8px;">教育配套：
- <view style="margin-left:80px;margin-top:-15px;">{{item.jiaoyu}}</view></view>
- <view style='height: 3rpx; background: #f5f5f5;'></view>
-  <view style="height:25px; margin-left:20px;margin-top:8px;">交通配套：
-  <view style="margin-left:80px;margin-top:-15px;">{{item.jiaotong}}</view></view>
-   <view style='height: 3rpx; background: #f5f5f5;'></view>
-   <view style="height:25px; margin-left:20px;margin-top:8px;">环境配套：
-   <view style="margin-left:80px;margin-top:-15px;">{{item.huanjing}}</view></view>
+ <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
+ <view style="width:86%;height:90px; margin-left:70rpx;margin-top:15px;">商业配套：
+ <view style="margin-left:80px;margin-top:-34.4rpx;">{{item.shangye}}</view></view>
+ <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
+ <view style="width:86%;height:90px; margin-left:70rpx;margin-top:8px;">教育配套：
+ <view style="margin-left:80px;margin-top:-34.4rpx;">{{item.jiaoyu}}</view></view>
+ <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
+  <view style="width:87%;height:80px; margin-left:70rpx;margin-top:8px;">交通配套：
+  <view style="margin-left:80px;margin-top:-34.4rpx;">{{item.jiaotong}}</view></view>
+ <image src="/images/canshu-05.png" style="width:100%;height:3rpx;"> </image>
+   <view style="width:87%;height:90px; margin-left:70rpx;margin-top:8px;">环境配套：
+   <view style="margin-left:80px;margin-top:-34.4rpx;">{{item.huanjing}}</view></view>
 </block>
 </view>
  
