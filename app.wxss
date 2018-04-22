@@ -10,8 +10,6 @@ page {
   background-color: #f8f8f8;
 }
 
-
-
 .page {
   background-color: #f8f8f8;
   height: 100%;
@@ -19,6 +17,10 @@ page {
 
 .main-bg {
   background: #ff6e33;
+}
+
+.main-color {
+  color: #ff6e33;
 }
 
 .full-width {
@@ -305,8 +307,9 @@ page {
 .grey-font {
   color: #888;
 }
+
 .grey1-font {
-  color: #999999;
+  color: #999;
 }
 
 .center-style {
@@ -390,16 +393,13 @@ page {
   /* height: 210rpx; */
   height: 180rpx;
   border-radius: 10rpx;
-  
 }
-
 
 .image1_frame {
   width: 700rpx;
   /* height: 210rpx; */
   height: 320rpx;
   border-radius: 10rpx;
-  
 }
 
 .office-img-sml {
@@ -407,7 +407,6 @@ page {
   /* height: 210rpx; */
   height: 180rpx;
   border-radius: 10rpx;
-  
 }
 
 .office2-img-sml {
@@ -415,10 +414,9 @@ page {
   /* height: 210rpx; */
   height: 180rpx;
   border-radius: 10rpx;
-   padding-left:15rpx;
-  padding-right:15rpx; 
-  padding-top:10px;
-  
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  padding-top: 10px;
 }
 
 .head-img-circle {

@@ -325,7 +325,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    set_role = null;
+    // set_role = null;
     vm.reloadPage();
   },
   //重新加载数据和页面-用于页面onLoad和下拉刷新的场景

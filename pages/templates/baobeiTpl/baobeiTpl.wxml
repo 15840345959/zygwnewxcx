@@ -2,26 +2,32 @@
 <!-- 报备列表展示 -->
 <template name="baobeiList">
   <view class="weui-panel" data-id='{{id}}' data-baobeiStatus='{{baobei_status}}' catchtap='clickBaobeiOpt'>
-        <view class="weui-panel__hd">流水号：{{trade_no}}</view>
-        <view class="weui-panel__bd">
-          <view class="weui-media-box weui-media-box_text">
-            <view class="weui-media-box__title weui-media-box__title_in-text font-size-14" style="color:#ff6e33;">{{house.title}}</view>
-            <view class="weui-media-box__desc">{{client.name}}({{client.phonenum_str}})，
-              <!-- 根据不同情况展示不同信息 -->
-              <text wx:if="{{baobei_status == '0'}}">预计到访时间：{{plan_visit_time_str}}，到访方式：{{visit_way_str}}。</text>
-              <text wx:if="{{baobei_status == '1'}}">到访时间：{{visit_time_str}}。</text>
-              <text wx:if="{{baobei_status == '2'}}">成交时间：{{deal_time_str}}，产生佣金：{{yongjin}}元。</text>
-              <text wx:if="{{baobei_status == '3'}}">成交时间：{{deal_time_str}}，产生佣金：{{yongjin}}元。</text>
-              <text wx:if="{{baobei_status == '4'}}">成交时间：{{deal_time_str}}，产生佣金：{{yongjin}}元。</text>
-            </view>
-            <view class="weui-media-box__info" >
-              <view class="weui-media-box__info__meta">{{status_str}}</view>
-              <view wx:if="{{status=='1'}}" class="weui-media-box__info__meta aui1-text-info" >
-                {{baobei_status_str}}
-              </view>
-              <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{created_at_str}}</view>
-            </view>
+    <view class="weui-panel__hd">流水号：{{trade_no}}</view>
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__title weui-media-box__title_in-text font-size-14 main-color">{{house.title}}</view>
+        <view class="weui-media-box__desc">{{client.name}}({{client.phonenum_str}})，
+          <!-- 根据不同情况展示不同信息 -->
+          <text wx:if="{{baobei_status == '0'}}">预计到访时间：{{plan_visit_time_str}}，到访方式：{{visit_way_str}}。</text>
+          <text wx:if="{{baobei_status == '1'}}">到访时间：{{visit_time_str}}。</text>
+          <text wx:if="{{baobei_status == '2'}}">成交时间：{{deal_time_str}}，产生佣金：{{yongjin}}元。</text>
+          <text wx:if="{{baobei_status == '3'}}">成交时间：{{deal_time_str}}，产生佣金：{{yongjin}}元。</text>
+          <text wx:if="{{baobei_status == '4'}}">成交时间：{{deal_time_str}}，产生佣金：{{yongjin}}元。</text>
+        </view>
+        <view class="weui-media-box__info">
+          <view class="weui-media-box__info__meta">{{status_str}}</view>
+          <view wx:if="{{status=='1'}}" class="weui-media-box__info__meta main-color">
+            <text>{{baobei_status_str}}</text>
+            <text wx:if="{{baobei_status >= 2 && can_jiesuan_status == '0'}}">/{{can_jiesuan_status_str}}</text>
+            <text wx:if="{{baobei_status >= 2 && can_jiesuan_status == '1'}}">/{{pay_zhongjie_status_str}}</text>
           </view>
+          <view wx:else class="weui-media-box__info__meta">
+            <text wx:if="{{baobei_status=='0'}}">客户当日未到访</text>
+            <text wx:if="{{baobei_status=='1'}}">到访30日未成交</text>
+          </view>
+          <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{created_at_str}}</view>
         </view>
       </view>
+    </view>
+  </view>
 </template>

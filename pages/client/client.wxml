@@ -15,7 +15,7 @@
     <view style='height:80rpx;'></view>
     <!-- 条件筛选 -->
     <view style='margin-top:1px;' style="width:100%;height:80rpx;background-color:#fbded5;">
-      <view class="weui-flex" >
+      <view class="weui-flex">
         <view class="weui-flex__item">
           <view class="placeholder" style='text-align: center;margin-top:20rpx;'>
             <picker bindchange="setHouseOption" mode='selector' range="{{houses}}" range-key="title">

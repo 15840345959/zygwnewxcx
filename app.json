@@ -48,20 +48,20 @@
       {
         "pagePath": "pages/index/index",
         "text":"首页",
-        "iconPath": "images/44444.png",
-        "selectedIconPath": "images/shouye.png"
+        "iconPath": "images/shouye_n.png",
+        "selectedIconPath": "images/shouye_r.png"
       },
       {
         "pagePath": "pages/client/client",
         "text": "客户",
-        "iconPath": "images/9999.png",
-        "selectedIconPath": "images/7777.png"
+        "iconPath": "images/client_n.png",
+        "selectedIconPath": "images/client_r.png"
       },
       {
         "pagePath": "pages/my/my",   
         "text": "我的",  
-        "iconPath": "images/3333.png",
-        "selectedIconPath": "images/222.png"
+        "iconPath": "images/my_n.png",
+        "selectedIconPath": "images/my_r.png"
       }
     ]
   },

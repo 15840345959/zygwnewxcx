@@ -19,7 +19,7 @@
         <text class="font-size-16 white-font">{{userInfo.nick_name}}</text>
       </view>
       <view style="position: absolute;top:125px;width:100%;" class="text-center">
-        <text class="font-size-14 white-font text-oneline ">我是{{userInfo.role == "0"?"中介 ":"案场负责人 "}}</text>         
+        <text class="font-size-14 white-font text-oneline ">我是{{userInfo.role == "0"?"中介 ":"案场负责人 "}}</text>
       </view>
 
       <!--作品数+粉丝数+关注数-->
@@ -61,42 +61,21 @@
     <!-- 下方操作图标 -->
     <view class='margin-top-30'>
 
-      <view class="weui-grids white-bg " style="margin auto" >
-       <view  style="width:660rpx;height:80px; margin:auto;">
+      <view class="weui-grids white-bg " style="margin:auto;border:0px;">
+        <view style="width:660rpx;height:80px; margin:auto;">
           <image class="weui-grid__icon " style="float:left;" catchtap='clickSetZiliao' src="../../images/wode-05.png " />
-        
-        
-          <image class="weui-grid__icon " style="float:left;"  catchtap='clickUserUp' src="../../images/wode-06.png " />
-         
-     
-       
-          <image class="weui-grid__icon " style="float:left;"  catchtap='clickWhiteBook' src="../../images/wode-07.png " />
-  </view>
-       <view  style="width:660rpx;height:80px;  margin:auto;">
+          <image class="weui-grid__icon " style="float:left;" catchtap='clickUserUp' src="../../images/wode-06.png " />
+          <image class="weui-grid__icon " style="float:left;" catchtap='clickWhiteBook' src="../../images/wode-07.png " />
+        </view>
+        <view style="width:660rpx;height:80px;  margin:auto;">
           <image class="weui-grid__icon " style="float:left;" catchtap='clickShop' src="../../images/wode-10.png " />
-          
-       
-       
           <image class="weui-grid__icon " style="float:left;" catchtap='clickCalculator' src="../../images/wode-09.png " />
-          
-      
-       
           <image class="weui-grid__icon " style="float:left;" catchtap='clickHeZuo' src="../../images/wode-08.png " />
-          
-   </view>
-    <view  style="width:660rpx;height:80px;  margin:auto;">
-       
+        </view>
+        <view style="width:660rpx;height:80px;  margin:auto;">
           <image class="weui-grid__icon " style="float:left;" catchtap='clickQd' src="../../images/wode-11.png " />
-          
-      
-       
           <image class="weui-grid__icon " style="float:left;" catchtap='clickFx' src="../../images/wode-12.png " />
-          
-    
-
-       
           <image class="weui-grid__icon " style="float:left;" catchtap='' src="../../images/wode-13.png " />
-       
         </view>
       </view>
     </view>

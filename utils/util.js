@@ -454,14 +454,14 @@ function getStatusStr(status) {
 function getCanJiesuanStatusStr(can_jiesuan_status) {
   switch (can_jiesuan_status) {
     case "0":
-      return "不可结算";
+      return "确认中";
     case "1":
-      return "可以结算";
+      return "已确认";
   }
 }
 
 //获取是否可结算状态
-function getPayZhongieStatusStr(pay_zhongjie_status) {
+function getPayZhongJieStatusStr(pay_zhongjie_status) {
   switch (pay_zhongjie_status) {
     case "0":
       return "待结算";
@@ -551,7 +551,7 @@ function setBaobeiInfo(baobei) {
   baobei.status_str = getStatusStr(baobei.status);
   baobei.baobei_status_str = getBaobeiStatusStr(baobei.baobei_status);
   baobei.baobei_status_int = parseInt(baobei.baobei_status);  //此处设置baobei_status_int值，后续通过大小比对
-  baobei.pay_zhongie_status_str = getPayZhongieStatusStr(baobei.pay_zhongie_status);
+  baobei.pay_zhongjie_status_str = getPayZhongJieStatusStr(baobei.pay_zhongjie_status);
   baobei.can_jiesuan_status_str = getCanJiesuanStatusStr(baobei.can_jiesuan_status);
   baobei.created_at_str = baobei.created_at.split(" ")[0];
   //报备信息
