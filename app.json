@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/houseInfo/huxing/huxing",
     "pages/index/zixun/zixun",
     "pages/my/qd/qd",
     "pages/my/fx/fx",
@@ -19,7 +20,6 @@
     "pages/my/calculator/calculator",
     "pages/templates/house/houseTpl",
     "pages/houseInfo/houseInfo",
-    "pages/houseInfo/huxing/huxing",
     "pages/houseInfo/detail/detail",
     "pages/templates/baobeiTpl/baobeiTpl",
     "pages/templates/zixunTpl/zixunTpl",
@@ -47,7 +47,7 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text":"首页",
+        "text": "首页",
         "iconPath": "images/shouye_n.png",
         "selectedIconPath": "images/shouye_r.png"
       },
@@ -58,8 +58,8 @@
         "selectedIconPath": "images/client_r.png"
       },
       {
-        "pagePath": "pages/my/my",   
-        "text": "我的",  
+        "pagePath": "pages/my/my",
+        "text": "我的",
         "iconPath": "images/my_n.png",
         "selectedIconPath": "images/my_r.png"
       }

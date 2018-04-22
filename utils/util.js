@@ -89,6 +89,10 @@ function getHouseById(param, successCallback, errorCallback) {
 }
 
 
+//根据产品id获取产品信息及户型样式列表
+function getHuxingById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/huxing/getById', param, "GET", successCallback, errorCallback);
+}
 
 //根据条件搜索楼盘
 function searchHouseByCon(param, successCallback, errorCallback) {
@@ -1004,6 +1008,7 @@ module.exports = {
   getADById:getADById,
   getHouseOptions, getHouseOptions,
   getHouseById: getHouseById,
+  getHuxingById: getHuxingById,
   searchHouseByCon, searchHouseByCon,
   searchHouseByName, searchHouseByName,
   updateUserInfo: updateUserInfo,

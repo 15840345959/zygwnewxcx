@@ -5,73 +5,97 @@ var util = require('../../../utils/util.js')
 var app = getApp()
 var page = 0    //列表页码计数
 var vm = null
+
+//户型id
+var huxing_id = null;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  HuXingInfo:[]
+    huxing: null,    //户型信息
+    no_view_hidden: "hidden" //默认为真
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    vm=this
-    console.log("huxing_id", JSON.stringify(options))    
-    vm.setData({
-      huxing_id:options.huxing_id
-    })
-    console.log("huxing_id", JSON.stringify(vm.data.huxing_id))
-    vm.getHouseHuXings()//获取楼盘下的户型
+    vm = this
+    console.log("huxing_id", JSON.stringify(options))
+    huxing_id = options.huxing_id    //获取户型id
+    // huxing_id = 32; //测试用
+
+    console.log("huxing_id", JSON.stringify(huxing_id))
+    vm.getHuxingById()//获取楼盘下的户型
   },
 
-  getHouseHuXings:function(e){
-    var param={
-      huxing_id: vm.data.huxing_id
+  //根据户型id获取户型信息
+  getHuxingById: function (e) {
+    var param = {
+      huxing_id: huxing_id
     }
-    util.getHuxingsByHuXingId(param,function(ret){
-      console.log("getHuxingsByHuXingId",JSON.stringify(ret))
-      var HuXingInfo=ret.data.ret
-      // var HuXingType=ret.data.ret.type
-      console.log("HuXingInfo", JSON.stringify(HuXingInfo))
-      if(ret.data.code=="200"){
+    util.getHuxingById(param, function (ret) {
+      console.log("getHuxingById", JSON.stringify(ret))
+      var msgObj = ret.data.ret
+      if (ret.data.code == "200") {
         vm.setData({
-          HuXingInfo:HuXingInfo,
+          huxing: msgObj
         })
-        console.log("data",JSON.stringify(vm.data.HuXingInfo))
+        if (msgObj.huxingStyles.length == 0) {
+          vm.setData({
+            no_view_hidden: ""
+          })
+        }
+        console.log("data", JSON.stringify(vm.data.huxing))
       }
 
-    },null)
+    }, null)
+  },
+
+  //点击壁画
+  clickHuxingStyle: function (e) {
+    console.log("clickHuxingStyle e:" + JSON.stringify(e))
+    var index = e.currentTarget.dataset.index;
+    var huxingStyles = vm.data.huxing.huxingStyles;
+
+    var current = huxingStyles[index].image
+    var urls = [current]
+
+    wx.previewImage({
+      current: current, // 当前显示图片的http链接
+      urls: urls // 需要预览的图片http链接列表
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
@@ -85,13 +109,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

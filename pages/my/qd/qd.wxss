@@ -1,9 +1,9 @@
 .qd-style {
   width: 50%;
   height: 90rpx;
-  background-color: #64b0ef;
+  background-color: #ff6e33;
   border-radius: 30px;
-  box-shadow: 0 0 8px #64b0ef;
+  box-shadow: 0 0 8px #ff6e33;
   line-height: 90rpx;
   text-align: center;
   font-size: 20px;

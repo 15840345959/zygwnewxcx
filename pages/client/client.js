@@ -10,7 +10,7 @@ var vm = null
 //中介的navbar样式
 var zj_navbar = [{ value: "zj0", name: "我的报备" }, { value: "zj1", name: "已报备" }, { value: "zj2", name: "已到访" }, { value: "zj3", name: "已成交" }, { value: "zj4", name: "已签约" }, { value: "zj5", name: "全款到账" }, { value: "zj6", name: "可结算" }, { value: "zj7", name: "已结算" }];
 //案场负责人的navbar样式
-var ac_navbar = [{ value: "ac0", name: "待接收" }, { value: "ac1", name: "待到访" }, { value: "ac2", name: "待成交" }, { value: "ac3", name: "待签约" }, { value: "ac4", name: "待全款到账" }, { value: "ac5", name: "全款已到账" }, { value: "ac6", name: "待结算" }, { value: "ac7", name: "已结算" }];
+var ac_navbar = [{ value: "ac0", name: "待接收" }, { value: "ac1", name: "待到访" }, { value: "ac2", name: "待成交" }, { value: "ac3", name: "待签约" }, { value: "ac4", name: "待全款到账" }, { value: "ac5", name: "全款已到账" }, { value: "ac6", name: "待确认" }, { value: "ac7", name: "已确认" }];
 
 
 //搜索接口调用参数
@@ -20,7 +20,7 @@ var search_param = {
 
 var reload_flag = true;  //重新加载楼盘数组标志
 
-var set_role = null; //角色设定
+var set_role = null; //角色设定 0：中介 1：案场负责人
 
 Page({
 
@@ -197,42 +197,42 @@ Page({
       //中介
       if (set_role == "0") {
         switch (cur) {
-          case 0:
+          case 0:   //我的报备
             delete search_param.baobei_status;
             delete search_param.can_jiesuan_status;
             delete search_param.pay_zhongjie_status;
             break;
-          case 1:
+          case 1:   //已报备
             search_param.baobei_status = "0";
             delete search_param.can_jiesuan_status;
             delete search_param.pay_zhongjie_status;
             break;
-          case 2:
+          case 2:   //已到访
             search_param.baobei_status = "1";
             delete search_param.can_jiesuan_status;
             delete search_param.pay_zhongjie_status;
             break;
-          case 3:
+          case 3:   //已成交
             search_param.baobei_status = "2";
             delete search_param.can_jiesuan_status;
             delete search_param.pay_zhongjie_status;
             break;
-          case 4:
+          case 4:   //已签约
             search_param.baobei_status = "3";
             delete search_param.can_jiesuan_status;
             delete search_param.pay_zhongjie_status;
             break;
-          case 5:
+          case 5:   //全款到账
             search_param.baobei_status = "4";
             delete search_param.can_jiesuan_status;
             delete search_param.pay_zhongjie_status;
             break;
-          case 6:
+          case 6:   //可结算
             search_param.can_jiesuan_status = "0";
             delete search_param.baobei_status;
             delete search_param.pay_zhongjie_status;
             break;
-          case 7:
+          case 7:   //已结算
             search_param.pay_zhongjie_status = "1";
             delete search_param.baobei_status;
             delete search_param.can_jiesuan_status;
@@ -242,43 +242,43 @@ Page({
       //案场负责人
       if (set_role == "1") {
         switch (cur) {
-          case 0:
+          case 0:     //待接收
             delete search_param.baobei_status;
             delete search_param.can_jiesuan_status;
             delete search_param.pay_zhongjie_status;
             break;
-          case 1:
+          case 1:   //待到访
             search_param.baobei_status = "0";
             delete search_param.can_jiesuan_status;
             delete search_param.pay_zhongjie_status;
             break;
-          case 2:
+          case 2:   //待成交
             search_param.baobei_status = "1";
             delete search_param.can_jiesuan_status;
             delete search_param.pay_zhongjie_status;
             break;
-          case 3:
+          case 3:   //待签约
             search_param.baobei_status = "2";
             delete search_param.can_jiesuan_status;
             delete search_param.pay_zhongjie_status;
             break;
-          case 4:
+          case 4:     //待全款到账
             search_param.baobei_status = "3";
             delete search_param.can_jiesuan_status;
             delete search_param.pay_zhongjie_status;
             break;
-          case 5:
+          case 5:   //全款已到账
             search_param.baobei_status = "4";
             delete search_param.can_jiesuan_status;
             delete search_param.pay_zhongjie_status;
             break;
-          case 6:
-            search_param.pay_zhongjie_status = "0";
+          case 6:   //待确认
+            search_param.can_jiesuan_status = "0";
             delete search_param.baobei_status;
-            delete search_param.can_jiesuan_status;
+            delete search_param.pay_zhongjie_status;
             break;
-          case 7:
-            search_param.pay_zhongjie_status = "1";
+          case 7:     //已确认
+            search_param.can_jiesuan_status = "1";
             delete search_param.baobei_status;
             delete search_param.can_jiesuan_status;
             break;

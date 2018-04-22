@@ -1,8 +1,8 @@
 <!--pages/product/product.wxml-->
 <view class="page" style="width:100%;">
   <view style='margin-left:25rpx; padding-top:30rpx;'>
-    <video wx:if="{{houseInfo.video!=''&&houseInfo.video!=null}}" class="image1_frame" src="{{houseInfo.video}}" poster="{{houseInfo.image}}" controls='true' mode="aspectFill" ></video>
-     <image wx:else class="image1_frame" src="{{houseInfo.image}}" bindtap='getVideo' mode="aspectFill"></image>    
+    <video wx:if="{{houseInfo.video!=''&&houseInfo.video!=null}}" class="image1_frame" src="{{houseInfo.video}}" poster="{{houseInfo.image}}" controls='true' mode="aspectFill"></video>
+    <image wx:else class="image1_frame" src="{{houseInfo.image}}" bindtap='getVideo' mode="aspectFill"></image>
   </view>
   <view style='display: flex;flex-direction: row; margin-bottom:20rpx'>
     <view class='' style='padding-left: 30rpx;float: left;width: 700rpx;position: relative;'>
@@ -43,54 +43,23 @@
 
 
   <!--pages/houseInfo/huxing/huxing.wxml-->
-  
-    <view class="office margin-top-5" style='width:100%;'>
+
+  <view class="office margin-top-5" style='width:100%;'>
     <block wx:for="{{HuXingInfo}}">
-      <view class="" catchtap='clickHuXings' data-huxingid="{{item.id}}"  style='float:left;width:50%;background-color:white; box-shadow:0px 0px 10px 5px #f5f5f5;'>
-        <image src="{{item.image}}" class="office2-img-sml" mode="aspectFill" ></image>
+      <view class="" catchtap='clickHuXings' data-huxingid="{{item.id}}" style='float:left;width:50%;background-color:white; box-shadow:0px 0px 10px 5px #f5f5f5;'>
+        <image src="{{item.image}}" class="office2-img-sml" mode="aspectFill"></image>
         <view class="text-oneline office-title-font " style='margin-left:20rpx;margin-top:0rpx;font-size:28rpx;'>{{item.type.name}}</view>
 
-         <view style='color:black;font-size:30rpx;margin-left:100rpx;margin-top:-40rpx;'>{{item.size_min}}m²-{{item.size_max}}m²</view>
+        <view style='color:black;font-size:30rpx;margin-left:100rpx;margin-top:-40rpx;'>{{item.size_min}}m²-{{item.size_max}}m²</view>
 
-         <view class="text-oneline  office-font" style='margin-left:20rpx;;margin-top:-8rpx;color:#ff6e33 ;'>佣金{{item.yongjin_value}}{{item.yongjin_type=="0"?"元":"‰"}}/套</view>
+        <view class="text-oneline  office-font" style='margin-left:20rpx;;margin-top:-8rpx;color:#ff6e33 ;'>佣金{{item.yongjin_value}}{{item.yongjin_type=="0"?"元":"‰"}}/套</view>
       </view>
- 
-      <!-- <view class="office-info">
-        <view style='display:flex;flex-direction:row;align-items:center;margin-top:0rpx;'>
 
-         
-          <view style='text-align:right;float:right;text-align:right;color:black;font-size:30rpx;margin-left:100rpx;margin-top:-280rpx;font-size:30rpx;'>{{item.size_min}}m²-{{item.size_max}}m²</view>
-        </view>
-        <view class="text-oneline  office-font" style='margin-left:360rpx;;margin-top:-68rpx;color:yellowgreen ;'>佣金 {{item.yongjin_type=="0"?"固定金额":"按比分成"}}-{{item.yongjin_value}}{{item.yongjin_type=="0"?"元":"‰"}}/套</view>
-      
-      </view> -->
-   
-    <!-- <view style='width: 100%;height: 6rpx; background: #f5f5f5;'></view> -->
-
-    <!-- <view style="width:100%;height:25px;">
-
-      <view style="margin-left:15px;margin-top:5px;">户型优惠：{{item.benefit}}</view>
-    </view>
-    <view style='width: 100%;height: 6rpx; background: #f5f5f5;'></view>
-    <view style="width:100%;height:25px;">
-      <view style="margin-left:15px;margin-top:5px;">户型朝向：{{item.orientation}}</view>
-    </view>
-
-    <view style='width: 100%;height: 6rpx; background: #f5f5f5;'></view>
-    <view style="width:100%;height:25px;">
-      <view style="margin-left:15px;margin-top:5px;">推荐理由：{{item.reason}}</view>
-    </view> -->
-    <!-- <view style='width: 100%;height: 10rpx; background: #f5f5f5;'></view> -->
-  </block>
-   </view>
+    </block>
+  </view>
   <view class='product-down-line'></view>
 
 
-  <!-- <button bindtap="jumpBaobei" style='background-color:yellowgreen;color:white;height:40px;' class="full-width" hover-class="other-button-hover" data-houseid="{{id}}" data-houseName="{{houseInfo.title}}"> 报备客户 </button> -->
-
   <button bindtap="jumpBaobei" style='background-color:#ff6e33;color:white;margin-top:200px;' class="full-width" hover-class="other-button-hover"> 报备客户 </button>
-
-
-
 
 </view>

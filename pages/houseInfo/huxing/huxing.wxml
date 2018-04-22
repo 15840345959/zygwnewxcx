@@ -1,40 +1,26 @@
 <!--pages/houseInfo/huxing/huxing.wxml-->
-<view class=""  style="">
-
-<view class="office margin-top-5 margin-left-30" style='margin-bottom:0rpx;padding:10rpx 0' >
-    <view class="office-img" style='padding-top:5rpx;'>
-      <image src="{{HuXingInfo.image}}" class="office-img-sml" mode="aspectFill"></image>
-    </view>
-    <view class="office-info">
-      <view style='display:flex;flex-direction:row;align-items:center;margin-top:0rpx;'>
-
-        <view class="text-oneline font-weight office-title-font " style='margin-left:300rpx;margin-top:-330rpx;float:left;'>{{HuXingInfo.huxing}}</view>
-        <!-- <view style='text-align:right;float:right;text-align:right;color:black;font-size:30rpx;margin-left:100rpx;margin-top:-330rpx;'>{{item.size_min}}m²-{{item.size_max}}m²</view> -->
+<view class="white-bg">
+  <view style='height:10px;'></view>
+  <block wx:for="{{huxing.huxingStyles}}" wx:for-index="index" wx:for-item="item">
+    <view style='border:1px #fafafa solid' class='margin-top-10 margin-bottom-10 margin-left-10 margin-right-10'></view>
+    <view class="huxing" catchtap='clickHuxingStyle' data-index='{{index}}'>
+      <view class="huxing-img margin-left-20">
+        <image src="{{item.image}}" class="huxing-img-big" mode="aspectFill"></image>
       </view>
-      <!-- <view class="text-oneline office-font" style='margin-left:300rpx;margin-top:-100rpx;'>{{item.type.name}}</view> -->
-       <!-- <view class="text-oneline office-font" style='margin-left:40rpx;margin-top:10px;color:red;'>{{item.price}}</view> -->
-        <view class="text-oneline  office-font" style='margin-left:10rpx;'>{{size}}</view>
-      <!-- <view class="text-oneline  office-font" style='margin-left:500rpx;;margin-top:-70rpx;'>佣金 {{item.yongjin_value}}元</view> -->
-      <!-- <view class="text-oneline margin-bottom-5 office-font margin-top-5" style='margin-left:10rpx;'>{{desc}}</view> -->
+      <view class="huxing-info margin-right-10">
+        <view class="text-oneline font-size-16 font-weight">{{item.name}}</view>
+        <view class="text-oneline margin-top-5 font-size-14 main-color">面积:{{item.size}}</view>
+        <view class="text-oneline margin-top-5">朝向:{{item.orientation}}</view>
+        <view class="text-threeline margin-top-10 grey-font font-size-14">{{item.reason}}</view>
+      </view>
+    </view>
+  </block>
+  <view class='{{no_view_hidden}}'>
+    <view class="no-img-view">
+      <image src="../../../images/no.png" class="no-image"></image>
+    </view>
+    <view class="grey-font center-style margin-top-10">
+      还没有录入户型
     </view>
   </view>
-  <view style='width: 100%;height: 6rpx; background: #f4f4f4;'></view>
-
-  <view style="width:100%;height:25px;">
-   
-    <view style="margin-left:15px;margin-top:5px;">户型优点：{{HuXingInfo.benefit}}</view>
-  </view>
-  <view style='width: 100%;height: 6rpx; background: #f4f4f4;'></view>
-  <view style="width:100%;height:25px;">
-    <view style="margin-left:15px;margin-top:5px;">户型朝向：{{HuXingInfo.orientation}}</view>
-  </view>
-
-  <view style='width: 100%;height: 6rpx; background: #f4f4f4;'></view>
-  <view style="width:100%;height:25px;">
-    <view style="margin-left:15px;margin-top:5px;">推荐理由：{{HuXingInfo.reason}}</view>
-  </view>
-   <view style='width: 100%;height: 10rpx; background:#f4f4f4;'></view> 
- <view class='product-down-line'></view>
- </view>
-
-
+</view>

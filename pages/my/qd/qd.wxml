@@ -7,8 +7,8 @@
   <view class="weui-form-preview">
     <view class="weui-form-preview__hd">
       <view class="weui-form-preview__item">
-        <view class="weui-form-preview__label" style='color:#64b0ef;font-size:18px;'>签到日期</view>
-        <view class="weui-form-preview__value_in-hd" style='color:#64b0ef;font-size:18px;'>获得积分</view>
+        <view class="weui-form-preview__label main-color" style=';font-size:16px;'>签到日期</view>
+        <view class="weui-form-preview__value_in-hd main-color" style='font-size:16px;'>获得积分</view>
       </view>
     </view>
   </view>
@@ -18,8 +18,8 @@
     <view class="weui-form-preview">
       <view class="weui-form-preview__hd">
         <view class="weui-form-preview__item">
-          <view class="weui-form-preview__label" style='color:#838383;font-size:15px;'>{{item.created_at}}</view>
-          <view class="weui-form-preview__value_in-hd" style='color:#838383;font-size:15px;'>{{item.jifen}}</view>
+          <view class="weui-form-preview__label" style='color:#838383;font-size:14px;'>{{item.created_at}}</view>
+          <view class="weui-form-preview__value_in-hd main-color" style='font-size:14px;'>+{{item.jifen}}</view>
         </view>
       </view>
     </view>

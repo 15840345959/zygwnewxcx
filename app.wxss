@@ -397,7 +397,6 @@ page {
 
 .image1_frame {
   width: 700rpx;
-  /* height: 210rpx; */
   height: 320rpx;
   border-radius: 10rpx;
 }
