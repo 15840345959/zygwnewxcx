@@ -1,10 +1,10 @@
 <!--该模板用于首页楼盘列表展示-->
 <template name="houseList">
   <view class="house margin-top-5 margin-left-30" style='margin-bottom:0rpx;padding:10rpx 0' bindtap="clickHouse" data-id="{{id}}" data-houseid="{{id}}">
-    <view class="house-img">
-      <image src="{{image}}?imageView2/1/w/480/h/4400/interlace/1/q/75" class="house-img-sml" mode="aspectFill"></image>
+    <view class="house-img" style='border-right:1px solid #ff6e33;'>
+      <image src="{{image}}?imageView2/1/w/600/h/580/interlace/1/q/75" class="house-img-sml margin-right-20" mode="aspectFill"></image>
     </view>
-    <image src='../../images/shu.png' style="height:210rpx;" class='margin-left-10 opt-icon-12'></image>
+  
     <view class="house-info">
       <view style='display:flex;flex-direction:row;align-items:center;' class='margin-top-10'>
         <view class="text-oneline font-weight house-title-font" style='margin-left:10rpx;float:left; width:240rpx;margin-top:-50rpx;'>{{title}}</view>

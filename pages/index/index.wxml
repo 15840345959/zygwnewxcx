@@ -68,7 +68,7 @@
       未找到房源
     </view>
   </view>
-  <view style='position:fixed;right:10px;bottom:30px;'>
+  <view style='position:fixed;right:0px;bottom:30px;'>
     <image src='../../images/baobei.png' style='width:120rpx;height:120rpx;' catchtap='clickBaobeiBtn'></image>
   </view>
 </view>

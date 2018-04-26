@@ -9,7 +9,7 @@
       </view>
       <view class="huxing-info margin-right-10">
         <view class="text-oneline font-size-16 font-weight">{{item.name}}</view>
-        <view class="text-oneline margin-top-5 font-size-14 main-color">面积:{{item.size}}</view>
+        <view class="text-oneline margin-top-5 font-size-14 main-color">面积:{{item.size}}㎡</view>
         <view class="text-oneline margin-top-5">朝向:{{item.orientation}}</view>
         <view class="text-threeline margin-top-10 grey-font font-size-14">{{item.reason}}</view>
       </view>
