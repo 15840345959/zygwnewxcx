@@ -3,6 +3,7 @@
 @import './pages/templates/house/houseTpl.wxss';
 @import './pages/index/index.wxss';
 @import './pages/client/client.wxss';
+@import "./bower_components/zanui-weapp/dist/index.wxss";
 
 page {
   height: 100%;

@@ -1,0 +1,125 @@
+<!--pages/my/loansCalculator/loansCalculator.wxml-->
+<view style='background-color:#108EE9;height:400rpx;'>
+  <view class='center-style' style='width:750rpx;'>
+
+    <zan-row row-class="top-border">
+      <zan-col col="12" bindtap='select' col-class="custom-zan-col center-style line-height {{select?'font-color':'select-font-color'}}">等额本息</zan-col>
+      <zan-col col="12" bindtap='select' col-class="custom-zan-col center-style line-height {{select?'select-font-color':'font-color'}}">等额本金</zan-col>
+    </zan-row>
+  </view>
+
+  <view style='margin:40rpx 50rpx;'>
+    <zan-row>
+      <zan-col col="12" col-class="custom-zan-col">
+        <view class='zan-font-12' style='color:#fff;'>每月月供参考(元)</view>
+        <view class='zan-font-24' style='color:#fff;'>{{monthly_installment_payment}}</view>
+      </zan-col>
+      <zan-col col="1" col-class="custom-zan-col">
+        <view style='height:112rpx;width: 3rpx;'></view>
+      </zan-col>
+      <block wx:if="{{select}}">
+        <zan-col col="11" col-class="custom-zan-col">
+          <view class='zan-font-12' style='color:#fff;'>每月递减(元)</view>
+          <view class='zan-font-24' style='color:#fff;'>{{decrease_progressively}}</view>
+        </zan-col>
+      </block>
+    </zan-row>
+  </view>
+
+
+
+  <!-- <view style='margin:30rpx 50rpx;'>
+    <view class='zan-font-12' style='color:#fff;'>每月月供参考(元)</view>
+
+    <view class='zan-font-24' style='color:#fff;'>{{monthly_installment_payment}}</view>
+  </view> -->
+
+  <!-- <view style='height:20rpx;'></view> -->
+
+  <view style='margin:40rpx 50rpx;'>
+    <zan-row>
+      <zan-col col="12" col-class="custom-zan-col">
+        <view class='zan-font-12' style='color:#fff;'>支付利息(元)</view>
+        <view class='zan-font-16' style='color:#fff;'>{{interest}}</view>
+      </zan-col>
+      <zan-col col="1" col-class="custom-zan-col">
+        <view style='height:112rpx;width: 3rpx;background-color: #fff;'></view>
+      </zan-col>
+      <zan-col col="11" col-class="custom-zan-col">
+        <view class='zan-font-12' style='color:#fff;'>还款总额(元)</view>
+        <view class='zan-font-16' style='color:#fff;'>{{repaymentMoney}}</view>
+      </zan-col>
+    </zan-row>
+  </view>
+
+</view>
+
+<view style='height:60rpx;background-color:#EAF4FA;text-align:center;line-height:60rpx;color:#737374;'>
+  等额本息还款详情
+</view>
+
+<view class='zan-font-14' style='background-color:#fff;line-height:90rpx;'>
+
+  <view class="weui-cell weui-cell_select">
+    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+      <view class="weui-label">贷款类型</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
+        <view class="weui-select weui-select_in-select-after" style='text-align:right;'>{{countries[countryIndex]}}</view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">贷款金额(万)</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input style='text-align:right;' bindinput='loansMoneyInput' class="weui-input" placeholder="请输入金额" type='number' />
+    </view>
+  </view>
+
+  <view class="weui-cell weui-cell_select">
+    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+      <view class="weui-label">期限(年)</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker bindchange="bindLoansMoney" value="{{loansMoneyIndex}}" range="{{loansMoney}}">
+        <view class="weui-select weui-select_in-select-after" style='text-align:right;'>{{loansMoney[loansMoneyIndex]}}</view>
+      </picker>
+    </view>
+  </view>
+
+  <block wx:if="{{countryIndex == 0}}">
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">利率(%)</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindInterestRate" value="{{interestRateIndex}}" range="{{interestRate}}">
+          <view wx:if="{{loansMoneyIndex != 0}}" class="weui-select weui-select_in-select-after" style='text-align:right;'>{{interestRateNumOne[interestRateIndex]}}</view>
+          <view wx:if="{{loansMoneyIndex == 0}}" class="weui-select weui-select_in-select-after" style='text-align:right;'>{{interestRateNumTwo[interestRateIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{countryIndex == 1}}">
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">利率(%)</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindInterestRate" value="{{interestRateTwoIndex}}" range="{{interestRateTwo}}">
+          <view wx:if="{{loansMoneyIndex != 0}}" class="weui-select weui-select_in-select-after" style='text-align:right;'>{{interestRateOneNumTwo[interestRateIndex]}}</view>
+          <view wx:if="{{loansMoneyIndex == 0}}" class="weui-select weui-select_in-select-after" style='text-align:right;'>{{interestRateTwoNumTwo[interestRateIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+  </block>
+
+</view>
+<view class='zan-font-12 zan-c-gray-dark' style='line-height:60rpx;margin-left:30rpx;'>以上为央行2016年最新公布的贷款基准利率</view>
+<view>
+</view>

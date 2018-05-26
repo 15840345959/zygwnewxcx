@@ -13,12 +13,48 @@ App({
     //如果没有缓存
     if (userInfo == null || userInfo == undefined || userInfo == "") {
       //调用登录接口
-      vm.login(null);
+      // vm.login(null);
+      vm.openSetting()
     } else {
       vm.globalData.userInfo = wx.getStorageSync("userInfo");
       console.log("vm.globalData.userInfo:" + JSON.stringify(vm.globalData.userInfo));
     }
   },
+
+  //设置页面
+  openSetting: function () {
+    wx.getSetting({
+      success: (res) => {
+        console.log("Result" + JSON.stringify(res))
+        if (!res.authSetting["scope.userInfo"]) {
+          // vm.showModal()
+          wx.redirectTo({
+            url: '/pages/getUserInfoPage/getUserInfoPage',
+          })
+        }
+        else {
+          vm.login();
+        }
+      }
+    })
+  },
+
+  //引导用户授权
+  showModal: function () {
+    wx.showModal({
+      title: '提示',
+      content: '若不授权获取用户信息，置业顾问小程序的部分重要功能将无法使用；请点击【重新授权】——选中【用户信息】方可使用。',
+      showCancel: false,
+      confirmText: "重新授权",
+      success: function (res) {
+        if (res.confirm) {
+          // vm.openSetting()
+          vm.openSetting()
+        }
+      }
+    })
+  },
+
   //微信登录
   login: function (callBack) {
     //微信登录获取code
@@ -62,6 +98,12 @@ App({
                   //如果后台存在该用户数据，则代表已经注册，在本地建立缓存，下次无需二次登录校验
                   if (ret.data.code == "200" && ret.data.result == true) {
                     vm.storeUserInfo(ret.data.ret)
+
+                    console.log('看看走没走')
+                    wx.switchTab({
+                      url: '/pages/index/index',
+                    })
+
                   } else {
                     //进行客户注册
                     util.showToast(ret.data.message);
@@ -94,8 +136,6 @@ App({
       data: obj
     });
     vm.globalData.userInfo = obj;
-    // console.log("vm.globalData.userInfo:" + JSON.stringify(vm.globalData.userInfo))
-    // console.log("vm.globalData.userInfo.phonenum:" + JSON.stringify(vm.globalData.userInfo.phonenum))
   },
   getUserInfo: function (cb) {
     typeof cb == "function" && cb(vm.globalData.userInfo)
@@ -111,34 +151,6 @@ App({
         }
       })
     }
-  },
-  //引导用户授权
-  showModal: function () {
-    wx.showModal({
-      title: '提示',
-      content: '若不授权获取用户信息，壁画小程序的部分重要功能将无法使用；请点击【重新授权】——选中【用户信息】方可使用。',
-      showCancel: false,
-      confirmText: "重新授权",
-      success: function (res) {
-        if (res.confirm) {
-          vm.openSetting()
-        }
-      }
-    })
-  },
-  //设置页面
-  openSetting: function () {
-    wx.openSetting({
-      success: (res) => {
-        console.log("Result" + JSON.stringify(res))
-        if (!res.authSetting["scope.userInfo"]) {
-          vm.showModal()
-        }
-        else {
-          vm.login();
-        }
-      }
-    })
   },
   //全局变量
   globalData: {

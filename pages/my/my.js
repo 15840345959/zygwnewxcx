@@ -90,17 +90,17 @@ Page({
       url: '/pages/my/shop/shop?jsonStr=' + JSON.stringify(vm.data.userInfo)
     })
   },
-//行业白皮书
-  clickWhiteBook:function(){
+  //行业白皮书
+  clickWhiteBook: function () {
     wx.navigateTo({
       url: '/pages/my/whitebook/whitebook',
     })
   },
   //合作细则
-  clickHeZuo:function(){
-   wx.navigateTo({
-     url: '/pages/my/hezuo/hezuo',
-   })
+  clickHeZuo: function () {
+    wx.navigateTo({
+      url: '/pages/my/hezuo/hezuo',
+    })
   },
   //签到
   clickQd: function () {
@@ -115,8 +115,11 @@ Page({
     })
   },
   clickCalculator: function () {
+    // wx.navigateTo({
+    //   url: '/pages/my/calculator/calculator',
+    // })
     wx.navigateTo({
-      url: '/pages/my/calculator/calculator',
+      url: '/pages/my/loansCalculator/loansCalculator',
 
     })
   },

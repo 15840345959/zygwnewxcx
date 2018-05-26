@@ -5,7 +5,8 @@
   <view class="page__bd page__bd_spacing {{hidden}}">
     <!-- 头像相关 -->
     <view style="position:relative;">
-      <image src="../../../images/yq2.png " class="head-bg" mode="aspectFill"></image>
+      <!-- <image src="../../../images/yq2.png " class="head-bg" mode="aspectFill"></image> -->
+      <image src="http://ozhs589fk.bkt.clouddn.com/yq2.png" class="head-bg" mode="aspectFill"></image>
 
       <view style="position: absolute;top:15px;right:15px;">
         <image src="../../../images/tuijian_t_icon.png" class="opt-icon-nor" catchtap="jumpTj"></image>
