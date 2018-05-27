@@ -1,0 +1,29 @@
+/* pages/my/loansCalculatorDetail/loansCalculatorDetail.wxss */
+
+.line-height {
+  line-height: 50rpx;
+}
+
+.top-border {
+  width: 400rpx;
+  height: 50rpx;
+  border: #fff 3rpx solid;
+  margin-top: 20rpx;
+  border-radius: 17rpx;
+}
+
+.select-font-color {
+  color: #108ee9;
+  background-color: #fff;
+  border-radius: 15rpx;
+}
+
+.font-color {
+  color: #fff;
+  background-color: #108ee9;
+  border-radius: 15rpx;
+}
+
+page {
+  background-color: #f5f5f9;
+}

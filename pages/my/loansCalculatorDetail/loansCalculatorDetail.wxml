@@ -1,0 +1,82 @@
+<!--pages/my/loansCalculatorDetail/loansCalculatorDetail.wxml-->
+<view style='background-color:#108EE9;height:230rpx;position: fixed;'>
+
+  <view class='center-style' style='width:750rpx;'>
+    <zan-row row-class="top-border">
+      <zan-col col="12" bindtap='select' col-class="custom-zan-col center-style line-height {{select?'font-color':'select-font-color'}}">等额本息</zan-col>
+      <zan-col col="12" bindtap='select' col-class="custom-zan-col center-style line-height {{select?'select-font-color':'font-color'}}">等额本金</zan-col>
+    </zan-row>
+  </view>
+
+  <view style='height:30rpx;'></view>
+
+  <view style='width:750rpx;'>
+    <zan-row row-class="">
+      <zan-col col="6" col-class="center-style font-color">
+        <view>
+          <view>总还款(万)</view>
+          <view style="text-align:center;margin-top:10rpx;" class='zan-font-16'>{{repaymentMoney}}</view>
+        </view>
+      </zan-col>
+      <zan-col col="6" col-class="center-style font-color">
+        <view>
+          <view>总利息(万)</view>
+          <view style="text-align:center;margin-top:10rpx;" class='zan-font-16'>{{interest}}</view>
+        </view>
+      </zan-col>
+      <zan-col col="6" col-class="center-style font-color">
+        <view>
+          <view>总贷款(万)</view>
+          <view style="text-align:center;margin-top:10rpx;" class='zan-font-16'>{{total_loans}}</view>
+        </view>
+      </zan-col>
+      <zan-col col="6" col-class="center-style font-color">
+        <view>
+          <view>贷款月数</view>
+          <view style="text-align:center;margin-top:10rpx;" class='zan-font-16'>{{loans_month}}</view>
+        </view>
+      </zan-col>
+    </zan-row>
+  </view>
+</view>
+
+<view style='width:750rpx;position: fixed;top:230rpx;left:0rpx; background-color: rgba(0, 0, 0,0.1);'>
+  <zan-row row-class="">
+    <zan-col col="6" col-class="">
+      <view style='color: #108ee9;padding-left:20rpx;line-height:50rpx;'>月份</view>
+    </zan-col>
+    <zan-col col="6" col-class="">
+      <view style='color: #108ee9;line-height:50rpx;'>月供本金</view>
+    </zan-col>
+    <zan-col col="6" col-class="">
+      <view style='color: #108ee9;line-height:50rpx;'>月供利息</view>
+    </zan-col>
+    <zan-col col="6" col-class="">
+      <view style='color: #108ee9;line-height:50rpx;'>剩余</view>
+    </zan-col>
+  </zan-row>
+</view>
+
+<view style='height:280rpx;'></view>
+
+<block wx:for="{{yearDataList}}">
+  <view style='height:50rpx;background-color:#ECF3FB;padding-left:20rpx;line-height:50rpx;color:#236DA0;'>第{{index + 1}}年</view>
+  <block wx:for="{{item.dataList}}">
+    <view style='width:750rpx;'>
+      <zan-row row-class="">
+        <zan-col col="6" col-class="">
+          <view style='color: #108ee9;padding-left:20rpx;line-height:60rpx;'>{{item.monthindex}}月</view>
+        </zan-col>
+        <zan-col col="6" col-class="">
+          <view style='color: #108ee9;line-height:60rpx;'>{{item.month_principal}}</view>
+        </zan-col>
+        <zan-col col="6" col-class="">
+          <view style='color: #108ee9;line-height:60rpx;'>{{item.month_interest}}</view>
+        </zan-col>
+        <zan-col col="6" col-class="">
+          <view style='color: #108ee9;line-height:60rpx;'>{{item.residue}}</view>
+        </zan-col>
+      </zan-row>
+    </view>
+  </block>
+</block>

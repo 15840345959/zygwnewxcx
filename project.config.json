@@ -37,6 +37,12 @@
 					"name": "房贷计算",
 					"pathName": "pages/my/loansCalculator/loansCalculator",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "房贷计算详情",
+					"pathName": "pages/my/loansCalculatorDetail/loansCalculatorDetail",
+					"query": ""
 				}
 			]
 		}

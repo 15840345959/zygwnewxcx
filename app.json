@@ -31,7 +31,8 @@
     "pages/client/canjiesuanOpt/canjiesuanOpt",
     "pages/client/signOpt/signOpt",
     "pages/client/qkdzOpt/qkdzOpt",
-    "pages/client/setGuwenOpt/setGuwenOpt"
+    "pages/client/setGuwenOpt/setGuwenOpt",
+    "pages/my/loansCalculatorDetail/loansCalculatorDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
