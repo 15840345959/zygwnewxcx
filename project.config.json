@@ -43,6 +43,12 @@
 					"name": "房贷计算详情",
 					"pathName": "pages/my/loansCalculatorDetail/loansCalculatorDetail",
 					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "行业白皮书",
+					"pathName": "pages/my/whitebook/whitebook",
+					"query": ""
 				}
 			]
 		}

@@ -68,14 +68,13 @@ function getMyInfo(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/user/getMyInfo', param, "GET", successCallback, errorCallback)
 }
 
-
 //获取广告图
 function getADs(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/ad/getADs', param, "GET", successCallback, errorCallback);
 }
 //根据广告图的id获取资讯
 function getADById(param, successCallback, errorCallback) {
-  wxRequest(SERVER_URL + '/api/ad/getADById', param, "GET", successCallback, errorCallback);
+  wxRequest(SERVER_URL + '/api/ad/getById', param, "GET", successCallback, errorCallback);
 }
 
 //获取楼盘选项
@@ -254,6 +253,11 @@ function getListByReUserId(param, successCallback, errorCallback) {
 //推荐用户
 function recommUser(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/recomm/recommUser', param, "POST", successCallback, errorCallback);
+}
+
+//根据id获取用户首页相关信息
+function tw_getByType(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/tw/getByType', param, "GET", successCallback, errorCallback);
 }
 
 /////////页面跳转///////////////////////////////
@@ -529,7 +533,7 @@ function smalltoBIG(n) {
 }
 
 //s:传入的float数字 ，n:希望返回小数点几位 
-function fmoney(s, n){
+function fmoney(s, n) {
   n = n > 0 && n <= 20 ? n : 2;
   s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
   var l = s.split(".")[0].split("").reverse(),
@@ -570,7 +574,7 @@ function setBaobeiInfo(baobei) {
   //成交信息
   if (baobei.baobei_status_int >= 2) {
     baobei.deal_time_str = baobei.deal_time;
-    baobei.deal_price_str = fmoney(baobei.deal_price,2);
+    baobei.deal_price_str = fmoney(baobei.deal_price, 2);
     baobei.deal_price_chi = smalltoBIG(baobei.deal_price);
   }
 
@@ -1005,7 +1009,7 @@ module.exports = {
   loginServer: loginServer,
   getUserInfoByIdWithToken: getUserInfoByIdWithToken,
   getADs: getADs,
-  getADById:getADById,
+  getADById: getADById,
   getHouseOptions, getHouseOptions,
   getHouseById: getHouseById,
   getHuxingById: getHuxingById,
@@ -1047,7 +1051,7 @@ module.exports = {
   getToday: getToday,
   getCurrentTime: getCurrentTime,
   isPoneAvailable: isPoneAvailable,
-  isCardIDAvailable:isCardIDAvailable,
+  isCardIDAvailable: isCardIDAvailable,
   isNameAvailable: isNameAvailable,
   getLocalUserInfo: getLocalUserInfo,
   setBaobeiInfo: setBaobeiInfo,
@@ -1058,7 +1062,7 @@ module.exports = {
   //other function
   getDiffentTime: getDiffentTime,
   gcj02towgs84: gcj02towgs84,
- 
+
   getGoodsList: getGoodsList,
   exchange: exchange,
   getExchangeListByUserId: getExchangeListByUserId,
@@ -1067,4 +1071,5 @@ module.exports = {
   getUserQDsByUserId: getUserQDsByUserId,
   getListByReUserId: getListByReUserId,
   recommUser: recommUser,
+  tw_getByType: tw_getByType
 } 

@@ -82,11 +82,11 @@
 
   <view class="weui-cell weui-cell_input">
     <view class="weui-cell__hd">
-      <view wx:if="{{countryIndex != 1}}" class="weui-label">贷款金额(万)</view>
+      <view wx:if="{{countryIndex != 1}}" style='width:260rpx;' class="weui-label">贷款金额(万)</view>
       <view wx:if="{{countryIndex == 1}}" style='width:260rpx;' class="weui-label">公积金贷款金额(万)</view>
     </view>
     <view class="weui-cell__bd">
-      <input style='text-align:right;' bindinput='loansMoneyInput' class="weui-input" placeholder="请输入金额" type='number' value='{{loansMoneyValue}}' />
+      <input style='text-align:right;width:432rpx;' bindinput='loansMoneyInput' class="weui-input" placeholder="请输入金额" type='number' value='{{loansMoneyValue}}' />
     </view>
   </view>
 
@@ -96,7 +96,7 @@
         <view class="weui-label" style='width:260rpx;'>公积金贷款金额(万)</view>
       </view>
       <view class="weui-cell__bd">
-        <input style='text-align:right;' bindinput='accumulationFundInput' class="weui-input" placeholder="请输入金额" type='number' value='{{accumulationFundValue}}' />
+        <input style='text-align:right;width:432rpx;' bindinput='accumulationFundInput' class="weui-input" placeholder="请输入金额" type='number' value='{{accumulationFundValue}}' />
       </view>
     </view>
   </block>

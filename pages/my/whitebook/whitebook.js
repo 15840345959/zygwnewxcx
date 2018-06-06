@@ -1,4 +1,4 @@
-// pages/my/hezuo/hezuo.js
+// pages/my/whitebook/whitebook.js
 var util = require('../../../utils/util.js')
 
 //获取应用实例
@@ -7,9 +7,6 @@ var page = 0    //列表页码计数，暂未使用，后续扩展使用
 var vm = null
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     WhiteBookInfo: []
   },
@@ -19,9 +16,24 @@ Page({
    */
   onLoad: function (options) {
     vm = this
-    vm.getWhiteBook()//根据类型获取行业白皮书
-
+    // vm.getWhiteBook()      //根据类型获取行业白皮书
+    vm.tw_getByType()         //根据id获取用户首页相关信息
   },
+
+  // 根据id获取用户首页相关信息
+  tw_getByType: function () {
+    var param = {
+      type: 2,
+    }
+    util.tw_getByType(param, function (res) {
+      if (res.data.result) {
+        var WhiteBookInfo = res.data.ret
+        console.log("根据id获取用户首页相关信息" + JSON.stringify(WhiteBookInfo))
+        vm.setData({ WhiteBookInfo: WhiteBookInfo })
+      }
+    })
+  },
+
   //根据图文类型获取获取行业白皮书
   getWhiteBook: function () {
     var param = {
