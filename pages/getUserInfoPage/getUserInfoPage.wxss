@@ -1,1 +1,4 @@
 /* pages/getUserInfoPage/getUserInfoPage.wxss */
+
+.test {
+}

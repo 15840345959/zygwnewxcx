@@ -184,7 +184,7 @@ Page({
   },
   jumpHeZuo: function(e){
     wx.navigateTo({
-      url: '/pages/my/hezuo/hezuo',
+      url: '/pages/my/whitebook/whitebook',
     })
   }
 })
