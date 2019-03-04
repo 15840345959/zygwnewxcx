@@ -71,6 +71,13 @@ Page({
       url: '/pages/my/setMyInfo/setMyInfo?jsonStr=' + JSON.stringify(vm.data.userInfo)
     })
   },
+  //编辑用户信息
+  myEdit: function () {
+    console.log("点击头像=")
+    wx.navigateTo({
+      url: './myEdit/myEdit'
+    })
+  },
   //升级案场负责人
   clickUserUp: function () {
     if (util.isNeedNavigateToSetMyInfoPage()) {

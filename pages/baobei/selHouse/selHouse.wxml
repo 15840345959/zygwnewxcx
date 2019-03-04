@@ -9,7 +9,7 @@
             <input class="weui-input" placeholder="请输入楼盘名" style='text-align: left;margin-top:10rpx;' bindinput='inputSearchWord' />
           </view>
           <view class="bar-img weui-flex__item text-right padding-top-5">
-            <image src="/images/search1.png" class="opt-icon-sma" catchtap='clickSearch'></image>
+            <image src="/images/search_icon.png" class="opt-icon-sma" catchtap='clickSearch'></image>
           </view>
         </view>
       </view>

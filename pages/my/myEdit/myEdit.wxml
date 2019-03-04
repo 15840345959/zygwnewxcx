@@ -1,0 +1,35 @@
+<view class='page' style='background-color:#f4f4f4'>
+  <!-- 头像部分 -->
+  <view style='height:15px;'></view>
+  <view style='height:60px;text-align:center;position:relative;'>
+    <image bindtap='chooseImage' src="{{userInfo.avatar}}" style='width:60px;height:60px;border-radius:50%;' />
+    <image bindtap='chooseImage' src="../../../images/photo.png" style='position:absolute;top:45px;right:40%;width:20px;height:20px' />
+  </view>
+  <view style='height:25px;'></view>
+  <!-- 信息部分 -->
+  <!-- 昵称 -->
+  <view style='font-size:16px;background:#fff'>
+    <view style='line-height:50px;padding:0 20px;'>
+      <image src='/images/nickName.png' style='width:20px;height:20px;margin-top:15px;float:left;'></image>
+      <view style='margin-left:10px;color:#999;float:left;'>昵称</view>
+      <input type='text' bindinput="editName" value="{{userInfo.nick_name}}" style='text-align:right;height:50px;line-height:50px;'></input>
+    </view>
+    <!-- 性别 -->
+    <view style='line-height:50px;padding:0 20px;'>
+      <image src='/images/gender.png' style='width:20px;height:20px;margin-top:15px;float:left'></image>
+      <view style='margin-left:10px;color:#999;float:left'>性别</view>
+      <picker bindchange="genderEdit" value='{{userInfo.gender}}' range="{{array}}">
+        <view style='text-align:right;line-height:50px;height:50px;'>{{array[userInfo.gender]}}</view>
+      </picker>
+    </view>
+    <!-- 手机 -->
+    <view style='line-height:50px;padding:0 20px;'>
+      <image src='/images/phone.png' style='width:20px;height:20px;margin-top:15px;float:left'></image>
+      <view style='margin-left:10px;color:#999;float:left'>手机</view>
+      <input type='text' value="{{userInfo.phonenum}}" bindinput="editPhone" style='text-align:right;height:50px;line-height:50px;'></input>
+    </view>
+  </view>
+  <!-- 提交按钮 -->
+  <button bindtap="submit" style='height:45px;line-height:45px;background-color:#ec6d3a;width:80%;border-radius:22px;color:#fff;position:absolute;bottom:50px;left:37px;'>提交</button>
+
+</view>

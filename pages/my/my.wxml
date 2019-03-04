@@ -7,14 +7,14 @@
     <!-- 头像相关 -->
     <view style="position:relative;">
       <!-- <image src="../../images/wode-14.png" class="head-bg" mode="aspectFill"></image> -->
-      <image src="http://ozhs589fk.bkt.clouddn.com/wode-14.png" class="head-bg" mode="aspectFill"></image>
+      <image src="../../images/wode-14.png" class="head-bg" mode="aspectFill"></image>
       <view class="mask-div-black-d head-bg"></view>
       <view style="position: absolute;top:15px;right:15px;">
         <image src="../../images/wode-04.png" class="opt-icon-nor" catchtap='clickQianDao'></image>
       </view>
       <!--头像+昵称+签名-->
       <view style="position: absolute;top:35px;width:100%;" class="text-center">
-        <image src="{{userInfo.avatar}}" class="head-image-lar"></image>
+        <image src="{{userInfo.avatar}}" class="head-image-lar" bindtap="myEdit"></image>
       </view>
       <view style="position: absolute;top:100px;width:100%;" class="text-center">
         <text class="font-size-16 white-font">{{userInfo.nick_name}}</text>
@@ -67,15 +67,15 @@
           <!-- <image class="weui-grid__icon " style="float:left;" catchtap='clickSetZiliao' src="../../images/wode-05.png " />
           <image class="weui-grid__icon " style="float:left;" catchtap='clickUserUp' src="../../images/wode-06.png " />
           <image class="weui-grid__icon " style="float:left;" catchtap='clickWhiteBook' src="../../images/wode-07.png " /> -->
-          <image class="weui-grid__icon " style="float:left;" catchtap='clickSetZiliao' src="http://ozhs589fk.bkt.clouddn.com/wode-05.png" />
-          <image class="weui-grid__icon " style="float:left;" catchtap='clickUserUp' src="http://ozhs589fk.bkt.clouddn.com/wode-06.png" />
-          <image class="weui-grid__icon " style="float:left;" catchtap='clickWhiteBook' src="http://ozhs589fk.bkt.clouddn.com/wode-07.png" />
+          <image class="weui-grid__icon " style="float:left;" catchtap='clickSetZiliao' src="../../images/wode-05.png" />
+          <image class="weui-grid__icon " style="float:left;" catchtap='clickUserUp' src="../../images/wode-06.png" />
+          <image class="weui-grid__icon " style="float:left;" catchtap='clickWhiteBook' src="../../images/wode-07.png" />
         </view>
         <view style="width:660rpx;height:80px;  margin:auto;">
           <image class="weui-grid__icon " style="float:left;" catchtap='clickShop' src="../../images/wode-10.png " />
           <image class="weui-grid__icon " style="float:left;" catchtap='clickCalculator' src="../../images/wode-09.png " />
           <!-- <image class="weui-grid__icon " style="float:left;" catchtap='clickHeZuo' src="../../images/wode-08.png " /> -->
-          <image class="weui-grid__icon " style="float:left;" catchtap='clickHeZuo' src="http://ozhs589fk.bkt.clouddn.com/wode-08.png" />
+          <image class="weui-grid__icon " style="float:left;" catchtap='clickHeZuo' src="../../images/wode-08.png" />
         </view>
         <view style="width:660rpx;height:80px;  margin:auto;">
           <image class="weui-grid__icon " style="float:left;" catchtap='clickQd' src="../../images/wode-11.png " />
