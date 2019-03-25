@@ -1,4 +1,11 @@
 // pages/getUserInfoPage/getUserInfoPage.js
+
+var util = require('../../utils/util.js')
+
+//获取应用实例
+var app = getApp()
+var vm = null
+
 Page({
 
   /**
@@ -12,25 +19,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    vm = this;
   },
 
   //点击获取用户信息接口返回信息
   getUserInfo: function (e) {
-    if (e.detail.errMsg == "getUserInfo:ok") {
-      // var userInfo = e.detail.userInfo
-      getApp().login()
-    } else if (e.detail.errMsg == "getUserInfo:fail auth deny") {
-      getApp().showModal()
-    }
-    console.log("用户信息" + JSON.stringify(e))
-  },
-
-  //返回上一层
-  back: function () {
-    wx.navigateBack({
-      delta: 1
-    })
+    wx.login({
+      success: function (res) {
+        console.log("wx.login:" + JSON.stringify(res))
+        //成功获取code
+        if (res.code) {
+          var code = res.code
+          console.log('login code is : ' + JSON.stringify(code))
+          wx.getUserInfo({
+            success: function (res) {
+              console.log('getUserInfo res is : ' + JSON.stringify(res))
+              var encryptedData = util.baseEncode(res.encryptedData)
+              var iv = util.baseEncode(res.iv)
+              var param = {
+                code: code,
+                encryptedData: encryptedData,
+                iv: iv,
+              }
+              console.log("param:" + JSON.stringify(param));
+              util.loginServer(param, function (ret) {
+                app.storeUserInfo(ret.data.ret)   //将userInfo缓存在本地
+                console.log("登录成功，设置本地缓存 userInfo:" + JSON.stringify(util.getLocalUserInfo()));
+                util.navigateBack(-1);
+              }, null, "登录中...");
+            }
+          });
+        }
+      }
+    });
   },
 
   /**

@@ -1,1 +1,5 @@
 /* pages/baobei/selHouse/selHouse.wxss */
+
+page {
+  background-color: #fff;
+}

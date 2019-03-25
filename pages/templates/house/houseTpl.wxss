@@ -19,8 +19,8 @@
 }
 
 .house-img-sml {
-  width: 240rpx;
-  height: 220rpx;
+  width: 220rpx;
+  height: 210rpx;
   border-radius: 3rpx;
 }
 
@@ -101,3 +101,5 @@
   color: #646464;
   letter-spacing: -0.68rpx;
 }
+
+

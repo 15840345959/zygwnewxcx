@@ -21,6 +21,8 @@ Page({
    */
   onLoad: function (options) {
     vm = this;
+    //判断是否需要登录
+    util.isNeedNavigateToSetMyInfoPage();
     //加载页面
     vm.getMyInfo();
   },

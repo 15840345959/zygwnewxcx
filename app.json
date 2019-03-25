@@ -1,8 +1,9 @@
 {
   "pages": [
+
     "pages/index/index",
-    "pages/my/loansCalculator/loansCalculator",
     "pages/getUserInfoPage/getUserInfoPage",
+    "pages/my/loansCalculator/loansCalculator",
     "pages/houseInfo/huxing/huxing",
     "pages/index/zixun/zixun",
     "pages/my/qd/qd",

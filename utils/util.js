@@ -1,16 +1,16 @@
 //测试标识
-var TESTMODE = false;
+var TESTMODE = true;
 //服务器地址
 var SERVER_URL = "https://zygw.isart.me";
-var DEBUG_URL = "http://localhost/zygw/public";
+var DEBUG_URL = "http://localhost/zygwSrv/public";
 var SERVER_URL = (TESTMODE) ? DEBUG_URL : SERVER_URL;
 
 //////接口相关//////////////////////////////////////////
 //进行接口调用的基本方法
-function wxRequest(url, param, method, successCallback, errorCallback) {
-  showLoading()
+function wxRequest(url, param, method, successCallback, errorCallback, loadding_str) {
+  showLoading(loadding_str)
   console.log("wxRequest url:" + JSON.stringify(url) + " medhot:" + method + " param:" + JSON.stringify(param))
-  console.log("wxRequest userInfo:" + JSON.stringify(getApp().globalData.userInfo))
+  // console.log("wxRequest userInfo:" + JSON.stringify(getApp().globalData.userInfo))
   if (!judgeIsAnyNullStr(getApp().globalData.userInfo)) {
     //user_id未设置
     if (judgeIsAnyNullStr(param.user_id)) {
@@ -22,11 +22,13 @@ function wxRequest(url, param, method, successCallback, errorCallback) {
   wx.request({
     url: url,
     data: param,
-    header: { "content-Type": "application/json" },
+    header: {
+      "content-Type": "application/json"
+    },
     // header: { 'content-type': 'application/x-www-form-urlencoded' },
     method: method,
     success: function (ret) {
-      console.log("ret:" + JSON.stringify(ret))
+      // console.log("ret:" + JSON.stringify(ret))
       successCallback(ret)
     },
     fail: function (err) {
@@ -54,8 +56,8 @@ function getUnionId(param, successCallback, errorCallback) {
 }
 
 //登录
-function loginServer(param, successCallback, errorCallback) {
-  wxRequest(SERVER_URL + '/api/user/login', param, "POST", successCallback, errorCallback)
+function loginServer(param, successCallback, errorCallback, loadding_str) {
+  wxRequest(SERVER_URL + '/api/user/login', param, "POST", successCallback, errorCallback, loadding_str)
 }
 
 //获取用户信息
@@ -70,7 +72,7 @@ function getMyInfo(param, successCallback, errorCallback) {
 
 //获取广告图
 function getADs(param, successCallback, errorCallback) {
-  wxRequest(SERVER_URL + '/api/ad/getADs', param, "GET", successCallback, errorCallback);
+  wxRequest(SERVER_URL + '/api/ad/getListByCon', param, "GET", successCallback, errorCallback);
 }
 //根据广告图的id获取资讯
 function getADById(param, successCallback, errorCallback) {
@@ -93,10 +95,24 @@ function getHuxingById(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/huxing/getById', param, "GET", successCallback, errorCallback);
 }
 
+
+//根据id获取产品信息
+function huxing_getById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/huxing/getById', param, "GET", successCallback, errorCallback);
+}
+
+
 //根据条件搜索楼盘
 function searchHouseByCon(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/house/searchByCon', param, "POST", successCallback, errorCallback);
 }
+
+//根据条件搜索楼盘
+function house_getListByCon(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/house/getListByCon', param, "GET", successCallback, errorCallback);
+}
+
+
 
 //根据名称搜索楼盘
 function searchHouseByName(param, successCallback, errorCallback) {
@@ -170,13 +186,25 @@ function acceptClient(param, successCallback, errorCallback) {
 function getHuxingsByHouseId(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/house/getHuxings', param, "GET", successCallback, errorCallback);
 }
+
+//根据条件获取户型列表
+function house_huxing_getListByCon(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/house/huxing/getListByCon', param, "GET", successCallback, errorCallback);
+}
+
+//根据id获取户型信息
+function house_huxing_getById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/house/huxing/getById', param, "GET", successCallback, errorCallback);
+}
+
+
 function getHuxingsByHuXingId(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/huxing/getById', param, "GET", successCallback, errorCallback);
 }
 
 //根据楼盘id获取楼盘参数
 function getHouseDetailByHouseId(param, successCallback, errorCallback) {
-  wxRequest(SERVER_URL + '/api/house/getHouseDetail', param, "GET", successCallback, errorCallback);
+  wxRequest(SERVER_URL + '/api/house/detail/getByHouseId', param, "GET", successCallback, errorCallback);
 }
 
 //设置报备成交
@@ -265,10 +293,10 @@ function tw_getByType(param, successCallback, errorCallback) {
 function isNeedNavigateToSetMyInfoPage() {
   var userInfo = getApp().globalData.userInfo;
   if (judgeIsAnyNullStr(userInfo.phonenum, userInfo.real_name)) {
-    return true;
-  } else {
-    return false;
-  }
+    wx.navigateTo({
+      url: '/pages/getUserInfoPage/getUserInfoPage',
+    })
+  } else { }
 }
 
 
@@ -442,6 +470,7 @@ function conStr(str, r_str) {
 
 //返回
 function navigateBack(delta) {
+  console.log("navigateBack delta:" + delta)
   wx.navigateBack({
     delta: delta
   })
@@ -509,7 +538,10 @@ function getVisitWayStr(visit_way) {
 function smalltoBIG(n) {
   var fraction = ['角', '分'];
   var digit = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
-  var unit = [['元', '万', '亿'], ['', '拾', '佰', '仟']];
+  var unit = [
+    ['元', '万', '亿'],
+    ['', '拾', '佰', '仟']
+  ];
   var head = n < 0 ? '欠' : '';
   n = Math.abs(n);
 
@@ -558,7 +590,7 @@ function setBaobeiInfo(baobei) {
   baobei.client.phonenum_str = jmPhonenum(baobei.client.phonenum);
   baobei.status_str = getStatusStr(baobei.status);
   baobei.baobei_status_str = getBaobeiStatusStr(baobei.baobei_status);
-  baobei.baobei_status_int = parseInt(baobei.baobei_status);  //此处设置baobei_status_int值，后续通过大小比对
+  baobei.baobei_status_int = parseInt(baobei.baobei_status); //此处设置baobei_status_int值，后续通过大小比对
   baobei.pay_zhongjie_status_str = getPayZhongJieStatusStr(baobei.pay_zhongjie_status);
   baobei.can_jiesuan_status_str = getCanJiesuanStatusStr(baobei.can_jiesuan_status);
   baobei.created_at_str = baobei.created_at.split(" ")[0];
@@ -717,7 +749,7 @@ Date.prototype.DateAdd = function (strInterval, Number) {
 //+---------------------------------------------------  
 Date.prototype.DateDiff = function (strInterval, dtEnd) {
   var dtStart = this
-  if (typeof dtEnd == 'string')//如果是字符串转换为日期型
+  if (typeof dtEnd == 'string') //如果是字符串转换为日期型
   {
     dtEnd = StringToDate(dtEnd)
   }
@@ -770,8 +802,7 @@ function IsValidDate(DateStr) {
       //alert('错误的日期格式！格式为：YYYY-MM-DD或YYYY/MM/DD。注意闰年。')
       return false;
     }
-  }
-  else {
+  } else {
     //alert('错误的日期格式！格式为：YYYY-MM-DD或YYYY/MM/DD。注意闰年。')
     return false;
   }
@@ -917,7 +948,8 @@ function getDiffentTime(str, now) {
 
   var currentTime = new Date(now)
   var arr = str.split(/\s+/gi)
-  var temp = 0, arr1, arr2, oldTime, delta
+  var temp = 0,
+    arr1, arr2, oldTime, delta
   var getIntValue = function (ss, defaultValue) {
     try {
       return parseInt(ss, 10)
@@ -941,20 +973,15 @@ function getDiffentTime(str, now) {
     delta = currentTime.getTime() - oldTime.getTime()
     if (delta <= 6000) {
       return "1分钟内"
-    }
-    else if (delta < 60 * 60 * 1000) {
+    } else if (delta < 60 * 60 * 1000) {
       return Math.floor(delta / (60 * 1000)) + "分钟前"
-    }
-    else if (delta < 24 * 60 * 60 * 1000) {
+    } else if (delta < 24 * 60 * 60 * 1000) {
       return Math.floor(delta / (60 * 60 * 1000)) + "小时前"
-    }
-    else if (delta < 3 * 24 * 60 * 60 * 1000) {
+    } else if (delta < 3 * 24 * 60 * 60 * 1000) {
       return Math.floor(delta / (24 * 60 * 60 * 1000)) + "天前"
-    }
-    else if (currentTime.getFullYear() != oldTime.getFullYear()) {
+    } else if (currentTime.getFullYear() != oldTime.getFullYear()) {
       return [getWidthString(oldTime.getFullYear()), getWidthString(oldTime.getMonth() + 1), getWidthString(oldTime.getDate())].join("-")
-    }
-    else {
+    } else {
       return [getWidthString(oldTime.getMonth() + 1), getWidthString(oldTime.getDate())].join("-")
     }
   }
@@ -1002,6 +1029,153 @@ function gcj02towgs84(lng, lat) {
   return location
 }
 
+/*
+  *  base64编码(编码，配合encodeURIComponent使用)
+  *  @parm : str 传入的字符串
+  *  使用：
+        1、引入util.js(路径更改) :const util  = require('../../utils/util.js');
+        2、util.base64_encode(util.utf16to8('base64 编码'));
+ */
+function base64_encode(str) {
+  //下面是64个基本的编码
+  var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  var out, i, len;
+  var c1, c2, c3;
+  len = str.length;
+  i = 0;
+  out = "";
+  while (i < len) {
+    c1 = str.charCodeAt(i++) & 0xff;
+    if (i == len) {
+      out += base64EncodeChars.charAt(c1 >> 2);
+      out += base64EncodeChars.charAt((c1 & 0x3) << 4);
+      out += "==";
+      break;
+    }
+    c2 = str.charCodeAt(i++);
+    if (i == len) {
+      out += base64EncodeChars.charAt(c1 >> 2);
+      out += base64EncodeChars.charAt(((c1 & 0x3) << 4) | ((c2 & 0xF0) >> 4));
+      out += base64EncodeChars.charAt((c2 & 0xF) << 2);
+      out += "=";
+      break;
+    }
+    c3 = str.charCodeAt(i++);
+    out += base64EncodeChars.charAt(c1 >> 2);
+    out += base64EncodeChars.charAt(((c1 & 0x3) << 4) | ((c2 & 0xF0) >> 4));
+    out += base64EncodeChars.charAt(((c2 & 0xF) << 2) | ((c3 & 0xC0) >> 6));
+    out += base64EncodeChars.charAt(c3 & 0x3F);
+  }
+  return out;
+}
+/*
+ *  base64编码(编码，配合encodeURIComponent使用)
+ *  @parm : str 传入的字符串
+ */
+function utf16to8(str) {
+  var out, i, len, c;
+  out = "";
+  len = str.length;
+  for (i = 0; i < len; i++) {
+    c = str.charCodeAt(i);
+    if ((c >= 0x0001) && (c <= 0x007F)) {
+      out += str.charAt(i);
+    } else if (c > 0x07FF) {
+      out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+      out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+      out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+    } else {
+      out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
+      out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+    }
+  }
+  return out;
+}
+
+/*
+  *  base64解码(配合decodeURIComponent使用)
+  *  @parm : input 传入的字符串
+  *  使用：
+        1、引入util.js(路径更改) :const util  = require('../../utils/util.js');
+        2、util.base64_decode('YmFzZTY0IOe8lueggQ==');
+ */
+function base64_decode(input) {
+  var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+  var output = "";
+  var chr1, chr2, chr3;
+  var enc1, enc2, enc3, enc4;
+  var i = 0;
+  input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+  while (i < input.length) {
+    enc1 = base64EncodeChars.indexOf(input.charAt(i++));
+    enc2 = base64EncodeChars.indexOf(input.charAt(i++));
+    enc3 = base64EncodeChars.indexOf(input.charAt(i++));
+    enc4 = base64EncodeChars.indexOf(input.charAt(i++));
+    chr1 = (enc1 << 2) | (enc2 >> 4);
+    chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+    chr3 = ((enc3 & 3) << 6) | enc4;
+    output = output + String.fromCharCode(chr1);
+    if (enc3 != 64) {
+      output = output + String.fromCharCode(chr2);
+    }
+    if (enc4 != 64) {
+      output = output + String.fromCharCode(chr3);
+    }
+  }
+  return utf8_decode(output);
+}
+
+/*
+ *  utf-8解码
+ *  @parm : utftext 传入的字符串
+ */
+function utf8_decode(utftext) {
+  var string = '';
+  let i = 0;
+  let c = 0;
+  let c1 = 0;
+  let c2 = 0;
+  while (i < utftext.length) {
+    c = utftext.charCodeAt(i);
+    if (c < 128) {
+      string += String.fromCharCode(c);
+      i++;
+    } else if ((c > 191) && (c < 224)) {
+      c1 = utftext.charCodeAt(i + 1);
+      string += String.fromCharCode(((c & 31) << 6) | (c1 & 63));
+      i += 2;
+    } else {
+      c1 = utftext.charCodeAt(i + 1);
+      c2 = utftext.charCodeAt(i + 2);
+      string += String.fromCharCode(((c & 15) << 12) | ((c1 & 63) << 6) | (c2 & 63));
+      i += 3;
+    }
+  }
+  return string;
+}
+
+
+/*
+    * base64编码函数封装
+    * @parm: str(传入要编成base64的内容)
+    * 使用：
+        1、引入util.js(路径更改) :const util  = require('../../utils/util.js');
+        2、util.baseEncode('base64 编码');
+*/
+function baseEncode(str) {
+  return base64_encode(utf16to8(str));
+}
+/*
+    * base64解码函数封装
+    * @parm: str(传入要解为正常字体)
+    * 使用：
+        1、引入util.js(路径更改) :const util  = require('../../utils/util.js');
+        2、util.baseDecode(util.baseEncode('base64 编码'))
+*/
+function baseDecode(str) {
+  return base64_decode(str);
+} // 抛出函数使用
+
 module.exports = {
   //http request function
   getQiniuToken: getQiniuToken,
@@ -1010,11 +1184,13 @@ module.exports = {
   getUserInfoByIdWithToken: getUserInfoByIdWithToken,
   getADs: getADs,
   getADById: getADById,
-  getHouseOptions, getHouseOptions,
+  getHouseOptions,
+  getHouseOptions,
   getHouseById: getHouseById,
   getHuxingById: getHuxingById,
-  searchHouseByCon, searchHouseByCon,
-  searchHouseByName, searchHouseByName,
+  searchHouseByCon,
+  house_getListByCon,
+  searchHouseByName,
   updateUserInfo: updateUserInfo,
   baobeiClient: baobeiClient,
   getMyInfo: getMyInfo,
@@ -1031,6 +1207,8 @@ module.exports = {
   acceptClient: acceptClient,
   getHuxingsByHouseId: getHuxingsByHouseId,
   getHuxingsByHuXingId: getHuxingsByHuXingId,
+  house_huxing_getListByCon: house_huxing_getListByCon,
+  house_huxing_getById: house_huxing_getById,
   getHouseDetailByHouseId: getHouseDetailByHouseId,
   setBaobeiDeal: setBaobeiDeal,
   setBaobeiCanJiesuan: setBaobeiCanJiesuan,
@@ -1057,11 +1235,14 @@ module.exports = {
   setBaobeiInfo: setBaobeiInfo,
   chooseImage: chooseImage,
   //navigation function
-  navigateBack: navigateBack,   //进行页面跳回
-  isNeedNavigateToSetMyInfoPage: isNeedNavigateToSetMyInfoPage,  //跳转到注册页面
+  navigateBack: navigateBack, //进行页面跳回
+  isNeedNavigateToSetMyInfoPage: isNeedNavigateToSetMyInfoPage, //跳转到注册页面
   //other function
   getDiffentTime: getDiffentTime,
   gcj02towgs84: gcj02towgs84,
+  baseEncode: baseEncode,
+  baseDecode: baseDecode,
+
 
   getGoodsList: getGoodsList,
   exchange: exchange,
@@ -1072,4 +1253,4 @@ module.exports = {
   getListByReUserId: getListByReUserId,
   recommUser: recommUser,
   tw_getByType: tw_getByType
-} 
+}

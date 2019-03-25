@@ -1,1 +1,5 @@
 /* pages/index/zixun/zixun.wxss */
+
+page {
+  background-color: #fff;
+}

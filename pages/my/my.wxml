@@ -23,7 +23,7 @@
         <text class="font-size-14 white-font text-oneline ">我是{{userInfo.role == "0"?"中介 ":"案场负责人 "}}</text>
       </view>
 
-      <!--作品数+粉丝数+关注数-->
+      <!--积分+全部佣金+待结算佣金-->
       <view style="position: absolute;width:100%;bottom:20px; ">
         <view class="weui-flex white-font " style="margin-left:30px;margin-right:30px; ">
           <view class="weui-flex__item ">
@@ -64,9 +64,6 @@
 
       <view class="weui-grids white-bg " style="margin:auto;border:0px;">
         <view style="width:660rpx;height:80px; margin:auto;">
-          <!-- <image class="weui-grid__icon " style="float:left;" catchtap='clickSetZiliao' src="../../images/wode-05.png " />
-          <image class="weui-grid__icon " style="float:left;" catchtap='clickUserUp' src="../../images/wode-06.png " />
-          <image class="weui-grid__icon " style="float:left;" catchtap='clickWhiteBook' src="../../images/wode-07.png " /> -->
           <image class="weui-grid__icon " style="float:left;" catchtap='clickSetZiliao' src="../../images/wode-05.png" />
           <image class="weui-grid__icon " style="float:left;" catchtap='clickUserUp' src="../../images/wode-06.png" />
           <image class="weui-grid__icon " style="float:left;" catchtap='clickWhiteBook' src="../../images/wode-07.png" />
@@ -74,7 +71,6 @@
         <view style="width:660rpx;height:80px;  margin:auto;">
           <image class="weui-grid__icon " style="float:left;" catchtap='clickShop' src="../../images/wode-10.png " />
           <image class="weui-grid__icon " style="float:left;" catchtap='clickCalculator' src="../../images/wode-09.png " />
-          <!-- <image class="weui-grid__icon " style="float:left;" catchtap='clickHeZuo' src="../../images/wode-08.png " /> -->
           <image class="weui-grid__icon " style="float:left;" catchtap='clickHeZuo' src="../../images/wode-08.png" />
         </view>
         <view style="width:660rpx;height:80px;  margin:auto;">

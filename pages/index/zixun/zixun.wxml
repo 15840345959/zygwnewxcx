@@ -1,27 +1,7 @@
 <!--pages/index/zixun/zixun.wxml-->
-<view >
-  <view class="ad">
-
-    <view class="page__bd">
-      <view class="weui-article">
-
-
-        <view class="weui-article__section">
-         
-          <view class="weui-article__p">
-          <block wx:for="{{zixunsteps}}">
-           <view wx:if="{{item.text!=''&&item.text!=null}}" class="weui-article__p">
-            {{item.text}}
-          </view>
-            <image wx:else class="weui-article__img" src="{{item.img}}" mode="widthFix" bindtap='getImageInfo' style="width:100%;" />
-            </block>
-          </view>
-        </view>
-
-     
-
-       
-      </view>
-    </view>
+<view class="page__hd" style="backgroud:#ffffff !important;">
+  <view style="padding:30rpx;">
+    <import src="../../../utils/wxParse/wxParse.wxml" />
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
 </view>

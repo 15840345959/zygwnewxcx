@@ -1,32 +1,34 @@
 <!--该模板用于首页楼盘列表展示-->
 <template name="houseList">
-  <view class="house margin-top-5 margin-left-30" style='margin-bottom:0rpx;padding:10rpx 0' bindtap="clickHouse" data-id="{{id}}" data-houseid="{{id}}">
-    <view class="house-img" style='border-right:1px solid #ff6e33;'>
-      <image src="{{image}}?imageView2/1/w/600/h/580/interlace/1/q/75" class="house-img-sml margin-right-20" mode="aspectFill"></image>
+  <view class="aui-row" style="padding:20rpx 0rpx;" bindtap="clickHouse" data-id="{{id}}" data-houseid="{{id}}">
+    <view class="aui-col-xs-4" style="border-right:1px solid #ff6e33 !important;">
+      <image src="{{image}}?imageView2/1/w/600/h/580/interlace/1/q/75" class="house-img-sml margin-left-15" mode="aspectFill"></image>
     </view>
-  
-    <view class="house-info">
-      <view style='display:flex;flex-direction:row;align-items:center;' class='margin-top-10'>
-        <view class="text-oneline font-weight house-title-font" style='margin-left:10rpx;float:left; width:240rpx;margin-top:-50rpx;'>{{title}}</view>
-        <!-- <view style='text-align:right;float:right; color:#ffcc00;font-size:30rpx;margin-top:0rpx;'>{{price}}元/㎡</view> -->
-        <view style='text-align:right;float:right; color:#ff6e33;font-size:30rpx;font-weight:bold;margin-left:-239rpx;margin-top:40rpx;'>{{price}}元/㎡</view>
+    <view class="aui-col-xs-7">
+      <view class='margin-left-20'>
+        <view class='font-size-14 font-weight text-oneline'>
+          {{title}}
+        </view>
+        <view class='font-size-14 font-weight main-color margin-top-5 text-oneline'>
+          {{price}}元/㎡
+        </view>
+        <view class="text-oneline font-size-14 main-color margin-top-5" style='margin-right:5rpx;'>
+          <block wx:for="{{labels}}">
+            {{item.name}}
+          </block>
+        </view>
+        <view class='font-size-14 light-grey-font margin-top-5 text-oneline'>
+          面积:{{size_min}}㎡至{{size_max}}㎡
+        </view>
+        <view class='font-size-14 light-grey-font margin-top-5 text-oneline'>
+          <image src='../../images/address.png' style='width:25rpx;height:25rpx;'></image>
+          {{address}}
+        </view>
       </view>
-
-      <view class="text-oneline margin-bottom-5 house-font" style='margin-left:5rpx;margin-top:-8rpx;color:#ff6e33;'>
-        <block wx:for="{{labels}}" style="">
-          {{item.name}}
-        </block>
-      </view>
-      <view class="text-oneline margin-bottom-5 house-font margin-top-7" style='margin-left:10rpx;'>面积:{{size_min}}㎡至{{size_max}}㎡</view>
-      <view style='display:flex;flex-direction:row;align-items:center;' class='margin-top-9'>
-        <image src='../../images/address.png' style='width:25rpx;height:25rpx;margin-left:10rpx;'></image>
-        <view class="text-oneline house-font margin-top-9" style='margin-left:10rpx;'>{{address}}</view>
-      </view>
-      <view class="text-oneline  house-font margin-top-10 house-font" style='margin-left:0rpx;'></view>
     </view>
-
   </view>
-  <view style='height:1px;background:#f1f1f1;' class='margin-left-30 margin-right-30'></view>
+  <view style='height:1px;background:#f1f1f1;' class='margin-left-30 margin-right-30'>
+  </view>
 </template>
 
 
@@ -45,10 +47,10 @@
               <view class="placeholder">{{item.type.name}}</view>
             </view>
             <view class="weui-flex__item">
-              <view class="placeholder">{{item.yongjin_type == "0"?"按固定金额":"按千分比"}}</view>
+              <view class="placeholder">{{item.yongjin_type_str}}</view>
             </view>
             <view class="weui-flex__item">
-              <view class="placeholder">{{item.yongjin_value}}{{item.yongjin_type == "0"?"元":"‰"}}</view>
+              <view class="placeholder">{{item.yongjin_value_str}}</view>
             </view>
           </view>
         </view>

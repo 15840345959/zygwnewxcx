@@ -35,16 +35,16 @@ Page({
   //根据户型id获取户型信息
   getHuxingById: function (e) {
     var param = {
-      huxing_id: huxing_id
+      id: huxing_id
     }
-    util.getHuxingById(param, function (ret) {
-      console.log("getHuxingById", JSON.stringify(ret))
+    util.house_huxing_getById(param, function (ret) {
+      console.log("house_huxing_getById", JSON.stringify(ret))
       var msgObj = ret.data.ret
       if (ret.data.code == "200") {
         vm.setData({
           huxing: msgObj
         })
-        if (msgObj.huxingStyles.length == 0) {
+        if (msgObj.styles.length == 0) {
           vm.setData({
             no_view_hidden: ""
           })
@@ -55,11 +55,11 @@ Page({
     }, null)
   },
 
-  //点击壁画
+  //点击户型样式
   clickHuxingStyle: function (e) {
     console.log("clickHuxingStyle e:" + JSON.stringify(e))
     var index = e.currentTarget.dataset.index;
-    var huxingStyles = vm.data.huxing.huxingStyles;
+    var huxingStyles = vm.data.huxing.styles;
 
     var current = huxingStyles[index].image
     var urls = [current]

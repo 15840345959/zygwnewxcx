@@ -4,6 +4,9 @@
 @import './pages/index/index.wxss';
 @import './pages/client/client.wxss';
 @import "./bower_components/zanui-weapp/dist/index.wxss";
+@import "./utils/wxParse/wxParse.wxss";
+
+@import "/pages/wxParse/wxParse.wxss";
 
 page {
   height: 100%;
@@ -26,6 +29,20 @@ page {
 
 .full-width {
   width: 100%;
+}
+
+.bottom-view {
+  position: fixed;
+  bottom: 0px;
+}
+
+.full-btn {
+  background-color: #ff6e33;
+  color: white;
+  text-align: center;
+  height: 36px;
+  line-height: 36px;
+  font-size: 16px;
 }
 
 .container {
@@ -313,6 +330,10 @@ page {
   color: #999;
 }
 
+.light-grey-font{
+  color: #aaa;
+}
+
 .center-style {
   display: flex;
   justify-content: center;
@@ -512,12 +533,12 @@ page {
 
 .no-img-view {
   text-align: center;
-  margin-top: 170rpx;
+  margin-top: 60rpx;
 }
 
 .no-image {
-  width: 235rpx;
-  height: 160rpx;
+  width: 240px;
+  height: 160px;
 }
 
 /* input样式 */
@@ -647,4 +668,59 @@ page {
 
 .aui-bg-indigo {
   background-color: #3f51b5 !important;
+}
+
+
+/*栅格类*/
+.aui-row {
+	overflow: hidden;
+	margin: 0;
+}
+.aui-row-padded {
+	margin-left: -0.125rem;
+	margin-right: -0.125rem;
+}
+.aui-row-padded [class*=aui-col-xs-] {
+	padding: 0.125rem;
+}
+.aui-col-xs-1,.aui-col-xs-2,.aui-col-xs-3,.aui-col-xs-4,.aui-col-xs-5,.aui-col-xs-6,.aui-col-xs-7,.aui-col-xs-8,.aui-col-xs-9,.aui-col-xs-10,.aui-col-xs-11,.aui-col-5 {
+	position: relative;
+	float: left;
+}
+.aui-col-xs-12 {
+	width: 100%;
+	position: relative;
+}
+.aui-col-xs-11 {
+	width: 91.66666667%;
+}
+.aui-col-xs-10 {
+	width: 83.33333333%;
+}
+.aui-col-xs-9 {
+	width: 75%;
+}
+.aui-col-xs-8 {
+	width: 66.66666667%;
+}
+.aui-col-xs-7 {
+	width: 58.33333333%;
+}
+.aui-col-xs-6 {
+	width: 50%;
+}
+.aui-col-xs-5 {
+	width: 41.66666667%;
+}
+.aui-col-xs-4 {
+	width: 33.33333333%;
+}
+.aui-col-xs-3 {
+	width: 25%;
+}
+.aui-col-xs-2 {
+	width: 16.66666667%;
+}
+.aui-col-xs-1 {
+	width: 8.33333333%;
 }

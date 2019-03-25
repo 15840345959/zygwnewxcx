@@ -1,7 +1,7 @@
 <!--pages/houseInfo/huxing/huxing.wxml-->
 <view class="white-bg">
   <view style='height:10px;'></view>
-  <block wx:for="{{huxing.huxingStyles}}" wx:for-index="index" wx:for-item="item">
+  <block wx:for="{{huxing.styles}}" wx:for-index="index" wx:for-item="item">
     <view style='border:1px #fafafa solid' class='margin-top-10 margin-bottom-10 margin-left-10 margin-right-10'></view>
     <view class="huxing" catchtap='clickHuxingStyle' data-index='{{index}}'>
       <view class="huxing-img margin-left-20">
