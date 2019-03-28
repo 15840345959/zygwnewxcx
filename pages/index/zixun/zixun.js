@@ -12,7 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    zixun: [],
+    article: "",
   },
 
   /**
@@ -24,7 +24,6 @@ Page({
       id: options.id
     })
     vm.getZiXunInfo() //获取轮播图下的资讯   
-
   },
   getZiXunInfo: function() {
     var param = {
@@ -32,7 +31,7 @@ Page({
     }
     util.getADById(param, function(ret) {
       console.log("getADById", JSON.stringify(ret))
-      var zixun = ret.data.ret
+      var msgObj = ret.data.ret
       if (ret.data.code == '200') {
         var article = ret.data.ret.content_html;
         wxParse.wxParse('article', 'html', article, vm, 5);

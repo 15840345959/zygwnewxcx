@@ -58,6 +58,7 @@ Page({
   //签到
   clickQianDao: function () {
     console.log("clickQianDao");
+    util.isNeedNavigateToSetMyInfoPage();
     util.userQDToday({}, function (ret) {
       if (ret.data.code == "200" && ret.data.result == true) {
         util.showModal("提示信息", "签到+" + ret.data.ret.jifen + "积分", function (ret) { }, function (ret) { });
@@ -69,6 +70,7 @@ Page({
   },
   //设置用户资料
   clickSetZiliao: function () {
+    util.isNeedNavigateToSetMyInfoPage();
     wx.navigateTo({
       url: '/pages/my/setMyInfo/setMyInfo?jsonStr=' + JSON.stringify(vm.data.userInfo)
     })
@@ -95,38 +97,41 @@ Page({
   },
   //打开积分商城
   clickShop: function () {
+    util.isNeedNavigateToSetMyInfoPage();
     wx.navigateTo({
       url: '/pages/my/shop/shop?jsonStr=' + JSON.stringify(vm.data.userInfo)
     })
   },
   //行业白皮书
   clickWhiteBook: function () {
+    util.isNeedNavigateToSetMyInfoPage();
     wx.navigateTo({
       url: '/pages/my/whitebook/whitebook',
     })
   },
   //合作细则
   clickHeZuo: function () {
+    util.isNeedNavigateToSetMyInfoPage();
     wx.navigateTo({
       url: '/pages/my/hezuo/hezuo',
     })
   },
   //签到
   clickQd: function () {
+    util.isNeedNavigateToSetMyInfoPage();
     wx.navigateTo({
       url: '/pages/my/qd/qd?jsonStr=' + JSON.stringify(vm.data.userInfo)
     })
   },
   //签到
   clickFx: function () {
+    util.isNeedNavigateToSetMyInfoPage();
     wx.navigateTo({
       url: '/pages/my/fx/fx?jsonStr=' + JSON.stringify(vm.data.userInfo)
     })
   },
   clickCalculator: function () {
-    // wx.navigateTo({
-    //   url: '/pages/my/calculator/calculator',
-    // })
+    util.isNeedNavigateToSetMyInfoPage();
     wx.navigateTo({
       url: '/pages/my/loansCalculator/loansCalculator',
 

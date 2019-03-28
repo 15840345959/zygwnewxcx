@@ -117,7 +117,7 @@ Page({
       console.log("getHouseList res:" + JSON.stringify(res))
       var houses_arr = [];
       if (!reload_flag) { //如果不是重新加载，设置houses_arr为现有的vm.data.houses
-        var houses_arr = vm.data.houses;
+        houses_arr = vm.data.houses;
       }
       reload_flag = false;
       //处理将hidden设置为空，使页面展示
@@ -248,7 +248,7 @@ Page({
     vm.getHouseList();
   },
 
-  // 点击房源跳转到详情页面
+  // 点击楼盘跳转到详情页面
   clickHouse: function(e) {
     console.log("clickHouse e:" + JSON.stringify(e))
     //判断是否需要登录

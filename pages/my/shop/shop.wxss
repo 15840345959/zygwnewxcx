@@ -35,7 +35,7 @@
   margin: 2% 0;
   margin-left: 2%;
   border-radius: 4px;
-  /* background-image: url('http://art.isart.me/shangcheng1.jpg'); */
+  background-image: url('/images/shangcheng_shoppic_right.png');
 }
 
 .image-style {

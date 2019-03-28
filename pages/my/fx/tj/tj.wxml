@@ -7,7 +7,7 @@
           <view class="weui-label">推荐码</view>
         </view>
         <view class="weui-cell__bd">
-          <input bindblur="re_user_id" class="weui-input" placeholder="请输入推荐码" />
+          <input bindblur="inputReUserId" class="weui-input" placeholder="请输入推荐码" />
         </view>
       </view>
     </view>

@@ -48,7 +48,7 @@
     </view>
   </view>
   <view style='height:15px;'></view>
-  <!-- 房源信息列表 -->
+  <!-- 楼盘信息列表 -->
   <block wx:for="{{houses}}">
     <template is="baobeiHouseList" data="{{...item}}" />
   </block>
@@ -58,7 +58,7 @@
       <image src="../../../images/no.png" class="no-image"></image>
     </view>
     <view class="grey-font center-style margin-top-10">
-      未找到房源
+      未找到楼盘
     </view>
   </view>
   <view style='height:40px;'></view>

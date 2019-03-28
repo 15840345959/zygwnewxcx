@@ -101,22 +101,9 @@ function huxing_getById(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/huxing/getById', param, "GET", successCallback, errorCallback);
 }
 
-
-//根据条件搜索楼盘
-function searchHouseByCon(param, successCallback, errorCallback) {
-  wxRequest(SERVER_URL + '/api/house/searchByCon', param, "POST", successCallback, errorCallback);
-}
-
 //根据条件搜索楼盘
 function house_getListByCon(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/house/getListByCon', param, "GET", successCallback, errorCallback);
-}
-
-
-
-//根据名称搜索楼盘
-function searchHouseByName(param, successCallback, errorCallback) {
-  wxRequest(SERVER_URL + '/api/house/searchByName', param, "POST", successCallback, errorCallback);
 }
 
 //更新用户信息
@@ -239,7 +226,7 @@ function setZYGW(param, successCallback, errorCallback) {
 
 //积分商城
 function getGoodsList(param, successCallback, errorCallback) {
-  wxRequest(SERVER_URL + '/api/goods/getGoodsList', param, "GET", successCallback, errorCallback);
+  wxRequest(SERVER_URL + '/api/goods/getListByCon', param, "GET", successCallback, errorCallback);
 }
 
 
@@ -255,7 +242,7 @@ function getExchangeListByUserId(param, successCallback, errorCallback) {
 
 //商品详情
 function getGoodsById(param, successCallback, errorCallback) {
-  wxRequest(SERVER_URL + '/api/goods/getGoodsById', param, "GET", successCallback, errorCallback);
+  wxRequest(SERVER_URL + '/api/goods/getById', param, "GET", successCallback, errorCallback);
 }
 //合作细则
 function getTWByType(param, successCallback, errorCallback) {
@@ -274,8 +261,8 @@ function getUserQDsByUserId(param, successCallback, errorCallback) {
 }
 
 //分享列表
-function getListByReUserId(param, successCallback, errorCallback) {
-  wxRequest(SERVER_URL + '/api/recomm/getListByReUserId', param, "GET", successCallback, errorCallback);
+function recomm_getListByCon(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/recomm/getListByCon', param, "GET", successCallback, errorCallback);
 }
 
 //推荐用户
@@ -292,6 +279,7 @@ function tw_getByType(param, successCallback, errorCallback) {
 //判断是否需要跳转到设置信息页面
 function isNeedNavigateToSetMyInfoPage() {
   var userInfo = getApp().globalData.userInfo;
+  console.log("isNeedNavigateToSetMyInfoPage userInfo:"+JSON.stringify(userInfo));
   if (judgeIsAnyNullStr(userInfo.phonenum, userInfo.real_name)) {
     wx.navigateTo({
       url: '/pages/getUserInfoPage/getUserInfoPage',
@@ -1188,9 +1176,7 @@ module.exports = {
   getHouseOptions,
   getHouseById: getHouseById,
   getHuxingById: getHuxingById,
-  searchHouseByCon,
   house_getListByCon,
-  searchHouseByName,
   updateUserInfo: updateUserInfo,
   baobeiClient: baobeiClient,
   getMyInfo: getMyInfo,
@@ -1250,7 +1236,7 @@ module.exports = {
   getGoodsById: getGoodsById,
   userQDToday: userQDToday,
   getUserQDsByUserId: getUserQDsByUserId,
-  getListByReUserId: getListByReUserId,
+  recomm_getListByCon: recomm_getListByCon,
   recommUser: recommUser,
   tw_getByType: tw_getByType
 }

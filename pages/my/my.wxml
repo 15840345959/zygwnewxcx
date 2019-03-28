@@ -1,23 +1,25 @@
 <!--pages/my/my.wxml-->
-<view class="page" style='background-color:white'>
+<view class="page">
   <!--页头-->
   <view class="page__hd"></view>
   <!--主体-->
   <view class="page__bd page__bd_spacing {{hidden}}">
     <!-- 头像相关 -->
     <view style="position:relative;">
-      <!-- <image src="../../images/wode-14.png" class="head-bg" mode="aspectFill"></image> -->
-      <image src="../../images/wode-14.png" class="head-bg" mode="aspectFill"></image>
+      <image src="../../images/wode_my_bg.png" class="head-bg" mode="aspectFill"></image>
       <view class="mask-div-black-d head-bg"></view>
       <view style="position: absolute;top:15px;right:15px;">
-        <image src="../../images/wode-04.png" class="opt-icon-nor" catchtap='clickQianDao'></image>
+        <image src="../../images/wode_my_qd.png" class="opt-icon-nor" catchtap='clickQianDao'></image>
       </view>
       <!--头像+昵称+签名-->
       <view style="position: absolute;top:35px;width:100%;" class="text-center">
         <image src="{{userInfo.avatar}}" class="head-image-lar" bindtap="myEdit"></image>
       </view>
-      <view style="position: absolute;top:100px;width:100%;" class="text-center">
-        <text class="font-size-16 white-font">{{userInfo.nick_name}}</text>
+      <view style="position: absolute;top:74px;width:100%;" class="text-center">
+        <text class="font-size-16 white-font">
+          <!-- 优先展示真实姓名 -->
+          {{userInfo.real_name ? userInfo.real_name : userInfo.nick_name}}
+        </text>
       </view>
       <view style="position: absolute;top:125px;width:100%;" class="text-center">
         <text class="font-size-14 white-font text-oneline ">我是{{userInfo.role == "0"?"中介 ":"案场负责人 "}}</text>
@@ -60,25 +62,157 @@
       </view>
     </view>
     <!-- 下方操作图标 -->
-    <view class='margin-top-30'>
-
-      <view class="weui-grids white-bg " style="margin:auto;border:0px;">
-        <view style="width:660rpx;height:80px; margin:auto;">
-          <image class="weui-grid__icon " style="float:left;" catchtap='clickSetZiliao' src="../../images/wode-05.png" />
-          <image class="weui-grid__icon " style="float:left;" catchtap='clickUserUp' src="../../images/wode-06.png" />
-          <image class="weui-grid__icon " style="float:left;" catchtap='clickWhiteBook' src="../../images/wode-07.png" />
+    <view class='white-bg font-size-14 grey-font'>
+      <view class="weui-flex" style='margin:10px;' catchtap='clickSetZiliao'>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <view>
+              <image src='/images/wodeziliao.png' style='width:20px;height:20px;' class='float-left'></image>
+              <view style='margin-left:40px;'>我的资料</view>
+            </view>
+          </view>
         </view>
-        <view style="width:660rpx;height:80px;  margin:auto;">
-          <image class="weui-grid__icon " style="float:left;" catchtap='clickShop' src="../../images/wode-10.png " />
-          <image class="weui-grid__icon " style="float:left;" catchtap='clickCalculator' src="../../images/wode-09.png " />
-          <image class="weui-grid__icon " style="float:left;" catchtap='clickHeZuo' src="../../images/wode-08.png" />
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <image src='/images/right_arrow.png' style='width:14px;height:14px;' class='float-right'></image>
+          </view>
         </view>
-        <view style="width:660rpx;height:80px;  margin:auto;">
-          <image class="weui-grid__icon " style="float:left;" catchtap='clickQd' src="../../images/wode-11.png " />
-          <image class="weui-grid__icon " style="float:left;" catchtap='clickFx' src="../../images/wode-12.png " />
-          <image class="weui-grid__icon " style="float:left;" catchtap='' src="../../images/wode-13.png " />
+      </view>
+      <view style='height:1px;background-color:#F1F1F1;margin:0px 15px;'></view>
+      <view class="weui-flex" style='margin:10px;' catchtap='clickUserUp'>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <view>
+              <image src='/images/anchangshengji.png' style='width:20px;height:20px;' class='float-left'></image>
+              <view style='margin-left:40px;'>案场升级</view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <image src='/images/right_arrow.png' style='width:14px;height:14px;' class='float-right'></image>
+          </view>
         </view>
       </view>
     </view>
+
+    <view class='white-bg font-size-14 grey-font' style='margin-top:20px;'>
+      <view class="weui-flex" style='margin:10px;' catchtap='clickWhiteBook'>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <view>
+              <image src='/images/baipishu.png' style='width:20px;height:20px;' class='float-left'></image>
+              <view style='margin-left:40px;'>行业白皮书</view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <image src='/images/right_arrow.png' style='width:14px;height:14px;' class='float-right'></image>
+          </view>
+        </view>
+      </view>
+      <view style='height:1px;background-color:#F1F1F1;margin:0px 15px;'></view>
+      <view class="weui-flex" style='margin:10px;' catchtap='clickShop'>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <view>
+              <image src='/images/jifenshangcheng.png' style='width:20px;height:20px;' class='float-left'></image>
+              <view style='margin-left:40px;'>积分商城</view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <image src='/images/right_arrow.png' style='width:14px;height:14px;' class='float-right'></image>
+          </view>
+        </view>
+      </view>
+      <view style='height:1px;background-color:#F1F1F1;margin:0px 15px;'></view>
+      <view class="weui-flex" style='margin:10px;' catchtap='clickCalculator'>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <view>
+              <image src='/images/jisuanqi.png' style='width:20px;height:20px;' class='float-left'></image>
+              <view style='margin-left:40px;'>计算器</view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <image src='/images/right_arrow.png' style='width:14px;height:14px;' class='float-right'></image>
+          </view>
+        </view>
+      </view>
+      <view style='height:1px;background-color:#F1F1F1;margin:0px 15px;'></view>
+      <view class="weui-flex" style='margin:10px;' catchtap='clickHeZuo'>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <view>
+              <image src='/images/hezuomingxi.png' style='width:20px;height:20px;' class='float-left'></image>
+              <view style='margin-left:40px;'>合作明细</view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <image src='/images/right_arrow.png' style='width:14px;height:14px;' class='float-right'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='white-bg font-size-14 grey-font' style='margin-top:20px;'>
+      <view class="weui-flex" style='margin:10px;'  catchtap='clickQd'>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <view>
+              <image src='/images/qiandao.png' style='width:20px;height:20px;' class='float-left'></image>
+              <view style='margin-left:40px;'>签到</view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <image src='/images/right_arrow.png' style='width:14px;height:14px;' class='float-right'></image>
+          </view>
+        </view>
+      </view>
+      <view style='height:1px;background-color:#F1F1F1;margin:0px 15px;'></view>
+      <view class="weui-flex" style='margin:10px;' catchtap='clickFx'>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <view>
+              <image src='/images/wodefenxiang.png' style='width:20px;height:20px;' class='float-left'></image>
+              <view style='margin-left:40px;'>我的分享</view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <image src='/images/right_arrow.png' style='width:14px;height:14px;' class='float-right'></image>
+          </view>
+        </view>
+      </view>
+      <view style='height:1px;background-color:#F1F1F1;margin:0px 15px;'></view>
+      <view class="weui-flex" style='margin:10px;'>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <view>
+              <image src='/images/lianxifangshi.png' style='width:20px;height:20px;' class='float-left'></image>
+              <view style='margin-left:40px;'>联系方式</view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <image src='/images/right_arrow.png' style='width:14px;height:14px;' class='float-right'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view style='height:20px;'></view>
+
   </view>
 </view>

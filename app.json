@@ -1,6 +1,6 @@
 {
   "pages": [
-
+    "pages/my/my",
     "pages/index/index",
     "pages/getUserInfoPage/getUserInfoPage",
     "pages/my/loansCalculator/loansCalculator",
@@ -14,7 +14,6 @@
     "pages/baobei/baobei",
     "pages/baobei/selHouse/selHouse",
     "pages/client/client",
-    "pages/my/my",
     "pages/my/setMyInfo/setMyInfo",
     "pages/my/shop/shop",
     "pages/my/myEdit/myEdit",

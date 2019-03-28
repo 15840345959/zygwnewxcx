@@ -1,16 +1,15 @@
-// pages/my/hezuo/hezuo.js
+// pages/my/whitebook/whitebook.js
 var util = require('../../../utils/util.js')
+var wxParse = require('../../../utils/wxParse/wxParse.js');
+
 //获取应用实例
 var app = getApp()
-var page = 0    //列表页码计数，暂未使用，后续扩展使用
 var vm = null
+
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-    HeZuoInfo: []
+    article: ""
   },
 
   /**
@@ -18,8 +17,7 @@ Page({
    */
   onLoad: function (options) {
     vm = this
-    // vm.getHeZuo()//根据类型获取合作细则
-    vm.tw_getByType()//根据类型获取合作细则
+    vm.tw_getByType() //根据类型获取白皮书等
   },
 
   // 根据id获取用户首页相关信息
@@ -28,29 +26,15 @@ Page({
       type: 1,
     }
     util.tw_getByType(param, function (res) {
+      console.log("res:" + JSON.stringify(res));
       if (res.data.result) {
-        var HeZuoInfo = res.data.ret
-        console.log("根据id获取用户首页相关信息" + JSON.stringify(HeZuoInfo))
-        vm.setData({ HeZuoInfo: HeZuoInfo })
+        var msgObj = res.data.ret
+        if (res.data.code == '200') {
+          var article = res.data.ret.content_html;
+          wxParse.wxParse('article', 'html', article, vm, 5);
+        }
       }
     })
-  },
-
-  //根据图文类型获取获取合作细则
-  getHeZuo: function () {
-    var param = {
-      type: 1
-    }
-    util.getTWByType(param, function (ret) {
-      console.log("getTWByType", JSON.stringify(ret))
-      var HeZuoInfo = ret.data.ret.steps
-      if (ret.data.code == '200') {
-        vm.setData({
-          HeZuoInfo: HeZuoInfo
-        })
-      }
-    })
-
   },
 
 

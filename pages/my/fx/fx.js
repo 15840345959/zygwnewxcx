@@ -1,8 +1,7 @@
 const util = require('../../../utils/util.js')
 
 var vm = null
-var userid; //用户id
-var token;
+
 Page({
 
   /**
@@ -20,17 +19,16 @@ Page({
   onLoad: function (options) {
     vm = this
     var obj = JSON.parse(options.jsonStr);
-    userid = obj.id
-    token = obj.token
-    console.log("数据" + JSON.stringify(obj))
+    console.log("obj:" + JSON.stringify(obj));
     vm.setData({
       userInfo: obj,
     })
+    console.log("userInfo:" + JSON.stringify(vm.data.userInfo));
     vm.getListByReUserId()
   },
-    //获取分享列表
-  getListByReUserId:function(){
-    util.getListByReUserId({}, function (res) {
+  //获取分享列表
+  getListByReUserId: function () {
+    util.recomm_getListByCon({}, function (res) {
       console.log("分享列表" + JSON.stringify(res.data.ret))
       var data = res.data.ret
       if (data.length == 0) {
@@ -42,7 +40,7 @@ Page({
           no_view_hidden: "hidden"
         })
       }
-     vm.setData({
+      vm.setData({
         userlist: data,
       })
     }, null)
@@ -55,8 +53,8 @@ Page({
     var id = e.currentTarget.dataset.id
     var jifen = e.currentTarget.dataset.jifen
     wx.navigateTo({
-      url: '/pages/my/fx/tj/tj?&userid=' + userid ,
-})
+      url: '/pages/my/fx/tj/tj?&userid=' + vm.data.userInfo.id,
+    })
   },
 
   /**

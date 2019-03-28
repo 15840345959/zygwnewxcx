@@ -2,57 +2,51 @@
   <!--页头-->
   <view class="page__hd"></view>
   <!--主体-->
-  <view class="page__bd page__bd_spacing {{hidden}}">
+  <view class="page__bd page__bd_spacing">
     <!-- 头像相关 -->
     <view style="position:relative;">
-      <!-- <image src="../../../images/yq2.png " class="head-bg" mode="aspectFill"></image> -->
-      <image src="http://ozhs589fk.bkt.clouddn.com/yq2.png" class="head-bg" mode="aspectFill"></image>
-
       <view style="position: absolute;top:15px;right:15px;">
-        <image src="../../../images/tuijian_t_icon.png" class="opt-icon-nor" catchtap="jumpTj"></image>
+        <image src="../../../images/tuijian_t_icon.png" style='width:28px;height:28px;' catchtap="jumpTj"></image>
       </view>
       <!--头像+邀请码-->
-      <view style="position: absolute;top:35px;width:100%;" class="text-center">
-        <image src="{{userInfo.avatar}}" class="head-image-lar"></image>
+      <view style="" class="text-center">
+        <image src="{{userInfo.avatar}}" class="head-image-lar margin-top-20"></image>
       </view>
-      <view style="position: absolute;top:100px;width:100%;" class="text-center">
-        <text class="font-size-16 white-font">{{userInfo.nick_name}}</text>
+      <view style="" class="text-center margin-top-20">
+        <text class="font-size-16">{{userInfo.nick_name}}</text>
       </view>
-      <view style="position: absolute;top:125px;width:100%;" class="text-center">
-        <text class="font-size-16 white-font text-oneline ">我的邀请码：10000{{userInfo.id}}</text>
+      <view style="" class="text-center margin-top-10">
+        <text class="font-size-14 text-oneline ">我的邀请码：<text class='main-color font-weight font-size-18'>10000{{userInfo.id}}</text></text>
       </view>
     </view>
+
     <!-- 列表展示 -->
- <view class="page__bd">
-     
-
-        <view class="weui-panel__hd">推荐人列表</view>
-        <view class="weui-panel__bd">
-          <block wx:for="{{userlist}}">
-            <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-              <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                <image class="weui-media-box__thumb" src="{{item.user.avatar}}"></image>
-              </view>
-              <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                <view class="weui-media-box__title">{{item.user.nick_name}}</view>
-                <!-- <view class="weui-media-box__desc">其他描述</view> -->
-              </view>
-            </navigator>
-          </block>
-
-          <!-- 暂无推荐人 -->
-          <view class='{{no_view_hidden}}'>
-            <view class="no-img-view">
-              <image src="../../../images/no.png" class="no-image"></image>
-            </view>
-            <view class="grey-font center-style margin-top-10">
-              暂无推荐人
-            </view>
+    <view class="weui-panel__hd">推荐人列表</view>
+    <view class="weui-panel__bd">
+      <block wx:for="{{userlist}}">
+        <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="{{item.user.avatar}}"></image>
           </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">
+              {{item.user.nick_name}}
+            </view>
+            <!-- <view class="weui-media-box__desc">其他描述</view> -->
+          </view>
+        </navigator>
+      </block>
+
+      <!-- 暂无推荐人 -->
+      <view class='{{no_view_hidden}}'>
+        <view class="no-img-view">
+          <image src="../../../images/no.png" class="no-image"></image>
+        </view>
+        <view class="grey-font center-style margin-top-10">
+          暂无推荐人
         </view>
       </view>
-
- 
+    </view>
 
   </view>
 </view>

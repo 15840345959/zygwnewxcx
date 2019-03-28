@@ -3,7 +3,7 @@ const util = require('../../../utils/util.js')
 
 //获取应用实例
 var app = getApp()
-var page = 0    //列表页码计数
+var page = 0 //列表页码计数
 var vm = null
 
 Page({
@@ -12,7 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    houses: [],  //楼盘列表
+    houses: [], //楼盘列表
     house: "", //选中的楼盘
     userUps: [], //申请记录
   },
@@ -20,15 +20,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     vm = this
   },
 
   //获取楼盘列表
-  getHouseList: function () {
-    util.searchHouseByCon({}, function (res) {
+  getHouseList: function() {
+    util.house_getListByCon({
+      "page_size": 100
+    }, function(res) {
       console.log("getHouseList res:" + JSON.stringify(res))
-      var msgObj = res.data.ret
+      var msgObj = res.data.ret.data;
       console.log("msgObj.length length:" + msgObj.length);
       vm.setData({
         houses: msgObj
@@ -36,8 +38,8 @@ Page({
     })
   },
   //获取申请记录
-  getUserUpsList: function () {
-    util.getUserUpListByUserId({}, function (res) {
+  getUserUpsList: function() {
+    util.getUserUpListByUserId({}, function(res) {
       console.log("getUserUpListByUserId res:" + JSON.stringify(res))
       var msgObj = res.data.ret;
       console.log("msgObj.length length:" + msgObj.length);
@@ -49,7 +51,7 @@ Page({
     })
   },
   //选择楼盘
-  setHouseOption: function (e) {
+  setHouseOption: function(e) {
     console.log('setHouseOption e:', e.detail.value)
     var id = e.detail.value;
     vm.setData({
@@ -57,22 +59,22 @@ Page({
     })
   },
   //提交申请
-  baobeiClient: function (e) {
+  baobeiClient: function(e) {
     console.log('setHouseOption e:', e.detail.value)
     if (util.judgeIsAnyNullStr(vm.data.house)) {
-      util.showModal("提示信息", "请选择申请楼盘", function (ret) { }, function (ret) { });
+      util.showModal("提示信息", "请选择申请楼盘", function(ret) {}, function(ret) {});
       return;
     }
     var param = {
       house_id: vm.data.house.id
     }
-    util.userApplyUp(param, function (ret) {
+    util.userApplyUp(param, function(ret) {
       if (ret.data.code == "200" && ret.data.result == true) {
         vm.getUserUpsList();
       } else {
-        util.showModal("提示信息", ret.data.message, function (ret) { }, function (ret) { });
+        util.showModal("提示信息", ret.data.message, function(ret) {}, function(ret) {});
       }
-    }, function (ret) {
+    }, function(ret) {
 
     });
 
@@ -80,14 +82,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     vm.getHouseList()
     vm.getUserUpsList()
   },
@@ -95,36 +97,36 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     vm.getUserUpsList();
-    
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

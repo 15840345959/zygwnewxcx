@@ -1,1 +1,5 @@
 /* pages/my/hezuo/hezuo.wxss */
+
+page {
+  background-color: #fff;
+}

@@ -63,8 +63,8 @@ Page({
     util.house_getListByCon(search_param, function(res) {
       console.log("getHouseList res:" + JSON.stringify(res))
       var houses_arr = [];
-      if (!reload_flag) {
-        var houses_arr = vm.data.houses;
+      if (!reload_flag) { //如果不是重新加载，设置houses_arr为现有的vm.data.houses
+       houses_arr = vm.data.houses;
       }
       reload_flag = false;
       var msgObj = res.data.ret.data;
@@ -87,6 +87,8 @@ Page({
           no_view_hidden: "hidden"
         })
       }
+      search_param.page = search_param.page + 1; //页面增加
+      wx.stopPullDownRefresh();
     })
   },
   //获取楼盘搜索选项
@@ -114,7 +116,8 @@ Page({
   },
   //根据区域搜索
   setAreaOption: function(e) {
-    vm.clearParam();
+    reload_flag = true;
+    search_param.page = 1;
     console.log('picker发送选择改变，携带值为', e.detail.value)
     var id = e.detail.value;
     var area_option = vm.data.area_option
@@ -132,7 +135,8 @@ Page({
   },
   //根据类型搜索
   setTypeOption: function(e) {
-    vm.clearParam();
+    reload_flag = true;
+    search_param.page = 1;
     console.log('setTypeOption e:', e.detail.value)
     var id = e.detail.value;
     var type_option = vm.data.type_option
@@ -151,7 +155,8 @@ Page({
   },
   //根据价格进行搜索
   setPriceOption: function(e) {
-    vm.clearParam();
+    reload_flag = true;
+    search_param.page = 1;
     console.log('setPriceOption e:', e.detail.value)
     var id = e.detail.value;
     var price_option = vm.data.price_option
@@ -169,11 +174,11 @@ Page({
 
   //根据标签搜索
   setLabelOption: function(e) {
-    vm.clearParam();
+    reload_flag = true;
+    search_param.page = 1;
     console.log('setLabelOption e:', e.detail.value)
     var id = e.detail.value;
     var label_option = vm.data.label_option
-    var id = e.detail.value;
     if (id == 0) {
       delete search_param.label_id;
     } else {
@@ -187,7 +192,7 @@ Page({
     vm.getHouseList();
   },
 
-  // 根据房源id获取房源信息
+  // 根据楼盘id获取房源信息
   clickHouse: function(e) {
     console.log("clickHouse e:" + JSON.stringify(e))
     util.isNeedNavigateToSetMyInfoPage()
@@ -196,7 +201,7 @@ Page({
       url: '/pages/baobei/baobei?house_id=' + house_id
     })
   },
-  
+
   //输入楼盘名称
   inputSearchWord: function(e) {
     console.log("inputRealName e:" + JSON.stringify(e));
@@ -226,14 +231,17 @@ Page({
     util.navigateBack(1);
   },
   //清空参数
-  clearParam: function () {
+  clearParam: function() {
     reload_flag = true;
     search_param = {
       page: 1,
       level: "1 "
     }
     vm.setData({
-      search_word: ""
+      search_word: "",
+      area_text: "全部区域",
+      type_text: "全部类型",
+      label_text: "全部标签",
     })
   },
 
@@ -254,7 +262,7 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     vm.clearParam();
     vm.getHouseList(); //搜索楼盘
   },
