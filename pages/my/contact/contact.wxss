@@ -1,0 +1,5 @@
+/* pages/my/whitebook/whitebook.wxss */
+
+page {
+  background-color: #fff;
+}

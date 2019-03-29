@@ -1,0 +1,24 @@
+<!--pages/index/whitebook/whitebook.wxml-->
+<view class="page__hd" style="backgroud:#ffffff !important;">
+  <view style="padding:30rpx;">
+    <view class="weui-cells weui-cells_after-title">
+      <block wx:for="{{contact_arr}}">
+        <view class="weui-cell" bindtap='clickContact' data-ewm-url="{{item.wx_ewm}}">
+          <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+            <image src="{{item.wx_ewm}}" style="width: 50px; height: 50px; display: block" />
+          </view>
+          <view class="weui-cell__bd">
+            <view>
+              {{item.name}}
+            </view>
+            <view class='font-size-14'>
+              <text>{{item.position?item.position:"暂无"}}</text>
+              <text class='margin-left-20'>{{item.position?item.position:"暂无"}}</text>
+            </view>
+            <view style="font-size: 13px;color: #888888;" class='margin-top-10'>{{item.phonenum}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
