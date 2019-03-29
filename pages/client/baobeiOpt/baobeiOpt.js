@@ -4,7 +4,7 @@ var util = require('../../../utils/util.js')
 
 //获取应用实例
 var app = getApp()
-var page = 0    //列表页码计数
+var page = 0 //列表页码计数
 var vm = null
 
 var baobei_id = ""; //报备id信息
@@ -15,16 +15,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    button_text: "",    //操作按钮名称
-    baobei: {},    //报备信息
-    set_role: "0",   //默认是中介角色
+    button_text: "", //操作按钮名称
+    baobei: {}, //报备信息
+    set_role: "0", //默认是中介角色
     hidden: "hidden"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
     vm = this;
     console.log(JSON.stringify(options));
@@ -39,12 +39,12 @@ Page({
   },
 
   //根据id获取报备详情信息
-  getBaobeiInfoById: function (baobei_id) {
+  getBaobeiInfoById: function(baobei_id) {
     console.log("getBaobeiinfoById e:" + baobei_id);
     var param = {
       id: baobei_id
     }
-    util.getBaobeiInfoById(param, function (ret) {
+    util.getBaobeiInfoById(param, function(ret) {
       console.log("getBaobeiInfoById ret:" + JSON.stringify(ret));
       if (ret.data.code == "200" && ret.data.result) {
         var msgObj = ret.data.ret;
@@ -62,11 +62,11 @@ Page({
           hidden: ""
         })
       }
-    }, function (ret) { })
+    }, function(ret) {})
   },
 
   //设置按钮文字
-  setButtonText: function (baobei_status) {
+  setButtonText: function(baobei_status) {
     var button_text = "";
     switch (baobei_status) {
       case "0":
@@ -88,14 +88,14 @@ Page({
   },
 
   //编辑客户资料
-  setClientInfo: function (e) {
+  setClientInfo: function(e) {
     console.log("setClientInfo e:" + JSON.stringify(e));
     wx.navigateTo({
       url: '/pages/client/setBaseInfo/setBaseInfo?jsonStr=' + JSON.stringify(vm.data.baobei)
     })
   },
   //展示报备图片
-  showImage: function (e) {
+  showImage: function(e) {
     console.log("showImage e:" + JSON.stringify(e))
     var currentUrl = e.currentTarget.dataset.img;
     var img_arr = [currentUrl];
@@ -107,7 +107,7 @@ Page({
 
 
   //设置报备相关操作，根据报备status不同，跳转至不同页面
-  setBaobeiOpt: function (e) {
+  setBaobeiOpt: function(e) {
     console.log("setBaobeiOpt e:" + JSON.stringify(e));
     var baobei_status = e.currentTarget.dataset.baobeistatus;
     switch (baobei_status) {
@@ -135,19 +135,24 @@ Page({
   },
 
   //确认接收报备信息
-  acceptBaobei: function (e) {
-    util.showModal("确认信息", "确认接收该报备信息", function (ret) {
-      util.acceptClient({ id: baobei_id }, function (ret) {
+  acceptBaobei: function(e) {
+    util.showModal("确认信息", "确认接收该报备信息", function(ret) {
+      util.acceptClient({
+        id: baobei_id
+      }, function(ret) {
+        console.log("acceptClient:" + JSON.stringify(ret));
         if (ret.data.result && ret.data.code == "200") {
           util.showToast("接收成功");
           util.navigateBack(1);
+        } else {
+          util.showToast(ret.data.message);
         }
       }, null);
     }, null)
   },
 
   //设置可结算状态
-  setCanJiesuanStatus: function (e) {
+  setCanJiesuanStatus: function(e) {
     console.log("setCanJiesuanStatus e:" + JSON.stringify(e));
     var can_jiesuan_status = e.currentTarget.dataset.canjiesuanstatus;
     if (can_jiesuan_status == "0") {
@@ -160,7 +165,7 @@ Page({
   },
 
   //设置顾问
-  setGuwen: function (e) {
+  setGuwen: function(e) {
     console.log("setGuwen e:" + JSON.stringify(e));
     wx.navigateTo({
       url: '/pages/client/setGuwenOpt/setGuwenOpt?jsonStr=' + JSON.stringify(vm.data.baobei)
@@ -170,50 +175,50 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    vm.getBaobeiInfoById(baobei_id);  //每次展示重新加载数据
+  onShow: function() {
+    vm.getBaobeiInfoById(baobei_id); //每次展示重新加载数据
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

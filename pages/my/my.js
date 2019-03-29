@@ -137,6 +137,14 @@ Page({
 
     })
   },
+  //点击联系人
+  clickContact: function () {
+    util.isNeedNavigateToSetMyInfoPage();
+    wx.navigateTo({
+      url: '/pages/my/contact/contact',
+
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

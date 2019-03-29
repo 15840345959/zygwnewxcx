@@ -66,7 +66,7 @@ Page({
 
   //根据楼盘id获取户型列表
   getHuxingsByHouseId: function (house_id) {
-    util.getHuxingsByHouseId({ house_id: house_id }, function (ret) {
+    util.house_huxing_getListByCon({ house_id: house_id }, function (ret) {
       console.log("getHuxingsByHouseId ret:" + JSON.stringify(ret));
       if (ret.data.code == "200" && ret.data.result) {
         var msgObj = ret.data.ret;

@@ -67,7 +67,7 @@ var search_param = {
 
 var reload_flag = true; //重新加载楼盘数组标志
 
-var set_role = null; //角色设定 0：中介 1：案场负责人
+var set_role = "0"; //角色设定 0：中介 1：案场负责人
 
 Page({
 
@@ -93,7 +93,7 @@ Page({
   onLoad: function(options) {
     vm = this;
     //加载全部楼盘
-    // vm.getHouseList(); //搜索楼盘
+    vm.getHouseList(); //搜索楼盘
     vm.reloadPage(); //刷新页面
   },
   //设置头部导航条
@@ -113,6 +113,7 @@ Page({
   },
   //进行后台数据获取
   getDatasFromSrv: function(e) {
+    console.log("set_role:" + set_role);
     //中介
     if (set_role == "0") {
       vm.getListForZJByStatus();
@@ -128,7 +129,7 @@ Page({
       console.log("getListForZJByStatus res:" + JSON.stringify(res))
       var baobeis_arr = [];
       if (!reload_flag) { //如果不是重新加载，设置houses_arr为现有的vm.data.houses
-        var baobeis_arr = vm.data.baobeis;
+        baobeis_arr = vm.data.baobeis;
       }
       reload_flag = false;
       var msgObj = res.data.ret.data;
@@ -162,7 +163,7 @@ Page({
       console.log("getListForZJByStatus res:" + JSON.stringify(res))
       var baobeis_arr = [];
       if (!reload_flag) { //如果不是重新加载，设置houses_arr为现有的vm.data.houses
-        var baobeis_arr = vm.data.baobeis;
+        baobeis_arr = vm.data.baobeis;
       }
       reload_flag = false;
       var msgObj = res.data.ret.data;
@@ -218,6 +219,7 @@ Page({
     search_param.house_id = vm.data.house.id;
     reload_flag = true;
     search_param.page = 1;
+    console.log("setHouseOption search_param:" + JSON.stringify(search_param));
     vm.getDatasFromSrv();
   },
   //选择开始时间
@@ -421,6 +423,7 @@ Page({
     search_param = {
       page: 1
     }
+    reload_flag = true;
     vm.getDatasFromSrv();
   },
 
@@ -460,8 +463,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-    console.log("onReachBottom page:" + search_param.page);
-    vm.getDatasFromSrv(); //搜索楼盘
+    console.log("onReachBottom search_param:" + JSON.stringify(search_param));
+    vm.getDatasFromSrv(); //加载更多的报备信息
   },
 
   /**

@@ -1,6 +1,6 @@
 <!--pages/client/client.wxml-->
 <import src="../templates/baobeiTpl/baobeiTpl.wxml" />
-<view class="page {{hidden}}">
+<view class="index {{hidden}}">
   <!--页头-->
   <view class="page__hd"></view>
   <!--主体-->

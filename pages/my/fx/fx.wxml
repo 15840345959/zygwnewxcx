@@ -30,9 +30,8 @@
           </view>
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
             <view class="weui-media-box__title">
-              {{item.user.nick_name}}
+              {{item.user.nick_name?item.user.nick_name:'暂未设置'}}
             </view>
-            <!-- <view class="weui-media-box__desc">其他描述</view> -->
           </view>
         </navigator>
       </block>

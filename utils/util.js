@@ -1,7 +1,7 @@
 //测试标识
-var TESTMODE = true;
+var TESTMODE = false;
 //服务器地址
-var SERVER_URL = "https://zygw.isart.me";
+var SERVER_URL = "https://dezygw.isart.me";
 var DEBUG_URL = "http://localhost/zygwSrv/public";
 var SERVER_URL = (TESTMODE) ? DEBUG_URL : SERVER_URL;
 
@@ -179,6 +179,11 @@ function house_huxing_getListByCon(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/house/huxing/getListByCon', param, "GET", successCallback, errorCallback);
 }
 
+//根据条件获取楼盘联系人列表
+function house_contact_getListByCon(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/house/contact/getListByCon', param, "GET", successCallback, errorCallback);
+}
+
 //根据id获取户型信息
 function house_huxing_getById(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/house/huxing/getById', param, "GET", successCallback, errorCallback);
@@ -297,7 +302,7 @@ function getLocalUserInfo() {
 
 // 转换真实地址
 function getImgRealUrl(key) {
-  return 'http://dsyy.isart.me/' + key
+  return 'http://twst.isart.me/' + key
 }
 
 //根据id获取数组的index
@@ -1202,6 +1207,7 @@ module.exports = {
   setBaobeiQkdz: setBaobeiQkdz,
   getZYGWsByHouseId: getZYGWsByHouseId,
   setZYGW: setZYGW,
+  house_contact_getListByCon: house_contact_getListByCon,
 
   //normal function
   getArrIndexById: getArrIndexById,

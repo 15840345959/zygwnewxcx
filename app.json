@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/my/my",
     "pages/index/index",
+    "pages/client/client",
+    "pages/my/my",
     "pages/getUserInfoPage/getUserInfoPage",
     "pages/my/loansCalculator/loansCalculator",
     "pages/houseInfo/huxing/huxing",
@@ -13,9 +14,9 @@
     "pages/my/userUp/userUp",
     "pages/baobei/baobei",
     "pages/baobei/selHouse/selHouse",
-    "pages/client/client",
     "pages/my/setMyInfo/setMyInfo",
     "pages/my/shop/shop",
+    "pages/my/contact/contact",
     "pages/my/myEdit/myEdit",
     "pages/my/whitebook/whitebook",
     "pages/my/hezuo/hezuo",

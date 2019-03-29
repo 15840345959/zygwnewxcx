@@ -1,8 +1,8 @@
 /* pages/client/client.wxss */
 
-.client {
-  width: 100%;
-  overflow-x: hidden;
+.index{
+  width:100%;
+   overflow-x: hidden;
 }
 
 .tab-nav {

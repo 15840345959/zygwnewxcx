@@ -195,7 +195,7 @@
         </view>
       </view>
       <view style='height:1px;background-color:#F1F1F1;margin:0px 15px;'></view>
-      <view class="weui-flex" style='margin:10px;'>
+      <view class="weui-flex" style='margin:10px;' catchtap='clickContact'>
         <view class="weui-flex__item">
           <view class="placeholder">
             <view>
