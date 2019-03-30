@@ -9,13 +9,13 @@
           </view>
           <view class="weui-cell__bd">
             <view>
-              {{item.name}}
+              <text style='font-size: 14px;'>{{item.name}}</text>
             </view>
             <view class='font-size-14'>
               <text>{{item.position?item.position:"暂无"}}</text>
               <text class='margin-left-20'>{{item.position?item.position:"暂无"}}</text>
             </view>
-            <view style="font-size: 13px;color: #888888;" class='margin-top-10'>{{item.phonenum}}</view>
+            <view style="font-size: 14px;color: #888888;" class='margin-top-10'>{{item.phonenum}}</view>
           </view>
         </view>
       </block>

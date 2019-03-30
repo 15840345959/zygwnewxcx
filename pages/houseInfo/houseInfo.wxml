@@ -48,6 +48,6 @@
 
   <view style="height:40px;"></view>
 
-  <view bindtap="jumpBaobei" class="full-width bottom-view full-btn" hover-class="other-button-hover"> 报备客户</view>
+  <view bindtap="jumpBaobei" class="full-width bottom-view full-btn" hover-class="other-button-hover" style='height:50px;line-height:50px;'> 报备客户</view>
 
 </view>

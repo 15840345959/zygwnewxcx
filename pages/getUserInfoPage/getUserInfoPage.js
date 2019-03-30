@@ -43,6 +43,7 @@ Page({
               }
               console.log("param:" + JSON.stringify(param));
               util.loginServer(param, function (ret) {
+                console.log("loginServer ret:"+JSON.stringify(ret));
                 app.storeUserInfo(ret.data.ret)   //将userInfo缓存在本地
                 console.log("登录成功，设置本地缓存 userInfo:" + JSON.stringify(util.getLocalUserInfo()));
                 util.navigateBack(-1);

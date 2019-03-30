@@ -27,18 +27,18 @@ function wxRequest(url, param, method, successCallback, errorCallback, loadding_
     },
     // header: { 'content-type': 'application/x-www-form-urlencoded' },
     method: method,
-    success: function (ret) {
+    success: function(ret) {
       // console.log("ret:" + JSON.stringify(ret))
       successCallback(ret)
     },
-    fail: function (err) {
+    fail: function(err) {
       console.log("wxRequest fail:" + JSON.stringify(err))
       if (typeof errorCallback == "function") {
         errorCallback(ret)
       }
 
     },
-    complete: function () {
+    complete: function() {
       hideLoading()
     }
   });
@@ -284,12 +284,12 @@ function tw_getByType(param, successCallback, errorCallback) {
 //判断是否需要跳转到设置信息页面
 function isNeedNavigateToSetMyInfoPage() {
   var userInfo = getApp().globalData.userInfo;
-  console.log("isNeedNavigateToSetMyInfoPage userInfo:"+JSON.stringify(userInfo));
-  if (judgeIsAnyNullStr(userInfo.phonenum, userInfo.real_name)) {
+  console.log("isNeedNavigateToSetMyInfoPage userInfo:" + JSON.stringify(userInfo));
+  if (judgeIsAnyNullStr(userInfo.nick_name, userInfo.avatar)) {
     wx.navigateTo({
       url: '/pages/getUserInfoPage/getUserInfoPage',
     })
-  } else { }
+  } else {}
 }
 
 
@@ -299,6 +299,26 @@ function isNeedNavigateToSetMyInfoPage() {
 function getLocalUserInfo() {
   return getApp().globalData.userInfo;
 }
+
+//刷新本地缓存
+function refreshLocalUserInfo() {
+  var local_userInfo = getLocalUserInfo();
+  console.log("refreshLocalUserInfo local_userInfo:" + JSON.stringify(local_userInfo));
+  if (judgeIsAnyNullStr(local_userInfo)) {
+    return;
+  }
+  getUserInfoByIdWithToken({
+    id: local_userInfo.id
+  }, function(ret) {
+    console.log("refreshLocalUserInfo ret:" + JSON.stringify(ret));
+    // app.storeUserInfo(ret.data.ret);
+    if (ret.data.result) {
+      var app = getApp()
+      app.storeUserInfo(ret.data.ret) //将userInfo缓存在本地
+    }
+  });
+}
+
 
 // 转换真实地址
 function getImgRealUrl(key) {
@@ -390,7 +410,7 @@ function showModal(title, content, confirmCallBack, cancelCallBack) {
   wx.showModal({
     title: title,
     content: content,
-    success: function (res) {
+    success: function(res) {
       if (res.confirm) {
         console.log('用户点击确定')
         if (typeof confirmCallBack == "function") {
@@ -411,7 +431,7 @@ function showErrorModal(msg) {
   wx.showModal({
     title: '调用失败',
     content: msg,
-    success: function (res) {
+    success: function(res) {
       if (res.confirm) {
         console.log('用户点击确定')
       } else if (res.cancel) {
@@ -638,18 +658,18 @@ function chooseImage(param, successCallBack, errorCallBack, completeCallBack) {
     sizeType: param.sizeType, // 可以指定是原图还是压缩图，默认二者都有
     sourceType: param.sourceType, // 可以指定来源是相册还是相机，默认二者都有
     count: param.count,
-    success: function (res) {
+    success: function(res) {
       // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
       console.log("wx.chooseImage success:" + JSON.stringify(res))
       successCallBack(res)
     },
-    fail: function (res) {
+    fail: function(res) {
       console.log("wx.chooseImage fail:" + JSON.stringify(res))
       if (typeof errorCallBack == "function") {
         errorCallBack(res)
       }
     },
-    complete: function (res) {
+    complete: function(res) {
       console.log("wx.chooseImage complete:" + JSON.stringify(res))
       if (typeof completeCallBack == "function") {
         completeCallBack(res)
@@ -669,7 +689,7 @@ function chooseImage(param, successCallBack, errorCallBack, completeCallBack) {
 // mm/m 分钟  
 // ss/SS/s/S 秒  
 //---------------------------------------------------  
-Date.prototype.Format = function (formatStr) {
+Date.prototype.Format = function(formatStr) {
   var str = formatStr
   var Week = ['日', '一', '二', '三', '四', '五', '六']
 
@@ -715,7 +735,7 @@ function daysBetween(DateOne, DateTwo) {
 //+---------------------------------------------------  
 //| 日期计算  
 //+---------------------------------------------------  
-Date.prototype.DateAdd = function (strInterval, Number) {
+Date.prototype.DateAdd = function(strInterval, Number) {
   var dtTmp = this
   switch (strInterval) {
     case 's':
@@ -740,7 +760,7 @@ Date.prototype.DateAdd = function (strInterval, Number) {
 //+---------------------------------------------------  
 //| 比较日期差 dtEnd 格式为日期型或者有效日期格式字符串  
 //+---------------------------------------------------  
-Date.prototype.DateDiff = function (strInterval, dtEnd) {
+Date.prototype.DateDiff = function(strInterval, dtEnd) {
   var dtStart = this
   if (typeof dtEnd == 'string') //如果是字符串转换为日期型
   {
@@ -767,7 +787,7 @@ Date.prototype.DateDiff = function (strInterval, dtEnd) {
 //+---------------------------------------------------  
 //| 日期输出字符串，重载了系统的toString方法  
 //+---------------------------------------------------  
-Date.prototype.toString = function (showWeek) {
+Date.prototype.toString = function(showWeek) {
   var myDate = this;
   var str = myDate.toLocaleDateString()
   if (showWeek) {
@@ -824,7 +844,7 @@ function CheckDateTime(str) {
 //+---------------------------------------------------  
 //| 把日期分割成数组  
 //+---------------------------------------------------  
-Date.prototype.toArray = function () {
+Date.prototype.toArray = function() {
   var myDate = this
   var myArray = Array()
   myArray[0] = myDate.getFullYear()
@@ -841,7 +861,7 @@ Date.prototype.toArray = function () {
 //| 参数 interval 表示数据类型  
 //| y 年 m月 d日 w星期 ww周 h时 n分 s秒  
 //+---------------------------------------------------  
-Date.prototype.DatePart = function (interval) {
+Date.prototype.DatePart = function(interval) {
   var myDate = this
   var partStr = ''
   var Week = ['日', '一', '二', '三', '四', '五', '六']
@@ -877,7 +897,7 @@ Date.prototype.DatePart = function (interval) {
 //+---------------------------------------------------  
 //| 取得当前日期所在月的最大天数  
 //+---------------------------------------------------  
-Date.prototype.MaxDayOfDate = function () {
+Date.prototype.MaxDayOfDate = function() {
   var myDate = this
   var ary = myDate.toArray()
   var date1 = (new Date(ary[0], ary[1] + 1, 1))
@@ -943,14 +963,14 @@ function getDiffentTime(str, now) {
   var arr = str.split(/\s+/gi)
   var temp = 0,
     arr1, arr2, oldTime, delta
-  var getIntValue = function (ss, defaultValue) {
+  var getIntValue = function(ss, defaultValue) {
     try {
       return parseInt(ss, 10)
     } catch (e) {
       return defaultValue
     }
   }
-  var getWidthString = function (num) {
+  var getWidthString = function(num) {
     return num < 10 ? ("0" + num) : num
   }
   if (arr.length >= 2) {
@@ -1234,7 +1254,7 @@ module.exports = {
   gcj02towgs84: gcj02towgs84,
   baseEncode: baseEncode,
   baseDecode: baseDecode,
-
+  refreshLocalUserInfo: refreshLocalUserInfo,
 
   getGoodsList: getGoodsList,
   exchange: exchange,

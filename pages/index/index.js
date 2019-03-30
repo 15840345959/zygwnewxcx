@@ -92,6 +92,7 @@ Page({
     vm.setADSwiper(); //获取轮播图
     vm.getSearchOptions(); //获取搜索楼盘选项
     vm.getHouseList(); //搜索楼盘
+    util.refreshLocalUserInfo();
   },
   //展示
   onShow: function() {
@@ -305,6 +306,7 @@ Page({
   onPullDownRefresh: function() {
     vm.clearParam();
     vm.getHouseList(); //搜索楼盘
+    util.refreshLocalUserInfo();    //刷新用户缓存
   },
 
   //清空参数

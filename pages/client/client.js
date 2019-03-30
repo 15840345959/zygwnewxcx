@@ -415,6 +415,9 @@ Page({
       currentTab: 0, //设置当前的tab为第一个
       userInfo: util.getLocalUserInfo() //设置用户缓存
     })
+
+    
+
     //兼容案场负责人切换身份，set_role初始化为null，这样首次加载等场景即初始化set_role
     if (util.judgeIsAnyNullStr(set_role)) {
       set_role = vm.data.userInfo.role; //设定用户角色
