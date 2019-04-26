@@ -21,8 +21,6 @@ Page({
    */
   onLoad: function (options) {
     vm = this;
-    //判断是否需要登录
-    util.isNeedNavigateToSetMyInfoPage();
     //加载页面
     vm.getMyInfo();
   },
@@ -38,6 +36,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //判断是否需要登录
+    util.isNeedNavigateToSetMyInfoPage();
     vm.getMyInfo()
   },
   //获取用户页面相关数据

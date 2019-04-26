@@ -1,8 +1,9 @@
 //测试标识
-var TESTMODE = false;
+var TESTMODE = true;
 //服务器地址
-var SERVER_URL = "https://dezygw.isart.me";
-var DEBUG_URL = "http://localhost/zygwSrv/public";
+var SERVER_URL = "https://zygwsrv.isart.me";
+// var DEBUG_URL = "http://localhost/zygwSrv/public";
+var DEBUG_URL = "https://dezygw.isart.me";
 var SERVER_URL = (TESTMODE) ? DEBUG_URL : SERVER_URL;
 
 //////接口相关//////////////////////////////////////////
