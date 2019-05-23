@@ -15,15 +15,15 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     vm = this
     vm.getHouseContact() //根据条件获取楼盘联系人
   },
 
   // 根据id获取用户首页相关信息
-  getHouseContact: function () {
+  getHouseContact: function() {
     var param = {}
-    util.house_contact_getListByCon(param, function (res) {
+    util.house_contact_getListByCon(param, function(res) {
       console.log("res:" + JSON.stringify(res));
       if (res.data.result) {
         var msgObj = res.data.ret
@@ -36,7 +36,7 @@ Page({
     })
   },
   //点击联系人
-  clickContact: function (e) {
+  clickContact: function(e) {
     console.log("clickContact e:" + JSON.stringify(e));
     var ewm_url = e.currentTarget.dataset.ewmUrl;
     wx.previewImage({
@@ -44,52 +44,60 @@ Page({
       urls: [ewm_url] // 需要预览的图片http链接列表
     })
   },
+  //点击拨打电话
+  callPhonenum: function(e) {
+    console.log("callPhonenum e:" + JSON.stringify(e));
+    var phonenum = e.currentTarget.dataset.phonenum;
+    wx.makePhoneCall({
+      phoneNumber: phonenum // 仅为示例，并非真实的电话号码
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

@@ -32,6 +32,10 @@ Page({
    */
   onLoad: function(options) {
     vm = this;
+    search_param = {
+      page: 1,
+      level: '1'
+    }
   },
 
   /**
@@ -64,7 +68,7 @@ Page({
       console.log("getHouseList res:" + JSON.stringify(res))
       var houses_arr = [];
       if (!reload_flag) { //如果不是重新加载，设置houses_arr为现有的vm.data.houses
-       houses_arr = vm.data.houses;
+        houses_arr = vm.data.houses;
       }
       reload_flag = false;
       var msgObj = res.data.ret.data;

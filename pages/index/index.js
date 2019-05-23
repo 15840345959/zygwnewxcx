@@ -305,6 +305,7 @@ Page({
    */
   onPullDownRefresh: function() {
     vm.clearParam();
+    vm.setADSwiper(); //获取轮播图
     vm.getHouseList(); //搜索楼盘
     util.refreshLocalUserInfo();    //刷新用户缓存
   },

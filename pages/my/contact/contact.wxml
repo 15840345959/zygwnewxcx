@@ -3,19 +3,23 @@
   <view style="padding:30rpx;">
     <view class="weui-cells weui-cells_after-title">
       <block wx:for="{{contact_arr}}">
-        <view class="weui-cell" bindtap='clickContact' data-ewm-url="{{item.wx_ewm}}">
-          <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-            <image src="{{item.wx_ewm}}" style="width: 50px; height: 50px; display: block" />
+        <view class="weui-cell">
+          <view class="weui-cell__hd" style="position: relative;margin-right: 10px;" catchtap='clickContact' data-ewm-url="{{item.wx_ewm}}">
+            <image src="{{item.wx_ewm}}" style="width: 60px; height: 60px; display: block"/>
           </view>
-          <view class="weui-cell__bd">
+          <view class="weui-cell__bd" catchtap='callPhonenum' data-phonenum='{{item.phonenum}}'>
             <view>
               <text style='font-size: 14px;'>{{item.name}}</text>
             </view>
             <view class='font-size-14'>
               <text>{{item.position?item.position:"暂无"}}</text>
-              <text class='margin-left-20'>{{item.position?item.position:"暂无"}}</text>
             </view>
-            <view style="font-size: 14px;color: #888888;" class='margin-top-10'>{{item.phonenum}}</view>
+            <view class='font-size-14 grey-font'>
+              <text>{{item.position?item.duty:"暂无"}}</text>
+            </view>
+            <view style="font-size: 14px;color: #888888;" class='margin-top-10'>
+              {{item.phonenum}}
+            </view>
           </view>
         </view>
       </block>

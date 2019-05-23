@@ -1,6 +1,6 @@
 <!--pages/index/zixun/zixun.wxml-->
 <view class="page__hd" style="backgroud:#ffffff !important;">
-  <view style="padding:30rpx;">
+  <view style="margin:0rpx;">
     <import src="../../../utils/wxParse/wxParse.wxml" />
     <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
